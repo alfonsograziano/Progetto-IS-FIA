@@ -81,9 +81,9 @@ public class Tester {
 
 		//I valori che otteniamo in input vanno normalizzati su valori tra 1 e 5
 		final double PERFORMANCE = 8.5;
-		final double CAMERA = 7.5;
+		final double CAMERA = 8.5;
 		final double DISPLAY = 7.0;
-		//Battey è espresso in mah, va normalizzato
+		//Battey Ã¨ espresso in mah, va normalizzato
 		//final double BATTERY = 8.5;
     	ScraperHelper sp = new ScraperHelper();
     	specs = sp.getSpecs();
@@ -149,9 +149,6 @@ public class Tester {
 		System.out.println("Arrivato a convergenza dopo "+converged+" iterazioni");
 
 		System.out.println(bestChoice);
-
-    	
-    	
 
     }
 

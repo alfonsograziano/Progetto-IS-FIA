@@ -5,6 +5,15 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class Spec {
+    private int id;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
     private String name;
     private String date;
@@ -17,13 +26,18 @@ public class Spec {
     private String screenSize;
     private String image;
 
+    private double price;
+
     private double display;
     private double camera;
     private double performance;
     private int battery;
 
+    private double fit;
+
 
     public Spec() {
+        fit = 0.0;
     }
 
     public String getName() {
@@ -141,12 +155,25 @@ public class Spec {
     @Override
     public String toString() {
         return "Spec{" +
+
                 "name='" + name + '\'' +
                 ", display=" + display +
                 ", camera=" + camera +
                 ", performance=" + performance +
                 ", data=" + date +
+                ", id=" + id +
+                ", price=" + price +
+
                 '}';
+    }
+
+
+    public double getFitValue (){
+        return this.fit;
+    }
+
+    public void setFitValue(double fit){
+        this.fit = fit;
     }
 
     public double getFit(double peformance, double camera, double display){
@@ -169,8 +196,43 @@ public class Spec {
         if(displayF > 1) fit += Math.pow(displayF,powFactor);
         else fit += displayF*multiplyFactor;
 
+        String specDate = this.getDate();
+        if(specDate != null){
+            Date date1;
+            //Converto la stringa in data
+            try {
+                date1=new SimpleDateFormat("yyyy/MM").parse(specDate);
+
+                double months = getMonthsDifference(date1,new Date())/3.00;
+
+                // 9mesi => 9/3 = 3 => 3^pow 2 => 9
+
+                fit += Math.pow(months, powFactor);
+
+                //System.out.println(this.now + " | " + date1 +" => "+months);
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
+
+        }else{
+            //System.out.println("Cannot find date => " + spec);
+        }
+
 
         return fit;
     }
 
+    public double getPrice() {
+        return price;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
+    }
+
+    public static final int getMonthsDifference(Date date1, Date date2) {
+        int m1 = date1.getYear() * 12 + date1.getMonth();
+        int m2 = date2.getYear() * 12 + date2.getMonth();
+        return m2 - m1 + 1;
+    }
 }

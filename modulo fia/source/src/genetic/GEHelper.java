@@ -129,7 +129,11 @@ public class GEHelper {
                 +" - iterations => "+ count);
         System.out.println("Arrivato a convergenza dopo "+converged+" iterazioni");
 
-        System.out.println(bestChoice);
+        //System.out.println(bestChoice);
+        ArrayList<Spec> result = bestChoice.getGene();
+        for(Spec s: result){
+            System.out.println(s + " | " + s.getFitValue());
+        }
 
         return bestChoice;
     }

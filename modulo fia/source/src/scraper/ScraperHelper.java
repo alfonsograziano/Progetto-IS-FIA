@@ -35,6 +35,7 @@ public class ScraperHelper {
             spec.setPerformance(rs.getDouble("performance"));
             spec.setBattery(rs.getInt("battery"));
             spec.setDate(rs.getString("date"));
+            spec.setId(rs.getInt("id"));
 
             specs.add(spec);
         }
@@ -59,11 +60,20 @@ public class ScraperHelper {
 
                 String localKey = localKeys.get(j).text();
                 String localValue = localValues.get(j).text();
-                switch (localKey){
 
+                //Non trova l'accento su disponibilità
+                if(localKey.contains("Disponibilit")){
+                    System.out.println("Data trovata");
+                    localKey=DATE;
+                }
+
+
+                switch (localKey){
                     case OS: spec.setSo(localValue);
                         break;
-                    case DATE: spec.setDate(localValue);
+                    case DATE:
+                        System.out.println("Date found");
+                        spec.setDate(localValue);
                         break;
                     case CPU: spec.setCpu(localValue);
                         break;
@@ -85,12 +95,14 @@ public class ScraperHelper {
                         break;
                     case PERFORMANCE: spec.setPerformance(Double.parseDouble(localValue.split(" /")[0]));
                         break;
-
+                    case BEST_PRICE:
+                        spec.setPrice(Double.parseDouble(localValue.split(" ")[0]));
+                        break;
                 }
-
             }
-
         }
+
+
 
         return spec;
 
@@ -103,10 +115,13 @@ public class ScraperHelper {
         ArrayList<String> pages = new ArrayList<>();
         Elements phoneList = jsoup.get().getElementsByClass("phonelist_item");
 
+
+
         for(Element e : phoneList){
-
-            pages.add(e.getElementsByTag("a").get(0).attr("href"));
-
+            Element priceEl = e.getElementsByClass("price").first();
+            if(!priceEl.text().equals("Avviso di Prezzo")){
+                pages.add(e.getElementsByTag("a").get(0).attr("href"));
+            }
         }
 
         return pages;
@@ -125,5 +140,7 @@ public class ScraperHelper {
     private final static String DISPLAY = "- Display";
     private final static String CAMERA = "- Fotocamera";
     private final static String PERFORMANCE = "- Prestazioni";
+    private final static String BEST_PRICE = "Miglior Prezzo";
+
 
 }

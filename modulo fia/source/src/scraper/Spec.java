@@ -31,6 +31,17 @@ public class Spec {
     private double display;
     private double camera;
     private double performance;
+
+    public double getNormalizedBattery() {
+        return normalizedBattery;
+    }
+
+    public void setNormalizedBattery(double normalizedBattery) {
+        this.normalizedBattery =  Math.floor(normalizedBattery * 100) / 100;
+    }
+
+    private double normalizedBattery;
+
     private int battery;
 
     private double fit;
@@ -160,9 +171,11 @@ public class Spec {
                 ", display=" + display +
                 ", camera=" + camera +
                 ", performance=" + performance +
+                ", battery=" + normalizedBattery +
                 ", data=" + date +
                 ", id=" + id +
-                ", price=" + price +
+                //", price=" + price +
+                ", fit=" +  Math.floor(fit * 100) / 100 +
 
                 '}';
     }

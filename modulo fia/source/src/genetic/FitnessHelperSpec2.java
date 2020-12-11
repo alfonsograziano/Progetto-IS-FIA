@@ -4,11 +4,9 @@ import scraper.Spec;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.time.temporal.ChronoUnit;
-import java.util.ArrayList;
 import java.util.Date;
 
-public class FitnessHelperSpec implements FitnessHelper {
+public class FitnessHelperSpec2 implements FitnessHelper {
 
     private double performance;
     private double camera;
@@ -24,7 +22,7 @@ public class FitnessHelperSpec implements FitnessHelper {
         return m2 - m1 + 1;
     }
 
-    public FitnessHelperSpec(double performance, double camera, double display, Date now, double battery, int minBattery, int maxBattery){
+    public FitnessHelperSpec2(double performance, double camera, double display, Date now, double battery, int minBattery, int maxBattery){
         this.performance = performance;
         this.camera = camera;
         this.display = display;
@@ -58,7 +56,7 @@ public class FitnessHelperSpec implements FitnessHelper {
             out = Math.pow(out, 4);
         }
 */
-        //out = Math.pow(out, 2);
+        out = Math.pow(out, 2);
 
         return out;
     }

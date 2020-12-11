@@ -13,15 +13,26 @@ public class Tester {
     final static double PERFORMANCE = 8.5;
     final static double CAMERA = 7.5;
     final static double DISPLAY = 7.0;
+    final static double BATTERY = 8.0;
 
     final static int MIN_BATTERY = 800;
     final static int MAX_BATTERY = 7600;
 
     public static void main(String[] args) throws Exception {
-        tester();
+        FitnessHelperSpec f1 = new FitnessHelperSpec(PERFORMANCE, CAMERA, DISPLAY, new Date(), BATTERY,MIN_BATTERY, MAX_BATTERY);
+        FitnessHelperSpec2 f2 = new FitnessHelperSpec2(PERFORMANCE, CAMERA, DISPLAY, new Date(), BATTERY,MIN_BATTERY, MAX_BATTERY);
+
+        for(int i = 0; i < 10; i++){
+            SpecGene r1 = tester(f1);
+            SpecGene r2 = tester(f2);
+
+            System.out.println("Chi vince? => " + (r1.getFit() - f1.computeFit(r2)) );
+            System.out.println();
+        }
+
     }
 
-    public static void tester()  throws Exception{
+    public static SpecGene tester(FitnessHelper fp)  throws Exception{
         ScraperHelper sp = new ScraperHelper();
         specs = sp.getSpecs();
 
@@ -30,7 +41,7 @@ public class Tester {
         ge.setCrossover(new SinglePointCrossover());
         ge.setMutation(new RandomMutation());
         ge.setSelection(new RankSelection());
-        ge.setFitnessHelper(new FitnessHelperSpec(PERFORMANCE, CAMERA, DISPLAY, new Date(), MIN_BATTERY, MAX_BATTERY));
+        ge.setFitnessHelper(fp);
 
 
         //Faccio lo shuffle della collezione
@@ -39,8 +50,10 @@ public class Tester {
         Population population = GEHelper.generatePopulation(specs,6);
         //System.out.println(population);
 
-        ge.run(population);
+        return ge.run(population);
     }
+
+
 
 
 
@@ -51,8 +64,9 @@ public class Tester {
         final double PERFORMANCE = 8.5;
         final double CAMERA = 7.5;
         final double DISPLAY = 7.0;
+        final  double BATTERY = 8.0;
 
-        FitnessHelperSpec fp = new FitnessHelperSpec(PERFORMANCE, CAMERA, DISPLAY, new Date(), MIN_BATTERY, MAX_BATTERY);
+        FitnessHelperSpec fp = new FitnessHelperSpec(PERFORMANCE, CAMERA, DISPLAY, new Date(), BATTERY,MIN_BATTERY, MAX_BATTERY);
         System.out.println(fp.computeSpecFit(specs.get(0)));
 
     }

@@ -123,7 +123,7 @@ public class GEHelper {
             }
         }
 
-
+        /*
         System.out.println("Max/min fit "
                 +String.format("%.2f", localMin)+"/"+String.format("%.2f", localMax)
                 +" - iterations => "+ count);
@@ -134,6 +134,7 @@ public class GEHelper {
         for(Spec s: result){
             System.out.println(s + " | " + s.getFitValue());
         }
+        */
 
         return bestChoice;
     }
@@ -151,7 +152,7 @@ public class GEHelper {
                 population.addGene(new SpecGene(data));
 
             }catch(Exception e) {
-                System.out.println("Sono arrivato alla fine dell'array, non posso creare il nuovo individuo");
+                //System.out.println("Sono arrivato alla fine dell'array, non posso creare il nuovo individuo");
             }
         }
         return population;

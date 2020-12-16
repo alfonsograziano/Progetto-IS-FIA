@@ -50,6 +50,7 @@ public class FitnessHelperSpec implements FitnessHelper {
         //performance 7 => 4 => scarto = 3
         //performance 7 => 6.8 => scarto = 0.2 => 0.04
 
+        //TODO: Testa la media
         //out = ((in+5)/5)*5;
 /*
         if(out < 1){

@@ -53,8 +53,7 @@ public class OPTCalculator {
         }
 
         System.out.println("Total fit => "+ oracleFit);
-
+        //TODO: Testa la varianza => tendere a una media bassa e varianza tendente a 0
 
     }
-
 }

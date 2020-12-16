@@ -60,6 +60,11 @@ public class GEHelper {
     }
 
     private Population generateNewPopulation(Population oldPopulation){
+        //TODO: genera n individui che ti servono
+
+        //TODO: usare set al posto di arraylist
+
+
         oldPopulation.shuffle();
         Population newPopulation = new Population();
 
@@ -84,7 +89,6 @@ public class GEHelper {
 
 
     public SpecGene run(Population population){
-
         Population populationToReproduce = selection.select(population,100);
 
         SpecGene bestChoice = new SpecGene(new ArrayList<Spec>());
@@ -98,7 +102,6 @@ public class GEHelper {
         int count = 0;
 
         while(!terminated) {
-
             Population newPopulation =  generateNewPopulation(populationToReproduce);
 
             for(SpecGene gene: newPopulation.getPopulation()) {
@@ -114,7 +117,6 @@ public class GEHelper {
                 }
             }
 
-
             count++;
             populationToReproduce = newPopulation;
             Date now = new Date();
@@ -123,7 +125,7 @@ public class GEHelper {
             }
         }
 
-        /*
+
         System.out.println("Max/min fit "
                 +String.format("%.2f", localMin)+"/"+String.format("%.2f", localMax)
                 +" - iterations => "+ count);
@@ -134,8 +136,6 @@ public class GEHelper {
         for(Spec s: result){
             System.out.println(s + " | " + s.getFitValue());
         }
-        */
-
         return bestChoice;
     }
 

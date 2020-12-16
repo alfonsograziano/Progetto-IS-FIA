@@ -49,14 +49,14 @@ public class FitnessHelperSpec2 implements FitnessHelper {
         //performance 7 => 6.8 => scarto = 0.2 => 0.04
 
         //out = ((in+5)/5)*5;
-/*
+
         if(out < 1){
             out = out*2;
         }else{
             out = Math.pow(out, 4);
         }
-*/
-        out = Math.pow(out, 2);
+
+        //out = Math.pow(out, 2);
 
         return out;
     }

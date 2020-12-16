@@ -20,15 +20,16 @@ public class Tester {
 
     public static void main(String[] args) throws Exception {
         FitnessHelperSpec f1 = new FitnessHelperSpec(PERFORMANCE, CAMERA, DISPLAY, new Date(), BATTERY,MIN_BATTERY, MAX_BATTERY);
-        FitnessHelperSpec2 f2 = new FitnessHelperSpec2(PERFORMANCE, CAMERA, DISPLAY, new Date(), BATTERY,MIN_BATTERY, MAX_BATTERY);
-
-        for(int i = 0; i < 10; i++){
-            SpecGene r1 = tester(f1);
+        //FitnessHelperSpec2 f2 = new FitnessHelperSpec2(PERFORMANCE, CAMERA, DISPLAY, new Date(), BATTERY,MIN_BATTERY, MAX_BATTERY);
+        SpecGene r1 = tester(f1);
+/*
+        for(int i = 0; i < 1; i++){
             SpecGene r2 = tester(f2);
 
-            System.out.println("Chi vince? => " + (r1.getFit() - f1.computeFit(r2)) );
+            System.out.println("Chi vince? => " + (r1.getFit() / f1.computeFit(r2))*100 );
             System.out.println();
         }
+        */
 
     }
 
@@ -36,7 +37,7 @@ public class Tester {
         ScraperHelper sp = new ScraperHelper();
         specs = sp.getSpecs();
 
-
+        //TODO: segna varianza
         GEHelper ge = new GEHelper(specs);
         ge.setCrossover(new SinglePointCrossover());
         ge.setMutation(new RandomMutation());

@@ -40,7 +40,7 @@ public class FitnessHelperSpec2 implements FitnessHelper {
             fit += computeSpecFit((Spec) s);
         }
 
-        return fit;
+        return fit/gene.getGene().size();
     }
 
     public double expand(double in) {

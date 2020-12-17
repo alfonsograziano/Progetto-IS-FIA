@@ -1,19 +1,22 @@
 package genetic;
 
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Set;
+
 public class RandomMutation implements Mutation {
 
     @Override
-    public void mutate(SpecGene gene, Object mutation) {
-        int index = randomInt(0,gene.getGene().size());
-        mutateByIndex(gene, index,mutation);
+    public SpecGene mutate(SpecGene gene, Object mutation) {
+        ArrayList geneC = (ArrayList) gene.getGene().clone();
+        geneC.set(0, mutation);
+
+        Set verificationSet = new HashSet<>(geneC);
+        if(geneC.size() > verificationSet.size()){
+            return null;
+        }
+
+        return new SpecGene(geneC);
     }
 
-    private void mutateByIndex(SpecGene gene, int index, Object mutation) {
-        gene.getGene().set(index, mutation);
-
-    }
-
-    public static int randomInt(int Min, int Max){
-        return (int) (Math.random()*(Max-Min))+Min;
-    }
 }

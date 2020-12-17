@@ -2,6 +2,6 @@ package genetic;
 
 public interface Mutation {
 
-    void mutate(SpecGene gene, Object mutation);
+    SpecGene mutate(SpecGene gene, Object mutation);
 
 }

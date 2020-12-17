@@ -10,10 +10,10 @@ import java.util.Date;
 public class OPTCalculator {
     static ArrayList<Spec> specs;
 
-    final static double PERFORMANCE = 8.5;
-    final static double CAMERA = 7.5;
-    final static double DISPLAY = 7.0;
-    final static double BATTERY = 8.0;
+    final static double PERFORMANCE = 9;
+    final static double CAMERA = 7;
+    final static double DISPLAY = 8.0;
+    final static double BATTERY = 6.5;
 
     final static int MIN_BATTERY = 800;
     final static int MAX_BATTERY = 7600;
@@ -45,14 +45,21 @@ public class OPTCalculator {
 
         sortSpecs(specs);
 
-        final int POPULATION_SIZE = 6;
+        final int GENE_SIZE = 6;
         double oracleFit = 0;
-        for(int i = 0; i < POPULATION_SIZE; i++){
-            oracleFit += specs.get(i).getFitValue();
+        double powedFit = 0;
+
+        for(int i = 0; i < GENE_SIZE; i++){
+            double localFit = specs.get(i).getFitValue();
+            oracleFit += localFit;
+            powedFit += Math.pow(localFit,2);
             System.out.println(specs.get(i));
         }
 
-        System.out.println("Total fit => "+ oracleFit);
+        double mean = oracleFit/GENE_SIZE;
+        double variance = powedFit-Math.pow(mean,2);
+
+        System.out.println("Total fit => "+ (variance + mean) );
         //TODO: Testa la varianza => tendere a una media bassa e varianza tendente a 0
 
     }

@@ -10,10 +10,10 @@ import java.util.Date;
 public class Tester {
     static ArrayList<Spec> specs;
 
-    final static double PERFORMANCE = 8.5;
-    final static double CAMERA = 7.5;
-    final static double DISPLAY = 7.0;
-    final static double BATTERY = 8.0;
+    final static double PERFORMANCE = 9;
+    final static double CAMERA = 7;
+    final static double DISPLAY = 7;
+    final static double BATTERY = 6;
 
     final static int MIN_BATTERY = 800;
     final static int MAX_BATTERY = 7600;
@@ -21,16 +21,19 @@ public class Tester {
     public static void main(String[] args) throws Exception {
         FitnessHelperSpec f1 = new FitnessHelperSpec(PERFORMANCE, CAMERA, DISPLAY, new Date(), BATTERY,MIN_BATTERY, MAX_BATTERY);
         //FitnessHelperSpec2 f2 = new FitnessHelperSpec2(PERFORMANCE, CAMERA, DISPLAY, new Date(), BATTERY,MIN_BATTERY, MAX_BATTERY);
-        SpecGene r1 = tester(f1);
-/*
-        for(int i = 0; i < 1; i++){
-            SpecGene r2 = tester(f2);
-
-            System.out.println("Chi vince? => " + (r1.getFit() / f1.computeFit(r2))*100 );
-            System.out.println();
+        ArrayList<SpecGene> trofeo = new ArrayList<>();
+        for(int i = 0; i < 20; i++){
+            trofeo.add(tester(f1));
         }
-        */
+        SpecGene winner = trofeo.get(0);
+        for(SpecGene s: trofeo){
+            if(f1.computeVariance(s) <= f1.computeVariance(winner)){
+                winner = s;
+            }
+        }
 
+        System.out.println("Fit vincitore => " + f1.computeFit(winner));
+        System.out.println(winner);
     }
 
     public static SpecGene tester(FitnessHelper fp)  throws Exception{

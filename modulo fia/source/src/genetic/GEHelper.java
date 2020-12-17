@@ -60,24 +60,29 @@ public class GEHelper {
     }
 
     private Population generateNewPopulation(Population oldPopulation){
-        //TODO: genera n individui che ti servono
-
-        //TODO: usare set al posto di arraylist
-
-
         oldPopulation.shuffle();
         Population newPopulation = new Population();
 
-        final int popSize = oldPopulation.getPopulation().size();
-        for(int j = 0; j < popSize/2; j+=2) {
-            SpecGene s1 = oldPopulation.getPopulation().get(j);
-            SpecGene s2 = oldPopulation.getPopulation().get(j+1);
+        for(SpecGene s: oldPopulation.getPopulation()){
+            newPopulation.addGene(s);
+        }
 
-            ArrayList<SpecGene> newSons = crossover.cross(s1,s2);
-            for(SpecGene son: newSons){
-                mutation.mutate(son, generateRandomSpec());
-                newPopulation.addGene(son);
+        final int popSize = oldPopulation.getPopulation().size();
+
+        for(int j = 0; j < popSize; j++) {
+            SpecGene son = null;
+            while(son == null){
+                SpecGene s1 = oldPopulation.getRandomSpecGene();
+                SpecGene s2 = oldPopulation.getRandomSpecGene();
+                son = crossover.cross(s1,s2);
             }
+
+
+            SpecGene mutated = null;
+            while(mutated == null){
+                mutated = mutation.mutate(son, generateRandomSpec());
+            }
+            newPopulation.addGene(mutated);
         }
         return newPopulation;
     }
@@ -89,7 +94,6 @@ public class GEHelper {
 
 
     public SpecGene run(Population population){
-        Population populationToReproduce = selection.select(population,100);
 
         SpecGene bestChoice = new SpecGene(new ArrayList<Spec>());
         double localMin = 1000000;
@@ -98,33 +102,44 @@ public class GEHelper {
 
         boolean terminated = false;
         Date startTime = new Date();
-        long endTime = 1*1000; //Tempo in cui il sistema deve girare
+        long endTime = 200; //Tempo in cui il sistema deve girare
         int count = 0;
+        Population newPopulation = population;
+
+
 
         while(!terminated) {
-            Population newPopulation =  generateNewPopulation(populationToReproduce);
-
+            for(SpecGene gene: newPopulation.getPopulation()) {
+                gene.setFit(fitnessHelper.computeFit(gene));
+            }
+            Population populationToReproduce = selection.select(newPopulation,50);
+            newPopulation =  generateNewPopulation(populationToReproduce);
+            //100 => 50 migliori selezionati + 50 figli dei tizi
             for(SpecGene gene: newPopulation.getPopulation()) {
                 //Calolo il fit di ogni individuo
                 gene.setFit(fitnessHelper.computeFit(gene));
-                if(localMin >= gene.getFit()) {
+                if(localMin > gene.getFit()) {
                     localMin = gene.getFit();
                     bestChoice = gene;
                     converged = count;
                 }
-                if(localMax <= gene.getFit()) {
+                if(localMax < gene.getFit()) {
                     localMax = gene.getFit();
                 }
             }
 
             count++;
-            populationToReproduce = newPopulation;
             Date now = new Date();
             if( now.getTime() > startTime.getTime()+ endTime ) {
                 terminated = true;
             }
         }
 
+        System.out.println("Max/min fit "
+                +String.format("%.2f", localMin)+"/"+String.format("%.2f", localMax)
+                +" - iterations => "+ count);
+
+        /*
 
         System.out.println("Max/min fit "
                 +String.format("%.2f", localMin)+"/"+String.format("%.2f", localMax)
@@ -136,6 +151,8 @@ public class GEHelper {
         for(Spec s: result){
             System.out.println(s + " | " + s.getFitValue());
         }
+        */
+
         return bestChoice;
     }
 

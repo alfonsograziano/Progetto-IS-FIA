@@ -3,6 +3,7 @@ package scraper;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Objects;
 
 public class Spec {
     private int id;
@@ -24,6 +25,20 @@ public class Spec {
     private String ram;
     private String memory;
     private String screenSize;
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Spec)) return false;
+        Spec spec = (Spec) o;
+        return getId() == spec.getId();
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getId());
+    }
+
     private String image;
 
     private double price;
@@ -50,6 +65,21 @@ public class Spec {
     public Spec() {
         fit = 0.0;
     }
+
+    public Spec(int id, String name, String date, double display, double camera, double performance, double normalizedBattery) {
+        this.id = id;
+        this.name = name;
+        this.date = date;
+        this.display = display;
+        this.camera = camera;
+        this.performance = performance;
+        this.normalizedBattery = normalizedBattery;
+    }
+
+    public Spec(int id) {
+        this.id = id;
+    }
+
 
     public String getName() {
         return name;

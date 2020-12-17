@@ -33,4 +33,13 @@ public class Population {
     public void shuffle(){
         Collections.shuffle(this.population);
     }
+
+    public SpecGene getRandomSpecGene(){
+        return population.get(randomInt(0,population.size()));
+    }
+
+    public static int randomInt(int Min, int Max){
+        return (int) (Math.random()*(Max-Min))+Min;
+    }
+
 }

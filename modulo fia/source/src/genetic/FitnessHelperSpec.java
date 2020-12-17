@@ -37,30 +37,42 @@ public class FitnessHelperSpec implements FitnessHelper {
     @Override
     public double computeFit(SpecGene gene) {
         double fit = 0;
-
+        double powedFit = 0;
         for(Object s: gene.getGene()) {
-            fit += computeSpecFit((Spec) s);
+            double localFit = computeSpecFit((Spec) s);
+            fit += localFit;
+            powedFit += Math.pow(localFit,2);
         }
 
-        return fit;
+        double mean = fit/gene.getGene().size();
+        double variance = powedFit-Math.pow(mean,2);
+
+        return mean;
+    }
+
+
+    public double computeVariance(SpecGene gene) {
+        double fit = 0;
+        double powedFit = 0;
+        for(Object s: gene.getGene()) {
+            double localFit = computeSpecFit((Spec) s);
+            fit += localFit;
+            powedFit += Math.pow(localFit,2);
+        }
+
+        double mean = fit/gene.getGene().size();
+        double variance = powedFit-Math.pow(mean,2);
+
+        return variance;
     }
 
     public double expand(double in) {
         double out = in;
-        //performance 7 => 4 => scarto = 3
-        //performance 7 => 6.8 => scarto = 0.2 => 0.04
-
-        //TODO: Testa la media
-        //out = ((in+5)/5)*5;
-/*
-        if(out < 1){
-            out = out*2;
+        if(in < 2.67){
+            out = in*1.2;
         }else{
-            out = Math.pow(out, 4);
+            out = Math.pow((in/2),4);
         }
-*/
-        //out = Math.pow(out, 2);
-
         return out;
     }
 
@@ -71,11 +83,10 @@ public class FitnessHelperSpec implements FitnessHelper {
             Date date1=new SimpleDateFormat("yyyy/MM").parse(specDate);
 
             double months = getMonthsDifference(date1,now);
-            //aging =
+            aging = Math.pow((months/25),4);
         } catch (ParseException e) {
             e.printStackTrace();
         }
-
         return aging;
     }
 

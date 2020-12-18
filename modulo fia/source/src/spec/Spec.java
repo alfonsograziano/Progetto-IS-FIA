@@ -1,4 +1,4 @@
-package scraper;
+package spec;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;

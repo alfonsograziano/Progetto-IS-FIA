@@ -1,4 +1,4 @@
-package genetic;
+package spec.genetic;
 
 public interface Selection {
 

@@ -1,7 +1,4 @@
-package genetic;
-
-import scraper.GeneSpec;
-import scraper.Spec;
+package spec.genetic;
 
 import java.util.ArrayList;
 import java.util.HashSet;

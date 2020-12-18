@@ -1,7 +1,7 @@
-package genetic;
+package spec.genetic;
 
 import scraper.ScraperHelper;
-import scraper.Spec;
+import spec.Spec;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -60,7 +60,5 @@ public class OPTCalculator {
         double variance = powedFit-Math.pow(mean,2);
 
         System.out.println("Total fit => "+ (variance + mean) );
-        //TODO: Testa la varianza => tendere a una media bassa e varianza tendente a 0
-
     }
 }

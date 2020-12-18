@@ -1,11 +1,13 @@
-package genetic;
+package spec.genetic;
 
 import scraper.ScraperHelper;
-import scraper.Spec;
+import spec.Spec;
+
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Date;
+
 
 public class Tester {
     static ArrayList<Spec> specs;
@@ -21,9 +23,11 @@ public class Tester {
     public static void main(String[] args) throws Exception {
         FitnessHelperSpec f1 = new FitnessHelperSpec(PERFORMANCE, CAMERA, DISPLAY, new Date(), BATTERY,MIN_BATTERY, MAX_BATTERY);
         //FitnessHelperSpec2 f2 = new FitnessHelperSpec2(PERFORMANCE, CAMERA, DISPLAY, new Date(), BATTERY,MIN_BATTERY, MAX_BATTERY);
+        ScraperHelper sp = new ScraperHelper();
+
         ArrayList<SpecGene> trofeo = new ArrayList<>();
         for(int i = 0; i < 20; i++){
-            trofeo.add(tester(f1));
+            trofeo.add(tester(f1,sp.getSpecs()));
         }
         SpecGene winner = trofeo.get(0);
         for(SpecGene s: trofeo){
@@ -36,15 +40,13 @@ public class Tester {
         System.out.println(winner);
     }
 
-    public static SpecGene tester(FitnessHelper fp)  throws Exception{
-        ScraperHelper sp = new ScraperHelper();
-        specs = sp.getSpecs();
+    public static SpecGene tester(FitnessHelper fp, ArrayList<Spec> specs)  throws Exception{
 
         //TODO: segna varianza
         GEHelper ge = new GEHelper(specs);
         ge.setCrossover(new SinglePointCrossover());
         ge.setMutation(new RandomMutation());
-        ge.setSelection(new RankSelection());
+        ge.setSelection(new TruncationSelection());
         ge.setFitnessHelper(fp);
 
 

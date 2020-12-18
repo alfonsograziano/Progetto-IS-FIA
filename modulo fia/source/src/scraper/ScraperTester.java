@@ -1,5 +1,7 @@
 package scraper;
 
+import spec.Spec;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;

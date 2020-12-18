@@ -1,11 +1,9 @@
-package genetic;
-
-import scraper.GeneSpec;
+package spec.genetic;
 
 import java.util.ArrayList;
 import static java.lang.Math.min;
 
-public class RankSelection implements Selection {
+public class TruncationSelection implements Selection {
 
     @Override
     public Population select(Population population, int maxPopulationSize) {

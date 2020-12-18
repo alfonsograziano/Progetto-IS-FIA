@@ -1,6 +1,6 @@
-package genetic;
+package spec.genetic;
 
-import scraper.Spec;
+import spec.Spec;
 
 import java.util.ArrayList;
 

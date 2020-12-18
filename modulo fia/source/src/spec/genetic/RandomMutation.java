@@ -1,4 +1,4 @@
-package genetic;
+package spec.genetic;
 
 import java.util.ArrayList;
 import java.util.HashSet;

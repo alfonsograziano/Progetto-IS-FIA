@@ -4,6 +4,7 @@ import org.jsoup.Connection;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
+import spec.Spec;
 
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;

@@ -1,7 +1,6 @@
-package genetic;
+package spec.genetic;
 
-import scraper.GeneSpec;
-import scraper.Spec;
+import spec.Spec;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -76,7 +75,6 @@ public class GEHelper {
                 SpecGene s2 = oldPopulation.getRandomSpecGene();
                 son = crossover.cross(s1,s2);
             }
-
 
             SpecGene mutated = null;
             while(mutated == null){

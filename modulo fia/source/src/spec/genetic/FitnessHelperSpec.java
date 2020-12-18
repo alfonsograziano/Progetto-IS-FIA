@@ -1,11 +1,9 @@
-package genetic;
+package spec.genetic;
 
-import scraper.Spec;
+import spec.Spec;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.time.temporal.ChronoUnit;
-import java.util.ArrayList;
 import java.util.Date;
 
 public class FitnessHelperSpec implements FitnessHelper {

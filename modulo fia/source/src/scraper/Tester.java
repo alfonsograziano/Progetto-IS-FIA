@@ -1,20 +1,12 @@
 package scraper;
 
-import org.jsoup.Jsoup;
-import org.jsoup.nodes.Document;
-import org.jsoup.nodes.Element;
-import org.jsoup.select.Elements;
+import spec.genetic.GeneSpec;
+import spec.Spec;
 
-import java.io.IOException;
-import java.lang.reflect.Array;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Date;
 import java.util.Random;
-import java.sql.ResultSet;
 
 public class Tester {
 	static ArrayList<Spec> specs;

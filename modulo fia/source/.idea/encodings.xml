@@ -2,7 +2,7 @@
 <project version="4">
   <component name="Encoding">
     <file url="file://$PROJECT_DIR$/src/scraper/Tester.java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/src/spec/genetic/GeneSpec.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../../source/src/main/java/it/unisa/di/smartblog/dora/genetic/GeneSpec.java" charset="UTF-8" />
     <file url="PROJECT" charset="UTF-8" />
   </component>
 </project>

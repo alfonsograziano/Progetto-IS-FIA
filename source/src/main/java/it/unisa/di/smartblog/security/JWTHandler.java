@@ -1,17 +1,8 @@
 package it.unisa.di.smartblog.security;
 
-import javax.crypto.spec.SecretKeySpec;
-import java.security.Key;
-
-import io.jsonwebtoken.*;
-
-import java.util.Date;
-
-import io.jsonwebtoken.Jwts;
-import io.jsonwebtoken.Claims;
 
 public class JWTHandler {
-
+/*
     // The secret key. This should be in a property file NOT under source
     // control and not hard coded in real life. We're putting it here for
     // simplicity.
@@ -49,4 +40,6 @@ public class JWTHandler {
                 .parseClaimsJws(jwt).getBody();
         return claims;
     }
+
+ */
 }

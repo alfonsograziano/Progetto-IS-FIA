@@ -17,8 +17,6 @@ public class RestrictedToUser implements Filter {
 
     public void doFilter(ServletRequest req, ServletResponse resp, FilterChain chain) throws ServletException, IOException {
 
-        System.out.println(jwt.createJWT("id", "issuer", "subject"));
-
         chain.doFilter(req, resp);
     }
 

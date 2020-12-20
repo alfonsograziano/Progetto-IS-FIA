@@ -2,24 +2,21 @@ import logo from './logo.svg';
 import './App.css';
 import axios from "axios"
 import {useState, useEffect} from "react"
+import MainNavigation from './app/navigation';
+import 'antd/dist/antd.css';
+
 
 function App() {
 
-  const [users, setUsers] = useState([])
-
-  useEffect(()=>{
-    axios.get("/hello")
-    .then(res => {
-      console.log(res.data)
-      setUsers(res.data)
-    })
-  },[])
-
-
   return (
-    <div className="App">
-      {users.map(user => <p>User: {user.email} | pass: {user.password}</p>)}
+    <div style={{
+      width:"100%", height:"100%",
+      backgroundColor:"rgba(0,0,0,0.1)"
+      }}> 
+      <MainNavigation />
+      <div>Lol</div>
     </div>
+    
   );
 }
 

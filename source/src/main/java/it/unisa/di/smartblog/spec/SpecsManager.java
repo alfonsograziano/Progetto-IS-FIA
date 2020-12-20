@@ -39,45 +39,45 @@ public class SpecsManager {
 		return dao.updateSpecScores(reviewerId, specId, performance*2, display*2, camera*2);
 	}
 	
-	private boolean checkSpecValidation(String deviceName, String releaseDate, String image, String OS, String CPU, String chipset, String GPU, String RAM, String internalMemory, String displayInches, int battery, double price) {
-		if(deviceName== null || releaseDate == null || image == null || OS == null || CPU == null || chipset == null || GPU == null || RAM == null || internalMemory == null || displayInches == null) return false;
-		if(deviceName.equals("") || releaseDate.equals("") || image.equals("") || OS.equals("") || CPU.equals("") || chipset.equals("") || GPU.equals("") || RAM.equals("") || internalMemory.equals("") || displayInches.equals("")) return false;
+	private boolean checkSpecValidation(String deviceName, String releaseDate, String image, String OS, String CPU, String chipset, String GPU, String RAM, String internalMemory, String displayInches, int battery, double price) throws SpecMismatchException{
+		if(deviceName== null || releaseDate == null || image == null || OS == null || CPU == null || chipset == null || GPU == null || RAM == null || internalMemory == null || displayInches == null) throw new SpecMismatchException("Field/s cannot be null");
+		if(deviceName.equals("") || releaseDate.equals("") || image.equals("") || OS.equals("") || CPU.equals("") || chipset.equals("") || GPU.equals("") || RAM.equals("") || internalMemory.equals("") || displayInches.equals("")) throw new SpecMismatchException("Field/s cannot be empty");
 		
-		if(price<0) return false;
+		if(price<0) throw new SpecMismatchException("Price cannot be negative");
 		
 		Pattern pattern = Pattern.compile("[0-9]{4}/[0-1][0-9]");
 		Matcher matcher = pattern.matcher(releaseDate);
-		if(!matcher.find()) return false;
+		if(!matcher.find()) throw new SpecMismatchException("Invalid releaseDate format");
 		
 		pattern = Pattern.compile("(https?:\\/\\/(?:www\\.|(?!www))[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\\.[^\\s]{2,}|www\\.[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\\.[^\\s]{2,}|https?:\\/\\/(?:www\\.|(?!www))[a-zA-Z0-9]+\\.[^\\s]{2,}|www\\.[a-zA-Z0-9]+\\.[^\\s]{2,})");
 		matcher = pattern.matcher(image);
-		if(!matcher.find()) return false;
+		if(!matcher.find()) throw new SpecMismatchException("Invalid image url format");
 		
 		
 		String[] checkRAM = RAM.split(" ");			
 		try {
-			if(Integer.parseInt(checkRAM[0])<=0) return false;
-			if(!checkRAM[1].equals("MB") && !checkRAM[1].equals("GB"))return false;
+			if(Integer.parseInt(checkRAM[0])<=0) throw new SpecMismatchException("RAM cannot be negative");
+			if(!checkRAM[1].equals("MB") && !checkRAM[1].equals("GB"))throw new SpecMismatchException("Invalid RAM field, has to be MB or GB");
 		} catch(NumberFormatException e) {
 			e.printStackTrace();
-			return false;
+			throw new SpecMismatchException("RAM has to be a number");
 		}
 		
 		
 		String[] checkMemory = internalMemory.split(" ");		
 		try {
-			if(Integer.parseInt(checkMemory[0])<=0) return false;
-			if(!checkMemory[1].equals("MB") && !checkMemory[1].equals("GB"))return false;
+			if(Integer.parseInt(checkMemory[0])<=0) throw new SpecMismatchException("internalMemory cannot be negative");
+			if(!checkMemory[1].equals("MB") && !checkMemory[1].equals("GB")) throw new SpecMismatchException("Invalid internalMemory field, has to be MB or GB");
 		} catch(NumberFormatException e) {
 			e.printStackTrace();
-			return false;
+			throw new SpecMismatchException("internalMemory has to be a number");
 		}		
 		
 		try {
-			if(Integer.parseInt(displayInches)<=0) return false;
+			if(Integer.parseInt(displayInches)<=0) throw new SpecMismatchException("displayInches cannot be negative");
 		} catch(NumberFormatException e) {
 			e.printStackTrace();
-			return false;
+			throw new SpecMismatchException("displayInches has to be a number");
 		}
 		
 		return true;		

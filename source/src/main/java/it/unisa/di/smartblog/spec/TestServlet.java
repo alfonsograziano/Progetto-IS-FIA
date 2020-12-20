@@ -40,9 +40,9 @@ public class TestServlet extends HttpServlet {
 	        //boolean b = d.updateSpecScores(1, d.getByName("antonio").get(0).getId(), 5, 5, 5);
 	        
 	        //System.out.println(b+" ");
-	        //boolean c = d.deleteSpec(d.getByName("antonio").get(0).getId());
+	        boolean c = d.deleteSpec(d.getByName("antonio").get(0).getId());
 	        
-	        //System.out.println(a+" "+b+" "+c);
+	        System.out.println(a+" "+c);
 	        
 	        int max = d.getMaxBattery();
 	        int min = d.getMinBattery();

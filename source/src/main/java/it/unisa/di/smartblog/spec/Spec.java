@@ -1,8 +1,9 @@
 package  it.unisa.di.smartblog.spec;
 
+import it.unisa.di.smartblog.user.Reviewer;
+
 public class Spec {
 
-	//edit: reviewerId -> Reviewer reviewer
     public Spec() {
         fit = 0.0;
     }
@@ -158,12 +159,12 @@ public class Spec {
         this.price = price;
     }
 
-    public int getReviewerId() {
-        return reviewerId;
+    public Reviewer getReviewer() {
+        return reviewer;
     }
 
-    public void setReviewerId(int reviewerId) {
-        this.reviewerId = reviewerId;
+    public void setReviewerId(Reviewer reviewer) {
+        this.reviewer = reviewer;
     }
 
     public double getNormalizedBattery() {
@@ -213,6 +214,6 @@ public class Spec {
     private double camera;
     private double performance;
     private double price;
-    private int reviewerId;
+    private Reviewer reviewer;
     private double normalizedBattery;
 }

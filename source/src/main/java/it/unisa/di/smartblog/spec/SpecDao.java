@@ -170,7 +170,7 @@ public class SpecDao {
     }
 
     public synchronized boolean saveSpec(Spec spec) throws SQLException, SpecMismatchException{
-        if(spec==null) throw new SpecMismatchException("This spec does not fit the requirements nedded to be saved");
+        if(spec==null) throw new SpecMismatchException("This spec does not fit the requirements needed to be saved");
 
         Connection conn = null;
         PreparedStatement ps = null;

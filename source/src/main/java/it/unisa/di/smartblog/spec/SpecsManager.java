@@ -48,6 +48,11 @@ public class SpecsManager {
 		Pattern pattern = Pattern.compile("[0-9]{4}/[0-1][0-9]");
 		Matcher matcher = pattern.matcher(releaseDate);
 		if(!matcher.find()) throw new SpecMismatchException("Invalid releaseDate format");
+
+		String[] date = releaseDate.split("/");
+		int year = Integer.parseInt(date[0]);
+		int month = Integer.parseInt(date[1]);
+		if(year<1973 || month<1 || month>12) throw new SpecMismatchException("Invalid releaseDate value");
 		
 		pattern = Pattern.compile("(https?:\\/\\/(?:www\\.|(?!www))[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\\.[^\\s]{2,}|www\\.[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\\.[^\\s]{2,}|https?:\\/\\/(?:www\\.|(?!www))[a-zA-Z0-9]+\\.[^\\s]{2,}|www\\.[a-zA-Z0-9]+\\.[^\\s]{2,})");
 		matcher = pattern.matcher(image);
@@ -74,7 +79,7 @@ public class SpecsManager {
 		}		
 		
 		try {
-			if(Integer.parseInt(displayInches)<=0) throw new SpecMismatchException("displayInches cannot be negative");
+			if(Double.parseDouble(displayInches)<=0) throw new SpecMismatchException("displayInches cannot be negative");
 		} catch(NumberFormatException e) {
 			e.printStackTrace();
 			throw new SpecMismatchException("displayInches has to be a number");

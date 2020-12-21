@@ -1,8 +1,6 @@
 package it.unisa.di.smartblog.dora.genetic;
 
-
 import it.unisa.di.smartblog.spec.Spec;
-
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Random;
@@ -48,13 +46,6 @@ public class GEHelper {
         this.fitnessHelper = fitnessHelper;
     }
 
-    public GEHelper(Mutation mutation, Crossover crossover, Selection selection, FitnessHelper fitnessHelper){
-        this.mutation = mutation;
-        this.crossover = crossover;
-        this.selection = selection;
-        this.fitnessHelper = fitnessHelper;
-    }
-
     public GEHelper(ArrayList<Spec> specs){
         this.specs = specs;
     }
@@ -63,13 +54,9 @@ public class GEHelper {
         oldPopulation.shuffle();
         Population newPopulation = new Population();
 
-        for(SpecGene s: oldPopulation.getPopulation()){
-            newPopulation.addGene(s);
-        }
+        for(SpecGene s: oldPopulation.getPopulation()) newPopulation.addGene(s);
 
-        final int popSize = oldPopulation.getPopulation().size();
-
-        for(int j = 0; j < popSize; j++) {
+        for(int j = 0; j < oldPopulation.getPopulation().size(); j++) {
             SpecGene son = null;
             while(son == null){
                 SpecGene s1 = oldPopulation.getRandomSpecGene();
@@ -78,9 +65,8 @@ public class GEHelper {
             }
 
             SpecGene mutated = null;
-            while(mutated == null){
-                mutated = mutation.mutate(son, generateRandomSpec());
-            }
+            while(mutated == null) mutated = mutation.mutate(son, generateRandomSpec());
+
             newPopulation.addGene(mutated);
         }
         return newPopulation;
@@ -93,11 +79,9 @@ public class GEHelper {
 
 
     public SpecGene run(Population population){
-
         SpecGene bestChoice = new SpecGene(new ArrayList<Spec>());
         double localMin = 1000000;
         double localMax = -1;
-        int converged = -1;
 
         boolean terminated = false;
         Date startTime = new Date();
@@ -106,25 +90,29 @@ public class GEHelper {
         Population newPopulation = population;
 
 
-
         while(!terminated) {
-            for(SpecGene gene: newPopulation.getPopulation()) {
-                gene.setFit(fitnessHelper.computeFit(gene));
-            }
+            //Computo il valore di fit per tutta la popolazione attuale
+            for(SpecGene gene: newPopulation.getPopulation())  gene.setFit(fitnessHelper.computeFit(gene));
+
+            //Seleziono i primi x individui
             Population populationToReproduce = selection.select(newPopulation,50);
+
+            //Creo la nuova popolazione
             newPopulation =  generateNewPopulation(populationToReproduce);
-            //100 => 50 migliori selezionati + 50 figli dei tizi
+
             for(SpecGene gene: newPopulation.getPopulation()) {
-                //Calolo il fit di ogni individuo
+                //Calolo il fit di ogni individuo nella nuova popolazione
                 gene.setFit(fitnessHelper.computeFit(gene));
+
+                //Salvo il minimo locale per benchmarking
+                //Salvo la scelta migliore in maniera ridondante
                 if(localMin > gene.getFit()) {
                     localMin = gene.getFit();
                     bestChoice = gene;
-                    converged = count;
                 }
-                if(localMax < gene.getFit()) {
-                    localMax = gene.getFit();
-                }
+
+                //Salvo il massimo locale per benchmarking
+                if(localMax < gene.getFit())  localMax = gene.getFit();
             }
 
             count++;
@@ -138,45 +126,25 @@ public class GEHelper {
                 +String.format("%.2f", localMin)+"/"+String.format("%.2f", localMax)
                 +" - iterations => "+ count);
 
-        /*
-
-        System.out.println("Max/min fit "
-                +String.format("%.2f", localMin)+"/"+String.format("%.2f", localMax)
-                +" - iterations => "+ count);
-        System.out.println("Arrivato a convergenza dopo "+converged+" iterazioni");
-
-        //System.out.println(bestChoice);
-        ArrayList<Spec> result = bestChoice.getGene();
-        for(Spec s: result){
-            System.out.println(s + " | " + s.getFitValue());
-        }
-        */
-
         return bestChoice;
     }
 
     public static Population generatePopulation(ArrayList<Spec> genes, int geneLength ){
-        //Creo la prima popolazione
+        //Creo la prima popolazione formata da x inidividui di lunghezza geneLength
         Population population = new Population();
 
         for(int i = 0; i < genes.size(); i+=geneLength) {
             try {
-                ArrayList<Spec> data = new ArrayList<Spec>();
+                ArrayList<Spec> data = new ArrayList<>();
                 for(int j = 0; j < geneLength; j++) {
                     data.add(genes.get(i+j));
                 }
                 population.addGene(new SpecGene(data));
-
             }catch(Exception e) {
                 //System.out.println("Sono arrivato alla fine dell'array, non posso creare il nuovo individuo");
             }
         }
         return population;
     }
-
-    public static Population generatePopulation(ArrayList<Spec> genes ){
-        return generatePopulation(genes, genes.size());
-    }
-
 
 }

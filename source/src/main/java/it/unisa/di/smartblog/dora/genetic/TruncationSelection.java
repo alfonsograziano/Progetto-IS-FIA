@@ -12,17 +12,12 @@ public class TruncationSelection implements Selection {
         sortByFit(copiedPopulation);
 
         //Tronco l'array in base alla size massima della popolazione
-        copiedPopulation = truncateArray(copiedPopulation, maxPopulationSize);
+        copiedPopulation = new ArrayList(copiedPopulation.subList(0, min(copiedPopulation.size(), maxPopulationSize)));
 
         return new Population(copiedPopulation);
     }
 
-    @Override
-    public Population select(Population population) {
-        return select(population, population.getPopulation().size());
-    }
-
-    public void sortByFit(ArrayList<SpecGene> p){
+    private void sortByFit(ArrayList<SpecGene> p){
         for (int i = 0; i < p.size()-1; i++) {
             for(int j = 0; j < p.size()-i-1; j++)  {
                 if( p.get(j).getFit() > p.get(j + 1).getFit() ) {
@@ -36,7 +31,5 @@ public class TruncationSelection implements Selection {
         }
     }
 
-    public ArrayList<SpecGene> truncateArray(ArrayList<SpecGene> array, int maxSize){
-       return new ArrayList(array.subList(0, min(array.size(), maxSize)));
-    }
+
 }

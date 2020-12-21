@@ -17,7 +17,7 @@ public class FitnessHelperSpec implements FitnessHelper {
 
     private int minBattery, maxBattery;
 
-    public static final int getMonthsDifference(Date date1, Date date2) {
+    private final int getMonthsDifference(Date date1, Date date2) {
         int m1 = date1.getYear() * 12 + date1.getMonth();
         int m2 = date2.getYear() * 12 + date2.getMonth();
         return m2 - m1 + 1;
@@ -36,17 +36,8 @@ public class FitnessHelperSpec implements FitnessHelper {
     @Override
     public double computeFit(SpecGene gene) {
         double fit = 0;
-        double powedFit = 0;
-        for(Object s: gene.getGene()) {
-            double localFit = computeSpecFit((Spec) s);
-            fit += localFit;
-            powedFit += Math.pow(localFit,2);
-        }
-
-        double mean = fit/gene.getGene().size();
-        double variance = powedFit-Math.pow(mean,2);
-
-        return mean;
+        for(Object s: gene.getGene())  fit += computeSpecFit((Spec) s);
+        return fit/gene.getGene().size();
     }
 
 
@@ -58,29 +49,20 @@ public class FitnessHelperSpec implements FitnessHelper {
             fit += localFit;
             powedFit += Math.pow(localFit,2);
         }
-
-        double mean = fit/gene.getGene().size();
-        double variance = powedFit-Math.pow(mean,2);
-
-        return variance;
+        return powedFit-Math.pow(fit/gene.getGene().size(),2);
     }
 
-    public double expand(double in) {
-        double out = in;
-        if(in < 2.67){
-            out = in*1.2;
-        }else{
-            out = Math.pow((in/2),4);
-        }
+    private double expand(double in) {
+        double out;
+        if(in < 2.67) out = in*1.2;
+        else out = Math.pow((in/2),4);
         return out;
     }
 
-    public double aging(String specDate, Date now) {
-        //Converto la stringa in data
+    private double aging(String specDate, Date now) {
         double aging = 0;
         try {
             Date date1=new SimpleDateFormat("yyyy/MM").parse(specDate);
-
             double months = getMonthsDifference(date1,now);
             aging = Math.pow((months/25),4);
         } catch (ParseException e) {
@@ -88,7 +70,6 @@ public class FitnessHelperSpec implements FitnessHelper {
         }
         return aging;
     }
-
 
 
     public double computeSpecFit(Spec spec) {

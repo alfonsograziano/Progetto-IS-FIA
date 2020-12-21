@@ -13,7 +13,7 @@ function DoraForm({
         performance: 3,
         display: 3,
         camera: 3,
-        maxPrice: "300"
+        maxBudget: "300"
     })
     return (
         <div>
@@ -45,7 +45,7 @@ function DoraForm({
             <div style={{ marginTop: "20px" }}>
                 <p style={{ marginBottom: "0px" }}>Prezzo massimo</p>
                 <Select style={{ width: 120 }}
-                    onChange={(v) => { setValues({ ...values, maxPrice: v }) }} value={values.maxPrice}
+                    onChange={(v) => { setValues({ ...values, maxBudget: v }) }} value={values.maxBudget}
                 >
                     <Option value="100">100</Option>
                     <Option value="200">200</Option>

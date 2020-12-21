@@ -15,8 +15,8 @@ public class OPTCalculator {
     final static double DISPLAY = 8.0;
     final static double BATTERY = 6.5;
 
-    final static int MIN_BATTERY = 800;
-    final static int MAX_BATTERY = 7600;
+    static int MIN_BATTERY;
+    static int MAX_BATTERY;
 
     static FitnessHelperSpec fp;
 
@@ -39,6 +39,8 @@ public class OPTCalculator {
     public static void asd(String[] args) throws Exception {
 
         SpecsManager sp = new SpecsManager();
+        MIN_BATTERY = sp.searchMinBattery();
+        MAX_BATTERY = sp.searchMaxBattery();
 
         specs = (ArrayList<Spec>) sp.searchAll();
 

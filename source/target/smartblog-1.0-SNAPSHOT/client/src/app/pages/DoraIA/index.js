@@ -3,8 +3,11 @@ import React from "react";
 import DoraForm from "../../components/DoraForm";
 import { Breadcrumb } from 'antd';
 import { HomeOutlined, UserOutlined } from '@ant-design/icons';
+import { searchWithDoraIa } from "../../services/dora.service"
 
 function DoraIA(props) {
+
+
     return (
         <div>
             <Breadcrumb>
@@ -19,7 +22,10 @@ function DoraIA(props) {
                 <Card title="DoraIA" style={{ margin: "20px", width: "300px" }}>
                     <DoraForm
                         onSearch={(values) => {
-                            console.log(values)
+                            searchWithDoraIa(values)
+                                .then(res => {
+                                    console.log(res)
+                                })
                         }} />
                 </Card>
             </div>

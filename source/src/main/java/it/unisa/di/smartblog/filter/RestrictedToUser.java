@@ -17,6 +17,8 @@ public class RestrictedToUser implements Filter {
 
     public void doFilter(ServletRequest req, ServletResponse resp, FilterChain chain) throws ServletException, IOException {
 
+        //Controlla il token
+
         chain.doFilter(req, resp);
     }
 

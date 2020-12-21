@@ -15,8 +15,6 @@ public class RandomMutation implements Mutation {
         if(geneC.size() > verificationSet.size()){
             return null;
         }
-
         return new SpecGene(geneC);
     }
-
 }

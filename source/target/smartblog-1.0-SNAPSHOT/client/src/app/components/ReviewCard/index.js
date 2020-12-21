@@ -7,7 +7,7 @@ function range(i) { return i ? range(i - 1).concat(i) : [] }
 
 function ReviewCard({
     title,
-    subtitle,
+    subtitle="",
     camera,
     display,
     performance,
@@ -19,7 +19,7 @@ function ReviewCard({
             margin: "10px",
             padding: "10px",
             backgroundColor: "#fff",
-            maxWidth: "250px",
+            width: "250px",
             borderRadius:"5px",
             boxShadow:"0px 0px 5px rgba(0,0,0,0.1)"
         }}>

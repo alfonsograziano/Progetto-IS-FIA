@@ -170,7 +170,7 @@ public class SpecDao {
     }
 
     public synchronized boolean saveSpec(Spec spec) throws SQLException, SpecMismatchException{
-        if(spec==null) throw new SpecMismatchException("This spec does not fit the requirements needed to be saved");
+        if(spec==null) throw new SpecMismatchException("Spec cannot be null");
 
         Connection conn = null;
         PreparedStatement ps = null;
@@ -211,7 +211,6 @@ public class SpecDao {
     }
 
     public synchronized boolean deleteSpec(int id) throws SQLException{
-
         Connection conn = null;
         PreparedStatement ps = null;
         String query = "DELETE FROM spec WHERE spec.id = ?";

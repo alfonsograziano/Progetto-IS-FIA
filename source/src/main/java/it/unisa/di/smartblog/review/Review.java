@@ -6,8 +6,7 @@ import it.unisa.di.smartblog.user.User;
 public class Review {
     public Review(){};
 
-    public Review(String state, double totalScore, double battery, double performance, double display, double camera, String text, Spec spec, User user) {
-        this.state = state;
+    public Review(int totalScore, int battery, int performance, int display, int camera, String text, Spec spec, User user) {
         this.totalScore = totalScore;
         this.battery = battery;
         this.performance = performance;
@@ -34,43 +33,43 @@ public class Review {
         this.state = state;
     }
 
-    public double getTotalScore() {
+    public int getTotalScore() {
         return totalScore;
     }
 
-    public void setTotalScore(double totalScore) {
+    public void setTotalScore(int totalScore) {
         this.totalScore = totalScore;
     }
 
-    public double getBattery() {
+    public int getBattery() {
         return battery;
     }
 
-    public void setBattery(double battery) {
+    public void setBattery(int battery) {
         this.battery = battery;
     }
 
-    public double getPerformance() {
+    public int getPerformance() {
         return performance;
     }
 
-    public void setPerformance(double performance) {
+    public void setPerformance(int performance) {
         this.performance = performance;
     }
 
-    public double getDisplay() {
+    public int getDisplay() {
         return display;
     }
 
-    public void setDisplay(double display) {
+    public void setDisplay(int display) {
         this.display = display;
     }
 
-    public double getCamera() {
+    public int getCamera() {
         return camera;
     }
 
-    public void setCamera(double camera) {
+    public void setCamera(int camera) {
         this.camera = camera;
     }
 
@@ -100,11 +99,11 @@ public class Review {
 
     private int id;
     private String state;
-    private double totalScore;
-    private double battery;
-    private double performance;
-    private double display;
-    private double camera;
+    private int totalScore;
+    private int battery;
+    private int performance;
+    private int display;
+    private int camera;
     private String text;
     private Spec spec;
     private User user;

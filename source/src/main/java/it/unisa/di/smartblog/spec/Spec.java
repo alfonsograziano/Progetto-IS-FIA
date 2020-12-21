@@ -1,11 +1,14 @@
 package  it.unisa.di.smartblog.spec;
 
+import it.unisa.di.smartblog.review.Review;
 import it.unisa.di.smartblog.user.Reviewer;
+
+import java.util.List;
 
 public class Spec {
 
     public Spec() {
-        fit = 0.0;
+        this.fit = 0.0;
     }
 
     public Spec(String name, String date, String image, String so, String cpu, String chipset, String gpu, String ram, String memory, String screenSize, int battery, double price) {
@@ -163,8 +166,20 @@ public class Spec {
         return reviewer;
     }
 
-    public void setReviewerId(Reviewer reviewer) {
+    public void setReviewer(Reviewer reviewer) {
         this.reviewer = reviewer;
+    }
+
+    public List<Review> getReviews() {
+        return reviews;
+    }
+
+    public void setReviews(List<Review> reviews) {
+        this.reviews = reviews;
+    }
+
+    public void addReview(Review review){
+        this.reviews.add(review);
     }
 
     public double getNormalizedBattery() {
@@ -178,7 +193,8 @@ public class Spec {
     @Override
     public String toString() {
         return "Spec{" +
-                "id=" + id +
+                "fit=" + fit +
+                ", id=" + id +
                 ", name='" + name + '\'' +
                 ", date='" + date + '\'' +
                 ", image='" + image + '\'' +
@@ -194,6 +210,9 @@ public class Spec {
                 ", camera=" + camera +
                 ", performance=" + performance +
                 ", price=" + price +
+                ", reviewer=" + reviewer +
+                ", reviews=" + reviews +
+                ", normalizedBattery=" + normalizedBattery +
                 '}';
     }
 
@@ -215,5 +234,6 @@ public class Spec {
     private double performance;
     private double price;
     private Reviewer reviewer;
+    private List<Review> reviews;
     private double normalizedBattery;
 }

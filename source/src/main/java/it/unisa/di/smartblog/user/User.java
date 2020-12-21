@@ -7,6 +7,13 @@ public class User {
 
     public User(){};
 
+    public User(String username, String password, String email) {
+        this.active = true;
+        this.username = username;
+        this.password = password;
+        this.email = email;
+    }
+
     public User(String username, String password, String email, List<Review> reviews) {
         this.username = username;
         this.password = password;

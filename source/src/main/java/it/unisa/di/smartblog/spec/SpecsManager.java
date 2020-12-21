@@ -42,7 +42,8 @@ public class SpecsManager {
 	private boolean checkSpecValidation(String deviceName, String releaseDate, String image, String OS, String CPU, String chipset, String GPU, String RAM, String internalMemory, String displayInches, int battery, double price) throws SpecMismatchException{
 		if(deviceName== null || releaseDate == null || image == null || OS == null || CPU == null || chipset == null || GPU == null || RAM == null || internalMemory == null || displayInches == null) throw new SpecMismatchException("Field/s cannot be null");
 		if(deviceName.equals("") || releaseDate.equals("") || image.equals("") || OS.equals("") || CPU.equals("") || chipset.equals("") || GPU.equals("") || RAM.equals("") || internalMemory.equals("") || displayInches.equals("")) throw new SpecMismatchException("Field/s cannot be empty");
-		
+		if(deviceName.length()>100 || OS.length()>100 || CPU.length()>100 || chipset.length()>100 || GPU.length()>100 || RAM.length()>100 || internalMemory.length()>100 || displayInches.length()>100) throw new SpecMismatchException("Field maximum size exceeded");
+
 		if(price<0) throw new SpecMismatchException("Price cannot be negative");
 		
 		Pattern pattern = Pattern.compile("[0-9]{4}/[0-1][0-9]");
@@ -58,7 +59,6 @@ public class SpecsManager {
 		matcher = pattern.matcher(image);
 		if(!matcher.find()) throw new SpecMismatchException("Invalid image url format");
 		
-		
 		String[] checkRAM = RAM.split(" ");			
 		try {
 			if(Integer.parseInt(checkRAM[0])<=0) throw new SpecMismatchException("RAM cannot be negative");
@@ -67,7 +67,6 @@ public class SpecsManager {
 			e.printStackTrace();
 			throw new SpecMismatchException("RAM has to be a number");
 		}
-		
 		
 		String[] checkMemory = internalMemory.split(" ");		
 		try {

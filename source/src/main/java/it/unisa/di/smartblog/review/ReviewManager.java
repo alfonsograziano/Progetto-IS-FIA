@@ -35,8 +35,7 @@ public class ReviewManager {
     }
 
     public boolean approvation(int id, boolean approved) throws SQLException{
-        if(dao.getById(id).getState().equals("approved")) return true;
-        else return false;
+        return dao.approveReview(id, approved);
     }
 
     private static ReviewDao dao;

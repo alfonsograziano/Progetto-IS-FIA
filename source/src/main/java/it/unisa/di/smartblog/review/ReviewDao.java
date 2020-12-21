@@ -284,5 +284,34 @@ public class ReviewDao {
         return true;
     }
 
+    public synchronized boolean approveReview(int id, boolean approved) throws SQLException{
+        Connection conn = null;
+        PreparedStatement ps = null;
+        String query = "UPDATE review SET state = ? WHERE review.id = ?";
+
+        conn = ds.getConnection();
+        ps = conn.prepareStatement(query);
+        if(approved) ps.setString(1, "approved");
+        else ps.setString(1, "rejected");
+        ps.setInt(2, id);
+        ps.executeUpdate();
+
+        try {
+            conn.close();
+
+        } catch(Exception e) {
+            e.printStackTrace();
+        }
+
+        try {
+            ps.close();
+
+        } catch(Exception e) {
+            e.printStackTrace();
+        }
+
+        return true;
+    }
+
     private static DataSource ds;
 }

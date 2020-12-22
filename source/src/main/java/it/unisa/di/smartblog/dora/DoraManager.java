@@ -1,7 +1,5 @@
 package it.unisa.di.smartblog.dora;
 
-
-
 import it.unisa.di.smartblog.dora.genetic.*;
 import it.unisa.di.smartblog.spec.Spec;
 import it.unisa.di.smartblog.spec.SpecsManager;
@@ -14,8 +12,6 @@ public class DoraManager {
 
     public ArrayList<Spec> findSpectByParams(double battery, double performance, double camera, double display, double maxBudget) throws Exception{
 
-        //Creiamo uno specDao
-        //Nel dao richiamo getSpecsWithMaxBudget
         SpecsManager sp = new SpecsManager();
 
         ArrayList<Spec>  specs = (ArrayList<Spec>) sp.searchAll();
@@ -46,11 +42,9 @@ public class DoraManager {
         ge.setSelection(new TruncationSelection());
         ge.setFitnessHelper(fp);
 
-        //Faccio lo shuffle della collezione
         Collections.shuffle(specs);
 
         Population population = GEHelper.generatePopulation(specs,6);
-        //System.out.println(population);
 
         return ge.run(population);
     }

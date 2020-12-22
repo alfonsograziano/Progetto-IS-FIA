@@ -97,17 +97,6 @@ public class Review {
         this.user = user;
     }
 
-    private int id;
-    private String state;
-    private int totalScore;
-    private int battery;
-    private int performance;
-    private int display;
-    private int camera;
-    private String text;
-    private Spec spec;
-    private User user;
-
     @Override
     public String toString() {
         return "Review{" +
@@ -123,4 +112,15 @@ public class Review {
                 ", user=" + user +
                 '}';
     }
+
+    private int id;
+    private String state;
+    private int totalScore;
+    private int battery;
+    private int performance;
+    private int display;
+    private int camera;
+    private String text;
+    private Spec spec;
+    private User user;
 }

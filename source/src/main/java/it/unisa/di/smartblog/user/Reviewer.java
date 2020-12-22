@@ -5,7 +5,9 @@ import it.unisa.di.smartblog.review.Review;
 import java.util.List;
 
 public class Reviewer extends User{
-    public Reviewer(){}
+    public Reviewer(){
+        super();
+    }
 
     public Reviewer(String username, String password, String email, List<Review> reviews, String phoneNumber, String rank) {
         super(username, password, email, reviews);

@@ -35,7 +35,7 @@ public class SpecsManager {
 	}
 	
 	public boolean setScores(int reviewerId, int specId, double performance, double display, double camera) throws SQLException {
-		if(performance<0 || performance>5 || display<0 || display>5 || camera<0 || camera>5) return false;
+		if(performance<=0 || performance>5 || display<=0 || display>5 || camera<=0 || camera>5) return false;
 		return dao.updateSpecScores(reviewerId, specId, performance*2, display*2, camera*2);
 	}
 	

@@ -21,8 +21,8 @@ public class UserDao {
         }
     }
 
-    public synchronized User getByEmail(String email) throws SQLException, EmptyEmailException {
-        if(email==null || email.equals("")) throw new EmptyEmailException("Email cannot be empty");
+    public synchronized User getByEmail(String email) throws SQLException, CredentialsException {
+        if(email==null || email.equals("")) throw new CredentialsException("Email cannot be empty");
 
         Connection conn = null;
         PreparedStatement ps = null;
@@ -60,8 +60,8 @@ public class UserDao {
         return user;
     }
 
-    public synchronized boolean saveUser(User user) throws SQLException, UserMismatchException{
-        if(user==null) throw new UserMismatchException("User cannot be null");
+    public synchronized boolean saveUser(User user) throws SQLException, CredentialsException{
+        if(user==null) throw new CredentialsException("User cannot be null");
 
         Connection conn = null;
         PreparedStatement ps = null;
@@ -92,8 +92,8 @@ public class UserDao {
         return true;
     }
 
-    public synchronized Manager getManager(User user) throws UserMismatchException, SQLException{
-        if(user==null) throw new UserMismatchException("User cannot be null");
+    public synchronized Manager getManager(User user) throws CredentialsException, SQLException{
+        if(user==null) throw new CredentialsException("User cannot be null");
 
         Connection conn = null;
         PreparedStatement ps = null;
@@ -124,8 +124,8 @@ public class UserDao {
         return manager;
     }
 
-    public synchronized Reviewer getReviewer(User user) throws UserMismatchException, SQLException{
-        if(user==null) throw new UserMismatchException("User cannot be null");
+    public synchronized Reviewer getReviewer(User user) throws CredentialsException, SQLException{
+        if(user==null) throw new CredentialsException("User cannot be null");
 
         Connection conn = null;
         PreparedStatement ps = null;

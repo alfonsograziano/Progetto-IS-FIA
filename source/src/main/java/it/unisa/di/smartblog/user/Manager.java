@@ -6,7 +6,9 @@ import java.util.List;
 
 public class Manager extends User{
 
-    public Manager(){};
+    public Manager(){
+        super();
+    }
 
     public Manager(String username, String password, String email, List<Review> reviews, String phoneNumber) {
         super(username, password, email, reviews);

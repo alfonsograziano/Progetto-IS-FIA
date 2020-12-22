@@ -43,9 +43,9 @@ public class SpecDao {
             s.setMemory(rs.getString("memory"));
             s.setScreenSize(rs.getString("screenSize"));
             s.setImage(rs.getString("image"));
-            s.setDisplay(rs.getDouble("display"));
-            s.setCamera(rs.getDouble("camera"));
-            s.setPerformance(rs.getDouble("performance"));
+            s.setDisplay(rs.getDouble("display")/2);
+            s.setCamera(rs.getDouble("camera")/2);
+            s.setPerformance(rs.getDouble("performance")/2);
             s.setBattery(rs.getInt("battery"));
             s.setDate(rs.getString("date"));
             s.setPrice(rs.getDouble("price"));
@@ -96,9 +96,9 @@ public class SpecDao {
             s.setMemory(rs.getString("memory"));
             s.setScreenSize(rs.getString("screenSize"));
             s.setImage(rs.getString("image"));
-            s.setDisplay(rs.getDouble("display"));
-            s.setCamera(rs.getDouble("camera"));
-            s.setPerformance(rs.getDouble("performance"));
+            s.setDisplay(rs.getDouble("display")/2);
+            s.setCamera(rs.getDouble("camera")/2);
+            s.setPerformance(rs.getDouble("performance")/2);
             s.setBattery(rs.getInt("battery"));
             s.setDate(rs.getString("date"));
             s.setPrice(rs.getDouble("price"));
@@ -271,7 +271,7 @@ public class SpecDao {
     }
 
     public synchronized List<Spec> getByPrice(double price) throws SQLException, PriceException{
-        if(price<=0) throw new PriceException("This price range is not valid");
+        if(price<=0) throw new PriceException("Invalid price range");
 
         Connection conn = null;
         PreparedStatement ps = null;

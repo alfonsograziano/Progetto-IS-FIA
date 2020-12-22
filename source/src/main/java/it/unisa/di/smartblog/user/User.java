@@ -1,7 +1,6 @@
 package it.unisa.di.smartblog.user;
 
 import it.unisa.di.smartblog.review.Review;
-
 import java.util.ArrayList;
 import java.util.List;
 

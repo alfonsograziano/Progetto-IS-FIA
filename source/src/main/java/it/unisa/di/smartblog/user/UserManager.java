@@ -9,24 +9,26 @@ public class UserManager {
         dao = new UserDao();
     }
 
-    public boolean createUser(String username, String email, String password, String repeatPassword) throws UserMismatchException, EmptyEmailException, SQLException{
+    public boolean createUser(String username, String email, String password, String repeatPassword) throws CredentialsException, SQLException{
         if(!emailAlreadyUsed(email)) {
             if(checkCredentialsFormat(username, email, password, repeatPassword)) {
-                User user = new User(username, password,email);
+                User user = new User(username, password, email);
                 dao.saveUser(user);
             }
-        } else throw new UserMismatchException("Email already in use");
+        } else throw new CredentialsException("Email already in use");
 
         return true;
     }
 
-    public User auth(String email, String password) throws CredentialMismatchException, EmptyEmailException, SQLException{
+    public User auth(String email, String password) throws CredentialsException, SQLException{
+        if(password==null || password.equals("")) throw new CredentialsException("Password cannot be empty");
+
         User user = dao.getByEmail(email);
         if(user.getPassword().equals(password)) return user;
-        else throw new CredentialMismatchException("Invalid credentials");
+        else throw new CredentialsException("Wrong password");
     }
 
-    public Manager isManager(User user) throws UserMismatchException{
+    public Manager isManager(User user) throws CredentialsException{
         try{
             return dao.getManager(user);
         } catch (SQLException e){
@@ -34,7 +36,7 @@ public class UserManager {
         }
     }
 
-    public Reviewer isReviewer(User user) throws UserMismatchException{
+    public Reviewer isReviewer(User user) throws CredentialsException{
         try{
             return dao.getReviewer(user);
         } catch (SQLException e){
@@ -42,36 +44,36 @@ public class UserManager {
         }
     }
 
-    public User getUserInfoByEmail(String email) throws EmptyEmailException, SQLException{
+    public User getUserInfoByEmail(String email) throws CredentialsException, SQLException{
         User user = dao.getByEmail(email);
         return user;
     }
 
-    private boolean checkCredentialsFormat(String username, String email, String password, String repeatPassword) throws  UserMismatchException{
-        if(username==null || email==null || password==null || repeatPassword==null) throw new UserMismatchException("Field/s cannot be null");
-        if(username.equals("") || email.equals("") || password.equals("") || repeatPassword.equals("")) throw new UserMismatchException("Field/s cannot be empty");
+    private boolean checkCredentialsFormat(String username, String email, String password, String repeatPassword) throws CredentialsException{
+        if(username==null || email==null || password==null || repeatPassword==null) throw new CredentialsException("Field/s cannot be null");
+        if(username.equals("") || email.equals("") || password.equals("") || repeatPassword.equals("")) throw new CredentialsException("Field/s cannot be empty");
 
-        if(!password.equals(repeatPassword)) throw new UserMismatchException("Password must match");
+        if(!password.equals(repeatPassword)) throw new CredentialsException("Password must match");
 
-        if(email.length()>50 || email.length()<8) throw new UserMismatchException("Email maximum size exceeded");
+        if(email.length()>50 || email.length()<8) throw new CredentialsException("Email maximum size exceeded");
 
         Pattern mail_pattern = Pattern.compile("^\\w+([.-]?\\w+)@\\w+([.-]?\\w+)(.\\w{2,3})+$");
         Matcher mail_matcher = mail_pattern.matcher(email);
-        if(!mail_matcher.find()) throw new UserMismatchException("Invalid email format");
+        if(!mail_matcher.find()) throw new CredentialsException("Invalid email format");
 
         Pattern username_pattern = Pattern.compile("^\\w{4,50}$");
         Matcher username_matcher = username_pattern.matcher(username);
-        if(!username_matcher.find()) throw new UserMismatchException("Invalid username format");
+        if(!username_matcher.find()) throw new CredentialsException("Invalid username format");
 
         Pattern password_pattern = Pattern.compile("^^(?=.*[!@#$%&])(?=.*\\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,50}");
         Matcher password_matcher = password_pattern.matcher(password);
-        if(!password_matcher.find()) throw new UserMismatchException("Invalid password format");
+        if(!password_matcher.find()) throw new CredentialsException("Invalid password format");
 
         return true;
     }
 
-    private boolean emailAlreadyUsed(String email) throws EmptyEmailException{
-        if(email==null || email.equals("")) throw new EmptyEmailException("Email cannot be null or empty");
+    private boolean emailAlreadyUsed(String email) throws CredentialsException{
+        if(email==null || email.equals("")) throw new CredentialsException("Email cannot be null or empty");
 
         try{
             dao.getByEmail(email);

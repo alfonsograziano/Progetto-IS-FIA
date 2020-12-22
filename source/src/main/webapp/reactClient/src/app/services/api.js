@@ -2,7 +2,7 @@ const ROOT_URL = "/api"
 
 export const DORAIA = `${ROOT_URL}/dora`;
 
-export const ADD_SPEC = `${ROOT_URL}/addSpec`;
+export const ADD_SPEC = `${ROOT_URL}/spec/add`;
 export const DELETE_SPEC = `${ROOT_URL}/spec/delete`;
 export const ALL_SPECS = `${ROOT_URL}/spec/all`;
 export const GET_SPEC_BY_ID = `${ROOT_URL}/spec`;

@@ -9,17 +9,19 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet("/api/dora")
+@WebServlet(
+        name="DoraControl",
+        value="/api/dora")
 public class DoraControl extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         DoraManager dm = new DoraManager();
         System.out.println("Battery => "+request.getParameter("battery"));
         try {
-            double battery = Double.parseDouble(request.getParameter("battery"));
-            double performance = Double.parseDouble(request.getParameter("performance"));
-            double camera = Double.parseDouble(request.getParameter("camera"));
-            double display = Double.parseDouble(request.getParameter("display"));
-            int maxBudget = Integer.parseInt(request.getParameter("maxBudget"));
+            double battery = Double.parseDouble(request.getParameter("battery"))*2;
+            double performance = Double.parseDouble(request.getParameter("performance"))*2;
+            double camera = Double.parseDouble(request.getParameter("camera"))*2;
+            double display = Double.parseDouble(request.getParameter("display"))*2;
+            int maxBudget = Integer.parseInt(request.getParameter("maxBudget"))*2;
 
             System.out.println("Battery => "+battery);
 

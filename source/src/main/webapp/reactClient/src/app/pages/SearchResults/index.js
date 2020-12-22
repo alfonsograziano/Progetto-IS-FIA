@@ -6,7 +6,7 @@ import { DownloadOutlined } from '@ant-design/icons';
 import { Link } from "react-router-dom";
 import { Typography } from 'antd';
 import { search } from "../../services/spec.service"
-import { Pagination } from 'antd';
+import { Pagination, message } from 'antd';
 
 const { Title } = Typography;
 function useQuery() {
@@ -26,6 +26,10 @@ function SearchResults(props) {
             .then(res => {
                 console.log(res)
                 setData(res)
+            })
+            .catch(err => {
+                console.log(err)
+                message.error('Impossibile completare la ricerca');
             })
     }, [])
 

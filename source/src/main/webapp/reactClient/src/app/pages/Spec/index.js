@@ -3,6 +3,7 @@ import { useLocation } from "react-router-dom";
 import SpecTable from "../../components/SpecTable";
 import ReviewCard from "../../components/ReviewCard";
 import SpecCard from "../../components/SpecCard";
+import { Empty, message } from 'antd';
 
 import { AmazonOutlined } from '@ant-design/icons';
 import { Row, Col, Modal, Typography, Button, Card, Breadcrumb } from 'antd';
@@ -14,10 +15,12 @@ import { faMicrochip } from '@fortawesome/free-solid-svg-icons'
 import { faAndroid } from '@fortawesome/free-brands-svg-icons'
 
 import { HomeOutlined } from '@ant-design/icons';
+import { useHistory } from "react-router-dom";
 
 import { getSpecById } from "../../services/spec.service"
 import ReviewForm from "../../components/ReviewForm";
 import { addReview } from "../../services/review.service"
+import { AuthContext } from "../../../App";
 
 
 const { Title } = Typography;
@@ -29,6 +32,8 @@ function Spec(props) {
 
     let query = useQuery();
     const specId = query.get("id")
+    const { state } = React.useContext(AuthContext);
+    const history = useHistory();
 
     const [spec, setSpec] = useState({
         name: "",
@@ -45,11 +50,13 @@ function Spec(props) {
             ...data,
             specId,
             userId: "1"
-        })
+        }, state.token)
             .then(res => {
+                message.success('Recensione aggiunta... Verrà controllata a breve');
                 console.log(res)
             })
             .catch(err => {
+                message.error('Impossibile aggiungere la recensione');
                 console.log(err)
             })
         console.log(data)
@@ -68,6 +75,7 @@ function Spec(props) {
                 setSpec(res)
             })
             .catch(err => {
+                history.push("/home")
                 console.log(err)
             })
     }, [])
@@ -121,7 +129,7 @@ function Spec(props) {
     return (
         <div style={{ marginTop: "20px" }}>
             <Breadcrumb>
-                <Breadcrumb.Item href="/">
+                <Breadcrumb.Item href="/home">
                     <HomeOutlined />
                 </Breadcrumb.Item>
                 <Breadcrumb.Item href="">
@@ -139,7 +147,12 @@ function Spec(props) {
                             description={"SO: " + spec.so + "  Memoria: " + spec.memory + "  RAM: " + spec.ram}
                         />
 
-                        <Button shape="round" style={{ backgroundColor: "#ff9900" }} icon={<AmazonOutlined />}  >
+                        <Button shape="round" style={{ backgroundColor: "#ff9900" }} icon={<AmazonOutlined />}
+                            onClick={() => {
+                                const amzUrl = "https://www.amazon.it/s?k="
+                                window.location.href = amzUrl + spec.name
+                            }}
+                        >
                             Acquista su amazon
                         </Button>
                     </div>
@@ -160,7 +173,7 @@ function Spec(props) {
 
                     <div style={{ alignItems: "center", width: "100%", display: "flex", flexDirection: "column" }}>
                         {
-                            spec && spec.reviews && spec.reviews.map(review =>
+                            spec && spec.reviews && spec.reviews.length > 0 ? spec.reviews.map(review =>
                                 <ReviewCard
                                     title={review.user.email}
                                     camera={review.camera}
@@ -169,10 +182,12 @@ function Spec(props) {
                                     battery={review.battery}
                                     description={review.text}
                                 />)
+                                :
+                                <Empty />
                         }
 
 
-                        <Button type="primary" style={{ marginBottom: "20px" }}>Visualizza tutte le recensioni</Button>
+                        {/* <Button type="primary" style={{ marginBottom: "20px" }}>Visualizza tutte le recensioni</Button> */}
                         <Button type="primary" onClick={() => showModal()}>Aggiungi recensione</Button>
                     </div>
 

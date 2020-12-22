@@ -13,7 +13,8 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
 
-@WebServlet("/api/review/pending")
+@WebServlet(name="ReviewControl",
+        value="/api/review/pending")
 public class ReviewControl extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         ReviewManager rm = new ReviewManager();

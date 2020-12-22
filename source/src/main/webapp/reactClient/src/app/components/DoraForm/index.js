@@ -19,26 +19,26 @@ function DoraForm({
         <div>
             <div >
                 <p style={{ marginBottom: "0px" }}>Batteria</p>
-                <Slider
-                    min={0} max={5}
+                <Slider 
+                    min={0} max={5} step={0.5}
                     onChange={(v) => { setValues({ ...values, battery: v }) }} value={values.battery} />
             </div>
             <div >
                 <p style={{ marginBottom: "0px" }}>Camera</p>
                 <Slider
-                    min={0} max={5}
+                    min={0} max={5} step={0.5}
                     onChange={(v) => { setValues({ ...values, camera: v }) }} value={values.camera} />
             </div>
             <div>
                 <p style={{ marginBottom: "0px" }}>Display</p>
                 <Slider
-                    min={0} max={5}
+                    min={0} max={5} step={0.5}
                     onChange={(v) => { setValues({ ...values, display: v }) }} value={values.display} />
             </div>
             <div >
                 <p style={{ marginBottom: "0px" }}>Performance</p>
                 <Slider
-                    min={0} max={5}
+                    min={0} max={5} step={0.5}
                     onChange={(v) => { setValues({ ...values, performance: v }) }} value={values.performance} />
             </div>
 
@@ -56,7 +56,7 @@ function DoraForm({
                     <Option value="700">700</Option>
                     <Option value="800">800</Option>
                     <Option value="900">900</Option>
-                    <Option value="+100">+1000</Option>
+                    <Option value="300000">+1000</Option>
 
                 </Select>
             </div>

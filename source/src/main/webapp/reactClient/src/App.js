@@ -1,5 +1,5 @@
 import './App.css';
-import React from "react"
+import React, { useEffect } from "react"
 import MainNavigation from './app/navigation';
 import 'antd/dist/antd.css';
 
@@ -27,7 +27,7 @@ const reducer = (state, action) => {
         ...state,
         isAuthenticated: false,
         user: null,
-        token:null
+        token: null
       };
     default:
       return state;
@@ -36,6 +36,20 @@ const reducer = (state, action) => {
 
 function App() {
   const [state, dispatch] = React.useReducer(reducer, initialState);
+
+  useEffect(() => {
+    const user = JSON.parse(localStorage.getItem("user"))
+    const token = JSON.parse(localStorage.getItem("token"))
+    console.log("Token => ",token)
+    if (token && !token.includes(null)) {
+      dispatch({
+        type: "LOGIN",
+        payload: { user, token }
+      })
+    }
+
+
+  }, [])
 
   return (
     <div style={{ width: "100%", height: "100%" }}>

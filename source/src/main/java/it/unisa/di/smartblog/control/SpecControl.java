@@ -15,7 +15,8 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
 
-@WebServlet("/api/spec")
+@WebServlet(name="SpecControl",
+        value="/api/spec")
 public class SpecControl extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         SpecsManager sm = new SpecsManager();

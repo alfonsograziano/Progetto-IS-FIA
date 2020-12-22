@@ -12,7 +12,8 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.sql.SQLException;
 
-@WebServlet("/api/spec/delete")
+@WebServlet(name="DeleteSpecControl",
+        value="/api/spec/delete")
 public class DeleteSpecControl extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         SpecsManager sm = new SpecsManager();

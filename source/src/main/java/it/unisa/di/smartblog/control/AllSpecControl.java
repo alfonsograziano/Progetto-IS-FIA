@@ -13,7 +13,9 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
 
-@WebServlet("/api/spec/all")
+@WebServlet(
+        name="AllSpecControl",
+        value="/api/spec/all")
 public class AllSpecControl extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         SpecsManager sm = new SpecsManager();
@@ -21,6 +23,7 @@ public class AllSpecControl extends HttpServlet {
             List<Spec> res = sm.searchAll();
             request.setAttribute("response",res);
         } catch (SQLException throwables) {
+            throwables.printStackTrace();
             response.setStatus(HttpServletResponse.SC_NOT_FOUND);
             request.setAttribute("response", new Error("Spec not found..."));
         }

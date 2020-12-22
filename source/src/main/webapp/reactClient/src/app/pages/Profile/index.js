@@ -6,9 +6,12 @@ import { Button } from 'antd';
 import ReviewCard from "../../components/ReviewCard";
 import { AuthContext } from "../../../App";
 import { getProfileInfo } from "../../services/user.service"
+import { Empty } from 'antd';
+import { useHistory } from "react-router-dom";
 
 const { Title, Paragraph } = Typography;
 function Profile(props) {
+    const history = useHistory();
 
     const { dispatch, state } = React.useContext(AuthContext);
     const [reviews, setReviews] = useState([])
@@ -18,7 +21,7 @@ function Profile(props) {
             getProfileInfo(state.token)
                 .then(res => setReviews(res.reviews))
         } else {
-            //Ti riporto sul login
+            history.push("/login")
         }
     }, [state])
 
@@ -39,25 +42,28 @@ function Profile(props) {
                     size={{ xs: 24, sm: 32, md: 40, lg: 64, xl: 80, xxl: 100 }}
                     icon={<UserOutlined />}
                 />
-                <Title level={3} style={{ marginBottom: "0px" }}>{(state && state.user.email) || "test@test.com"}</Title>
-                <Paragraph><b>{(state && state.user.username) || "Test"}</b></Paragraph>
+                <Title level={3} style={{ marginBottom: "0px" }}>{(state && state.user && state.user.email) || "test@test.com"}</Title>
+                <Paragraph><b>{(state && state.user && state.user.username) || "Test"}</b></Paragraph>
             </div>
 
             <Title level={2}>Le mie recensioni</Title>
 
             <div style={{ display: "flex", flexDirection: "row", alignItems: "center", flexWrap: "wrap" }}>
                 {
-                    reviews.map((review, index) =>
-                        <ReviewCard
-                            key={index}
-                            title={review.spec.name}
-                            subtitle={review.state}
-                            camera={review.camera}
-                            display={review.display}
-                            performance={review.performance}
-                            battery={review.battery}
-                            description={review.text}
-                        />)
+                    reviews.length > 0 ?
+                        reviews.map((review, index) =>
+                            <ReviewCard
+                                key={index}
+                                title={review.spec.name}
+                                subtitle={review.state}
+                                camera={review.camera}
+                                display={review.display}
+                                performance={review.performance}
+                                battery={review.battery}
+                                description={review.text}
+                            />)
+                        :
+                        <Empty />
                 }
 
             </div>

@@ -15,7 +15,9 @@ public class ResponseFormatter implements Filter {
     }
 
     public void doFilter(ServletRequest req, ServletResponse resp, FilterChain chain) throws ServletException, IOException {
+       //Codice prima dell'esecuzione della servlet
         chain.doFilter(req, resp);
+        //Codice dopo l'esecuzione della servlet
         sendAsJson(resp, req.getAttribute("response"));
     }
 

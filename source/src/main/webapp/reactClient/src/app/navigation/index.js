@@ -13,7 +13,6 @@ import Profile from "../pages/Profile";
 import DoraIA from "../pages/DoraIA";
 import SearchResults from "../pages/SearchResults";
 import Navbar from "../components/Navbar";
-import AdminHome from "../pages/admin/AdminHome";
 import SpecList from "../pages/admin/SpecList";
 import Reviews from "../pages/admin/Reviews";
 import AddSpec from "../pages/admin/AddSpec";
@@ -24,13 +23,19 @@ const { Content } = Layout;
 function MainNavigation(props) {
 
     const [isAdmin, setIsAdmin] = useState(false)
+    const [isReviewer, setIsReviewer] = useState(false)
+
 
     const { state } = React.useContext(AuthContext);
 
     useEffect(() => {
         if (state && state.user) {
             if (state.user.phoneNumber) {
-                setIsAdmin(true)
+                if (state.user.rank) {
+                    setIsReviewer(true)
+                } else {
+                    setIsAdmin(true)
+                }
             }
         }
     }, [state])
@@ -55,12 +60,12 @@ function MainNavigation(props) {
                         {
                             isAdmin &&
                             <React.Fragment>
-                                <Route path="/admin/home" component={AdminHome} />
                                 <Route path="/admin/speclist" component={SpecList} />
                                 <Route path="/admin/createspec" component={AddSpec} />
-                                <Route path="/admin/reviews" component={Reviews} />
-
                             </React.Fragment>
+                        }
+                        {
+                            isReviewer && <Route path="/admin/reviews" component={Reviews} />
                         }
 
                     </Switch>

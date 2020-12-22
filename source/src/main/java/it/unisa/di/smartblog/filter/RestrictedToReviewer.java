@@ -40,7 +40,7 @@ public class RestrictedToReviewer implements Filter {
                 email = jwt.decode(token);
                 UserManager um = new UserManager();
                 User user = um.getUserInfoByEmail(email);
-                if(um.isManager(user)!=null || um.isReviewer(user)!=null){
+                if(um.isReviewer(user)!=null){
 
                     httpRequest.setAttribute("email", email);
                     chain.doFilter(req, resp);

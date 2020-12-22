@@ -9,6 +9,8 @@ import { AmazonOutlined } from '@ant-design/icons';
 import { Row, Col, Modal, Typography, Button, Card, Breadcrumb } from 'antd';
 import { faMemory } from '@fortawesome/free-solid-svg-icons'
 import { faSdCard } from '@fortawesome/free-solid-svg-icons'
+import { faCamera } from '@fortawesome/free-solid-svg-icons'
+
 import { faMobileAlt } from '@fortawesome/free-solid-svg-icons'
 import { faGamepad } from '@fortawesome/free-solid-svg-icons'
 import { faMicrochip } from '@fortawesome/free-solid-svg-icons'
@@ -40,26 +42,27 @@ function Spec(props) {
         image: ""
     })
     const [specTable, setSpecTable] = useState([])
+    const [points, setPoints] = useState([])
 
     const [isModalVisible, setIsModalVisible] = useState(false);
 
     const showModal = () => setIsModalVisible(true);
 
     const saveReview = data => {
-        addReview({
-            ...data,
-            specId,
-            userId: "1"
-        }, state.token)
-            .then(res => {
-                message.success('Recensione aggiunta... Verrà controllata a breve');
-                console.log(res)
-            })
-            .catch(err => {
-                message.error('Impossibile aggiungere la recensione');
-                console.log(err)
-            })
-        console.log(data)
+        if (!state.token) {
+            message.error('Devi loggarti per aggiungere una recensione');
+            history.push("/login")
+        } else {
+            addReview({ ...data, specId }, state.token)
+                .then(res => {
+                    message.success('Recensione aggiunta... Verrà controllata a breve');
+                    console.log(res)
+                })
+                .catch(err => {
+                    message.error('Impossibile aggiungere la recensione');
+                    console.log(err)
+                })
+        }
         setIsModalVisible(false);
     };
 
@@ -82,6 +85,7 @@ function Spec(props) {
 
     useEffect(() => {
         if (spec) {
+            console.log(JSON.parse(JSON.stringify(spec)))
             const data = [
                 {
                     key: "SO",
@@ -119,8 +123,27 @@ function Spec(props) {
                     icon: faMobileAlt
                 }
             ]
+            const tempPoints = [
+                {
+                    key: "Display",
+                    value: String(spec.display),
+                    icon: faMobileAlt
+                },
+                {
+                    key: "Camera",
+                    value: String(spec.camera),
+                    icon: faCamera
+                },
+                {
+                    key: "Performance",
+                    value: String(spec.performance),
+                    icon: faMicrochip
+                },
+
+            ]
             console.log(data)
             setSpecTable(data)
+            setPoints(tempPoints)
         }
 
     }, [spec])
@@ -161,11 +184,17 @@ function Spec(props) {
                 <Col xs={{ span: 11, offset: 1 }} lg={{ span: 6, offset: 2 }}>
                     <div style={{ alignItems: "center", width: "100%", display: "flex", flexDirection: "column" }}>
                         <Title>{spec.name}</Title>
-                        <Card title="Scheda tecnica">
+                        <Card title="Punteggi">
+                            <SpecTable
+                                data={points}
+                            />
+                        </Card>
+                        <Card title="Scheda tecnica" style={{ marginTop: "20px" }}>
                             <SpecTable
                                 data={specTable}
                             />
                         </Card>
+
 
                     </div>
                 </Col>

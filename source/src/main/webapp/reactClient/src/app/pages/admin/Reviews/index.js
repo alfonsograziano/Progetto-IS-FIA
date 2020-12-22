@@ -43,25 +43,20 @@ function Reviews(props) {
         setIsModalVisible(!!reviewDetail);
     }, [reviewDetail])
 
-    const approveReview = review => {
-        changeReviewStatus({ id: review.id, approved: true }, state.token)
-            .then(res => {
-                console.log(res)
-                loadPendingReviews()
-            })
-            .catch(err => {
-                console.log(err)
-            })
-    }
-    const rejectReview = review => {
-        changeReviewStatus({ id: review.id, approved: false }, state.token)
-            .then(res => {
-                console.log(res)
-                loadPendingReviews()
+    const approveReview = review => setStatusReview(review, true)
+    const rejectReview = review => setStatusReview(review, false)
 
+    const setStatusReview = (review, newState) => {
+        changeReviewStatus({ id: review.id, approved: newState }, state.token)
+            .then(res => {
+                console.log(res)
+                message.success('Recensione correttamente aggiornata');
+                loadPendingReviews()
             })
             .catch(err => {
                 console.log(err)
+                message.success('Impossibile completare la richiesta');
+
             })
     }
 

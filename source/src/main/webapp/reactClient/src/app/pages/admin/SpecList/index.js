@@ -68,7 +68,11 @@ function SpecList(props) {
             key: 'action',
             render: (text, record) => (
                 <Space size="middle">
-                    <Button type="link" onClick={() => { deleteSelectedSpec(record) }}>Cancella</Button>
+                    <Button type="link" onClick={() => { 
+                        var ok = prompt("Scrivi ok per confermare la cancellazione", "annulla");
+                        if(ok === "ok")
+                            deleteSelectedSpec(record)
+                         }}>Cancella</Button>
                 </Space>
             ),
         },

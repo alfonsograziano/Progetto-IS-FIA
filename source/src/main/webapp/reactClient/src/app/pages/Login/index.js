@@ -28,7 +28,15 @@ function Login(props) {
                                                 token
                                             }
                                         })
-                                        history.push("/home")
+                                        if(res.phoneNumber){
+                                            if(res.rank){
+                                                history.push("/admin/reviews") 
+                                            }else{
+                                                history.push("/admin/speclist")
+                                            }
+                                        }else{
+                                            history.push("/home")
+                                        }
                                     })
                             })
                             .catch(err => {

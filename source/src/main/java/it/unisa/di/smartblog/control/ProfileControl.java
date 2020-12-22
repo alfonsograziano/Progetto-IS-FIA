@@ -43,18 +43,13 @@ public class ProfileControl extends HttpServlet {
                 request.setAttribute("response", user);
             }
 
-        } catch (EmptyEmailException e) {
-            e.printStackTrace();
-            response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
-            request.setAttribute("response", new Error("Error..."));
-        } catch (SQLException throwables) {
+        }  catch (SQLException throwables) {
             throwables.printStackTrace();
             response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
             request.setAttribute("response", new Error("Error..."));
-        } catch (UserMismatchException e) {
-            e.printStackTrace();
+        } catch (CredentialsException e) {
             response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
-            request.setAttribute("response", new Error("Error..."));
+            request.setAttribute("response", new Error(e.getMessage()));
         }
 
 

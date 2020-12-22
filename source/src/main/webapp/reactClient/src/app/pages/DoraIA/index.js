@@ -17,10 +17,12 @@ function DoraIA(props) {
     const [loading, setLoading] = useState(false)
     const { state } = React.useContext(AuthContext);
 
+    //TODO: Dora non filtra correttamente in base al prezzo, fixa questa cosa
+
     return (
         <div>
             <Breadcrumb>
-                <Breadcrumb.Item href="/">
+                <Breadcrumb.Item href="/home">
                     <HomeOutlined />
                 </Breadcrumb.Item>
                 <Breadcrumb.Item href="/dora">

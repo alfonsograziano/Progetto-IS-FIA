@@ -7,7 +7,9 @@ import it.unisa.di.smartblog.review.ReviewManager;
 import it.unisa.di.smartblog.review.ReviewMismatchException;
 import it.unisa.di.smartblog.spec.Spec;
 import it.unisa.di.smartblog.spec.SpecsManager;
+import it.unisa.di.smartblog.user.CredentialsException;
 import it.unisa.di.smartblog.user.User;
+import it.unisa.di.smartblog.user.UserManager;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -23,40 +25,30 @@ public class AddReviewControl extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         ReviewManager rm = new ReviewManager();
         SpecsManager sm = new SpecsManager();
-        //UserManager rm = new ReviewManager();
+        UserManager um = new UserManager();
 
         int totalScore = Integer.parseInt(request.getParameter("totalScore"));
         int performance = Integer.parseInt(request.getParameter("performance"));
         int display = Integer.parseInt(request.getParameter("display"));
         int camera = Integer.parseInt(request.getParameter("camera"));
         int battery = Integer.parseInt(request.getParameter("battery"));
-        int userId = Integer.parseInt(request.getParameter("userId"));
         int specId = Integer.parseInt(request.getParameter("specId"));
-
         String text = request.getParameter("text");
 
-        Spec spec = null;
         try {
-            spec = sm.searchById(specId);
-        } catch (SQLException throwables) {
-            response.setStatus(HttpServletResponse.SC_NOT_FOUND);
-            request.setAttribute("response", new Error("Cannot find user, please check params"));
-            return;
-        }
-
-        //TODO: Quando l'user manage è pronto aggiungi anche qui la call al manage
-        User user = new User();
-        user.setId(userId);
-
-        try {
+            Spec spec = sm.searchById(specId);
+            User user = um.getUserInfoByEmail((String)request.getAttribute("email"));
             rm.createReview(totalScore, performance, display, camera, battery, text, spec, user);
             request.setAttribute("response", new Message("Review saved"));
         } catch (ReviewMismatchException e) {
             response.setStatus(HttpServletResponse.SC_CONFLICT);
-            request.setAttribute("response", new Error("Review parameters wrong"));
-        } catch (SQLException throwables) {
+            request.setAttribute("response", new Error(e.getMessage()));
+        }  catch (SQLException throwables) {
             response.setStatus(HttpServletResponse.SC_NOT_FOUND);
             request.setAttribute("response", new Error("Cannot add review, please check params"));
+        } catch (CredentialsException e) {
+            response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
+            request.setAttribute("response", new Error(e.getMessage()));
         }
     }
 

@@ -14,13 +14,20 @@ const { Header } = Layout;
 function Navbar(props) {
     const location = useLocation();
 
-    const { state } = React.useContext(AuthContext);
-    const [isAdmin, setIsAdmin] = useState(false)
     const [isInAdmin, setIsInAdmin] = useState(false)
+    const [isAdmin, setIsAdmin] = useState(false)
+    const [isReviewer, setIsReviewer] = useState(false)
+    const { state } = React.useContext(AuthContext);
 
     useEffect(() => {
         if (state && state.user) {
-            setIsAdmin(!!state.user.phoneNumber)
+            if (state.user.phoneNumber) {
+                if (state.user.rank) {
+                    setIsReviewer(true)
+                } else {
+                    setIsAdmin(true)
+                }
+            }
         }
     }, [state])
 
@@ -30,7 +37,7 @@ function Navbar(props) {
 
     return (
         <Header style={{ backgroundColor: "#ccd3de" }}>
-            {isAdmin && isInAdmin ?
+            {(isAdmin || isReviewer) && isInAdmin ?
                 <AdminNavbar />
                 :
                 <Row style={{ height: "100%", justifyContent: "space-between" }}>
@@ -49,10 +56,11 @@ function Navbar(props) {
 
                         {
                             state && state.isAuthenticated ?
-                                <div style={{ marginLeft: "20px" }}>
+                                <div style={{ marginLeft: "20px", display: "flex", flexDirection: "column", alignItems: "center" }}>
                                     <Link to="/profile" >
                                         <Avatar style={{ backgroundColor: "#f56a00", verticalAlign: 'middle' }} size="large" icon={<UserOutlined />} />
                                     </Link>
+                                    {/* <div>Ciao,{" "+state.user.username}</div> */}
                                 </div>
                                 :
                                 <Link to="/login">
@@ -63,7 +71,15 @@ function Navbar(props) {
                         {
                             isAdmin &&
                             <div style={{ marginLeft: "20px" }}>
-                                <Link to="/admin/home" >
+                                <Link to="/admin/speclist" >
+                                    <Avatar style={{ backgroundColor: "#f56a00", verticalAlign: 'middle' }} size="large" icon={<HomeOutlined />} />
+                                </Link>
+                            </div>
+                        }
+                        {
+                            isReviewer &&
+                            <div style={{ marginLeft: "20px" }}>
+                                <Link to="/admin/reviews" >
                                     <Avatar style={{ backgroundColor: "#f56a00", verticalAlign: 'middle' }} size="large" icon={<HomeOutlined />} />
                                 </Link>
                             </div>

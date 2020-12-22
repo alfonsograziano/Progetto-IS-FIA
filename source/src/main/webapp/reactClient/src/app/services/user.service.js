@@ -21,7 +21,6 @@ const signUp = data => {
         .then(res => res.data)
 }
 
-//TODO:Aggiungi il token appena gira...
 const getProfileInfo = token => {
     console.log(config(token))
     return Axios.get(PROFILE,  config(token))

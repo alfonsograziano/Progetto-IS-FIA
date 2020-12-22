@@ -24,8 +24,6 @@ function Home(props) {
             })
     }, [])
 
-
-
     return (
         <div style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
             <Title level={2} style={{ margin: "0x", marginTop: "20px" }}>Cerchi uno smartphone?</Title>
@@ -50,6 +48,8 @@ function Home(props) {
             <Pagination size="small"
                 total={pageSize}
                 onChange={setCurrentPage}
+                total={data && data.length}
+                showSizeChanger={false}
             />
 
 

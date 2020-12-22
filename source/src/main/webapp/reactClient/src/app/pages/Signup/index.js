@@ -19,7 +19,7 @@ function Signup(props) {
                             })
                             .catch(err => {
                                 console.log(err)
-                                message.error('Impossibile completare la registrazione');
+                                message.error("Attenzione, usa un'email valida e una password da minimo 8 caratteri con lettere maiuscole, minuscole, simboli speciali e numeri");
                             })
                     }}
                     onFinishFailed={() => { }}

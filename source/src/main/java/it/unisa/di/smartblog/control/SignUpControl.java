@@ -2,11 +2,8 @@ package it.unisa.di.smartblog.control;
 
 import it.unisa.di.smartblog.filter.Error;
 import it.unisa.di.smartblog.filter.Message;
-import it.unisa.di.smartblog.user.EmptyEmailException;
-import it.unisa.di.smartblog.user.User;
+import it.unisa.di.smartblog.user.CredentialsException;
 import it.unisa.di.smartblog.user.UserManager;
-import it.unisa.di.smartblog.user.UserMismatchException;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -29,17 +26,13 @@ public class SignUpControl extends HttpServlet {
         try {
            um.createUser(username,email, password, repeatPassword);
            request.setAttribute("response", new Message("User created!"));
-        } catch (UserMismatchException e) {
-            e.printStackTrace();
-            response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
-            request.setAttribute("response", new Error("Credentials wrong"));
-        } catch (EmptyEmailException e) {
-            response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
-            request.setAttribute("response", new Error("Credentials missing"));
-        } catch (SQLException throwables) {
+        }  catch (SQLException throwables) {
             throwables.printStackTrace();
             response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
             request.setAttribute("response", new Error("Error..."));
+        } catch (CredentialsException e) {
+            response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
+            request.setAttribute("response", new Error(e.getMessage()));
         }
 
     }

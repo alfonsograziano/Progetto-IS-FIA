@@ -3,8 +3,7 @@ package it.unisa.di.smartblog.control;
 import it.unisa.di.smartblog.filter.Error;
 import it.unisa.di.smartblog.filter.Message;
 import it.unisa.di.smartblog.security.JWTHandler;
-import it.unisa.di.smartblog.user.CredentialMismatchException;
-import it.unisa.di.smartblog.user.EmptyEmailException;
+import it.unisa.di.smartblog.user.CredentialsException;
 import it.unisa.di.smartblog.user.User;
 import it.unisa.di.smartblog.user.UserManager;
 
@@ -31,15 +30,12 @@ public class SignInControl extends HttpServlet {
             String message = jwt.createJWT(user.getEmail());
 
             request.setAttribute("response", new Message(message));
-        } catch (CredentialMismatchException e) {
-            response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
-            request.setAttribute("response", new Error("Credentials wrond"));
-        } catch (EmptyEmailException e) {
-            response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
-            request.setAttribute("response", new Error("Empty mail "));
         } catch (SQLException throwables) {
             response.setStatus(HttpServletResponse.SC_NOT_FOUND);
             request.setAttribute("response", new Error("User not found"));
+        } catch (CredentialsException e) {
+            response.setStatus(HttpServletResponse.SC_NOT_FOUND);
+            request.setAttribute("response", new Error(e.getMessage()));
         }
 
     }

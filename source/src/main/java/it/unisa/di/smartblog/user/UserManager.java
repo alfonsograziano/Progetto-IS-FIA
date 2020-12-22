@@ -26,6 +26,22 @@ public class UserManager {
         else throw new CredentialMismatchException("Invalid credentials");
     }
 
+    public Manager isManager(User user) throws UserMismatchException{
+        try{
+            return dao.getManager(user);
+        } catch (SQLException e){
+            return null;
+        }
+    }
+
+    public Reviewer isReviewer(User user) throws UserMismatchException{
+        try{
+            return dao.getReviewer(user);
+        } catch (SQLException e){
+            return null;
+        }
+    }
+
     public User getUserInfoByEmail(String email) throws EmptyEmailException, SQLException{
         User user = dao.getByEmail(email);
         return user;

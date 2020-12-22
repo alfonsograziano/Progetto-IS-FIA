@@ -92,5 +92,69 @@ public class UserDao {
         return true;
     }
 
+    public synchronized Manager getManager(User user) throws UserMismatchException, SQLException{
+        if(user==null) throw new UserMismatchException("User cannot be null");
+
+        Connection conn = null;
+        PreparedStatement ps = null;
+        String query = "SELECT * FROM manager where manager.id = ?";
+
+        conn = ds.getConnection();
+        ps = conn.prepareStatement(query);
+        ps.setInt(1, user.getId());
+        ResultSet rs = ps.executeQuery();
+
+        rs.next();
+        Manager manager = new Manager(user.getUsername(), user.getPassword(), user.getEmail(), user.getReviews(), rs.getString("phoneNumber"));
+
+        try {
+            conn.close();
+
+        } catch(Exception e) {
+            e.printStackTrace();
+        }
+
+        try {
+            ps.close();
+
+        } catch(Exception e) {
+            e.printStackTrace();
+        }
+
+        return manager;
+    }
+
+    public synchronized Reviewer getReviewer(User user) throws UserMismatchException, SQLException{
+        if(user==null) throw new UserMismatchException("User cannot be null");
+
+        Connection conn = null;
+        PreparedStatement ps = null;
+        String query = "SELECT * FROM reviewer where reviewer.id = ?";
+
+        conn = ds.getConnection();
+        ps = conn.prepareStatement(query);
+        ps.setInt(1, user.getId());
+        ResultSet rs = ps.executeQuery();
+
+        rs.next();
+        Reviewer reviewer = new Reviewer(user.getUsername(), user.getPassword(), user.getEmail(), user.getReviews(), rs.getString("phoneNumber"), rs.getString("rank"));
+
+        try {
+            conn.close();
+
+        } catch(Exception e) {
+            e.printStackTrace();
+        }
+
+        try {
+            ps.close();
+
+        } catch(Exception e) {
+            e.printStackTrace();
+        }
+
+        return reviewer;
+    }
+
     private static DataSource ds;
 }

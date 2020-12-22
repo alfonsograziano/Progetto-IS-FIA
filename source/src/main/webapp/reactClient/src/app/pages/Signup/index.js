@@ -3,6 +3,7 @@ import SignUpForm from "../../components/SignUpForm";
 import { Card } from 'antd';
 import { Link } from "react-router-dom";
 import { signUp } from "../../services/user.service"
+import { message } from 'antd';
 
 function Signup(props) {
     return (
@@ -13,10 +14,12 @@ function Signup(props) {
                         console.log(data)
                         signUp(data)
                             .then(res => {
+                                message.success('Registrazione completata con successo');
                                 console.log(res)
                             })
                             .catch(err => {
                                 console.log(err)
+                                message.error('Impossibile completare la registrazione');
                             })
                     }}
                     onFinishFailed={() => { }}

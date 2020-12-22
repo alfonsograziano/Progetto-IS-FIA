@@ -1,8 +1,8 @@
 package it.unisa.di.smartblog.filter;
 
-import com.auth0.jwt.JWT;
-import com.auth0.jwt.algorithms.Algorithm;
 import it.unisa.di.smartblog.security.JWTHandler;
+import it.unisa.di.smartblog.user.User;
+import it.unisa.di.smartblog.user.UserManager;
 
 import javax.servlet.*;
 import javax.servlet.annotation.WebFilter;
@@ -10,13 +10,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.security.Key;
 
 //Aggiungere qui le servlet su cui devo eseguire il filtro
 @WebFilter(servletNames = {
-        "ProfileControl", "DoraControl", "AddReviewControl"
+        "CreateSpecControl", "DeleteSpecControl",
 })
-public class RestrictedToUser implements Filter {
+public class RestrictedToManager implements Filter {
 
     private JWTHandler jwt;
 
@@ -39,12 +38,16 @@ public class RestrictedToUser implements Filter {
             String email = null;
             try{
                 email = jwt.decode(token);
-                httpRequest.setAttribute("email", email);
-                chain.doFilter(req, resp);
+                UserManager um = new UserManager();
+                User user = um.getUserInfoByEmail(email);
+                if(um.isManager(user)!=null){
+
+                    httpRequest.setAttribute("email", email);
+                    chain.doFilter(req, resp);
+                }
             }catch(Exception e){
                 System.out.println("Signature non valida...");
             }
-
         }else{
             HttpServletResponse httpResponse = (HttpServletResponse) resp;
             httpResponse.setStatus(HttpServletResponse.SC_UNAUTHORIZED);

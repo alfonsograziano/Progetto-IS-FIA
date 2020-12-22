@@ -17,7 +17,8 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.sql.SQLException;
 
-@WebServlet("/api/review/add")
+@WebServlet(name="AddReviewControl",
+        value="/api/review/add")
 public class AddReviewControl extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         ReviewManager rm = new ReviewManager();

@@ -12,7 +12,8 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.sql.SQLException;
 
-@WebServlet("/api/changeReviewStatus")
+@WebServlet(name="ReviewInspectionControl",
+        value="/api/changeReviewStatus")
 public class ReviewInspectionControl extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 

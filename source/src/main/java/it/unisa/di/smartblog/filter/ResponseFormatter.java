@@ -31,14 +31,10 @@ public class ResponseFormatter implements Filter {
         response.setContentType("application/json");
 
         String res = _gson.toJson(obj);
-        System.out.println(res);
-        /*
         PrintWriter out = response.getWriter();
 
         out.print(res);
         out.flush();
-
-         */
     }
 
 }

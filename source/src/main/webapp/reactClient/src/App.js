@@ -38,8 +38,8 @@ function App() {
   const [state, dispatch] = React.useReducer(reducer, initialState);
 
   useEffect(() => {
-    const user = localStorage.getItem("user")
-    const token = localStorage.getItem("token")
+    const user = JSON.parse(localStorage.getItem("user"))
+    const token = JSON.parse(localStorage.getItem("token"))
     console.log("Token => ",token)
     if (token && !token.includes(null)) {
       dispatch({

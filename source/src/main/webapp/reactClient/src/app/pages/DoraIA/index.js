@@ -7,10 +7,15 @@ import { HomeOutlined } from '@ant-design/icons';
 import { searchWithDoraIa } from "../../services/dora.service"
 import SpecCard from "../../components/SpecCard";
 import Row from "../../components/Row";
+import { AuthContext } from "../../../App";
+import { message } from 'antd';
+import { Spin } from 'antd';
 
 function DoraIA(props) {
 
     const [results, setResults] = useState([])
+    const [loading, setLoading] = useState(false)
+    const { state } = React.useContext(AuthContext);
 
     return (
         <div>
@@ -23,16 +28,33 @@ function DoraIA(props) {
                 </Breadcrumb.Item>
             </Breadcrumb>
             <Row style={{ flexWrap: "wrap-reverse" }}>
-                <Card title="DoraIA" style={{ margin: "20px", width: "300px" }}>
-                    <DoraForm
-                        onSearch={(values) => {
-                            searchWithDoraIa(values)
-                                .then(res => {
-                                    console.log(res)
-                                    setResults(res)
-                                })
-                        }} />
-                </Card>
+                <Spin spinning={loading} tip="Dora l'esploratrice sta cercando..."
+                    size="large">
+                    <Card title="DoraIA" style={{ margin: "20px", width: "300px" }} >
+                        <DoraForm
+                            onSearch={(values) => {
+                                if (state && state.token) {
+                                    setLoading(true)
+                                    message.warning('Aspetta qualche secondo');
+                                    searchWithDoraIa(values, state.token)
+                                        .then(res => {
+                                            setLoading(false)
+                                            console.log(res)
+                                            setResults(res)
+                                        })
+                                        .catch(err => {
+                                            console.log(err)
+                                            setLoading(false)
+                                            message.error('Impossibile caricare i dati da DoraIA');
+                                        })
+                                } else {
+                                    message.error('Devi registrarti per poter usare DoraIA');
+                                }
+
+                            }} />
+                    </Card>
+                </Spin>
+
                 {
                     results.length > 0 &&
                     <div>

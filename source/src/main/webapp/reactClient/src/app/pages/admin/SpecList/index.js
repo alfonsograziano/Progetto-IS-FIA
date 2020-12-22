@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { getAll } from "../../../services/spec.service"
-import { Table, Button, Space } from 'antd';
+import { Table, Button, Space, message } from 'antd';
 import SearchBarForm from "../../../components/SearchBarForm";
 import { deleteSpec } from "../../../services/spec.service"
 import { useHistory } from "react-router-dom";
+import { AuthContext } from "../../../../App"
 
 function SpecList(props) {
     const history = useHistory();
@@ -11,16 +12,20 @@ function SpecList(props) {
     const [data, setData] = useState([])
     const [filter, setFilter] = useState("")
     const [filteredData, setFilteredData] = useState([])
+    const { state } = React.useContext(AuthContext);
 
 
     useEffect(() => {
-        getAll()
-            .then(res => {
-                console.log(res)
-                setData(res)
-            })
+        loadSpecs()
     }, [])
 
+    const loadSpecs = ()=> {
+        getAll()
+        .then(res => {
+            console.log(res)
+            setData(res)
+        })
+    }
 
     useEffect(() => {
         if (filter.trim("") !== "") {
@@ -33,11 +38,14 @@ function SpecList(props) {
 
     const deleteSelectedSpec = spec => {
         console.log(spec.id)
-        deleteSpec(spec.id)
+        deleteSpec(spec.id, state.token)
             .then(res => {
+                message.success('Scheda tecnica calcellata');
+                loadSpecs()
                 console.log(res)
             })
             .catch(err => {
+                message.error('Impossibile cancellare la scheda tecnica');
                 console.log(err)
             })
 
@@ -81,7 +89,7 @@ function SpecList(props) {
                 columns={columns}
             />
 
-            <Button type="primary" style={{marginTop:"20px"}} onClick={() => {
+            <Button type="primary" style={{ marginTop: "20px" }} onClick={() => {
                 history.push("/admin/createSpec")
             }}> Aggiungi scheda tecnica</Button>
 

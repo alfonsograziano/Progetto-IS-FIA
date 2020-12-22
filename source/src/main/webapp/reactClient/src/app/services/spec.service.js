@@ -2,14 +2,17 @@ import Axios from "axios"
 import { GET_SPEC_BY_ID, ALL_SPECS, SEARCH_SPECS, DELETE_SPEC, ADD_SPEC } from "./api"
 const qs = require('querystring')
 
-const config = {
+const config = (token = "") =>
+({
     headers: {
-        'Content-Type': 'application/x-www-form-urlencoded'
+        'Content-Type': 'application/x-www-form-urlencoded',
+        'Authorization': 'Bearer ' + token
     }
-}
-const createNewSpec = (data) => {
+})
+
+const createNewSpec = (data, token) => {
     console.log(ADD_SPEC)
-    return Axios.post(ADD_SPEC, qs.stringify(data), config)
+    return Axios.post(ADD_SPEC, qs.stringify(data), config(token))
         .then(res => res.data)
 }
 
@@ -26,8 +29,8 @@ const search = query => {
 }
 
 
-const deleteSpec = (specId) => {
-    return Axios.post(DELETE_SPEC, qs.stringify({ specId: specId }), config)
+const deleteSpec = (specId, token) => {
+    return Axios.post(DELETE_SPEC, qs.stringify({ specId }), config(token))
         .then(res => res.data)
 }
 

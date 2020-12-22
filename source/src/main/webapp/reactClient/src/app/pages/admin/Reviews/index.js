@@ -1,14 +1,16 @@
 import React, { useState, useEffect } from "react";
-import { Table, Button,  Modal } from 'antd';
+import { Table, Button, Modal, message } from 'antd';
 import { getPendingReviews } from "../../../services/review.service"
 import ReviewCard from "../../../components/ReviewCard";
 import { changeReviewStatus } from "../../../services/review.service"
+import { AuthContext } from "../../../../App";
 
 function Reviews(props) {
 
     const [data, setData] = useState([])
     const [isModalVisible, setIsModalVisible] = useState(false);
     const [reviewDetail, setReviewDetail] = useState()
+    const { state } = React.useContext(AuthContext);
 
 
     useEffect(() => {
@@ -18,11 +20,14 @@ function Reviews(props) {
 
     const loadPendingReviews = () => {
         setReviewDetail(undefined)
-        getPendingReviews()
+        getPendingReviews(state.token)
             .then(res => {
-                console.log(res)
                 const tempData = res.map(item => ({ ...item, title: item.spec.name + " | " + item.user.username }))
                 setData(tempData)
+            })
+            .catch(err => {
+                console.log(err)
+                message.error('Non posso trovare le recensioni in pending');
             })
     }
 
@@ -39,7 +44,7 @@ function Reviews(props) {
     }, [reviewDetail])
 
     const approveReview = review => {
-        changeReviewStatus({ id: review.id, approved: true })
+        changeReviewStatus({ id: review.id, approved: true }, state.token)
             .then(res => {
                 console.log(res)
                 loadPendingReviews()
@@ -49,7 +54,7 @@ function Reviews(props) {
             })
     }
     const rejectReview = review => {
-        changeReviewStatus({ id: review.id, approved: false })
+        changeReviewStatus({ id: review.id, approved: false }, state.token)
             .then(res => {
                 console.log(res)
                 loadPendingReviews()
@@ -62,7 +67,7 @@ function Reviews(props) {
 
     const columns = [
         {
-            title: 'Recensione',
+            title: 'Recensioni da valutare',
             dataIndex: 'title',
             key: 'title',
         }

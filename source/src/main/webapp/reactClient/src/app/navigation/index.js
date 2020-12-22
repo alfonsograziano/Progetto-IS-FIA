@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
     BrowserRouter as Router,
     Switch,
@@ -17,18 +17,30 @@ import AdminHome from "../pages/admin/AdminHome";
 import SpecList from "../pages/admin/SpecList";
 import Reviews from "../pages/admin/Reviews";
 import AddSpec from "../pages/admin/AddSpec";
+import { AuthContext } from "../../App";
 
 const { Content } = Layout;
 
 function MainNavigation(props) {
-    const [isAdmin] = useState(true)
+
+    const [isAdmin, setIsAdmin] = useState(false)
+
+    const { state } = React.useContext(AuthContext);
+
+    useEffect(() => {
+        if (state && state.user) {
+            if (state.user.phoneNumber) {
+                setIsAdmin(true)
+            }
+        }
+    }, [state])
 
     return (
         <Router>
 
             <Layout style={{ height: "100%" }}>
                 <Navbar />
-                <Content style={{ padding: '0 50px', height: "100%", marginTop: "20px", backgroundColor:"transparent" }}>
+                <Content style={{ padding: '0 50px', height: "100%", marginTop: "20px", backgroundColor: "transparent" }}>
 
                     <Switch>
 
@@ -40,17 +52,17 @@ function MainNavigation(props) {
                         <Route path="/dora" component={DoraIA} />
                         <Route path="/search" component={SearchResults} />
                         <Route path="/home" component={Home} />
-
                         {
                             isAdmin &&
                             <React.Fragment>
                                 <Route path="/admin/home" component={AdminHome} />
                                 <Route path="/admin/speclist" component={SpecList} />
-                                <Route path="/admin/reviews" component={Reviews} />
                                 <Route path="/admin/createspec" component={AddSpec} />
+                                <Route path="/admin/reviews" component={Reviews} />
 
                             </React.Fragment>
                         }
+
                     </Switch>
 
 

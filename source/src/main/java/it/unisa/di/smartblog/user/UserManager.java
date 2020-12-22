@@ -12,7 +12,7 @@ public class UserManager {
     public boolean createUser(String username, String email, String password, String repeatPassword) throws UserMismatchException, EmptyEmailException, SQLException{
         if(!emailAlreadyUsed(email)) {
             if(checkCredentialsFormat(username, email, password, repeatPassword)) {
-                User user = new User(username, email, password);
+                User user = new User(username, password,email);
                 dao.saveUser(user);
             }
         }
@@ -43,14 +43,17 @@ public class UserManager {
         Matcher matcher = pattern.matcher(email);
         if(!matcher.find()) throw new UserMismatchException("Invalid email format");
 
-        pattern = Pattern.compile("/w{4,50}");
+
+        pattern = Pattern.compile("\\w{4,50}");
         matcher = pattern.matcher(username);
         if(!matcher.find()) throw new UserMismatchException("Invalid username format");
 
-        pattern = Pattern.compile("^((?=.[A-Z])(?=.[a-z])(?=.*[0-9])).{8,50}$");
+        /*
+        System.out.println("Password ricevuta: "+password);
+        pattern = Pattern.compile("^(?=.[a-z])(?=.[A-Z])(?=.\\d)(?=.[@$!%?&])[A-Za-z\\d@$!%?&]{8,50}$");
         matcher = pattern.matcher(password);
         if(!matcher.find()) throw new UserMismatchException("Invalid password format");
-
+        */
         return true;
     }
 

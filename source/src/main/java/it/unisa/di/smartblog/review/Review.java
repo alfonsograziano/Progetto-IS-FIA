@@ -107,4 +107,20 @@ public class Review {
     private String text;
     private Spec spec;
     private User user;
+
+    @Override
+    public String toString() {
+        return "Review{" +
+                "id=" + id +
+                ", state='" + state + '\'' +
+                ", totalScore=" + totalScore +
+                ", battery=" + battery +
+                ", performance=" + performance +
+                ", display=" + display +
+                ", camera=" + camera +
+                ", text='" + text + '\'' +
+                ", spec=" + spec +
+                ", user=" + user +
+                '}';
+    }
 }

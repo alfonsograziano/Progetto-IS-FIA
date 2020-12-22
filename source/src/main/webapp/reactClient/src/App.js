@@ -1,17 +1,52 @@
-import logo from './logo.svg';
 import './App.css';
-import axios from "axios"
-import { useState, useEffect } from "react"
+import React from "react"
 import MainNavigation from './app/navigation';
 import 'antd/dist/antd.css';
 
+export const AuthContext = React.createContext(); // added this
+const initialState = {
+  isAuthenticated: false,
+  user: null,
+  token: null,
+};
+
+const reducer = (state, action) => {
+  switch (action.type) {
+    case "LOGIN":
+      localStorage.setItem("user", JSON.stringify(action.payload.user));
+      localStorage.setItem("token", JSON.stringify(action.payload.token));
+      return {
+        ...state,
+        isAuthenticated: true,
+        user: action.payload.user,
+        token: action.payload.token
+      };
+    case "LOGOUT":
+      localStorage.clear();
+      return {
+        ...state,
+        isAuthenticated: false,
+        user: null,
+        token:null
+      };
+    default:
+      return state;
+  }
+};
 
 function App() {
+  const [state, dispatch] = React.useReducer(reducer, initialState);
 
   return (
     <div style={{ width: "100%", height: "100%" }}>
-      <MainNavigation />
-      <div>Lol</div>
+      <AuthContext.Provider value={{
+        state,
+        dispatch
+      }}>
+
+        <MainNavigation />
+
+      </AuthContext.Provider>
     </div>
 
   );

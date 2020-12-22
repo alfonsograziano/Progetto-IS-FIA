@@ -1,27 +1,29 @@
 import React, { useState, useEffect } from "react";
-import {
-    BrowserRouter as Router,
-    Switch,
-    Route,
-    Link
-} from "react-router-dom";
+import { Link } from "react-router-dom";
 import { Layout, } from 'antd';
 import SearchBarForm from "../SearchBarForm";
 import Row from "../Row";
 import { Button } from 'antd';
 import { Avatar } from 'antd';
 import { UserOutlined, HomeOutlined } from '@ant-design/icons';
-import { useHistory } from "react-router-dom";
 import AdminNavbar from "./admin";
+import { AuthContext } from "../../../App";
 
 
 const { Header } = Layout;
 function Navbar(props) {
-    const history = useHistory();
+
+    const { state } = React.useContext(AuthContext);
+    useEffect(() => {
+        if (state && state.user) {
+
+        }
+    }, [state])
+
 
     //TODO: gestisci autenticazione correttamente => Si sblocca il task solo dopo aver gestito correttamente JWT
-    const [isAdmin, setIsAdmin] = useState(true)
-    const [isInAdmin, setIsInAdmin] = useState(false)
+    const [isAdmin] = useState(true)
+    const [isInAdmin] = useState(false)
 
     if (isAdmin && isInAdmin) return <AdminNavbar />
 
@@ -42,11 +44,16 @@ function Navbar(props) {
                             window.location.href = "/search?s=" + data
                         }}
                     />
-                    <div style={{ marginLeft: "20px" }}>
-                        <Link to="/profile" >
-                            <Avatar style={{ backgroundColor: "#f56a00", verticalAlign: 'middle' }} size="large" icon={<UserOutlined />} />
-                        </Link>
-                    </div>
+
+                    {
+                        state && state.isAuthenticated &&
+                        <div style={{ marginLeft: "20px" }}>
+                            <Link to="/profile" >
+                                <Avatar style={{ backgroundColor: "#f56a00", verticalAlign: 'middle' }} size="large" icon={<UserOutlined />} />
+                            </Link>
+                        </div>
+                    }
+
 
                     <div style={{ marginLeft: "20px" }}>
                         <Link to="/admin/home" >

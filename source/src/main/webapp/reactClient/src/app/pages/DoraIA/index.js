@@ -2,7 +2,7 @@ import { Card } from "antd";
 import React from "react";
 import DoraForm from "../../components/DoraForm";
 import { Breadcrumb } from 'antd';
-import { HomeOutlined, UserOutlined } from '@ant-design/icons';
+import { HomeOutlined } from '@ant-design/icons';
 import { searchWithDoraIa } from "../../services/dora.service"
 
 function DoraIA(props) {

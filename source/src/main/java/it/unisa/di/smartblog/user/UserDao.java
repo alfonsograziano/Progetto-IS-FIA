@@ -26,11 +26,12 @@ public class UserDao {
 
         Connection conn = null;
         PreparedStatement ps = null;
-        String query = "SELECT * FROM user WHERE email = '?'";
+        String query = "SELECT * FROM user WHERE email = ?";
         User user = new User();
 
         conn = ds.getConnection();
         ps = conn.prepareStatement(query);
+        ps.setString(1, email);
         ResultSet rs = ps.executeQuery();
 
         rs.next();

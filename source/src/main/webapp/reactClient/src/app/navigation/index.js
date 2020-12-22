@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import {
     BrowserRouter as Router,
     Switch,
@@ -16,11 +16,12 @@ import Navbar from "../components/Navbar";
 import AdminHome from "../pages/admin/AdminHome";
 import SpecList from "../pages/admin/SpecList";
 import Reviews from "../pages/admin/Reviews";
+import AddSpec from "../pages/admin/AddSpec";
 
 const { Content } = Layout;
 
 function MainNavigation(props) {
-    const [isAdmin, setIsAdmin] = useState(true)
+    const [isAdmin] = useState(true)
 
     return (
         <Router>
@@ -46,6 +47,8 @@ function MainNavigation(props) {
                                 <Route path="/admin/home" component={AdminHome} />
                                 <Route path="/admin/speclist" component={SpecList} />
                                 <Route path="/admin/reviews" component={Reviews} />
+                                <Route path="/admin/createspec" component={AddSpec} />
+
                             </React.Fragment>
                         }
                     </Switch>

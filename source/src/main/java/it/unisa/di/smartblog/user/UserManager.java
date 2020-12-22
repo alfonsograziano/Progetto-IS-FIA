@@ -15,7 +15,7 @@ public class UserManager {
                 User user = new User(username, password,email);
                 dao.saveUser(user);
             }
-        }
+        } else throw new UserMismatchException("Email already in use");
 
         return true;
     }
@@ -39,21 +39,18 @@ public class UserManager {
 
         if(email.length()>50 || email.length()<8) throw new UserMismatchException("Email maximum size exceeded");
 
-        Pattern pattern = Pattern.compile("^\\w+([.-]?\\w+)@\\w+([.-]?\\w+)(.\\w{2,3})+$");
-        Matcher matcher = pattern.matcher(email);
-        if(!matcher.find()) throw new UserMismatchException("Invalid email format");
+        Pattern mail_pattern = Pattern.compile("^\\w+([.-]?\\w+)@\\w+([.-]?\\w+)(.\\w{2,3})+$");
+        Matcher mail_matcher = mail_pattern.matcher(email);
+        if(!mail_matcher.find()) throw new UserMismatchException("Invalid email format");
 
+        Pattern username_pattern = Pattern.compile("^\\w{4,50}$");
+        Matcher username_matcher = username_pattern.matcher(username);
+        if(!username_matcher.find()) throw new UserMismatchException("Invalid username format");
 
-        pattern = Pattern.compile("\\w{4,50}");
-        matcher = pattern.matcher(username);
-        if(!matcher.find()) throw new UserMismatchException("Invalid username format");
+        Pattern password_pattern = Pattern.compile("^^(?=.*[!@#$%&])(?=.*\\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,50}");
+        Matcher password_matcher = password_pattern.matcher(password);
+        if(!password_matcher.find()) throw new UserMismatchException("Invalid password format");
 
-        /*
-        System.out.println("Password ricevuta: "+password);
-        pattern = Pattern.compile("^(?=.[a-z])(?=.[A-Z])(?=.\\d)(?=.[@$!%?&])[A-Za-z\\d@$!%?&]{8,50}$");
-        matcher = pattern.matcher(password);
-        if(!matcher.find()) throw new UserMismatchException("Invalid password format");
-        */
         return true;
     }
 

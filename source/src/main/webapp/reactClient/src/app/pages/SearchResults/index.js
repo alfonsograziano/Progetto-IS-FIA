@@ -1,15 +1,14 @@
 import React, { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
-import ReviewCard from "../../components/ReviewCard";
 import SpecCard from "../../components/SpecCard";
-import { Button, Radio } from 'antd';
+import { Button } from 'antd';
 import { DownloadOutlined } from '@ant-design/icons';
 import { Link } from "react-router-dom";
 import { Typography } from 'antd';
 import { search } from "../../services/spec.service"
 import { Pagination } from 'antd';
 
-const { Title, Paragraph } = Typography;
+const { Title } = Typography;
 function useQuery() {
     return new URLSearchParams(useLocation().search);
 }

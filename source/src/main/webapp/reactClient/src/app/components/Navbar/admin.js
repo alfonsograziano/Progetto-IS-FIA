@@ -1,16 +1,14 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 import { Layout, } from 'antd';
 import Row from "../Row";
 import { Button } from 'antd';
 import { Avatar } from 'antd';
 import { HomeOutlined } from '@ant-design/icons';
-import { useHistory } from "react-router-dom";
 
 
 const { Header } = Layout;
 function AdminNavbar(props) {
-    const history = useHistory();
 
     return (
         <Header style={{ backgroundColor: "#ccd3de" }}>

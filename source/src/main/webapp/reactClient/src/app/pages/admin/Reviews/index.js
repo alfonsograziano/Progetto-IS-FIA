@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Table, Button, Space, Modal } from 'antd';
+import { Table, Button,  Modal } from 'antd';
 import { getPendingReviews } from "../../../services/review.service"
 import ReviewCard from "../../../components/ReviewCard";
 import { changeReviewStatus } from "../../../services/review.service"

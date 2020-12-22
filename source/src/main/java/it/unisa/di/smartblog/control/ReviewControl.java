@@ -22,6 +22,7 @@ public class ReviewControl extends HttpServlet {
             request.setAttribute("response", reviews);
 
         } catch (SQLException throwables) {
+            throwables.printStackTrace();
             response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
             request.setAttribute("response", new Error("Wrong request"));
         }

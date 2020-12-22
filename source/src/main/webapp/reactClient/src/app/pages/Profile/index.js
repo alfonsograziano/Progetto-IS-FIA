@@ -6,6 +6,7 @@ import { Button } from 'antd';
 import ReviewCard from "../../components/ReviewCard";
 import { AuthContext } from "../../../App";
 import { getProfileInfo } from "../../services/user.service"
+import { Empty } from 'antd';
 
 const { Title, Paragraph } = Typography;
 function Profile(props) {
@@ -47,17 +48,20 @@ function Profile(props) {
 
             <div style={{ display: "flex", flexDirection: "row", alignItems: "center", flexWrap: "wrap" }}>
                 {
-                    reviews.map((review, index) =>
-                        <ReviewCard
-                            key={index}
-                            title={review.spec.name}
-                            subtitle={review.state}
-                            camera={review.camera}
-                            display={review.display}
-                            performance={review.performance}
-                            battery={review.battery}
-                            description={review.text}
-                        />)
+                    reviews.length > 0 ?
+                        reviews.map((review, index) =>
+                            <ReviewCard
+                                key={index}
+                                title={review.spec.name}
+                                subtitle={review.state}
+                                camera={review.camera}
+                                display={review.display}
+                                performance={review.performance}
+                                battery={review.battery}
+                                description={review.text}
+                            />)
+                        :
+                        <Empty />
                 }
 
             </div>

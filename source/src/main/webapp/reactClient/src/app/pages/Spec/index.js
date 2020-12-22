@@ -3,6 +3,7 @@ import { useLocation } from "react-router-dom";
 import SpecTable from "../../components/SpecTable";
 import ReviewCard from "../../components/ReviewCard";
 import SpecCard from "../../components/SpecCard";
+import { Empty } from 'antd';
 
 import { AmazonOutlined } from '@ant-design/icons';
 import { Row, Col, Modal, Typography, Button, Card, Breadcrumb } from 'antd';
@@ -139,7 +140,12 @@ function Spec(props) {
                             description={"SO: " + spec.so + "  Memoria: " + spec.memory + "  RAM: " + spec.ram}
                         />
 
-                        <Button shape="round" style={{ backgroundColor: "#ff9900" }} icon={<AmazonOutlined />}  >
+                        <Button shape="round" style={{ backgroundColor: "#ff9900" }} icon={<AmazonOutlined />}
+                            onClick={() => {
+                                const amzUrl = "https://www.amazon.it/s?k="
+                                window.location.href = amzUrl + spec.name
+                            }}
+                        >
                             Acquista su amazon
                         </Button>
                     </div>
@@ -160,7 +166,7 @@ function Spec(props) {
 
                     <div style={{ alignItems: "center", width: "100%", display: "flex", flexDirection: "column" }}>
                         {
-                            spec && spec.reviews && spec.reviews.map(review =>
+                            spec && spec.reviews && spec.reviews.length > 0 ? spec.reviews.map(review =>
                                 <ReviewCard
                                     title={review.user.email}
                                     camera={review.camera}
@@ -169,10 +175,12 @@ function Spec(props) {
                                     battery={review.battery}
                                     description={review.text}
                                 />)
+                                :
+                                <Empty />
                         }
 
 
-                        <Button type="primary" style={{ marginBottom: "20px" }}>Visualizza tutte le recensioni</Button>
+                        {/* <Button type="primary" style={{ marginBottom: "20px" }}>Visualizza tutte le recensioni</Button> */}
                         <Button type="primary" onClick={() => showModal()}>Aggiungi recensione</Button>
                     </div>
 

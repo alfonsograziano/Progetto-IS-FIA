@@ -16,8 +16,8 @@ const login = (email, password) => {
         .then(res => res.data)
 }
 
-const signUp = (username, email, password, rePassword) => {
-    return Axios.post(SIGN_UP, qs.stringify({ username, email, password, rePassword }), config())
+const signUp = data => {
+    return Axios.post(SIGN_UP, qs.stringify(data), config())
         .then(res => res.data)
 }
 

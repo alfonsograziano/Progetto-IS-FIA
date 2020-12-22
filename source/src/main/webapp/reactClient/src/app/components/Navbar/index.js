@@ -14,30 +14,29 @@ const { Header } = Layout;
 function Navbar(props) {
 
     const { state } = React.useContext(AuthContext);
+    const [isAdmin, setIsAdmin] = useState(false)
+    const [isInAdmin] = useState(false)
+
     useEffect(() => {
         if (state && state.user) {
-
+            setIsAdmin(!!state.user.phoneNumber)
         }
     }, [state])
 
-
     //TODO: gestisci autenticazione correttamente => Si sblocca il task solo dopo aver gestito correttamente JWT
-    const [isAdmin] = useState(true)
-    const [isInAdmin] = useState(false)
+
 
     if (isAdmin && isInAdmin) return <AdminNavbar />
 
     return (
         <Header style={{ backgroundColor: "#ccd3de" }}>
             <Row style={{ height: "100%", justifyContent: "space-between" }}>
-                <Link to="/" >
+                <Link to="/home" >
                     <h1>SmartBlog</h1>
                 </Link>
 
                 <Row style={{ maxWidth: "400px" }}>
-                    <Link to="/login">
-                        <Button type="primary" style={{ marginRight: "20px" }}>Login</Button>
-                    </Link>
+
 
                     <SearchBarForm
                         onSearch={data => {
@@ -46,20 +45,27 @@ function Navbar(props) {
                     />
 
                     {
-                        state && state.isAuthenticated &&
+                        state && state.isAuthenticated ?
+                            <div style={{ marginLeft: "20px" }}>
+                                <Link to="/profile" >
+                                    <Avatar style={{ backgroundColor: "#f56a00", verticalAlign: 'middle' }} size="large" icon={<UserOutlined />} />
+                                </Link>
+                            </div>
+                            :
+                            <Link to="/login">
+                                <Button type="primary" style={{ marginRight: "20px" }}>Login</Button>
+                            </Link>
+                    }
+
+                    {
+                        isAdmin &&
                         <div style={{ marginLeft: "20px" }}>
-                            <Link to="/profile" >
-                                <Avatar style={{ backgroundColor: "#f56a00", verticalAlign: 'middle' }} size="large" icon={<UserOutlined />} />
+                            <Link to="/admin/home" >
+                                <Avatar style={{ backgroundColor: "#f56a00", verticalAlign: 'middle' }} size="large" icon={<HomeOutlined />} />
                             </Link>
                         </div>
                     }
 
-
-                    <div style={{ marginLeft: "20px" }}>
-                        <Link to="/admin/home" >
-                            <Avatar style={{ backgroundColor: "#f56a00", verticalAlign: 'middle' }} size="large" icon={<HomeOutlined />} />
-                        </Link>
-                    </div>
 
                 </Row>
 

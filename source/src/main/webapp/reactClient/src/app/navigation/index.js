@@ -28,7 +28,7 @@ function MainNavigation(props) {
 
             <Layout style={{ height: "100%" }}>
                 <Navbar />
-                <Content style={{ padding: '0 50px', height: "100%", marginTop: "20px" }}>
+                <Content style={{ padding: '0 50px', height: "100%", marginTop: "20px", backgroundColor:"transparent" }}>
 
                     <Switch>
 

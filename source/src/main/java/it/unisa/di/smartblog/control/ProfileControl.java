@@ -3,9 +3,7 @@ package it.unisa.di.smartblog.control;
 import it.unisa.di.smartblog.filter.Error;
 import it.unisa.di.smartblog.review.Review;
 import it.unisa.di.smartblog.review.ReviewManager;
-import it.unisa.di.smartblog.user.EmptyEmailException;
-import it.unisa.di.smartblog.user.User;
-import it.unisa.di.smartblog.user.UserManager;
+import it.unisa.di.smartblog.user.*;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -34,7 +32,17 @@ public class ProfileControl extends HttpServlet {
             System.out.println(reviews);
             for(Review r: reviews) user.addReview(r);
 
-            request.setAttribute("response", user);
+            Manager m1 = um.isManager(user);
+            Reviewer r1 = um.isReviewer(user);
+
+            if(m1 != null){
+                request.setAttribute("response", m1);
+            }else if(r1 != null){
+                request.setAttribute("response", r1);
+            }else{
+                request.setAttribute("response", user);
+            }
+
         } catch (EmptyEmailException e) {
             e.printStackTrace();
             response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
@@ -43,9 +51,11 @@ public class ProfileControl extends HttpServlet {
             throwables.printStackTrace();
             response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
             request.setAttribute("response", new Error("Error..."));
+        } catch (UserMismatchException e) {
+            e.printStackTrace();
+            response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
+            request.setAttribute("response", new Error("Error..."));
         }
-
-
 
 
     }

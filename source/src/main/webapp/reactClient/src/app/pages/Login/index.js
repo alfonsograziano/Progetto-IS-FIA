@@ -4,8 +4,11 @@ import { Card } from 'antd';
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../../App";
 import { login, getProfileInfo } from "../../services/user.service"
+import { useHistory } from "react-router-dom";
+
 function Login(props) {
     const { dispatch } = React.useContext(AuthContext);
+    const history = useHistory();
 
     return (
         <div style={{ display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", height: "100%" }}>
@@ -25,6 +28,7 @@ function Login(props) {
                                                 token
                                             }
                                         })
+                                        history.push("/home")
                                     })
                             })
                             .catch(err => {

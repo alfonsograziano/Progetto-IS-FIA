@@ -1,12 +1,16 @@
+import { useState, useEffect } from "react"
 import { Card } from "antd";
 import React from "react";
 import DoraForm from "../../components/DoraForm";
 import { Breadcrumb } from 'antd';
 import { HomeOutlined } from '@ant-design/icons';
 import { searchWithDoraIa } from "../../services/dora.service"
+import SpecCard from "../../components/SpecCard";
+import Row from "../../components/Row";
 
 function DoraIA(props) {
 
+    const [results, setResults] = useState([])
 
     return (
         <div>
@@ -18,17 +22,37 @@ function DoraIA(props) {
                     <span>DoraIA</span>
                 </Breadcrumb.Item>
             </Breadcrumb>
-            <div style={{ marginTop: "20px", display: "flex", flexDirection: "column", alignItems: "center" }}>
+            <Row style={{ flexWrap: "wrap-reverse" }}>
                 <Card title="DoraIA" style={{ margin: "20px", width: "300px" }}>
                     <DoraForm
                         onSearch={(values) => {
                             searchWithDoraIa(values)
                                 .then(res => {
                                     console.log(res)
+                                    setResults(res)
                                 })
                         }} />
                 </Card>
-            </div>
+                {
+                    results.length > 0 &&
+                    <div>
+                        <h3>Risultati di ricerca...</h3>
+                        <Row style={{ flexWrap: "wrap" }}>
+                            {
+                                results.map((item, index) =>
+                                    <SpecCard
+                                        key={index}
+                                        imageUrl={item.image}
+                                        title={item.name + " - " + item.price}
+                                        description={"SO: " + item.so + "  Memoria: " + item.memory + "  RAM: " + item.ram}
+                                        id={item.id}
+                                    />
+                                )
+                            }</Row>
+                    </div>
+                }
+
+            </Row>
         </div>
     )
 }

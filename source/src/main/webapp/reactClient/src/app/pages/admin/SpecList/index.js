@@ -3,7 +3,10 @@ import { getAll } from "../../../services/spec.service"
 import { Table, Button, Space } from 'antd';
 import SearchBarForm from "../../../components/SearchBarForm";
 import { deleteSpec } from "../../../services/spec.service"
+import { useHistory } from "react-router-dom";
+
 function SpecList(props) {
+    const history = useHistory();
 
     const [data, setData] = useState([])
     const [filter, setFilter] = useState("")
@@ -26,18 +29,18 @@ function SpecList(props) {
         } else {
             setFilteredData(data)
         }
-    }, [filter])
+    }, [data, filter])
 
     const deleteSelectedSpec = spec => {
         console.log(spec.id)
-         deleteSpec(spec.id)
-             .then(res => {
-                 console.log(res)
-             })
-             .catch(err => {
-                 console.log(err)
-             })
- 
+        deleteSpec(spec.id)
+            .then(res => {
+                console.log(res)
+            })
+            .catch(err => {
+                console.log(err)
+            })
+
     }
 
 
@@ -77,6 +80,11 @@ function SpecList(props) {
                 dataSource={filteredData}
                 columns={columns}
             />
+
+            <Button type="primary" style={{marginTop:"20px"}} onClick={() => {
+                history.push("/admin/createSpec")
+            }}> Aggiungi scheda tecnica</Button>
+
         </div>
     )
 }

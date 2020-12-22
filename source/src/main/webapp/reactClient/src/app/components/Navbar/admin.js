@@ -13,7 +13,7 @@ function AdminNavbar(props) {
     return (
         <Header style={{ backgroundColor: "#ccd3de" }}>
             <Row style={{ height: "100%", justifyContent: "space-between" }}>
-                <Link to="/" >
+                <Link to="/home" >
                     <h1>SmartBlog</h1>
                 </Link>
 

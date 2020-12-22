@@ -13,7 +13,7 @@ import { faGamepad } from '@fortawesome/free-solid-svg-icons'
 import { faMicrochip } from '@fortawesome/free-solid-svg-icons'
 import { faAndroid } from '@fortawesome/free-brands-svg-icons'
 
-import { HomeOutlined, UserOutlined } from '@ant-design/icons';
+import { HomeOutlined } from '@ant-design/icons';
 
 import { getSpecById } from "../../services/spec.service"
 import ReviewForm from "../../components/ReviewForm";
@@ -167,10 +167,10 @@ function Spec(props) {
                                     display={review.display}
                                     performance={review.performance}
                                     battery={review.battery}
-                                    description={review.description}
+                                    description={review.text}
                                 />)
                         }
-                    
+
 
                         <Button type="primary" style={{ marginBottom: "20px" }}>Visualizza tutte le recensioni</Button>
                         <Button type="primary" onClick={() => showModal()}>Aggiungi recensione</Button>

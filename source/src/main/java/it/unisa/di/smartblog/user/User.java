@@ -1,17 +1,22 @@
 package it.unisa.di.smartblog.user;
 
 import it.unisa.di.smartblog.review.Review;
+
+import java.util.ArrayList;
 import java.util.List;
 
 public class User {
 
-    public User(){};
+    public User(){
+        this.reviews = new ArrayList<>();
+    };
 
     public User(String username, String password, String email) {
         this.active = true;
         this.username = username;
         this.password = password;
         this.email = email;
+        this.reviews = new ArrayList<>();
     }
 
     public User(String username, String password, String email, List<Review> reviews) {

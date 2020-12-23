@@ -18,6 +18,7 @@ public class ResponseFormatter implements Filter {
        //Codice prima dell'esecuzione della servlet
         chain.doFilter(req, resp);
         //Codice dopo l'esecuzione della servlet
+
         sendAsJson(resp, req.getAttribute("response"));
     }
 

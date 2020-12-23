@@ -13,8 +13,12 @@ import java.io.IOException;
         name="DoraControl",
         value="/api/dora")
 public class DoraControl extends HttpServlet {
+    static{
+        dm = new DoraManager();
+    }
+
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        DoraManager dm = new DoraManager();
+
         System.out.println("Battery => "+request.getParameter("battery"));
         try {
             double battery = Double.parseDouble(request.getParameter("battery"))*2;
@@ -32,4 +36,5 @@ public class DoraControl extends HttpServlet {
 
     }
 
+    private static DoraManager dm;
 }

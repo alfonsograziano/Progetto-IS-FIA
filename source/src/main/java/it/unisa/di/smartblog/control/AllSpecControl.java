@@ -17,8 +17,12 @@ import java.util.List;
         name="AllSpecControl",
         value="/api/spec/all")
 public class AllSpecControl extends HttpServlet {
+    static{
+        sm = new SpecsManager();
+    }
+
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        SpecsManager sm = new SpecsManager();
+
         try {
             List<Spec> res = sm.searchAll();
             request.setAttribute("response",res);
@@ -29,4 +33,6 @@ public class AllSpecControl extends HttpServlet {
         }
 
     }
+
+    private static SpecsManager sm;
 }

@@ -15,6 +15,10 @@ import java.sql.SQLException;
 @WebServlet(name="SignUpControl",
         value="/api/signup")
 public class SignUpControl extends HttpServlet {
+    static{
+        um = new UserManager();
+    }
+
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         String username = request.getParameter("username");
@@ -22,7 +26,6 @@ public class SignUpControl extends HttpServlet {
         String password = request.getParameter("password");
         String repeatPassword = request.getParameter("rePassword");
 
-        UserManager um = new UserManager();
         try {
            um.createUser(username,email, password, repeatPassword);
            request.setAttribute("response", new Message("User created!"));
@@ -36,4 +39,6 @@ public class SignUpControl extends HttpServlet {
         }
 
     }
+
+    private static UserManager um;
 }

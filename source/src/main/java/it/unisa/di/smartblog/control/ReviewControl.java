@@ -16,8 +16,12 @@ import java.util.List;
 @WebServlet(name="ReviewControl",
         value="/api/review/pending")
 public class ReviewControl extends HttpServlet {
+    static{
+        rm = new ReviewManager();
+    }
+
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        ReviewManager rm = new ReviewManager();
+
         try {
             List<Review> reviews = rm.searchPendingReviews();
             request.setAttribute("response", reviews);
@@ -28,4 +32,6 @@ public class ReviewControl extends HttpServlet {
             request.setAttribute("response", new Error("Wrong request"));
         }
     }
+
+    private static ReviewManager rm;
 }

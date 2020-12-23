@@ -19,11 +19,13 @@ import java.util.List;
         value="/api/profile"
         )
 public class ProfileControl extends HttpServlet {
+    static{
+        um = new UserManager();
+        rm = new ReviewManager();
+    }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String email =  request.getAttribute("email").toString();
-        UserManager um = new UserManager();
-        ReviewManager rm = new ReviewManager();
 
         User user = null;
         try {
@@ -54,4 +56,7 @@ public class ProfileControl extends HttpServlet {
 
 
     }
+
+    private static ReviewManager rm;
+    private static UserManager um;
 }

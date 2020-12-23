@@ -22,50 +22,57 @@ public class SpecDao {
     }
     
     public synchronized List<Spec> getAll() throws SQLException{
+        //reference controllo chiusura connessione dopo lancio di un'eccezione
+
     	Connection conn = null;
         PreparedStatement ps = null;
         String query = "SELECT * FROM spec";
         ArrayList<Spec> result = new ArrayList<>();
 
-        conn = ds.getConnection();
-        ps = conn.prepareStatement(query);
-        ResultSet rs = ps.executeQuery();
-        
-        while(rs.next()){
-        	Spec s = new Spec();
-        	s.setId(rs.getInt("id"));
-            s.setName(rs.getString("name"));
-            s.setSo(rs.getString("so"));
-            s.setCpu(rs.getString("cpu"));
-            s.setChipset(rs.getString("chipset"));
-            s.setGpu(rs.getString("gpu"));
-            s.setRam(rs.getString("ram"));
-            s.setMemory(rs.getString("memory"));
-            s.setScreenSize(rs.getString("screenSize"));
-            s.setImage(rs.getString("image"));
-            s.setDisplay(rs.getDouble("display")/2);
-            s.setCamera(rs.getDouble("camera")/2);
-            s.setPerformance(rs.getDouble("performance")/2);
-            s.setBattery(rs.getInt("battery"));
-            s.setDate(rs.getString("date"));
-            s.setPrice(rs.getDouble("price"));
-            result.add(s);
-        }
-        
         try {
-            conn.close();
+            conn = ds.getConnection();
+            ps = conn.prepareStatement(query);
+            ResultSet rs = ps.executeQuery();
 
-        } catch(Exception e) {
-        	e.printStackTrace();
-        }
-        
-        try {
-            ps.close();
+            while (rs.next()) {
+                Spec s = new Spec();
+                s.setId(rs.getInt("id"));
+                s.setName(rs.getString("name"));
+                s.setSo(rs.getString("so"));
+                s.setCpu(rs.getString("cpu"));
+                s.setChipset(rs.getString("chipset"));
+                s.setGpu(rs.getString("gpu"));
+                s.setRam(rs.getString("ram"));
+                s.setMemory(rs.getString("memory"));
+                s.setScreenSize(rs.getString("screenSize"));
+                s.setImage(rs.getString("image"));
+                s.setDisplay(rs.getDouble("display") / 2);
+                s.setCamera(rs.getDouble("camera") / 2);
+                s.setPerformance(rs.getDouble("performance") / 2);
+                s.setBattery(rs.getInt("battery"));
+                s.setDate(rs.getString("date"));
+                s.setPrice(rs.getDouble("price"));
+                result.add(s);
+            }
+        } catch (SQLException sql){
+            throw sql;
 
-        } catch(Exception e) {
-        	e.printStackTrace();
+        } finally {
+            try {
+                conn.close();
+
+            } catch(Exception e) {
+                e.printStackTrace();
+            }
+
+            try {
+                ps.close();
+
+            } catch(Exception e) {
+                e.printStackTrace();
+            }
         }
-        
+
         return result;        
     }
 

@@ -15,8 +15,12 @@ import java.io.IOException;
 @WebServlet(name="CreateSpecControl",
         value="/api/spec/add")
 public class CreateSpecControl extends HttpServlet {
+    static{
+        sm = new SpecsManager();
+    }
+
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        SpecsManager sm = new SpecsManager();
+
         try {
             sm.createSpec(
                     request.getParameter("deviceName"),
@@ -44,4 +48,5 @@ public class CreateSpecControl extends HttpServlet {
     }
     }
 
+    private static SpecsManager sm;
 }

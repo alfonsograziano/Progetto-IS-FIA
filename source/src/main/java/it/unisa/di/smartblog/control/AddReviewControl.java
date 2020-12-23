@@ -22,10 +22,13 @@ import java.sql.SQLException;
 @WebServlet(name="AddReviewControl",
         value="/api/review/add")
 public class AddReviewControl extends HttpServlet {
+    static{
+        rm = new ReviewManager();
+        sm = new SpecsManager();
+        um = new UserManager();
+    }
+
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        ReviewManager rm = new ReviewManager();
-        SpecsManager sm = new SpecsManager();
-        UserManager um = new UserManager();
 
         int totalScore = Integer.parseInt(request.getParameter("totalScore"));
         int performance = Integer.parseInt(request.getParameter("performance"));
@@ -52,4 +55,7 @@ public class AddReviewControl extends HttpServlet {
         }
     }
 
+    private static ReviewManager rm;
+    private static SpecsManager sm;
+    private static UserManager um;
 }

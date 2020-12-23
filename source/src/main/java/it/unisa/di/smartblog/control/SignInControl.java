@@ -18,12 +18,16 @@ import java.sql.SQLException;
 @WebServlet(name="SignInControl",
         value="/api/login")
 public class SignInControl extends HttpServlet {
+    static{
+        um = new UserManager();
+    }
+
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        System.out.println("doPost SignInControl");
 
         String email = request.getParameter("email");
         String password = request.getParameter("password");
 
-        UserManager um = new UserManager();
         try {
             User user = um.auth(email,password);
             JWTHandler jwt = new JWTHandler();
@@ -40,4 +44,5 @@ public class SignInControl extends HttpServlet {
 
     }
 
+    private static UserManager um;
 }

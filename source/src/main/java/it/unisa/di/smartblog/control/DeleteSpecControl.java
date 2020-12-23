@@ -15,8 +15,12 @@ import java.sql.SQLException;
 @WebServlet(name="DeleteSpecControl",
         value="/api/spec/delete")
 public class DeleteSpecControl extends HttpServlet {
+    static{
+        sm = new SpecsManager();
+    }
+
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        SpecsManager sm = new SpecsManager();
+
         int specId = Integer.parseInt(request.getParameter("specId"));
 
         try {
@@ -29,4 +33,5 @@ public class DeleteSpecControl extends HttpServlet {
 
     }
 
+    private static SpecsManager sm;
 }

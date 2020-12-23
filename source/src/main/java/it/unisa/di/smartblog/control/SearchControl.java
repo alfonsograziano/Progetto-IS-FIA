@@ -2,6 +2,7 @@ package it.unisa.di.smartblog.control;
 
 import it.unisa.di.smartblog.spec.EmptyFieldException;
 import it.unisa.di.smartblog.spec.SpecsManager;
+import it.unisa.di.smartblog.user.UserManager;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -14,9 +15,12 @@ import java.sql.SQLException;
 @WebServlet(name="SearchControl",
         value="/api/search")
 public class SearchControl extends HttpServlet {
+    static{
+        sm = new SpecsManager();
+    }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        SpecsManager sm = new SpecsManager();
+
         String search = request.getParameter("s");
         try {
             request.setAttribute("response", sm.searchByName(search));
@@ -26,4 +30,6 @@ public class SearchControl extends HttpServlet {
             throwables.printStackTrace();
         }
     }
+
+    private static SpecsManager sm;
 }

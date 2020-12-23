@@ -100,6 +100,7 @@ public class ReviewDao {
             user.setId(rs.getInt("userId"));
             user.setEmail(rs.getString("email"));
             user.setUsername(rs.getString("username"));
+            user.setActive(true);
             review.setUser(user);
 
             reviews.add(review);
@@ -192,6 +193,7 @@ public class ReviewDao {
 
             User user = new User();
             user.setId(rs.getInt("userId"));
+            user.setActive(true);
             user.setEmail(rs.getString("email"));
             user.setUsername(rs.getString("username"));
             review.setUser(user);

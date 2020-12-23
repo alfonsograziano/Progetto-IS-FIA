@@ -3,6 +3,8 @@ package it.unisa.di.smartblog.review;
 import it.unisa.di.smartblog.spec.Spec;
 import it.unisa.di.smartblog.user.User;
 
+import java.util.Objects;
+
 public class Review {
     public Review(){};
 
@@ -111,6 +113,19 @@ public class Review {
                 ", spec=" + spec +
                 ", user=" + user +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Review)) return false;
+        Review review = (Review) o;
+        return getId() == review.getId() && getTotalScore() == review.getTotalScore() && getBattery() == review.getBattery() && getPerformance() == review.getPerformance() && getDisplay() == review.getDisplay() && getCamera() == review.getCamera() && Objects.equals(getState(), review.getState()) && Objects.equals(getText(), review.getText()) && Objects.equals(getSpec(), review.getSpec()) && Objects.equals(getUser(), review.getUser());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getId(), getState(), getTotalScore(), getBattery(), getPerformance(), getDisplay(), getCamera(), getText(), getSpec(), getUser());
     }
 
     private int id;

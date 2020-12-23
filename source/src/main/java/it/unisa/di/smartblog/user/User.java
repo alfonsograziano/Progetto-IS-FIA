@@ -3,6 +3,7 @@ package it.unisa.di.smartblog.user;
 import it.unisa.di.smartblog.review.Review;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class User {
 
@@ -72,6 +73,31 @@ public class User {
 
     public boolean addReview(Review review){
         return reviews.add(review);
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof User)) return false;
+        User user = (User) o;
+        return getId() == user.getId() && isActive() == user.isActive() && Objects.equals(getUsername(), user.getUsername()) && Objects.equals(getPassword(), user.getPassword()) && Objects.equals(getEmail(), user.getEmail()) && Objects.equals(getReviews(), user.getReviews());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getId(), isActive(), getUsername(), getPassword(), getEmail(), getReviews());
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", active=" + active +
+                ", username='" + username + '\'' +
+                ", password='" + password + '\'' +
+                ", email='" + email + '\'' +
+                ", reviews=" + reviews +
+                '}';
     }
 
     private int id;

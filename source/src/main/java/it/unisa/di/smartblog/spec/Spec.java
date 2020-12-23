@@ -4,6 +4,7 @@ import it.unisa.di.smartblog.review.Review;
 import it.unisa.di.smartblog.user.Reviewer;
 
 import java.util.List;
+import java.util.Objects;
 
 public class Spec {
 
@@ -214,6 +215,19 @@ public class Spec {
                 ", reviews=" + reviews +
                 ", normalizedBattery=" + normalizedBattery +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Spec)) return false;
+        Spec spec = (Spec) o;
+        return Double.compare(spec.fit, fit) == 0 && getId() == spec.getId() && getBattery() == spec.getBattery() && Double.compare(spec.getDisplay(), getDisplay()) == 0 && Double.compare(spec.getCamera(), getCamera()) == 0 && Double.compare(spec.getPerformance(), getPerformance()) == 0 && Double.compare(spec.getPrice(), getPrice()) == 0 && Double.compare(spec.getNormalizedBattery(), getNormalizedBattery()) == 0 && Objects.equals(getName(), spec.getName()) && Objects.equals(getDate(), spec.getDate()) && Objects.equals(getImage(), spec.getImage()) && Objects.equals(getSo(), spec.getSo()) && Objects.equals(getCpu(), spec.getCpu()) && Objects.equals(getChipset(), spec.getChipset()) && Objects.equals(getGpu(), spec.getGpu()) && Objects.equals(getRam(), spec.getRam()) && Objects.equals(getMemory(), spec.getMemory()) && Objects.equals(getScreenSize(), spec.getScreenSize()) && Objects.equals(getReviewer(), spec.getReviewer()) && Objects.equals(getReviews(), spec.getReviews());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(fit, getId(), getName(), getDate(), getImage(), getSo(), getCpu(), getChipset(), getGpu(), getRam(), getMemory(), getScreenSize(), getBattery(), getDisplay(), getCamera(), getPerformance(), getPrice(), getReviewer(), getReviews(), getNormalizedBattery());
     }
 
     private double fit;

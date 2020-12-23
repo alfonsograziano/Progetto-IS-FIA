@@ -13,7 +13,7 @@ import java.io.PrintWriter;
 
 //Aggiungere qui le servlet su cui devo eseguire il filtro
 @WebFilter(servletNames = {
-        "ReviewInspectionControl","ReviewControl"
+        "ReviewInspectionControl","ReviewControl","SetScoresControl"
 })
 public class RestrictedToReviewer implements Filter {
 

@@ -2,14 +2,15 @@ package it.unisa.di.smartblog.test.user;
 
 import it.unisa.di.smartblog.review.ReviewDao;
 import it.unisa.di.smartblog.test.review.ReviewDaoTest;
-import it.unisa.di.smartblog.user.CredentialsException;
-import it.unisa.di.smartblog.user.Manager;
-import it.unisa.di.smartblog.user.User;
-import it.unisa.di.smartblog.user.UserDao;
+import it.unisa.di.smartblog.user.*;
 import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
 
+import javax.naming.Context;
+import javax.naming.InitialContext;
+import javax.naming.NamingException;
+import javax.sql.DataSource;
 import java.sql.SQLException;
 
 public class UserDaoTest extends TestCase {
@@ -48,11 +49,22 @@ public class UserDaoTest extends TestCase {
         try{
 
             User user = ud.getByEmail(null);
-            fail("testGetByEmail() (empty or null email) not passed!");
+            fail("testGetByEmail() (null email) not passed!");
 
         } catch (CredentialsException e){
 
-            System.out.println("testGetByEmailException() (empty or null email) passed!");
+            System.out.println("testGetByEmailException() (null email) passed!");
+
+        }
+
+        try{
+
+            User user = ud.getByEmail("");
+            fail("testGetByEmail() (empty email) not passed!");
+
+        } catch (CredentialsException e){
+
+            System.out.println("testGetByEmailException() (empty email) passed!");
 
         }
 
@@ -70,7 +82,6 @@ public class UserDaoTest extends TestCase {
     }
 
     public void testSaveUser() throws SQLException{
-        //TODO: Eliminare user dopo l'inserimento
 
         try {
 
@@ -81,6 +92,7 @@ public class UserDaoTest extends TestCase {
             assertEquals(u.getEmail(), insertedUser.getEmail());
             assertEquals(u.getPassword(), insertedUser.getPassword());
             System.out.println("testSaveUser() passed!");
+            ud.deleteUserById(insertedUser.getId());
 
         } catch (CredentialsException e){
 
@@ -151,6 +163,86 @@ public class UserDaoTest extends TestCase {
 
     }
 
+    public void testGetReviewer(){
+
+        try{
+
+            User user = new User();
+            user.setEmail("reviewer@reviewer.com");
+            user.setUsername("reviewer");
+            user.setPassword("!Reviewer10");
+            user.setId(5);
+
+            Reviewer reviewer = ud.getReviewer(user);
+            Reviewer oracle = new Reviewer();
+            oracle.setEmail("reviewer@reviewer.com");
+            oracle.setUsername("reviewer");
+            oracle.setPassword("!Reviewer10");
+            oracle.setPhoneNumber("3333333333");
+            oracle.setRank("senior");
+            assertEquals(reviewer.getEmail(), oracle.getEmail());
+            assertEquals(reviewer.getPassword(), oracle.getPassword());
+            assertEquals(reviewer.getUsername(), oracle.getUsername());
+            assertEquals(reviewer.getPhoneNumber(), oracle.getPhoneNumber());
+            System.out.println("testGetReviewer() passed!");
+
+        } catch (Exception e){
+
+            System.out.println("testGetReviewer() not passed!");
+
+        }
+
+    }
+
+    public void testGetReviewerException() throws SQLException, CredentialsException{
+
+        try{
+
+            ud.getReviewer(null);
+            fail("testGetReviewerException() (null user) not passed!");
+
+        }catch (CredentialsException e){
+
+            System.out.println("testGetReviewerException() (null user) passed!");
+
+        }
+
+        try{
+
+            User user = new User();
+            user.setEmail("antonio@sisonoio.com");
+            user.setUsername("antonio");
+            user.setPassword("!Antonio99");
+            user.setId(3);
+            ud.getReviewer(user);
+            fail("testGetReviewerException() (user not reviewer) not passed!");
+
+        } catch(SQLException e){
+
+            System.out.println("testGetReviewerException() (user not reviewer) not passed!");
+
+        }
+
+    }
+
+    public void testDeleteUserById() throws CredentialsException{
+
+        try {
+
+            User u = new User("testuser", "TestUser!123", "testuser99@gmail.com");
+            ud.saveUser(u);
+            User insertedUser = ud.getByEmail("testuser99@gmail.com");
+            ud.deleteUserById(insertedUser.getId());
+            ud.getByEmail("testuser99@gmail.com");
+            fail("testDeleteUserById() not passed!");
+
+        }catch (SQLException e){
+
+            System.out.println("testDeleteUserById() passed!");
+
+        }
+
+    }
 
     public static Test suite(){
 
@@ -160,5 +252,6 @@ public class UserDaoTest extends TestCase {
 
 
     private static UserDao ud;
+    private static DataSource ds;
 
 }

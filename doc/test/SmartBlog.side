@@ -3732,7 +3732,436 @@
   }, {
     "id": "485ab8a6-0ee6-4c87-9f3c-4467ce3dec02",
     "name": "Barra di ricerca - barra piena",
-    "commands": []
+    "commands": [{
+      "id": "b5a2da48-11e6-4a5e-ba57-06817c88e54f",
+      "comment": "",
+      "command": "open",
+      "target": "/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "769b465c-cc4c-4db9-a1e5-d6e2bae4e462",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "974x1047",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "9f0dfdcf-6e91-4709-affb-63f888b35fff",
+      "comment": "",
+      "command": "click",
+      "target": "css=.ant-input",
+      "targets": [
+        ["css=.ant-input", "css:finder"],
+        ["xpath=//input[@value='']", "xpath:attributes"],
+        ["xpath=//div[@id='root']/div/section/header/div/div/span/span/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "d1688ecb-8a4d-45d8-9ae5-8dff6472dc09",
+      "comment": "",
+      "command": "type",
+      "target": "css=.ant-input",
+      "targets": [
+        ["css=.ant-input", "css:finder"],
+        ["xpath=//input[@value='oneplus']", "xpath:attributes"],
+        ["xpath=//div[@id='root']/div/section/header/div/div/span/span/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "oneplus"
+    }, {
+      "id": "d7f0c67d-a7c1-456b-af48-84b3077fa02a",
+      "comment": "",
+      "command": "sendKeys",
+      "target": "css=.ant-input",
+      "targets": [
+        ["css=.ant-input", "css:finder"],
+        ["xpath=//input[@value='oneplus']", "xpath:attributes"],
+        ["xpath=//div[@id='root']/div/section/header/div/div/span/span/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "${KEY_ENTER}"
+    }, {
+      "id": "45ab4c1a-8047-4d49-a2ef-4bfd295282c8",
+      "comment": "",
+      "command": "assertElementPresent",
+      "target": "css=div:nth-child(1) > .ant-card img",
+      "targets": [],
+      "value": ""
+    }]
+  }, {
+    "id": "94de8f52-c76d-4df6-9241-2a7b1f37dae3",
+    "name": "Aggiunta recensione - testo vuoto",
+    "commands": [{
+      "id": "29074a2d-6308-4d6b-9820-d1666cac0647",
+      "comment": "",
+      "command": "open",
+      "target": "/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "22a839ed-d6a1-486f-ac64-6d47d1b0b655",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "974x1040",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "bcd1ca05-9a62-4cf9-a271-1d4e4ca4b26a",
+      "comment": "",
+      "command": "click",
+      "target": "css=h1",
+      "targets": [
+        ["css=h1", "css:finder"],
+        ["xpath=//div[@id='root']/div/section/header/div/a/h1", "xpath:idRelative"],
+        ["xpath=//h1", "xpath:position"],
+        ["xpath=//h1[contains(.,'SmartBlog')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "f6932ce9-3dda-4922-8328-ae46a9494336",
+      "comment": "",
+      "command": "click",
+      "target": "css=div:nth-child(1) > .ant-card img",
+      "targets": [
+        ["css=div:nth-child(1) > .ant-card img", "css:finder"],
+        ["xpath=//img[@alt='example']", "xpath:img"],
+        ["xpath=//div[@id='root']/div/section/main/div/div/div/div/div/img", "xpath:idRelative"],
+        ["xpath=//img", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "f5c27f29-0c41-4f7d-9ea1-07bab3efdb7e",
+      "comment": "",
+      "command": "click",
+      "target": "css=.ant-btn-primary:nth-child(2) > span",
+      "targets": [
+        ["css=.ant-btn-primary:nth-child(2) > span", "css:finder"],
+        ["xpath=//div[@id='root']/div/section/main/div/div[2]/div[3]/div/button/span", "xpath:idRelative"],
+        ["xpath=//div[3]/div/button/span", "xpath:position"],
+        ["xpath=//span[contains(.,'Aggiungi recensione')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "c63d1a92-4091-45cd-8bb3-cab9b23f1f9d",
+      "comment": "",
+      "command": "click",
+      "target": "css=div:nth-child(7) > .ant-btn > span",
+      "targets": [
+        ["css=div:nth-child(7) > .ant-btn > span", "css:finder"],
+        ["xpath=//div[6]/button/span", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "efae8ef0-0ca3-4435-9698-a5fb8b050488",
+      "comment": "",
+      "command": "assertText",
+      "target": "css=.ant-message-custom-content > span:nth-child(2)",
+      "targets": [],
+      "value": "Text cannot be null or empty"
+    }]
+  }, {
+    "id": "a5df1b0a-0383-4604-8159-ba404f1125ba",
+    "name": "Aggiunta recensione - campi corretti",
+    "commands": [{
+      "id": "94c6ff15-565b-4f75-b2a9-11aa21099387",
+      "comment": "",
+      "command": "open",
+      "target": "/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "86f91082-0658-4412-b5de-72ada985d690",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "974x1040",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "75762994-c005-4c97-bed6-3b1c30b5e188",
+      "comment": "",
+      "command": "click",
+      "target": "css=h1",
+      "targets": [
+        ["css=h1", "css:finder"],
+        ["xpath=//div[@id='root']/div/section/header/div/a/h1", "xpath:idRelative"],
+        ["xpath=//h1", "xpath:position"],
+        ["xpath=//h1[contains(.,'SmartBlog')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "f9b02788-bd2e-4db3-aba8-b4c4f820893d",
+      "comment": "",
+      "command": "click",
+      "target": "css=div:nth-child(1) > .ant-card img",
+      "targets": [
+        ["css=div:nth-child(1) > .ant-card img", "css:finder"],
+        ["xpath=//img[@alt='example']", "xpath:img"],
+        ["xpath=//div[@id='root']/div/section/main/div/div/div/div/div/img", "xpath:idRelative"],
+        ["xpath=//img", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "a8b272e8-98a5-4a06-8444-d41c37fce90a",
+      "comment": "",
+      "command": "click",
+      "target": "css=.ant-btn-primary:nth-child(2) > span",
+      "targets": [
+        ["css=.ant-btn-primary:nth-child(2) > span", "css:finder"],
+        ["xpath=//div[@id='root']/div/section/main/div/div[2]/div[3]/div/button/span", "xpath:idRelative"],
+        ["xpath=//div[3]/div/button/span", "xpath:position"],
+        ["xpath=//span[contains(.,'Aggiungi recensione')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "45b168ae-00c6-44db-a784-da77715d6099",
+      "comment": "",
+      "command": "mouseOver",
+      "target": "css=.ant-btn-primary:nth-child(2) > span",
+      "targets": [
+        ["css=.ant-btn-primary:nth-child(2) > span", "css:finder"],
+        ["xpath=//div[@id='root']/div/section/main/div/div[2]/div[3]/div/button/span", "xpath:idRelative"],
+        ["xpath=//div[3]/div/button/span", "xpath:position"],
+        ["xpath=//span[contains(.,'Aggiungi recensione')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "838b2430-76f6-42b2-a5af-0815f155c69a",
+      "comment": "",
+      "command": "mouseOut",
+      "target": "css=.ant-btn-primary:nth-child(2) > span",
+      "targets": [
+        ["css=.ant-btn-primary:nth-child(2) > span", "css:finder"],
+        ["xpath=//div[@id='root']/div/section/main/div/div[2]/div[3]/div/button/span", "xpath:idRelative"],
+        ["xpath=//div[3]/div/button/span", "xpath:position"],
+        ["xpath=//span[contains(.,'Aggiungi recensione')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "6d783acd-a3b5-4ed5-a151-f0e9bf5c5896",
+      "comment": "",
+      "command": "click",
+      "target": "css=.ant-input:nth-child(6)",
+      "targets": [
+        ["css=.ant-input:nth-child(6)", "css:finder"],
+        ["xpath=//textarea", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "12e59b44-85c0-4731-a777-a8453f2983e0",
+      "comment": "",
+      "command": "type",
+      "target": "css=.ant-input:nth-child(6)",
+      "targets": [
+        ["css=.ant-input:nth-child(6)", "css:finder"],
+        ["xpath=//textarea", "xpath:position"]
+      ],
+      "value": "Descrizione recensione valida"
+    }, {
+      "id": "91b6d898-b250-4591-8170-b8fb26d33e19",
+      "comment": "",
+      "command": "click",
+      "target": "css=div:nth-child(8) span",
+      "targets": [
+        ["css=div:nth-child(8) span", "css:finder"],
+        ["xpath=//div[6]/button/span", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "bbeb6d59-94d6-4789-8ce3-85d970f5999f",
+      "comment": "",
+      "command": "assertText",
+      "target": "css=.ant-message-custom-content > span:nth-child(2)",
+      "targets": [],
+      "value": "Recensione aggiunta... Verrà controllata a breve"
+    }]
+  }, {
+    "id": "f9596183-3734-430c-a60e-017a66f93fbd",
+    "name": "Valutazione recensione - approvazione",
+    "commands": [{
+      "id": "320e254d-0d58-400f-9bf0-0d17d944b185",
+      "comment": "",
+      "command": "open",
+      "target": "/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "82960151-1a5d-4a58-887b-d09d6eb18731",
+      "comment": "",
+      "command": "click",
+      "target": "css=.anticon-home > svg",
+      "targets": [
+        ["css=.anticon-home > svg", "css:finder"]
+      ],
+      "value": ""
+    }, {
+      "id": "51f4a486-4ae9-477e-8fe1-5fb670124f88",
+      "comment": "",
+      "command": "click",
+      "target": "css=.ant-table-row:nth-child(1) > .ant-table-cell",
+      "targets": [
+        ["css=.ant-table-row:nth-child(1) > .ant-table-cell", "css:finder"],
+        ["xpath=//div[@id='root']/div/section/main/div/div/div/div/div/div/div/table/tbody/tr/td", "xpath:idRelative"],
+        ["xpath=//td", "xpath:position"],
+        ["xpath=//td[contains(.,'Huawei Mate 40 Pro | alfonso2')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "ca0bc029-0802-4993-b256-f8bf4913410c",
+      "comment": "",
+      "command": "click",
+      "target": "css=.ant-btn-primary > span",
+      "targets": [
+        ["css=.ant-btn-primary > span", "css:finder"],
+        ["xpath=//button[2]/span", "xpath:position"],
+        ["xpath=//span[contains(.,'Approva')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "b90470f7-2a5c-4c65-8706-f42985d85be0",
+      "comment": "",
+      "command": "assertText",
+      "target": "css=span:nth-child(2)",
+      "targets": [],
+      "value": "Recensione correttamente aggiornata"
+    }]
+  }, {
+    "id": "57f24d22-cea4-4c28-bf5d-fc72d5cf15dd",
+    "name": "Valutazione recensione - respinta",
+    "commands": [{
+      "id": "5442aef4-c594-481b-a709-47a1b851b2d9",
+      "comment": "",
+      "command": "open",
+      "target": "/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "c3e5a8d4-e784-4afc-88cd-60f2a3ddc82b",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "974x1040",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "ccf7ce45-808a-441d-9638-c5634a5c0a2a",
+      "comment": "",
+      "command": "click",
+      "target": "css=.anticon-home > svg",
+      "targets": [
+        ["css=.anticon-home > svg", "css:finder"]
+      ],
+      "value": ""
+    }, {
+      "id": "1d702dcc-d867-43e5-b439-cfb5a4eefb27",
+      "comment": "",
+      "command": "click",
+      "target": "css=.ant-table-row:nth-child(1) > .ant-table-cell",
+      "targets": [
+        ["css=.ant-table-row:nth-child(1) > .ant-table-cell", "css:finder"],
+        ["xpath=//div[@id='root']/div/section/main/div/div/div/div/div/div/div/table/tbody/tr/td", "xpath:idRelative"],
+        ["xpath=//td", "xpath:position"],
+        ["xpath=//td[contains(.,'Huawei Mate 40 Pro | alfonso2')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "6c028ff5-ad27-4665-8276-7949e64d5680",
+      "comment": "",
+      "command": "click",
+      "target": "css=.ant-btn:nth-child(1)",
+      "targets": [
+        ["css=.ant-btn:nth-child(1)", "css:finder"],
+        ["xpath=(//button[@type='button'])[4]", "xpath:attributes"],
+        ["xpath=//div[3]/button", "xpath:position"],
+        ["xpath=//button[contains(.,'Rifiuta')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "02ea2125-8956-4842-8a0b-fdc23da8b3c4",
+      "comment": "",
+      "command": "assertText",
+      "target": "css=span:nth-child(2)",
+      "targets": [],
+      "value": "Recensione correttamente aggiornata"
+    }]
+  }, {
+    "id": "3db835bc-a675-4d71-a06d-bf28b9f9b7c6",
+    "name": "Cancella scheda tecnica",
+    "commands": [{
+      "id": "45d2b938-8168-4543-917f-3f8be1103990",
+      "comment": "",
+      "command": "open",
+      "target": "/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "acecf5b5-815d-46ff-bf1b-226348233630",
+      "comment": "",
+      "command": "click",
+      "target": "css=.anticon-home path",
+      "targets": [
+        ["css=.anticon-home path", "css:finder"]
+      ],
+      "value": ""
+    }, {
+      "id": "84ae1aba-b98f-4073-b9cd-188083d2ba3b",
+      "comment": "",
+      "command": "mouseOver",
+      "target": "css=.anticon-home path",
+      "targets": [
+        ["css=.anticon-home path", "css:finder"]
+      ],
+      "value": ""
+    }, {
+      "id": "d0e4e080-6b00-4a5d-a33b-b78f34d9b58c",
+      "comment": "",
+      "command": "mouseOut",
+      "target": "css=.anticon-home path",
+      "targets": [
+        ["css=.anticon-home path", "css:finder"]
+      ],
+      "value": ""
+    }, {
+      "id": "55d5106d-4d28-436f-9291-9a522f6544fc",
+      "comment": "",
+      "command": "answerOnNextPrompt",
+      "target": "ok",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "cee232b1-30ad-4c11-af85-1dcdc8a1e10d",
+      "comment": "",
+      "command": "click",
+      "target": "css=.ant-table-row:nth-child(1) span",
+      "targets": [
+        ["css=.ant-table-row:nth-child(1) span", "css:finder"],
+        ["xpath=//div[@id='root']/div/section/main/div/div[2]/div/div/div/div/div/table/tbody/tr/td[3]/div/div/button/span", "xpath:idRelative"],
+        ["xpath=//div/button/span", "xpath:position"],
+        ["xpath=//span[contains(.,'Cancella')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "987d6f6c-440c-4659-88f3-2ea810aaf7cc",
+      "comment": "",
+      "command": "assertPrompt",
+      "target": "Scrivi ok per confermare la cancellazione",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "cd144259-13f7-4caf-bfb1-59ba91766bef",
+      "comment": "",
+      "command": "webdriverAnswerOnVisiblePrompt",
+      "target": "ok",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "515d4d9a-a20c-410e-8380-c0c3a8635429",
+      "comment": "",
+      "command": "assertText",
+      "target": "css=.ant-message-custom-content > span:nth-child(2)",
+      "targets": [],
+      "value": "Scheda tecnica calcellata"
+    }]
   }],
   "suites": [{
     "id": "241d6aab-3a03-4e2a-8806-690b51fbd91b",
@@ -3775,7 +4204,21 @@
     "persistSession": false,
     "parallel": false,
     "timeout": 300,
-    "tests": []
+    "tests": ["485ab8a6-0ee6-4c87-9f3c-4467ce3dec02", "6162fa00-f0d4-4c63-a48f-fdf6cd4ef745"]
+  }, {
+    "id": "36b2af0a-5909-478a-b980-f859a045d4ed",
+    "name": "Aggiunta recensione",
+    "persistSession": false,
+    "parallel": false,
+    "timeout": 300,
+    "tests": ["a5df1b0a-0383-4604-8159-ba404f1125ba", "94de8f52-c76d-4df6-9241-2a7b1f37dae3"]
+  }, {
+    "id": "4f549b14-fcc5-4193-baa7-25866ce307dc",
+    "name": "Misc",
+    "persistSession": false,
+    "parallel": false,
+    "timeout": 300,
+    "tests": ["f9596183-3734-430c-a60e-017a66f93fbd", "57f24d22-cea4-4c28-bf5d-fc72d5cf15dd", "3db835bc-a675-4d71-a06d-bf28b9f9b7c6"]
   }],
   "urls": ["http://localhost:3000/"],
   "plugins": []

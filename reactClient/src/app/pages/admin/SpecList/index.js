@@ -14,17 +14,32 @@ function SpecList(props) {
     const [filteredData, setFilteredData] = useState([])
     const { state } = React.useContext(AuthContext);
 
+    const [isAdmin, setIsAdmin] = useState(false)
+    const [isReviewer, setIsReviewer] = useState(false)
+
+
+    useEffect(() => {
+        if (state && state.user) {
+            if (state.user.phoneNumber) {
+                if (state.user.rank) {
+                    setIsReviewer(true)
+                } else {
+                    setIsAdmin(true)
+                }
+            }
+        }
+    }, [state])
 
     useEffect(() => {
         loadSpecs()
     }, [])
 
-    const loadSpecs = ()=> {
+    const loadSpecs = () => {
         getAll()
-        .then(res => {
-            console.log(res)
-            setData(res)
-        })
+            .then(res => {
+                console.log(res)
+                setData(res)
+            })
     }
 
     useEffect(() => {
@@ -48,11 +63,14 @@ function SpecList(props) {
                 message.error('Impossibile cancellare la scheda tecnica');
                 console.log(err)
             })
-
     }
 
+    useEffect(() => {
+        console.log("Admin: ", isAdmin, " | Reviewer: ", isReviewer)
+    }, [isReviewer, isAdmin])
 
-    const columns = [
+
+    const [columns, setColumns] = useState([
         {
             title: 'Nome dispositivo',
             dataIndex: 'name',
@@ -62,22 +80,28 @@ function SpecList(props) {
             title: 'Data di uscita',
             dataIndex: 'date',
             key: 'date',
-        },
-        {
-            title: 'Azioni',
-            key: 'action',
-            render: (text, record) => (
-                <Space size="middle">
-                    <Button type="link" onClick={() => { 
-                        var ok = prompt("Scrivi ok per confermare la cancellazione", "annulla");
-                        if(ok === "ok")
-                            deleteSelectedSpec(record)
-                         }}>Cancella</Button>
-                </Space>
-            ),
-        },
-    ];
+        }
+    ]);
 
+    useEffect(() => {
+        if (isAdmin) {
+            setColumns([...columns, {
+                title: 'Azioni',
+                key: 'action',
+                render: (text, record) => (
+                    <Space size="middle">
+                        <Button type="link" onClick={() => {
+                            var ok = prompt("Scrivi ok per confermare la cancellazione", "annulla");
+                            if (ok === "ok")
+                                deleteSelectedSpec(record)
+                        }}>Cancella</Button>
+                    </Space>
+                ),
+            },])
+        }
+    }, [isAdmin])
+
+    const setScores = id => history.push("/admin/setscores?id=" + id)
 
     return (
         <div>
@@ -91,11 +115,24 @@ function SpecList(props) {
             <Table
                 dataSource={filteredData}
                 columns={columns}
-            />
+                onRow={(record, rowIndex) => {
+                    return {
+                        onClick: event => {
+                            if (isReviewer) {
+                                setScores(record.id)
+                            }
+                        },
 
-            <Button type="primary" style={{ marginTop: "20px" }} onClick={() => {
-                history.push("/admin/createSpec")
-            }}> Aggiungi scheda tecnica</Button>
+                    };
+                }}
+            />
+            {
+                isAdmin &&
+                <Button type="primary" style={{ marginTop: "20px" }} onClick={() => {
+                    history.push("/admin/createSpec")
+                }}> Aggiungi scheda tecnica</Button>
+            }
+
 
         </div>
     )

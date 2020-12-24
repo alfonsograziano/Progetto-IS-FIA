@@ -78,7 +78,7 @@ function Spec(props) {
                 setSpec(res)
             })
             .catch(err => {
-                history.push("/home")
+                history.push("/404")
                 console.log(err)
             })
     }, [])
@@ -204,7 +204,7 @@ function Spec(props) {
                         {
                             spec && spec.reviews && spec.reviews.length > 0 ? spec.reviews.map(review =>
                                 <ReviewCard
-                                    title={review.user.email}
+                                    title={review.user.username}
                                     camera={review.camera}
                                     display={review.display}
                                     performance={review.performance}

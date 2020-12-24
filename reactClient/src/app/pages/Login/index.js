@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import { AuthContext } from "../../../App";
 import { login, getProfileInfo } from "../../services/user.service"
 import { useHistory } from "react-router-dom";
+import { message } from 'antd';
 
 function Login(props) {
     const { dispatch } = React.useContext(AuthContext);
@@ -21,6 +22,7 @@ function Login(props) {
                                 const token = res.message
                                 getProfileInfo(token)
                                     .then(res => {
+                                        message.success("Benvenuto!")
                                         dispatch({
                                             type: "LOGIN",
                                             payload: {
@@ -40,7 +42,7 @@ function Login(props) {
                                     })
                             })
                             .catch(err => {
-                                console.log(err)
+                               message.error(err.response.data.message)
                             })
                     }}
                     onFinishFailed={() => { }}

@@ -55,8 +55,7 @@ function Reviews(props) {
             })
             .catch(err => {
                 console.log(err)
-                message.success('Impossibile completare la richiesta');
-
+                message.error('Impossibile completare la richiesta');
             })
     }
 

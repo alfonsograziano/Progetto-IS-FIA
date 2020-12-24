@@ -39,6 +39,12 @@ function AdminNavbar(props) {
                     <Link to="/admin/speclist" style={{ marginRight: "20px" }}>
                         Lista schede tecniche
                     </Link>
+
+                    {isReviewer &&
+                        <Link to="/admin/reviews" style={{ marginRight: "20px" }}>
+                            Recensioni
+                        </Link>
+                    }
                     <Link to="/home" >
                         <Avatar style={{ backgroundColor: "#f56a00", verticalAlign: 'middle' }} size="large" icon={<HomeOutlined />} />
                     </Link>

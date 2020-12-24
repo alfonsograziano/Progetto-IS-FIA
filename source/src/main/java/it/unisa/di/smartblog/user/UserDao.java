@@ -182,5 +182,40 @@ public class UserDao {
         return reviewer;
     }
 
+    public synchronized boolean deleteUserById(int id) throws SQLException{
+
+        Connection conn = null;
+        PreparedStatement ps = null;
+        String query = "DELETE FROM user WHERE user.id = ?";
+
+        try {
+            conn = ds.getConnection();
+            ps = conn.prepareStatement(query);
+            ps.setInt(1, id);
+            ps.executeUpdate();
+        } catch (SQLException sql){
+            throw sql;
+
+        } finally {
+            try {
+                conn.close();
+
+            } catch(Exception e) {
+                e.printStackTrace();
+            }
+
+            try {
+                ps.close();
+
+            } catch(Exception e) {
+                e.printStackTrace();
+            }
+        }
+
+        return true;
+
+
+    }
+
     private static DataSource ds;
 }

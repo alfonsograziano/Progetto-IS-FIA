@@ -19,10 +19,10 @@ function Login(props) {
                         console.log(data)
                         login(data.email, data.password)
                             .then(res => {
+                                message.success("Login fulfilled")
                                 const token = res.message
                                 getProfileInfo(token)
                                     .then(res => {
-                                        message.success("Benvenuto!")
                                         dispatch({
                                             type: "LOGIN",
                                             payload: {

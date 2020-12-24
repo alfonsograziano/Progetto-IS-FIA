@@ -19,7 +19,7 @@ function Signup(props) {
                             })
                             .catch(err => {
                                 console.log(err)
-                                message.error("Attenzione, usa un'email valida e una password da minimo 8 caratteri con lettere maiuscole, minuscole, simboli speciali e numeri");
+                                message.error(err.response.data.message);
                             })
                     }}
                     onFinishFailed={() => { }}

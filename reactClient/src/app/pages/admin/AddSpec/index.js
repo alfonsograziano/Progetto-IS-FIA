@@ -23,7 +23,7 @@ function AddSpec(props) {
                             })
                             .catch(err => {
                                 console.log(err)
-                                message.error('Errore nella creazione della scheda tecnica, verifica tutti i parametri');
+                                message.error(err.response.data.message)
                             })
                     }}
                 />

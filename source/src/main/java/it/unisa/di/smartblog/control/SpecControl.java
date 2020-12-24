@@ -28,6 +28,7 @@ public class SpecControl extends HttpServlet {
 
         int id = Integer.parseInt(request.getParameter("id"));
         try {
+            System.out.println("Nella servlet");
             Spec res =  sm.searchById(id);
             List<Review> reviews = rm.searchReviewsBySpec(res.getId());
             res.setReviews(reviews);

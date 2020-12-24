@@ -29,32 +29,38 @@ public class UserDao {
         String query = "SELECT * FROM user WHERE email = ?";
         User user = new User();
 
-        conn = ds.getConnection();
-        ps = conn.prepareStatement(query);
-        ps.setString(1, email);
-        ResultSet rs = ps.executeQuery();
-
-        rs.next();
-
-        user.setId(rs.getInt("id"));
-        if(rs.getInt("active")==1) user.setActive(true);
-        else user.setActive(false);
-        user.setEmail(rs.getString("email"));
-        user.setUsername(rs.getString("username"));
-        user.setPassword(rs.getString("password"));
-
         try {
-            conn.close();
+            conn = ds.getConnection();
+            ps = conn.prepareStatement(query);
+            ps.setString(1, email);
+            ResultSet rs = ps.executeQuery();
 
-        } catch(Exception e) {
-            e.printStackTrace();
-        }
+            rs.next();
 
-        try {
-            ps.close();
+            user.setId(rs.getInt("id"));
+            if(rs.getInt("active")==1) user.setActive(true);
+            else user.setActive(false);
+            user.setEmail(rs.getString("email"));
+            user.setUsername(rs.getString("username"));
+            user.setPassword(rs.getString("password"));
 
-        } catch(Exception e) {
-            e.printStackTrace();
+        } catch (SQLException sql){
+            throw sql;
+
+        } finally {
+            try {
+                conn.close();
+
+            } catch(Exception e) {
+                e.printStackTrace();
+            }
+
+            try {
+                ps.close();
+
+            } catch(Exception e) {
+                e.printStackTrace();
+            }
         }
 
         return user;
@@ -67,26 +73,31 @@ public class UserDao {
         PreparedStatement ps = null;
         String query = "INSERT INTO user (active, email, username, password) VALUES (1, ?, ?, ?)";
 
-        conn = ds.getConnection();
-        ps = conn.prepareStatement(query);
-        ps.setString(1, user.getEmail());
-        ps.setString(2, user.getUsername());
-        ps.setString(3, user.getPassword());
-
-        ps.executeUpdate();
-
         try {
-            conn.close();
+            conn = ds.getConnection();
+            ps = conn.prepareStatement(query);
+            ps.setString(1, user.getEmail());
+            ps.setString(2, user.getUsername());
+            ps.setString(3, user.getPassword());
 
-        } catch(Exception e) {
-            e.printStackTrace();
-        }
+            ps.executeUpdate();
+        } catch (SQLException sql){
+            throw sql;
 
-        try {
-            ps.close();
+        } finally {
+            try {
+                conn.close();
 
-        } catch(Exception e) {
-            e.printStackTrace();
+            } catch(Exception e) {
+                e.printStackTrace();
+            }
+
+            try {
+                ps.close();
+
+            } catch(Exception e) {
+                e.printStackTrace();
+            }
         }
 
         return true;
@@ -98,27 +109,34 @@ public class UserDao {
         Connection conn = null;
         PreparedStatement ps = null;
         String query = "SELECT * FROM manager where manager.id = ?";
-
-        conn = ds.getConnection();
-        ps = conn.prepareStatement(query);
-        ps.setInt(1, user.getId());
-        ResultSet rs = ps.executeQuery();
-
-        rs.next();
-        Manager manager = new Manager(user.getUsername(), user.getPassword(), user.getEmail(), user.getReviews(), rs.getString("phoneNumber"));
+        Manager manager = null;
 
         try {
-            conn.close();
+            conn = ds.getConnection();
+            ps = conn.prepareStatement(query);
+            ps.setInt(1, user.getId());
+            ResultSet rs = ps.executeQuery();
 
-        } catch(Exception e) {
-            e.printStackTrace();
-        }
+            rs.next();
+            manager = new Manager(user.getUsername(), user.getPassword(), user.getEmail(), user.getReviews(), rs.getString("phoneNumber"));
 
-        try {
-            ps.close();
+        } catch (SQLException sql){
+            throw sql;
 
-        } catch(Exception e) {
-            e.printStackTrace();
+        } finally {
+            try {
+                conn.close();
+
+            } catch(Exception e) {
+                e.printStackTrace();
+            }
+
+            try {
+                ps.close();
+
+            } catch(Exception e) {
+                e.printStackTrace();
+            }
         }
 
         return manager;
@@ -130,27 +148,34 @@ public class UserDao {
         Connection conn = null;
         PreparedStatement ps = null;
         String query = "SELECT * FROM reviewer where reviewer.id = ?";
-
-        conn = ds.getConnection();
-        ps = conn.prepareStatement(query);
-        ps.setInt(1, user.getId());
-        ResultSet rs = ps.executeQuery();
-
-        rs.next();
-        Reviewer reviewer = new Reviewer(user.getUsername(), user.getPassword(), user.getEmail(), user.getReviews(), rs.getString("phoneNumber"), rs.getString("rank"));
+        Reviewer reviewer =null;
 
         try {
-            conn.close();
+            conn = ds.getConnection();
+            ps = conn.prepareStatement(query);
+            ps.setInt(1, user.getId());
+            ResultSet rs = ps.executeQuery();
 
-        } catch(Exception e) {
-            e.printStackTrace();
-        }
+            rs.next();
+            reviewer = new Reviewer(user.getUsername(), user.getPassword(), user.getEmail(), user.getReviews(), rs.getString("phoneNumber"), rs.getString("rank"));
 
-        try {
-            ps.close();
+        } catch (SQLException sql){
+            throw sql;
 
-        } catch(Exception e) {
-            e.printStackTrace();
+        } finally {
+            try {
+                conn.close();
+
+            } catch(Exception e) {
+                e.printStackTrace();
+            }
+
+            try {
+                ps.close();
+
+            } catch(Exception e) {
+                e.printStackTrace();
+            }
         }
 
         return reviewer;

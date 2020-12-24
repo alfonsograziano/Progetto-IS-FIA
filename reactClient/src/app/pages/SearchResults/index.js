@@ -8,6 +8,7 @@ import { Typography } from 'antd';
 import { search } from "../../services/spec.service"
 import { Pagination, message } from 'antd';
 import { useHistory } from "react-router-dom";
+import { Empty } from 'antd';
 
 const { Title } = Typography;
 function useQuery() {
@@ -43,7 +44,7 @@ function SearchResults(props) {
             <Title>Risultati di ricerca</Title>
             <div style={{ display: "flex", flexDirection: "row", alignItems: "center", flexWrap: "wrap" }}>
                 {
-                    data.slice(pageSize * (currentPage - 1), pageSize * (currentPage)).map((item, index) =>
+                    data && data.length > 0 ? data.slice(pageSize * (currentPage - 1), pageSize * (currentPage)).map((item, index) =>
                         <SpecCard
                             key={index}
                             imageUrl={item.image}
@@ -52,12 +53,18 @@ function SearchResults(props) {
                             id={item.id}
                         />
                     )
+                        :
+                        <Empty />
                 }
+
             </div>
-            <Pagination size="small"
-                total={pageSize}
-                onChange={setCurrentPage}
-            />
+            {
+                data && data.length !== 0 && <Pagination size="small"
+                    total={pageSize}
+                    onChange={setCurrentPage}
+                />
+            }
+
 
 
             <Title level={2} style={{ margin: "0x", marginTop: "20px" }}>Cerchi uno smartphone?</Title>

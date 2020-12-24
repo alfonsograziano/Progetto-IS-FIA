@@ -1,0 +1,4225 @@
+{
+  "id": "19dd1b25-7ea5-4e88-98bf-4c9d38547a37",
+  "version": "2.0",
+  "name": "SmartBlog",
+  "url": "http://localhost:3000",
+  "tests": [{
+    "id": "6c4df6e9-d3dd-4db2-bd60-4e2d4e9eb01f",
+    "name": "Email lunghezza errata",
+    "commands": [{
+      "id": "26e0a408-79ba-4c6a-b147-4e1c6c4f494d",
+      "comment": "",
+      "command": "open",
+      "target": "/home",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "1725056c-69ba-447d-8a74-051182f8c18d",
+      "comment": "",
+      "command": "click",
+      "target": "css=div:nth-child(2) > a span",
+      "targets": [
+        ["css=div:nth-child(2) > a span", "css:finder"],
+        ["xpath=//div[@id='root']/div/section/header/div/div/a/button/span", "xpath:idRelative"],
+        ["xpath=//a/button/span", "xpath:position"],
+        ["xpath=//span[contains(.,'Login')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "44a14f05-200c-4af5-9924-1e77efd3bc5a",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Registrati",
+      "targets": [
+        ["linkText=Registrati", "linkText"],
+        ["css=p > a", "css:finder"],
+        ["xpath=//a[contains(text(),'Registrati')]", "xpath:link"],
+        ["xpath=//div[@id='root']/div/section/main/div/p/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, '/signup')]", "xpath:href"],
+        ["xpath=//p/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Registrati')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "2cde5620-c6cf-49f8-b4a4-c21d77fb5b70",
+      "comment": "",
+      "command": "click",
+      "target": "css=.ant-row:nth-child(1)",
+      "targets": [
+        ["css=.ant-row:nth-child(1)", "css:finder"],
+        ["xpath=//form[@id='basic']/div", "xpath:idRelative"],
+        ["xpath=//form/div", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "f680dcb2-4af7-4b10-a9dc-9d77261a32ba",
+      "comment": "",
+      "command": "type",
+      "target": "id=basic_username",
+      "targets": [
+        ["id=basic_username", "id"],
+        ["css=#basic_username", "css:finder"],
+        ["xpath=//input[@id='basic_username']", "xpath:attributes"],
+        ["xpath=//form[@id='basic']/div/div[2]/div/div/input", "xpath:idRelative"],
+        ["xpath=//div/input", "xpath:position"]
+      ],
+      "value": "123"
+    }, {
+      "id": "5b03e632-9eb3-4e13-8ff3-c736e468ea14",
+      "comment": "",
+      "command": "type",
+      "target": "id=basic_email",
+      "targets": [
+        ["id=basic_email", "id"],
+        ["css=#basic_email", "css:finder"],
+        ["xpath=//input[@id='basic_email']", "xpath:attributes"],
+        ["xpath=//form[@id='basic']/div[2]/div[2]/div/div/input", "xpath:idRelative"],
+        ["xpath=//div[2]/div[2]/div/div/input", "xpath:position"]
+      ],
+      "value": "a@o.it"
+    }, {
+      "id": "29008273-efe9-492d-8f6c-78d95c31f66d",
+      "comment": "",
+      "command": "type",
+      "target": "id=basic_password",
+      "targets": [
+        ["id=basic_password", "id"],
+        ["css=#basic_password", "css:finder"],
+        ["xpath=//input[@id='basic_password']", "xpath:attributes"],
+        ["xpath=//form[@id='basic']/div[3]/div[2]/div/div/span/input", "xpath:idRelative"],
+        ["xpath=//div/span/input", "xpath:position"]
+      ],
+      "value": "123"
+    }, {
+      "id": "2b4755fd-8151-4fc8-bcdd-432cc3db791a",
+      "comment": "",
+      "command": "type",
+      "target": "id=basic_rePassword",
+      "targets": [
+        ["id=basic_rePassword", "id"],
+        ["css=#basic_rePassword", "css:finder"],
+        ["xpath=//input[@id='basic_rePassword']", "xpath:attributes"],
+        ["xpath=//form[@id='basic']/div[4]/div[2]/div/div/span/input", "xpath:idRelative"],
+        ["xpath=//div[4]/div[2]/div/div/span/input", "xpath:position"]
+      ],
+      "value": "123"
+    }, {
+      "id": "1fb675e9-0279-4322-9d05-a3d56b126fd5",
+      "comment": "",
+      "command": "click",
+      "target": "css=.ant-form-item-control-input-content > .ant-btn > span",
+      "targets": [
+        ["css=.ant-form-item-control-input-content > .ant-btn > span", "css:finder"],
+        ["xpath=//form[@id='basic']/div[5]/div/div/div/button/span", "xpath:idRelative"],
+        ["xpath=//div/button/span", "xpath:position"],
+        ["xpath=//span[contains(.,'Submit')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "99d48334-e355-448b-8cde-35ada1da3986",
+      "comment": "",
+      "command": "assertText",
+      "target": "css=.ant-message-custom-content > span:nth-child(2)",
+      "targets": [],
+      "value": "Email maximum size exceeded"
+    }]
+  }, {
+    "id": "d569ec48-a1ff-47c8-b607-9bce44fdaabf",
+    "name": "Email formato sbagliato",
+    "commands": [{
+      "id": "9d7d93c1-1009-455c-8419-ad02cbc427ad",
+      "comment": "",
+      "command": "open",
+      "target": "/home",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "7d9e764c-e86c-4244-b75f-e723d5150c86",
+      "comment": "",
+      "command": "click",
+      "target": "css=div:nth-child(2) > a span",
+      "targets": [
+        ["css=div:nth-child(2) > a span", "css:finder"],
+        ["xpath=//div[@id='root']/div/section/header/div/div/a/button/span", "xpath:idRelative"],
+        ["xpath=//a/button/span", "xpath:position"],
+        ["xpath=//span[contains(.,'Login')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "faba005d-1092-4e9f-8fb7-d407d89570b0",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Registrati",
+      "targets": [
+        ["linkText=Registrati", "linkText"],
+        ["css=p > a", "css:finder"],
+        ["xpath=//a[contains(text(),'Registrati')]", "xpath:link"],
+        ["xpath=//div[@id='root']/div/section/main/div/p/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, '/signup')]", "xpath:href"],
+        ["xpath=//p/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Registrati')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "2fe56f26-3807-4149-834c-5351f07631e5",
+      "comment": "",
+      "command": "click",
+      "target": "css=.ant-row:nth-child(1)",
+      "targets": [
+        ["css=.ant-row:nth-child(1)", "css:finder"],
+        ["xpath=//form[@id='basic']/div", "xpath:idRelative"],
+        ["xpath=//form/div", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "7892179a-1ecb-4ec5-ad7b-7df3188e94e3",
+      "comment": "",
+      "command": "type",
+      "target": "id=basic_username",
+      "targets": [
+        ["id=basic_username", "id"],
+        ["css=#basic_username", "css:finder"],
+        ["xpath=//input[@id='basic_username']", "xpath:attributes"],
+        ["xpath=//form[@id='basic']/div/div[2]/div/div/input", "xpath:idRelative"],
+        ["xpath=//div/input", "xpath:position"]
+      ],
+      "value": "123"
+    }, {
+      "id": "b17d0669-d72b-4191-8b75-bdc44e843423",
+      "comment": "",
+      "command": "type",
+      "target": "id=basic_email",
+      "targets": [
+        ["id=basic_email", "id"],
+        ["css=#basic_email", "css:finder"],
+        ["xpath=//input[@id='basic_email']", "xpath:attributes"],
+        ["xpath=//form[@id='basic']/div[2]/div[2]/div/div/input", "xpath:idRelative"],
+        ["xpath=//div[2]/div[2]/div/div/input", "xpath:position"]
+      ],
+      "value": "pippoplutopaperino.it"
+    }, {
+      "id": "548f0fe0-3456-4d1b-b00d-ebd9c42c8538",
+      "comment": "",
+      "command": "type",
+      "target": "id=basic_password",
+      "targets": [
+        ["id=basic_password", "id"],
+        ["css=#basic_password", "css:finder"],
+        ["xpath=//input[@id='basic_password']", "xpath:attributes"],
+        ["xpath=//form[@id='basic']/div[3]/div[2]/div/div/span/input", "xpath:idRelative"],
+        ["xpath=//div/span/input", "xpath:position"]
+      ],
+      "value": "123"
+    }, {
+      "id": "cb5c9411-e727-43c5-ae88-632af323f457",
+      "comment": "",
+      "command": "type",
+      "target": "id=basic_rePassword",
+      "targets": [
+        ["id=basic_rePassword", "id"],
+        ["css=#basic_rePassword", "css:finder"],
+        ["xpath=//input[@id='basic_rePassword']", "xpath:attributes"],
+        ["xpath=//form[@id='basic']/div[4]/div[2]/div/div/span/input", "xpath:idRelative"],
+        ["xpath=//div[4]/div[2]/div/div/span/input", "xpath:position"]
+      ],
+      "value": "123"
+    }, {
+      "id": "ae797d29-b5dc-48fa-926c-9901cc2b499e",
+      "comment": "",
+      "command": "click",
+      "target": "css=.ant-form-item-control-input-content > .ant-btn > span",
+      "targets": [
+        ["css=.ant-form-item-control-input-content > .ant-btn > span", "css:finder"],
+        ["xpath=//form[@id='basic']/div[5]/div/div/div/button/span", "xpath:idRelative"],
+        ["xpath=//div/button/span", "xpath:position"],
+        ["xpath=//span[contains(.,'Submit')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "475cc11e-58fa-4fb4-b26a-a1ffdbdbcb5a",
+      "comment": "",
+      "command": "assertText",
+      "target": "css=.ant-form-item-explain > div",
+      "targets": [],
+      "value": "The input is not valid E-mail!"
+    }]
+  }, {
+    "id": "6c2c2a7b-e93a-4060-87db-3cc55eb7f2e3",
+    "name": "Email già presente nel db",
+    "commands": [{
+      "id": "eb63574c-673b-46aa-a046-97a0c0a44dde",
+      "comment": "",
+      "command": "open",
+      "target": "/home",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "2f7aa890-f7f8-4fca-abc5-1f24d2d26678",
+      "comment": "",
+      "command": "click",
+      "target": "css=div:nth-child(2) > a span",
+      "targets": [
+        ["css=div:nth-child(2) > a span", "css:finder"],
+        ["xpath=//div[@id='root']/div/section/header/div/div/a/button/span", "xpath:idRelative"],
+        ["xpath=//a/button/span", "xpath:position"],
+        ["xpath=//span[contains(.,'Login')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "b3815147-0e22-4cae-a538-333fe6c13972",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Registrati",
+      "targets": [
+        ["linkText=Registrati", "linkText"],
+        ["css=p > a", "css:finder"],
+        ["xpath=//a[contains(text(),'Registrati')]", "xpath:link"],
+        ["xpath=//div[@id='root']/div/section/main/div/p/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, '/signup')]", "xpath:href"],
+        ["xpath=//p/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Registrati')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "a1373149-2269-4291-91db-41c42416c5ce",
+      "comment": "",
+      "command": "click",
+      "target": "css=.ant-row:nth-child(1)",
+      "targets": [
+        ["css=.ant-row:nth-child(1)", "css:finder"],
+        ["xpath=//form[@id='basic']/div", "xpath:idRelative"],
+        ["xpath=//form/div", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "ad7cccf0-d06b-491c-9b90-6b20d6452888",
+      "comment": "",
+      "command": "type",
+      "target": "id=basic_username",
+      "targets": [
+        ["id=basic_username", "id"],
+        ["css=#basic_username", "css:finder"],
+        ["xpath=//input[@id='basic_username']", "xpath:attributes"],
+        ["xpath=//form[@id='basic']/div/div[2]/div/div/input", "xpath:idRelative"],
+        ["xpath=//div/input", "xpath:position"]
+      ],
+      "value": "pippopluto"
+    }, {
+      "id": "50c99d35-e0bd-4d56-82ec-fcb7b8cec9be",
+      "comment": "",
+      "command": "type",
+      "target": "id=basic_email",
+      "targets": [
+        ["id=basic_email", "id"],
+        ["css=#basic_email", "css:finder"],
+        ["xpath=//input[@id='basic_email']", "xpath:attributes"],
+        ["xpath=//form[@id='basic']/div[2]/div[2]/div/div/input", "xpath:idRelative"],
+        ["xpath=//div[2]/div[2]/div/div/input", "xpath:position"]
+      ],
+      "value": "alfo@alfo.it"
+    }, {
+      "id": "be25e810-67a5-4575-8d12-aeee9778a012",
+      "comment": "",
+      "command": "type",
+      "target": "id=basic_password",
+      "targets": [
+        ["id=basic_password", "id"],
+        ["css=#basic_password", "css:finder"],
+        ["xpath=//input[@id='basic_password']", "xpath:attributes"],
+        ["xpath=//form[@id='basic']/div[3]/div[2]/div/div/span/input", "xpath:idRelative"],
+        ["xpath=//div/span/input", "xpath:position"]
+      ],
+      "value": "Passwor01!"
+    }, {
+      "id": "5531f653-2d57-439d-b226-3df580a5208b",
+      "comment": "",
+      "command": "type",
+      "target": "id=basic_rePassword",
+      "targets": [
+        ["id=basic_rePassword", "id"],
+        ["css=#basic_rePassword", "css:finder"],
+        ["xpath=//input[@id='basic_rePassword']", "xpath:attributes"],
+        ["xpath=//form[@id='basic']/div[4]/div[2]/div/div/span/input", "xpath:idRelative"],
+        ["xpath=//div[4]/div[2]/div/div/span/input", "xpath:position"]
+      ],
+      "value": "Passwor01!"
+    }, {
+      "id": "8d3abdd4-2fa1-4498-a83c-28850bc5f059",
+      "comment": "",
+      "command": "click",
+      "target": "css=.ant-form-item-control-input-content > .ant-btn > span",
+      "targets": [
+        ["css=.ant-form-item-control-input-content > .ant-btn > span", "css:finder"],
+        ["xpath=//form[@id='basic']/div[5]/div/div/div/button/span", "xpath:idRelative"],
+        ["xpath=//div/button/span", "xpath:position"],
+        ["xpath=//span[contains(.,'Submit')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "9cbc00fc-fbf7-4064-88bb-394114a2f0b9",
+      "comment": "",
+      "command": "assertText",
+      "target": "css=.ant-message-custom-content > span:nth-child(2)",
+      "targets": [],
+      "value": "Email already in use"
+    }]
+  }, {
+    "id": "f148d8d5-f548-406d-b0a9-928262f30170",
+    "name": "Formato utente sbagliato",
+    "commands": [{
+      "id": "6260c0f5-a0e3-43ef-b9cb-d99ee1ed3bf4",
+      "comment": "",
+      "command": "open",
+      "target": "/home",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "854972c9-cf45-46f2-8841-edf798835196",
+      "comment": "",
+      "command": "click",
+      "target": "css=div:nth-child(2) > a span",
+      "targets": [
+        ["css=div:nth-child(2) > a span", "css:finder"],
+        ["xpath=//div[@id='root']/div/section/header/div/div/a/button/span", "xpath:idRelative"],
+        ["xpath=//a/button/span", "xpath:position"],
+        ["xpath=//span[contains(.,'Login')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "97626012-6e9c-4512-b666-1af0d6d53719",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Registrati",
+      "targets": [
+        ["linkText=Registrati", "linkText"],
+        ["css=p > a", "css:finder"],
+        ["xpath=//a[contains(text(),'Registrati')]", "xpath:link"],
+        ["xpath=//div[@id='root']/div/section/main/div/p/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, '/signup')]", "xpath:href"],
+        ["xpath=//p/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Registrati')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "d4c292dc-6a68-402a-885e-37711379163a",
+      "comment": "",
+      "command": "click",
+      "target": "css=.ant-row:nth-child(1)",
+      "targets": [
+        ["css=.ant-row:nth-child(1)", "css:finder"],
+        ["xpath=//form[@id='basic']/div", "xpath:idRelative"],
+        ["xpath=//form/div", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "9b116158-8223-4238-9004-f7ab14a0fa75",
+      "comment": "",
+      "command": "type",
+      "target": "id=basic_username",
+      "targets": [
+        ["id=basic_username", "id"],
+        ["css=#basic_username", "css:finder"],
+        ["xpath=//input[@id='basic_username']", "xpath:attributes"],
+        ["xpath=//form[@id='basic']/div/div[2]/div/div/input", "xpath:idRelative"],
+        ["xpath=//div/input", "xpath:position"]
+      ],
+      "value": "123"
+    }, {
+      "id": "56234cab-d096-4b90-a288-6b90ab55154b",
+      "comment": "",
+      "command": "type",
+      "target": "id=basic_email",
+      "targets": [
+        ["id=basic_email", "id"],
+        ["css=#basic_email", "css:finder"],
+        ["xpath=//input[@id='basic_email']", "xpath:attributes"],
+        ["xpath=//form[@id='basic']/div[2]/div[2]/div/div/input", "xpath:idRelative"],
+        ["xpath=//div[2]/div[2]/div/div/input", "xpath:position"]
+      ],
+      "value": "test@test.it"
+    }, {
+      "id": "d3742bf0-e3a2-491b-a6be-36f769488788",
+      "comment": "",
+      "command": "type",
+      "target": "id=basic_password",
+      "targets": [
+        ["id=basic_password", "id"],
+        ["css=#basic_password", "css:finder"],
+        ["xpath=//input[@id='basic_password']", "xpath:attributes"],
+        ["xpath=//form[@id='basic']/div[3]/div[2]/div/div/span/input", "xpath:idRelative"],
+        ["xpath=//div/span/input", "xpath:position"]
+      ],
+      "value": "Passwor01!"
+    }, {
+      "id": "26cebdf2-3d5e-4653-b837-84fdeea4c97c",
+      "comment": "",
+      "command": "type",
+      "target": "id=basic_rePassword",
+      "targets": [
+        ["id=basic_rePassword", "id"],
+        ["css=#basic_rePassword", "css:finder"],
+        ["xpath=//input[@id='basic_rePassword']", "xpath:attributes"],
+        ["xpath=//form[@id='basic']/div[4]/div[2]/div/div/span/input", "xpath:idRelative"],
+        ["xpath=//div[4]/div[2]/div/div/span/input", "xpath:position"]
+      ],
+      "value": "Passwor01!"
+    }, {
+      "id": "c80189ed-459e-483f-a12b-050ed3a6fd24",
+      "comment": "",
+      "command": "click",
+      "target": "css=.ant-form-item-control-input-content > .ant-btn > span",
+      "targets": [
+        ["css=.ant-form-item-control-input-content > .ant-btn > span", "css:finder"],
+        ["xpath=//form[@id='basic']/div[5]/div/div/div/button/span", "xpath:idRelative"],
+        ["xpath=//div/button/span", "xpath:position"],
+        ["xpath=//span[contains(.,'Submit')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "47025e2d-c0a8-49f8-96e3-ef5af4260187",
+      "comment": "",
+      "command": "assertText",
+      "target": "css=.ant-message-custom-content > span:nth-child(2)",
+      "targets": [],
+      "value": "Invalid username format"
+    }]
+  }, {
+    "id": "d5540c73-22d0-4fcd-94b2-741f216f5a69",
+    "name": "Formato password errato",
+    "commands": [{
+      "id": "0ff107cc-f6a7-4838-a23d-64d633c4baaf",
+      "comment": "",
+      "command": "open",
+      "target": "/home",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "ac9418ea-1616-4442-b66f-ff18e19bd8c3",
+      "comment": "",
+      "command": "click",
+      "target": "css=div:nth-child(2) > a span",
+      "targets": [
+        ["css=div:nth-child(2) > a span", "css:finder"],
+        ["xpath=//div[@id='root']/div/section/header/div/div/a/button/span", "xpath:idRelative"],
+        ["xpath=//a/button/span", "xpath:position"],
+        ["xpath=//span[contains(.,'Login')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "a6fa6972-440a-4a79-9fca-c9dc9dbe4987",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Registrati",
+      "targets": [
+        ["linkText=Registrati", "linkText"],
+        ["css=p > a", "css:finder"],
+        ["xpath=//a[contains(text(),'Registrati')]", "xpath:link"],
+        ["xpath=//div[@id='root']/div/section/main/div/p/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, '/signup')]", "xpath:href"],
+        ["xpath=//p/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Registrati')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "14f9c011-5db2-4714-8bb3-bf66e59dab9e",
+      "comment": "",
+      "command": "click",
+      "target": "css=.ant-row:nth-child(1)",
+      "targets": [
+        ["css=.ant-row:nth-child(1)", "css:finder"],
+        ["xpath=//form[@id='basic']/div", "xpath:idRelative"],
+        ["xpath=//form/div", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "8462626a-e86f-468b-8a92-f099f2803ea7",
+      "comment": "",
+      "command": "type",
+      "target": "id=basic_username",
+      "targets": [
+        ["id=basic_username", "id"],
+        ["css=#basic_username", "css:finder"],
+        ["xpath=//input[@id='basic_username']", "xpath:attributes"],
+        ["xpath=//form[@id='basic']/div/div[2]/div/div/input", "xpath:idRelative"],
+        ["xpath=//div/input", "xpath:position"]
+      ],
+      "value": "testUser1"
+    }, {
+      "id": "ac539b69-d53e-47c2-a39d-c373a1035e36",
+      "comment": "",
+      "command": "type",
+      "target": "id=basic_email",
+      "targets": [
+        ["id=basic_email", "id"],
+        ["css=#basic_email", "css:finder"],
+        ["xpath=//input[@id='basic_email']", "xpath:attributes"],
+        ["xpath=//form[@id='basic']/div[2]/div[2]/div/div/input", "xpath:idRelative"],
+        ["xpath=//div[2]/div[2]/div/div/input", "xpath:position"]
+      ],
+      "value": "test@test.it"
+    }, {
+      "id": "81123020-35a1-41d5-afd3-e74b07c5e630",
+      "comment": "",
+      "command": "type",
+      "target": "id=basic_password",
+      "targets": [
+        ["id=basic_password", "id"],
+        ["css=#basic_password", "css:finder"],
+        ["xpath=//input[@id='basic_password']", "xpath:attributes"],
+        ["xpath=//form[@id='basic']/div[3]/div[2]/div/div/span/input", "xpath:idRelative"],
+        ["xpath=//div/span/input", "xpath:position"]
+      ],
+      "value": "Passwor1"
+    }, {
+      "id": "638a3b85-8cec-4eca-af6a-e3417febdfe9",
+      "comment": "",
+      "command": "type",
+      "target": "id=basic_rePassword",
+      "targets": [
+        ["id=basic_rePassword", "id"],
+        ["css=#basic_rePassword", "css:finder"],
+        ["xpath=//input[@id='basic_rePassword']", "xpath:attributes"],
+        ["xpath=//form[@id='basic']/div[4]/div[2]/div/div/span/input", "xpath:idRelative"],
+        ["xpath=//div[4]/div[2]/div/div/span/input", "xpath:position"]
+      ],
+      "value": "Passwor1"
+    }, {
+      "id": "3a0fdca1-cc95-4aa1-9d24-fbea41ee88b1",
+      "comment": "",
+      "command": "click",
+      "target": "css=.ant-form-item-control-input-content > .ant-btn > span",
+      "targets": [
+        ["css=.ant-form-item-control-input-content > .ant-btn > span", "css:finder"],
+        ["xpath=//form[@id='basic']/div[5]/div/div/div/button/span", "xpath:idRelative"],
+        ["xpath=//div/button/span", "xpath:position"],
+        ["xpath=//span[contains(.,'Submit')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "6dc0164e-4a95-49b4-9738-e3e9db0544d1",
+      "comment": "",
+      "command": "assertText",
+      "target": "css=.ant-message-custom-content > span:nth-child(2)",
+      "targets": [],
+      "value": "Invalid password format"
+    }]
+  }, {
+    "id": "5ba308e8-923d-4c57-ad72-d80668b10ac9",
+    "name": "Repassword non corrisponde",
+    "commands": [{
+      "id": "eb9b0ab0-4aec-49c8-a9de-8b6825277570",
+      "comment": "",
+      "command": "open",
+      "target": "/home",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "4276aca8-b0bf-4a44-b88f-57bb1e4e7074",
+      "comment": "",
+      "command": "click",
+      "target": "css=div:nth-child(2) > a span",
+      "targets": [
+        ["css=div:nth-child(2) > a span", "css:finder"],
+        ["xpath=//div[@id='root']/div/section/header/div/div/a/button/span", "xpath:idRelative"],
+        ["xpath=//a/button/span", "xpath:position"],
+        ["xpath=//span[contains(.,'Login')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "79e23820-0afe-4e76-b343-b7a2d6f1c736",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Registrati",
+      "targets": [
+        ["linkText=Registrati", "linkText"],
+        ["css=p > a", "css:finder"],
+        ["xpath=//a[contains(text(),'Registrati')]", "xpath:link"],
+        ["xpath=//div[@id='root']/div/section/main/div/p/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, '/signup')]", "xpath:href"],
+        ["xpath=//p/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Registrati')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "510f43e3-4c97-4031-9278-fc0cdb331318",
+      "comment": "",
+      "command": "click",
+      "target": "css=.ant-row:nth-child(1)",
+      "targets": [
+        ["css=.ant-row:nth-child(1)", "css:finder"],
+        ["xpath=//form[@id='basic']/div", "xpath:idRelative"],
+        ["xpath=//form/div", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "f4eb6538-303d-40ef-931f-8ea1203892e9",
+      "comment": "",
+      "command": "type",
+      "target": "id=basic_username",
+      "targets": [
+        ["id=basic_username", "id"],
+        ["css=#basic_username", "css:finder"],
+        ["xpath=//input[@id='basic_username']", "xpath:attributes"],
+        ["xpath=//form[@id='basic']/div/div[2]/div/div/input", "xpath:idRelative"],
+        ["xpath=//div/input", "xpath:position"]
+      ],
+      "value": "testUser1"
+    }, {
+      "id": "3129a2f3-f3b5-4778-bd69-2020b6e81f48",
+      "comment": "",
+      "command": "type",
+      "target": "id=basic_email",
+      "targets": [
+        ["id=basic_email", "id"],
+        ["css=#basic_email", "css:finder"],
+        ["xpath=//input[@id='basic_email']", "xpath:attributes"],
+        ["xpath=//form[@id='basic']/div[2]/div[2]/div/div/input", "xpath:idRelative"],
+        ["xpath=//div[2]/div[2]/div/div/input", "xpath:position"]
+      ],
+      "value": "test@test.it"
+    }, {
+      "id": "dba8144d-93b7-44ac-95ee-5bc2520c9f86",
+      "comment": "",
+      "command": "type",
+      "target": "id=basic_password",
+      "targets": [
+        ["id=basic_password", "id"],
+        ["css=#basic_password", "css:finder"],
+        ["xpath=//input[@id='basic_password']", "xpath:attributes"],
+        ["xpath=//form[@id='basic']/div[3]/div[2]/div/div/span/input", "xpath:idRelative"],
+        ["xpath=//div/span/input", "xpath:position"]
+      ],
+      "value": "Passwor1"
+    }, {
+      "id": "e554cdcf-3830-487e-9903-9c6a0bf7aa57",
+      "comment": "",
+      "command": "type",
+      "target": "id=basic_rePassword",
+      "targets": [
+        ["id=basic_rePassword", "id"],
+        ["css=#basic_rePassword", "css:finder"],
+        ["xpath=//input[@id='basic_rePassword']", "xpath:attributes"],
+        ["xpath=//form[@id='basic']/div[4]/div[2]/div/div/span/input", "xpath:idRelative"],
+        ["xpath=//div[4]/div[2]/div/div/span/input", "xpath:position"]
+      ],
+      "value": "Passwor"
+    }, {
+      "id": "af131567-337c-4bb5-8876-1660a41d94fe",
+      "comment": "",
+      "command": "click",
+      "target": "css=.ant-form-item-control-input-content > .ant-btn > span",
+      "targets": [
+        ["css=.ant-form-item-control-input-content > .ant-btn > span", "css:finder"],
+        ["xpath=//form[@id='basic']/div[5]/div/div/div/button/span", "xpath:idRelative"],
+        ["xpath=//div/button/span", "xpath:position"],
+        ["xpath=//span[contains(.,'Submit')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "2ee0aa53-43a6-4551-8e78-f38a59e15507",
+      "comment": "",
+      "command": "assertText",
+      "target": "css=.ant-form-item-explain > div",
+      "targets": [],
+      "value": "The two passwords that you entered do not match!"
+    }]
+  }, {
+    "id": "f9b1b78f-6960-4ba8-94c7-bf61b1921c89",
+    "name": "Utente registrato correttamente",
+    "commands": [{
+      "id": "01be938f-3812-4fa3-836c-efd78479df29",
+      "comment": "",
+      "command": "open",
+      "target": "/home",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "501681d7-e5cb-49a7-b8ea-af1e018c1ce0",
+      "comment": "",
+      "command": "click",
+      "target": "css=div:nth-child(2) > a span",
+      "targets": [
+        ["css=div:nth-child(2) > a span", "css:finder"],
+        ["xpath=//div[@id='root']/div/section/header/div/div/a/button/span", "xpath:idRelative"],
+        ["xpath=//a/button/span", "xpath:position"],
+        ["xpath=//span[contains(.,'Login')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "e764ccf1-7c52-4d08-870a-b1e204956a93",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Registrati",
+      "targets": [
+        ["linkText=Registrati", "linkText"],
+        ["css=p > a", "css:finder"],
+        ["xpath=//a[contains(text(),'Registrati')]", "xpath:link"],
+        ["xpath=//div[@id='root']/div/section/main/div/p/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, '/signup')]", "xpath:href"],
+        ["xpath=//p/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Registrati')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "29a5a421-3f94-4554-b718-455d99bbd66a",
+      "comment": "",
+      "command": "click",
+      "target": "css=.ant-row:nth-child(1)",
+      "targets": [
+        ["css=.ant-row:nth-child(1)", "css:finder"],
+        ["xpath=//form[@id='basic']/div", "xpath:idRelative"],
+        ["xpath=//form/div", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "5cb4e6f6-4feb-4ecf-aeb3-b3e414036fa9",
+      "comment": "",
+      "command": "type",
+      "target": "id=basic_username",
+      "targets": [
+        ["id=basic_username", "id"],
+        ["css=#basic_username", "css:finder"],
+        ["xpath=//input[@id='basic_username']", "xpath:attributes"],
+        ["xpath=//form[@id='basic']/div/div[2]/div/div/input", "xpath:idRelative"],
+        ["xpath=//div/input", "xpath:position"]
+      ],
+      "value": "testUser1"
+    }, {
+      "id": "232435f2-0903-4cfb-81f3-9e6ea5e3bfb8",
+      "comment": "",
+      "command": "type",
+      "target": "id=basic_email",
+      "targets": [
+        ["id=basic_email", "id"],
+        ["css=#basic_email", "css:finder"],
+        ["xpath=//input[@id='basic_email']", "xpath:attributes"],
+        ["xpath=//form[@id='basic']/div[2]/div[2]/div/div/input", "xpath:idRelative"],
+        ["xpath=//div[2]/div[2]/div/div/input", "xpath:position"]
+      ],
+      "value": "test@test.it"
+    }, {
+      "id": "fc368d2f-ecb6-420d-a549-2fff78f4e006",
+      "comment": "",
+      "command": "type",
+      "target": "id=basic_password",
+      "targets": [
+        ["id=basic_password", "id"],
+        ["css=#basic_password", "css:finder"],
+        ["xpath=//input[@id='basic_password']", "xpath:attributes"],
+        ["xpath=//form[@id='basic']/div[3]/div[2]/div/div/span/input", "xpath:idRelative"],
+        ["xpath=//div/span/input", "xpath:position"]
+      ],
+      "value": "Passwor01!"
+    }, {
+      "id": "e1fefb01-575c-4f69-8572-ac0a9fe1372b",
+      "comment": "",
+      "command": "type",
+      "target": "id=basic_rePassword",
+      "targets": [
+        ["id=basic_rePassword", "id"],
+        ["css=#basic_rePassword", "css:finder"],
+        ["xpath=//input[@id='basic_rePassword']", "xpath:attributes"],
+        ["xpath=//form[@id='basic']/div[4]/div[2]/div/div/span/input", "xpath:idRelative"],
+        ["xpath=//div[4]/div[2]/div/div/span/input", "xpath:position"]
+      ],
+      "value": "Passwor01!"
+    }, {
+      "id": "ea742486-fa8c-43a7-b1bf-1d1ed3b7a8fd",
+      "comment": "",
+      "command": "click",
+      "target": "css=.ant-form-item-control-input-content > .ant-btn > span",
+      "targets": [
+        ["css=.ant-form-item-control-input-content > .ant-btn > span", "css:finder"],
+        ["xpath=//form[@id='basic']/div[5]/div/div/div/button/span", "xpath:idRelative"],
+        ["xpath=//div/button/span", "xpath:position"],
+        ["xpath=//span[contains(.,'Submit')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "4efae1c5-40c2-4aa3-a2ec-d37282886373",
+      "comment": "",
+      "command": "assertText",
+      "target": "css=.ant-message-custom-content > span:nth-child(2)",
+      "targets": [],
+      "value": "Registrazione completata con successo"
+    }]
+  }, {
+    "id": "42792237-33ba-47ef-a5e2-c26bc4db1e1b",
+    "name": "Login email non in db",
+    "commands": [{
+      "id": "28751489-206f-4d60-9bc0-967beb40433e",
+      "comment": "",
+      "command": "open",
+      "target": "/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "7c2ac2d5-483c-4a61-81e0-6a35a80bffac",
+      "comment": "",
+      "command": "click",
+      "target": "css=a span",
+      "targets": [
+        ["css=a span", "css:finder"],
+        ["xpath=//div[@id='root']/div/section/header/div/div/a/button/span", "xpath:idRelative"],
+        ["xpath=//a/button/span", "xpath:position"],
+        ["xpath=//span[contains(.,'Login')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "369c2493-9ce9-485f-b60c-3e35bd7f8139",
+      "comment": "",
+      "command": "type",
+      "target": "id=basic_email",
+      "targets": [
+        ["id=basic_email", "id"],
+        ["css=#basic_email", "css:finder"],
+        ["xpath=//input[@id='basic_email']", "xpath:attributes"],
+        ["xpath=//form[@id='basic']/div/div[2]/div/div/input", "xpath:idRelative"],
+        ["xpath=//div/input", "xpath:position"]
+      ],
+      "value": "mailchenonesiste@mail.it"
+    }, {
+      "id": "8aac47f0-18cb-4fc4-9bcc-47383e249ef8",
+      "comment": "",
+      "command": "type",
+      "target": "id=basic_password",
+      "targets": [
+        ["id=basic_password", "id"],
+        ["css=#basic_password", "css:finder"],
+        ["xpath=//input[@id='basic_password']", "xpath:attributes"],
+        ["xpath=//form[@id='basic']/div[2]/div[2]/div/div/span/input", "xpath:idRelative"],
+        ["xpath=//div/span/input", "xpath:position"]
+      ],
+      "value": "1234567890"
+    }, {
+      "id": "f4a83c38-523a-4f06-89e0-5ac208a6afbc",
+      "comment": "",
+      "command": "click",
+      "target": "css=.ant-form-item-control-input-content > .ant-btn > span",
+      "targets": [
+        ["css=.ant-form-item-control-input-content > .ant-btn > span", "css:finder"],
+        ["xpath=//form[@id='basic']/div[3]/div/div/div/button/span", "xpath:idRelative"],
+        ["xpath=//div/button/span", "xpath:position"],
+        ["xpath=//span[contains(.,'Submit')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "115f31e2-58f1-487e-9b42-4514158c6454",
+      "comment": "",
+      "command": "assertText",
+      "target": "css=.ant-message-custom-content > span:nth-child(2)",
+      "targets": [],
+      "value": "User not found"
+    }]
+  }, {
+    "id": "f2d9078c-b84a-4166-9048-4c6c2636b587",
+    "name": "Password errata",
+    "commands": [{
+      "id": "e920f657-d599-441a-a719-7739d38b9c5f",
+      "comment": "",
+      "command": "open",
+      "target": "/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "f3aa399f-8a2e-4951-876e-baebad68d7a0",
+      "comment": "",
+      "command": "click",
+      "target": "css=a span",
+      "targets": [
+        ["css=a span", "css:finder"],
+        ["xpath=//div[@id='root']/div/section/header/div/div/a/button/span", "xpath:idRelative"],
+        ["xpath=//a/button/span", "xpath:position"],
+        ["xpath=//span[contains(.,'Login')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "fad16438-bec6-4044-b725-2edd2317efde",
+      "comment": "",
+      "command": "type",
+      "target": "id=basic_email",
+      "targets": [
+        ["id=basic_email", "id"],
+        ["css=#basic_email", "css:finder"],
+        ["xpath=//input[@id='basic_email']", "xpath:attributes"],
+        ["xpath=//form[@id='basic']/div/div[2]/div/div/input", "xpath:idRelative"],
+        ["xpath=//div/input", "xpath:position"]
+      ],
+      "value": "alfonso2@gmail.com"
+    }, {
+      "id": "29a1b46a-dd4c-4e25-86e1-9159445ac616",
+      "comment": "",
+      "command": "type",
+      "target": "id=basic_password",
+      "targets": [
+        ["id=basic_password", "id"],
+        ["css=#basic_password", "css:finder"],
+        ["xpath=//input[@id='basic_password']", "xpath:attributes"],
+        ["xpath=//form[@id='basic']/div[2]/div[2]/div/div/span/input", "xpath:idRelative"],
+        ["xpath=//div/span/input", "xpath:position"]
+      ],
+      "value": "1234567890"
+    }, {
+      "id": "1da87af2-1224-419a-b075-882f9f4258a2",
+      "comment": "",
+      "command": "click",
+      "target": "css=.ant-form-item-control-input-content > .ant-btn > span",
+      "targets": [
+        ["css=.ant-form-item-control-input-content > .ant-btn > span", "css:finder"],
+        ["xpath=//form[@id='basic']/div[3]/div/div/div/button/span", "xpath:idRelative"],
+        ["xpath=//div/button/span", "xpath:position"],
+        ["xpath=//span[contains(.,'Submit')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "7c3c1281-ea58-4132-8e64-fd178a60aa7e",
+      "comment": "",
+      "command": "assertText",
+      "target": "css=.ant-message-custom-content > span:nth-child(2)",
+      "targets": [],
+      "value": "Wrong password"
+    }]
+  }, {
+    "id": "d984e650-ae56-4d13-8d2f-bbdb433c97f8",
+    "name": "Password corretta",
+    "commands": [{
+      "id": "dca0ee3e-88d6-46a4-8131-0a030e97112b",
+      "comment": "",
+      "command": "open",
+      "target": "/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "83cfdd6a-26b1-420e-9703-e090e283e857",
+      "comment": "",
+      "command": "click",
+      "target": "css=a span",
+      "targets": [
+        ["css=a span", "css:finder"],
+        ["xpath=//div[@id='root']/div/section/header/div/div/a/button/span", "xpath:idRelative"],
+        ["xpath=//a/button/span", "xpath:position"],
+        ["xpath=//span[contains(.,'Login')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "5a675a18-fc12-48e7-8604-c960390d4de2",
+      "comment": "",
+      "command": "type",
+      "target": "id=basic_email",
+      "targets": [
+        ["id=basic_email", "id"],
+        ["css=#basic_email", "css:finder"],
+        ["xpath=//input[@id='basic_email']", "xpath:attributes"],
+        ["xpath=//form[@id='basic']/div/div[2]/div/div/input", "xpath:idRelative"],
+        ["xpath=//div/input", "xpath:position"]
+      ],
+      "value": "alfonso2@gmail.com"
+    }, {
+      "id": "c773691a-f1bd-446c-b4eb-e6e32239545b",
+      "comment": "",
+      "command": "type",
+      "target": "id=basic_password",
+      "targets": [
+        ["id=basic_password", "id"],
+        ["css=#basic_password", "css:finder"],
+        ["xpath=//input[@id='basic_password']", "xpath:attributes"],
+        ["xpath=//form[@id='basic']/div[2]/div[2]/div/div/span/input", "xpath:idRelative"],
+        ["xpath=//div/span/input", "xpath:position"]
+      ],
+      "value": "Password01!"
+    }, {
+      "id": "a21b9f29-bf4e-4d7b-b891-056ae94dee0a",
+      "comment": "",
+      "command": "click",
+      "target": "css=.ant-form-item-control-input-content > .ant-btn > span",
+      "targets": [
+        ["css=.ant-form-item-control-input-content > .ant-btn > span", "css:finder"],
+        ["xpath=//form[@id='basic']/div[3]/div/div/div/button/span", "xpath:idRelative"],
+        ["xpath=//div/button/span", "xpath:position"],
+        ["xpath=//span[contains(.,'Submit')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "9f1f5112-4a8b-4a18-855d-c188ed50b19c",
+      "comment": "",
+      "command": "assertText",
+      "target": "css=.ant-message-custom-content > span:nth-child(2)",
+      "targets": [],
+      "value": "Login fulfilled"
+    }]
+  }, {
+    "id": "3c038182-bcd2-4fa5-bbd4-06708562261d",
+    "name": "Aggiunta spec - formato nome",
+    "commands": [{
+      "id": "28208ea4-e58b-4ebe-a0ab-0c22dfd51929",
+      "comment": "",
+      "command": "open",
+      "target": "/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "c48a5f8b-5ca7-4df1-89cd-1a2bb7a44ba4",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "974x1040",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "9207f149-1aaa-4209-aa76-5dcd33afb7c8",
+      "comment": "",
+      "command": "click",
+      "target": "css=.anticon-home > svg",
+      "targets": [
+        ["css=.anticon-home > svg", "css:finder"]
+      ],
+      "value": ""
+    }, {
+      "id": "6bb813d2-a030-4b4d-8536-94722aa3d8b4",
+      "comment": "",
+      "command": "click",
+      "target": "css=.ant-btn:nth-child(3) > span",
+      "targets": [
+        ["css=.ant-btn:nth-child(3) > span", "css:finder"],
+        ["xpath=//div[@id='root']/div/section/main/div/button/span", "xpath:idRelative"],
+        ["xpath=//main/div/button/span", "xpath:position"],
+        ["xpath=//span[contains(.,'Aggiungi scheda tecnica')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "d143b77d-79f1-44e7-8c89-0a6e1c89c8bf",
+      "comment": "",
+      "command": "type",
+      "target": "id=basic_deviceName",
+      "targets": [
+        ["id=basic_deviceName", "id"],
+        ["css=#basic_deviceName", "css:finder"],
+        ["xpath=//input[@id='basic_deviceName']", "xpath:attributes"],
+        ["xpath=//form[@id='basic']/div/div[2]/div/div/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "9899943198735133036888919492123168014446126383798201293863896441240898078207162990505025726843112329asda"
+    }, {
+      "id": "756a00cb-a489-4863-a425-23d5653827b2",
+      "comment": "",
+      "command": "type",
+      "target": "id=basic_releaseDate",
+      "targets": [
+        ["id=basic_releaseDate", "id"],
+        ["css=#basic_releaseDate", "css:finder"],
+        ["xpath=//input[@id='basic_releaseDate']", "xpath:attributes"],
+        ["xpath=//form[@id='basic']/div[2]/div[2]/div/div/input", "xpath:idRelative"],
+        ["xpath=//div[2]/div[2]/div/div/input", "xpath:position"]
+      ],
+      "value": "test"
+    }, {
+      "id": "ab2385b1-f7d3-4562-bb4b-12bab927fbdb",
+      "comment": "",
+      "command": "type",
+      "target": "id=basic_image",
+      "targets": [
+        ["id=basic_image", "id"],
+        ["css=#basic_image", "css:finder"],
+        ["xpath=//input[@id='basic_image']", "xpath:attributes"],
+        ["xpath=//form[@id='basic']/div[3]/div[2]/div/div/input", "xpath:idRelative"],
+        ["xpath=//div[3]/div[2]/div/div/input", "xpath:position"]
+      ],
+      "value": "asd"
+    }, {
+      "id": "2c544ab5-42e7-4466-8497-b70e387421ae",
+      "comment": "",
+      "command": "type",
+      "target": "id=basic_OS",
+      "targets": [
+        ["id=basic_OS", "id"],
+        ["css=#basic_OS", "css:finder"],
+        ["xpath=//input[@id='basic_OS']", "xpath:attributes"],
+        ["xpath=//form[@id='basic']/div[4]/div[2]/div/div/input", "xpath:idRelative"],
+        ["xpath=//div[4]/div[2]/div/div/input", "xpath:position"]
+      ],
+      "value": "asd"
+    }, {
+      "id": "4b5ae6f2-88d7-4324-9c44-0ccdd0d6a585",
+      "comment": "",
+      "command": "type",
+      "target": "id=basic_CPU",
+      "targets": [
+        ["id=basic_CPU", "id"],
+        ["css=#basic_CPU", "css:finder"],
+        ["xpath=//input[@id='basic_CPU']", "xpath:attributes"],
+        ["xpath=//form[@id='basic']/div[5]/div[2]/div/div/input", "xpath:idRelative"],
+        ["xpath=//div[5]/div[2]/div/div/input", "xpath:position"]
+      ],
+      "value": "asd"
+    }, {
+      "id": "c6bea89b-6df0-44be-8e00-94622ef19922",
+      "comment": "",
+      "command": "type",
+      "target": "id=basic_chipset",
+      "targets": [
+        ["id=basic_chipset", "id"],
+        ["css=#basic_chipset", "css:finder"],
+        ["xpath=//input[@id='basic_chipset']", "xpath:attributes"],
+        ["xpath=//form[@id='basic']/div[6]/div[2]/div/div/input", "xpath:idRelative"],
+        ["xpath=//div[6]/div[2]/div/div/input", "xpath:position"]
+      ],
+      "value": "asd"
+    }, {
+      "id": "ced2a9dd-8c21-4abc-a09d-9bcaea49a4b2",
+      "comment": "",
+      "command": "type",
+      "target": "id=basic_GPU",
+      "targets": [
+        ["id=basic_GPU", "id"],
+        ["css=#basic_GPU", "css:finder"],
+        ["xpath=//input[@id='basic_GPU']", "xpath:attributes"],
+        ["xpath=//form[@id='basic']/div[7]/div[2]/div/div/input", "xpath:idRelative"],
+        ["xpath=//div[7]/div[2]/div/div/input", "xpath:position"]
+      ],
+      "value": "asd"
+    }, {
+      "id": "c28d6016-2fb4-4557-8221-a58eba417d2f",
+      "comment": "",
+      "command": "type",
+      "target": "id=basic_RAM",
+      "targets": [
+        ["id=basic_RAM", "id"],
+        ["css=#basic_RAM", "css:finder"],
+        ["xpath=//input[@id='basic_RAM']", "xpath:attributes"],
+        ["xpath=//form[@id='basic']/div[8]/div[2]/div/div/input", "xpath:idRelative"],
+        ["xpath=//div[8]/div[2]/div/div/input", "xpath:position"]
+      ],
+      "value": "asd"
+    }, {
+      "id": "19650f02-7c8b-4c81-a124-d2b54e9080fa",
+      "comment": "",
+      "command": "type",
+      "target": "id=basic_internalMemory",
+      "targets": [
+        ["id=basic_internalMemory", "id"],
+        ["css=#basic_internalMemory", "css:finder"],
+        ["xpath=//input[@id='basic_internalMemory']", "xpath:attributes"],
+        ["xpath=//form[@id='basic']/div[9]/div[2]/div/div/input", "xpath:idRelative"],
+        ["xpath=//div[9]/div[2]/div/div/input", "xpath:position"]
+      ],
+      "value": "asd"
+    }, {
+      "id": "bedb56cd-0d3e-42df-867f-024e3f6154a4",
+      "comment": "",
+      "command": "type",
+      "target": "id=basic_displayInches",
+      "targets": [
+        ["id=basic_displayInches", "id"],
+        ["css=#basic_displayInches", "css:finder"],
+        ["xpath=//input[@id='basic_displayInches']", "xpath:attributes"],
+        ["xpath=//form[@id='basic']/div[10]/div[2]/div/div/input", "xpath:idRelative"],
+        ["xpath=//div[10]/div[2]/div/div/input", "xpath:position"]
+      ],
+      "value": "asd"
+    }, {
+      "id": "b46a4710-ccaf-40de-941c-1ab7bf9baf56",
+      "comment": "",
+      "command": "type",
+      "target": "id=basic_battery",
+      "targets": [
+        ["id=basic_battery", "id"],
+        ["css=#basic_battery", "css:finder"],
+        ["xpath=//input[@id='basic_battery']", "xpath:attributes"],
+        ["xpath=//form[@id='basic']/div[11]/div[2]/div/div/input", "xpath:idRelative"],
+        ["xpath=//div[11]/div[2]/div/div/input", "xpath:position"]
+      ],
+      "value": "asd"
+    }, {
+      "id": "a2d5a7b3-8270-467a-8ca0-54cf0c55f320",
+      "comment": "",
+      "command": "type",
+      "target": "id=basic_price",
+      "targets": [
+        ["id=basic_price", "id"],
+        ["css=#basic_price", "css:finder"],
+        ["xpath=//input[@id='basic_price']", "xpath:attributes"],
+        ["xpath=//form[@id='basic']/div[12]/div[2]/div/div/input", "xpath:idRelative"],
+        ["xpath=//div[12]/div[2]/div/div/input", "xpath:position"]
+      ],
+      "value": "asd"
+    }, {
+      "id": "22a4e043-28ae-4189-98eb-d3c337a0f67c",
+      "comment": "",
+      "command": "click",
+      "target": "css=.ant-btn > span",
+      "targets": [
+        ["css=.ant-btn > span", "css:finder"],
+        ["xpath=//form[@id='basic']/div[13]/div/div/div/button/span", "xpath:idRelative"],
+        ["xpath=//button/span", "xpath:position"],
+        ["xpath=//span[contains(.,'Submit')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "4ebcfd39-b942-4761-89bb-daf28e688b40",
+      "comment": "",
+      "command": "assertText",
+      "target": "css=span:nth-child(2)",
+      "targets": [],
+      "value": "Error, something went wrong!"
+    }]
+  }, {
+    "id": "b9fc1418-5855-4069-a310-3c1506be7632",
+    "name": "Aggiunta spec - formato data",
+    "commands": [{
+      "id": "61bc2aa3-8f2f-4c1e-bac2-0d1bcb5e9b5e",
+      "comment": "",
+      "command": "open",
+      "target": "/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "7ae2ee59-3952-4b4e-92ad-95d02de99d3d",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "974x1040",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "f4376f29-b8bd-4a9b-a83d-d3572e8abaa2",
+      "comment": "",
+      "command": "click",
+      "target": "css=.anticon-home > svg",
+      "targets": [
+        ["css=.anticon-home > svg", "css:finder"]
+      ],
+      "value": ""
+    }, {
+      "id": "823793c1-ff80-4cee-8c34-f123366ee4ea",
+      "comment": "",
+      "command": "click",
+      "target": "css=.ant-btn:nth-child(3) > span",
+      "targets": [
+        ["css=.ant-btn:nth-child(3) > span", "css:finder"],
+        ["xpath=//div[@id='root']/div/section/main/div/button/span", "xpath:idRelative"],
+        ["xpath=//main/div/button/span", "xpath:position"],
+        ["xpath=//span[contains(.,'Aggiungi scheda tecnica')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "70e1f67a-3a87-45f7-a8da-0db39ad9a027",
+      "comment": "",
+      "command": "type",
+      "target": "id=basic_deviceName",
+      "targets": [
+        ["id=basic_deviceName", "id"],
+        ["css=#basic_deviceName", "css:finder"],
+        ["xpath=//input[@id='basic_deviceName']", "xpath:attributes"],
+        ["xpath=//form[@id='basic']/div/div[2]/div/div/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "ifon"
+    }, {
+      "id": "1d33d324-bc56-4709-b069-4af00fbab6c0",
+      "comment": "",
+      "command": "type",
+      "target": "id=basic_releaseDate",
+      "targets": [
+        ["id=basic_releaseDate", "id"],
+        ["css=#basic_releaseDate", "css:finder"],
+        ["xpath=//input[@id='basic_releaseDate']", "xpath:attributes"],
+        ["xpath=//form[@id='basic']/div[2]/div[2]/div/div/input", "xpath:idRelative"],
+        ["xpath=//div[2]/div[2]/div/div/input", "xpath:position"]
+      ],
+      "value": "wrongDate"
+    }, {
+      "id": "f413253d-aa7e-4e54-a7c3-1984c45a04bf",
+      "comment": "",
+      "command": "type",
+      "target": "id=basic_image",
+      "targets": [
+        ["id=basic_image", "id"],
+        ["css=#basic_image", "css:finder"],
+        ["xpath=//input[@id='basic_image']", "xpath:attributes"],
+        ["xpath=//form[@id='basic']/div[3]/div[2]/div/div/input", "xpath:idRelative"],
+        ["xpath=//div[3]/div[2]/div/div/input", "xpath:position"]
+      ],
+      "value": "asd"
+    }, {
+      "id": "b9889f51-6e98-4afa-8723-7391e88cdf1e",
+      "comment": "",
+      "command": "type",
+      "target": "id=basic_OS",
+      "targets": [
+        ["id=basic_OS", "id"],
+        ["css=#basic_OS", "css:finder"],
+        ["xpath=//input[@id='basic_OS']", "xpath:attributes"],
+        ["xpath=//form[@id='basic']/div[4]/div[2]/div/div/input", "xpath:idRelative"],
+        ["xpath=//div[4]/div[2]/div/div/input", "xpath:position"]
+      ],
+      "value": "asd"
+    }, {
+      "id": "320973ed-4567-4bce-ad87-a4a6c4c6e05f",
+      "comment": "",
+      "command": "type",
+      "target": "id=basic_CPU",
+      "targets": [
+        ["id=basic_CPU", "id"],
+        ["css=#basic_CPU", "css:finder"],
+        ["xpath=//input[@id='basic_CPU']", "xpath:attributes"],
+        ["xpath=//form[@id='basic']/div[5]/div[2]/div/div/input", "xpath:idRelative"],
+        ["xpath=//div[5]/div[2]/div/div/input", "xpath:position"]
+      ],
+      "value": "asd"
+    }, {
+      "id": "f1d63779-1dbb-4c21-a25b-b83d06476c2e",
+      "comment": "",
+      "command": "type",
+      "target": "id=basic_chipset",
+      "targets": [
+        ["id=basic_chipset", "id"],
+        ["css=#basic_chipset", "css:finder"],
+        ["xpath=//input[@id='basic_chipset']", "xpath:attributes"],
+        ["xpath=//form[@id='basic']/div[6]/div[2]/div/div/input", "xpath:idRelative"],
+        ["xpath=//div[6]/div[2]/div/div/input", "xpath:position"]
+      ],
+      "value": "asd"
+    }, {
+      "id": "09c40234-a3f6-4854-b0cc-89e967eb96a9",
+      "comment": "",
+      "command": "type",
+      "target": "id=basic_GPU",
+      "targets": [
+        ["id=basic_GPU", "id"],
+        ["css=#basic_GPU", "css:finder"],
+        ["xpath=//input[@id='basic_GPU']", "xpath:attributes"],
+        ["xpath=//form[@id='basic']/div[7]/div[2]/div/div/input", "xpath:idRelative"],
+        ["xpath=//div[7]/div[2]/div/div/input", "xpath:position"]
+      ],
+      "value": "asd"
+    }, {
+      "id": "daff8f35-4c64-46e4-9477-7a2272f4d348",
+      "comment": "",
+      "command": "type",
+      "target": "id=basic_RAM",
+      "targets": [
+        ["id=basic_RAM", "id"],
+        ["css=#basic_RAM", "css:finder"],
+        ["xpath=//input[@id='basic_RAM']", "xpath:attributes"],
+        ["xpath=//form[@id='basic']/div[8]/div[2]/div/div/input", "xpath:idRelative"],
+        ["xpath=//div[8]/div[2]/div/div/input", "xpath:position"]
+      ],
+      "value": "asd"
+    }, {
+      "id": "48570a80-afee-4f02-a0b7-91c96d50fd3e",
+      "comment": "",
+      "command": "type",
+      "target": "id=basic_internalMemory",
+      "targets": [
+        ["id=basic_internalMemory", "id"],
+        ["css=#basic_internalMemory", "css:finder"],
+        ["xpath=//input[@id='basic_internalMemory']", "xpath:attributes"],
+        ["xpath=//form[@id='basic']/div[9]/div[2]/div/div/input", "xpath:idRelative"],
+        ["xpath=//div[9]/div[2]/div/div/input", "xpath:position"]
+      ],
+      "value": "asd"
+    }, {
+      "id": "d242fcaa-dd6f-4cce-815c-6a0e29dbec03",
+      "comment": "",
+      "command": "type",
+      "target": "id=basic_displayInches",
+      "targets": [
+        ["id=basic_displayInches", "id"],
+        ["css=#basic_displayInches", "css:finder"],
+        ["xpath=//input[@id='basic_displayInches']", "xpath:attributes"],
+        ["xpath=//form[@id='basic']/div[10]/div[2]/div/div/input", "xpath:idRelative"],
+        ["xpath=//div[10]/div[2]/div/div/input", "xpath:position"]
+      ],
+      "value": "asd"
+    }, {
+      "id": "2cb6ae66-10c7-4bdb-b6e1-8cb3a29933fd",
+      "comment": "",
+      "command": "type",
+      "target": "id=basic_battery",
+      "targets": [
+        ["id=basic_battery", "id"],
+        ["css=#basic_battery", "css:finder"],
+        ["xpath=//input[@id='basic_battery']", "xpath:attributes"],
+        ["xpath=//form[@id='basic']/div[11]/div[2]/div/div/input", "xpath:idRelative"],
+        ["xpath=//div[11]/div[2]/div/div/input", "xpath:position"]
+      ],
+      "value": "asd"
+    }, {
+      "id": "7674b466-82eb-46de-acb8-cfc350035c6b",
+      "comment": "",
+      "command": "type",
+      "target": "id=basic_price",
+      "targets": [
+        ["id=basic_price", "id"],
+        ["css=#basic_price", "css:finder"],
+        ["xpath=//input[@id='basic_price']", "xpath:attributes"],
+        ["xpath=//form[@id='basic']/div[12]/div[2]/div/div/input", "xpath:idRelative"],
+        ["xpath=//div[12]/div[2]/div/div/input", "xpath:position"]
+      ],
+      "value": "asd"
+    }, {
+      "id": "122247b2-1687-4111-99cf-2e746e005816",
+      "comment": "",
+      "command": "click",
+      "target": "css=.ant-btn > span",
+      "targets": [
+        ["css=.ant-btn > span", "css:finder"],
+        ["xpath=//form[@id='basic']/div[13]/div/div/div/button/span", "xpath:idRelative"],
+        ["xpath=//button/span", "xpath:position"],
+        ["xpath=//span[contains(.,'Submit')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "8e7ba919-974e-43e8-8fdf-ccfa795e3a86",
+      "comment": "",
+      "command": "assertText",
+      "target": "css=span:nth-child(2)",
+      "targets": [],
+      "value": "Error, something went wrong!"
+    }]
+  }, {
+    "id": "c73c1bc8-1b09-4989-9f83-5fa4e3f47f89",
+    "name": "Aggiunta spec - formato data minore 1973",
+    "commands": [{
+      "id": "a228feb5-588f-4197-9857-02af4be244eb",
+      "comment": "",
+      "command": "open",
+      "target": "/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "712f4c41-14c9-492a-a6ee-0466233f7a7a",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "974x1040",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "f44c1adf-2eb5-4aa4-ab7f-458d68718271",
+      "comment": "",
+      "command": "click",
+      "target": "css=.anticon-home > svg",
+      "targets": [
+        ["css=.anticon-home > svg", "css:finder"]
+      ],
+      "value": ""
+    }, {
+      "id": "3b34a438-0753-4141-b876-f27b193b9572",
+      "comment": "",
+      "command": "click",
+      "target": "css=.ant-btn:nth-child(3) > span",
+      "targets": [
+        ["css=.ant-btn:nth-child(3) > span", "css:finder"],
+        ["xpath=//div[@id='root']/div/section/main/div/button/span", "xpath:idRelative"],
+        ["xpath=//main/div/button/span", "xpath:position"],
+        ["xpath=//span[contains(.,'Aggiungi scheda tecnica')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "87f75349-4c81-413f-bea7-29393065181d",
+      "comment": "",
+      "command": "type",
+      "target": "id=basic_deviceName",
+      "targets": [
+        ["id=basic_deviceName", "id"],
+        ["css=#basic_deviceName", "css:finder"],
+        ["xpath=//input[@id='basic_deviceName']", "xpath:attributes"],
+        ["xpath=//form[@id='basic']/div/div[2]/div/div/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "ifon"
+    }, {
+      "id": "b54d7244-52b0-4205-a08d-7fec73c5e43c",
+      "comment": "",
+      "command": "type",
+      "target": "id=basic_releaseDate",
+      "targets": [
+        ["id=basic_releaseDate", "id"],
+        ["css=#basic_releaseDate", "css:finder"],
+        ["xpath=//input[@id='basic_releaseDate']", "xpath:attributes"],
+        ["xpath=//form[@id='basic']/div[2]/div[2]/div/div/input", "xpath:idRelative"],
+        ["xpath=//div[2]/div[2]/div/div/input", "xpath:position"]
+      ],
+      "value": "1900/12"
+    }, {
+      "id": "fa7129de-312a-4f61-9d0a-390b46884f22",
+      "comment": "",
+      "command": "type",
+      "target": "id=basic_image",
+      "targets": [
+        ["id=basic_image", "id"],
+        ["css=#basic_image", "css:finder"],
+        ["xpath=//input[@id='basic_image']", "xpath:attributes"],
+        ["xpath=//form[@id='basic']/div[3]/div[2]/div/div/input", "xpath:idRelative"],
+        ["xpath=//div[3]/div[2]/div/div/input", "xpath:position"]
+      ],
+      "value": "asd"
+    }, {
+      "id": "d5f97daa-3804-460e-96b8-01cd4d2f7235",
+      "comment": "",
+      "command": "type",
+      "target": "id=basic_OS",
+      "targets": [
+        ["id=basic_OS", "id"],
+        ["css=#basic_OS", "css:finder"],
+        ["xpath=//input[@id='basic_OS']", "xpath:attributes"],
+        ["xpath=//form[@id='basic']/div[4]/div[2]/div/div/input", "xpath:idRelative"],
+        ["xpath=//div[4]/div[2]/div/div/input", "xpath:position"]
+      ],
+      "value": "asd"
+    }, {
+      "id": "fff82bb8-acb9-4a4e-aa68-851ade954600",
+      "comment": "",
+      "command": "type",
+      "target": "id=basic_CPU",
+      "targets": [
+        ["id=basic_CPU", "id"],
+        ["css=#basic_CPU", "css:finder"],
+        ["xpath=//input[@id='basic_CPU']", "xpath:attributes"],
+        ["xpath=//form[@id='basic']/div[5]/div[2]/div/div/input", "xpath:idRelative"],
+        ["xpath=//div[5]/div[2]/div/div/input", "xpath:position"]
+      ],
+      "value": "asd"
+    }, {
+      "id": "a2a8680e-3a1b-4e38-b12d-9731dd96042f",
+      "comment": "",
+      "command": "type",
+      "target": "id=basic_chipset",
+      "targets": [
+        ["id=basic_chipset", "id"],
+        ["css=#basic_chipset", "css:finder"],
+        ["xpath=//input[@id='basic_chipset']", "xpath:attributes"],
+        ["xpath=//form[@id='basic']/div[6]/div[2]/div/div/input", "xpath:idRelative"],
+        ["xpath=//div[6]/div[2]/div/div/input", "xpath:position"]
+      ],
+      "value": "asd"
+    }, {
+      "id": "5c48c371-08ee-4818-bbb7-d4166740dfb4",
+      "comment": "",
+      "command": "type",
+      "target": "id=basic_GPU",
+      "targets": [
+        ["id=basic_GPU", "id"],
+        ["css=#basic_GPU", "css:finder"],
+        ["xpath=//input[@id='basic_GPU']", "xpath:attributes"],
+        ["xpath=//form[@id='basic']/div[7]/div[2]/div/div/input", "xpath:idRelative"],
+        ["xpath=//div[7]/div[2]/div/div/input", "xpath:position"]
+      ],
+      "value": "asd"
+    }, {
+      "id": "7690a5f7-c7cf-484b-a6ca-cc4070ff5a64",
+      "comment": "",
+      "command": "type",
+      "target": "id=basic_RAM",
+      "targets": [
+        ["id=basic_RAM", "id"],
+        ["css=#basic_RAM", "css:finder"],
+        ["xpath=//input[@id='basic_RAM']", "xpath:attributes"],
+        ["xpath=//form[@id='basic']/div[8]/div[2]/div/div/input", "xpath:idRelative"],
+        ["xpath=//div[8]/div[2]/div/div/input", "xpath:position"]
+      ],
+      "value": "asd"
+    }, {
+      "id": "f50ceec4-4141-443a-8e26-0ae1336de6ef",
+      "comment": "",
+      "command": "type",
+      "target": "id=basic_internalMemory",
+      "targets": [
+        ["id=basic_internalMemory", "id"],
+        ["css=#basic_internalMemory", "css:finder"],
+        ["xpath=//input[@id='basic_internalMemory']", "xpath:attributes"],
+        ["xpath=//form[@id='basic']/div[9]/div[2]/div/div/input", "xpath:idRelative"],
+        ["xpath=//div[9]/div[2]/div/div/input", "xpath:position"]
+      ],
+      "value": "asd"
+    }, {
+      "id": "118ef283-a832-44f9-9d1a-059942fda14d",
+      "comment": "",
+      "command": "type",
+      "target": "id=basic_displayInches",
+      "targets": [
+        ["id=basic_displayInches", "id"],
+        ["css=#basic_displayInches", "css:finder"],
+        ["xpath=//input[@id='basic_displayInches']", "xpath:attributes"],
+        ["xpath=//form[@id='basic']/div[10]/div[2]/div/div/input", "xpath:idRelative"],
+        ["xpath=//div[10]/div[2]/div/div/input", "xpath:position"]
+      ],
+      "value": "asd"
+    }, {
+      "id": "bf14e287-91a7-4f45-86ba-569487220b25",
+      "comment": "",
+      "command": "type",
+      "target": "id=basic_battery",
+      "targets": [
+        ["id=basic_battery", "id"],
+        ["css=#basic_battery", "css:finder"],
+        ["xpath=//input[@id='basic_battery']", "xpath:attributes"],
+        ["xpath=//form[@id='basic']/div[11]/div[2]/div/div/input", "xpath:idRelative"],
+        ["xpath=//div[11]/div[2]/div/div/input", "xpath:position"]
+      ],
+      "value": "asd"
+    }, {
+      "id": "a4e44964-d2c7-4577-b852-4183fe33119d",
+      "comment": "",
+      "command": "type",
+      "target": "id=basic_price",
+      "targets": [
+        ["id=basic_price", "id"],
+        ["css=#basic_price", "css:finder"],
+        ["xpath=//input[@id='basic_price']", "xpath:attributes"],
+        ["xpath=//form[@id='basic']/div[12]/div[2]/div/div/input", "xpath:idRelative"],
+        ["xpath=//div[12]/div[2]/div/div/input", "xpath:position"]
+      ],
+      "value": "asd"
+    }, {
+      "id": "175c8925-2704-46aa-875a-724a095ec143",
+      "comment": "",
+      "command": "click",
+      "target": "css=.ant-btn > span",
+      "targets": [
+        ["css=.ant-btn > span", "css:finder"],
+        ["xpath=//form[@id='basic']/div[13]/div/div/div/button/span", "xpath:idRelative"],
+        ["xpath=//button/span", "xpath:position"],
+        ["xpath=//span[contains(.,'Submit')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "9d7501ac-ef35-439f-96a9-d3394b8672c0",
+      "comment": "",
+      "command": "assertText",
+      "target": "css=span:nth-child(2)",
+      "targets": [],
+      "value": "Error, something went wrong!"
+    }]
+  }, {
+    "id": "934cbeda-b3d8-4f9b-90ee-f45e0b9f8e74",
+    "name": "Aggiunta spec - formato url",
+    "commands": [{
+      "id": "ab94fb73-c527-4515-97a6-1444bc73acaf",
+      "comment": "",
+      "command": "open",
+      "target": "/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "ab636a20-6d25-4195-a5fe-ad5292d42805",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "974x1040",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "495aa1c1-8bc6-4ed8-bc56-07108fc8fbab",
+      "comment": "",
+      "command": "click",
+      "target": "css=.anticon-home > svg",
+      "targets": [
+        ["css=.anticon-home > svg", "css:finder"]
+      ],
+      "value": ""
+    }, {
+      "id": "9edc68cf-8b87-4c79-b691-c2c22881ed1f",
+      "comment": "",
+      "command": "click",
+      "target": "css=.ant-btn:nth-child(3) > span",
+      "targets": [
+        ["css=.ant-btn:nth-child(3) > span", "css:finder"],
+        ["xpath=//div[@id='root']/div/section/main/div/button/span", "xpath:idRelative"],
+        ["xpath=//main/div/button/span", "xpath:position"],
+        ["xpath=//span[contains(.,'Aggiungi scheda tecnica')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "0c1ced95-f0c1-48a2-91d4-2e296006ac55",
+      "comment": "",
+      "command": "type",
+      "target": "id=basic_deviceName",
+      "targets": [
+        ["id=basic_deviceName", "id"],
+        ["css=#basic_deviceName", "css:finder"],
+        ["xpath=//input[@id='basic_deviceName']", "xpath:attributes"],
+        ["xpath=//form[@id='basic']/div/div[2]/div/div/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "ifon"
+    }, {
+      "id": "4d16f290-19c2-482c-9368-6ea2568623af",
+      "comment": "",
+      "command": "type",
+      "target": "id=basic_releaseDate",
+      "targets": [
+        ["id=basic_releaseDate", "id"],
+        ["css=#basic_releaseDate", "css:finder"],
+        ["xpath=//input[@id='basic_releaseDate']", "xpath:attributes"],
+        ["xpath=//form[@id='basic']/div[2]/div[2]/div/div/input", "xpath:idRelative"],
+        ["xpath=//div[2]/div[2]/div/div/input", "xpath:position"]
+      ],
+      "value": "2020/12"
+    }, {
+      "id": "3f7a01dd-b2fc-4607-8622-5b46302d5b3b",
+      "comment": "",
+      "command": "type",
+      "target": "id=basic_image",
+      "targets": [
+        ["id=basic_image", "id"],
+        ["css=#basic_image", "css:finder"],
+        ["xpath=//input[@id='basic_image']", "xpath:attributes"],
+        ["xpath=//form[@id='basic']/div[3]/div[2]/div/div/input", "xpath:idRelative"],
+        ["xpath=//div[3]/div[2]/div/div/input", "xpath:position"]
+      ],
+      "value": "www.ciaociao"
+    }, {
+      "id": "d976d13e-17a0-498f-89c3-4db298aaf9da",
+      "comment": "",
+      "command": "type",
+      "target": "id=basic_OS",
+      "targets": [
+        ["id=basic_OS", "id"],
+        ["css=#basic_OS", "css:finder"],
+        ["xpath=//input[@id='basic_OS']", "xpath:attributes"],
+        ["xpath=//form[@id='basic']/div[4]/div[2]/div/div/input", "xpath:idRelative"],
+        ["xpath=//div[4]/div[2]/div/div/input", "xpath:position"]
+      ],
+      "value": "asd"
+    }, {
+      "id": "5cf1fef9-76e3-44ba-a0d4-45985f549875",
+      "comment": "",
+      "command": "type",
+      "target": "id=basic_CPU",
+      "targets": [
+        ["id=basic_CPU", "id"],
+        ["css=#basic_CPU", "css:finder"],
+        ["xpath=//input[@id='basic_CPU']", "xpath:attributes"],
+        ["xpath=//form[@id='basic']/div[5]/div[2]/div/div/input", "xpath:idRelative"],
+        ["xpath=//div[5]/div[2]/div/div/input", "xpath:position"]
+      ],
+      "value": "asd"
+    }, {
+      "id": "d5e6e9cb-45b2-4a25-9c40-9e0151820e92",
+      "comment": "",
+      "command": "type",
+      "target": "id=basic_chipset",
+      "targets": [
+        ["id=basic_chipset", "id"],
+        ["css=#basic_chipset", "css:finder"],
+        ["xpath=//input[@id='basic_chipset']", "xpath:attributes"],
+        ["xpath=//form[@id='basic']/div[6]/div[2]/div/div/input", "xpath:idRelative"],
+        ["xpath=//div[6]/div[2]/div/div/input", "xpath:position"]
+      ],
+      "value": "asd"
+    }, {
+      "id": "b63df4c9-d5d4-44c8-83aa-f72f9e8b6c26",
+      "comment": "",
+      "command": "type",
+      "target": "id=basic_GPU",
+      "targets": [
+        ["id=basic_GPU", "id"],
+        ["css=#basic_GPU", "css:finder"],
+        ["xpath=//input[@id='basic_GPU']", "xpath:attributes"],
+        ["xpath=//form[@id='basic']/div[7]/div[2]/div/div/input", "xpath:idRelative"],
+        ["xpath=//div[7]/div[2]/div/div/input", "xpath:position"]
+      ],
+      "value": "asd"
+    }, {
+      "id": "25bb63f1-5425-40af-9842-b2c5aeaa4d3a",
+      "comment": "",
+      "command": "type",
+      "target": "id=basic_RAM",
+      "targets": [
+        ["id=basic_RAM", "id"],
+        ["css=#basic_RAM", "css:finder"],
+        ["xpath=//input[@id='basic_RAM']", "xpath:attributes"],
+        ["xpath=//form[@id='basic']/div[8]/div[2]/div/div/input", "xpath:idRelative"],
+        ["xpath=//div[8]/div[2]/div/div/input", "xpath:position"]
+      ],
+      "value": "asd"
+    }, {
+      "id": "44f061ac-1d88-4038-8e79-70f6cbe06c58",
+      "comment": "",
+      "command": "type",
+      "target": "id=basic_internalMemory",
+      "targets": [
+        ["id=basic_internalMemory", "id"],
+        ["css=#basic_internalMemory", "css:finder"],
+        ["xpath=//input[@id='basic_internalMemory']", "xpath:attributes"],
+        ["xpath=//form[@id='basic']/div[9]/div[2]/div/div/input", "xpath:idRelative"],
+        ["xpath=//div[9]/div[2]/div/div/input", "xpath:position"]
+      ],
+      "value": "asd"
+    }, {
+      "id": "5a53abe2-78b8-42ec-ab90-8e43e6186a72",
+      "comment": "",
+      "command": "type",
+      "target": "id=basic_displayInches",
+      "targets": [
+        ["id=basic_displayInches", "id"],
+        ["css=#basic_displayInches", "css:finder"],
+        ["xpath=//input[@id='basic_displayInches']", "xpath:attributes"],
+        ["xpath=//form[@id='basic']/div[10]/div[2]/div/div/input", "xpath:idRelative"],
+        ["xpath=//div[10]/div[2]/div/div/input", "xpath:position"]
+      ],
+      "value": "asd"
+    }, {
+      "id": "b47b6c99-e986-4f82-8ad9-f1f7d933620e",
+      "comment": "",
+      "command": "type",
+      "target": "id=basic_battery",
+      "targets": [
+        ["id=basic_battery", "id"],
+        ["css=#basic_battery", "css:finder"],
+        ["xpath=//input[@id='basic_battery']", "xpath:attributes"],
+        ["xpath=//form[@id='basic']/div[11]/div[2]/div/div/input", "xpath:idRelative"],
+        ["xpath=//div[11]/div[2]/div/div/input", "xpath:position"]
+      ],
+      "value": "asd"
+    }, {
+      "id": "decec47e-42f0-4f50-8812-77a1e6b33a44",
+      "comment": "",
+      "command": "type",
+      "target": "id=basic_price",
+      "targets": [
+        ["id=basic_price", "id"],
+        ["css=#basic_price", "css:finder"],
+        ["xpath=//input[@id='basic_price']", "xpath:attributes"],
+        ["xpath=//form[@id='basic']/div[12]/div[2]/div/div/input", "xpath:idRelative"],
+        ["xpath=//div[12]/div[2]/div/div/input", "xpath:position"]
+      ],
+      "value": "asd"
+    }, {
+      "id": "b684a1da-e4d0-4dd8-8a50-d05b9b5b282a",
+      "comment": "",
+      "command": "click",
+      "target": "css=.ant-btn > span",
+      "targets": [
+        ["css=.ant-btn > span", "css:finder"],
+        ["xpath=//form[@id='basic']/div[13]/div/div/div/button/span", "xpath:idRelative"],
+        ["xpath=//button/span", "xpath:position"],
+        ["xpath=//span[contains(.,'Submit')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "26064eb6-081c-4441-9707-271628fbd859",
+      "comment": "",
+      "command": "assertText",
+      "target": "css=span:nth-child(2)",
+      "targets": [],
+      "value": "Error, something went wrong!"
+    }]
+  }, {
+    "id": "f97ca3c8-b2e2-4341-8b55-fe92f07440a8",
+    "name": "Aggiunta spec - formato ram",
+    "commands": [{
+      "id": "0ceaeb22-171e-48cb-9470-1337b82a22da",
+      "comment": "",
+      "command": "open",
+      "target": "/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "af345d10-58bb-4019-a943-b00f7de757b6",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "974x1040",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "2f57820f-c2e3-468a-99b6-67b8a5513a47",
+      "comment": "",
+      "command": "click",
+      "target": "css=.anticon-home > svg",
+      "targets": [
+        ["css=.anticon-home > svg", "css:finder"]
+      ],
+      "value": ""
+    }, {
+      "id": "e7bc0bfd-1cf3-4b16-a731-612b770423ab",
+      "comment": "",
+      "command": "click",
+      "target": "css=.ant-btn:nth-child(3) > span",
+      "targets": [
+        ["css=.ant-btn:nth-child(3) > span", "css:finder"],
+        ["xpath=//div[@id='root']/div/section/main/div/button/span", "xpath:idRelative"],
+        ["xpath=//main/div/button/span", "xpath:position"],
+        ["xpath=//span[contains(.,'Aggiungi scheda tecnica')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "f0a5cd3c-eb8c-41e7-be19-13587e727212",
+      "comment": "",
+      "command": "type",
+      "target": "id=basic_deviceName",
+      "targets": [
+        ["id=basic_deviceName", "id"],
+        ["css=#basic_deviceName", "css:finder"],
+        ["xpath=//input[@id='basic_deviceName']", "xpath:attributes"],
+        ["xpath=//form[@id='basic']/div/div[2]/div/div/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "ifon"
+    }, {
+      "id": "071d8142-d6e3-4f65-8a54-f34c73ba67dd",
+      "comment": "",
+      "command": "type",
+      "target": "id=basic_releaseDate",
+      "targets": [
+        ["id=basic_releaseDate", "id"],
+        ["css=#basic_releaseDate", "css:finder"],
+        ["xpath=//input[@id='basic_releaseDate']", "xpath:attributes"],
+        ["xpath=//form[@id='basic']/div[2]/div[2]/div/div/input", "xpath:idRelative"],
+        ["xpath=//div[2]/div[2]/div/div/input", "xpath:position"]
+      ],
+      "value": "2020/12"
+    }, {
+      "id": "2f9152b4-d7b1-4b20-a866-2b38a5be8a66",
+      "comment": "",
+      "command": "type",
+      "target": "id=basic_image",
+      "targets": [
+        ["id=basic_image", "id"],
+        ["css=#basic_image", "css:finder"],
+        ["xpath=//input[@id='basic_image']", "xpath:attributes"],
+        ["xpath=//form[@id='basic']/div[3]/div[2]/div/div/input", "xpath:idRelative"],
+        ["xpath=//div[3]/div[2]/div/div/input", "xpath:position"]
+      ],
+      "value": "https://hd2.tudocdn.net/42722_4?w=100&h=200"
+    }, {
+      "id": "692b94e1-8865-487f-9cbe-405300a23d5b",
+      "comment": "",
+      "command": "type",
+      "target": "id=basic_OS",
+      "targets": [
+        ["id=basic_OS", "id"],
+        ["css=#basic_OS", "css:finder"],
+        ["xpath=//input[@id='basic_OS']", "xpath:attributes"],
+        ["xpath=//form[@id='basic']/div[4]/div[2]/div/div/input", "xpath:idRelative"],
+        ["xpath=//div[4]/div[2]/div/div/input", "xpath:position"]
+      ],
+      "value": "Android"
+    }, {
+      "id": "dc482aee-22da-4b26-a426-d47616c63ad4",
+      "comment": "",
+      "command": "type",
+      "target": "id=basic_CPU",
+      "targets": [
+        ["id=basic_CPU", "id"],
+        ["css=#basic_CPU", "css:finder"],
+        ["xpath=//input[@id='basic_CPU']", "xpath:attributes"],
+        ["xpath=//form[@id='basic']/div[5]/div[2]/div/div/input", "xpath:idRelative"],
+        ["xpath=//div[5]/div[2]/div/div/input", "xpath:position"]
+      ],
+      "value": "2.4ghz"
+    }, {
+      "id": "3f8332c9-7bf2-4767-a45a-3a4df743b46f",
+      "comment": "",
+      "command": "type",
+      "target": "id=basic_chipset",
+      "targets": [
+        ["id=basic_chipset", "id"],
+        ["css=#basic_chipset", "css:finder"],
+        ["xpath=//input[@id='basic_chipset']", "xpath:attributes"],
+        ["xpath=//form[@id='basic']/div[6]/div[2]/div/div/input", "xpath:idRelative"],
+        ["xpath=//div[6]/div[2]/div/div/input", "xpath:position"]
+      ],
+      "value": "amd"
+    }, {
+      "id": "f253239a-6280-4698-a1d0-5a2528819710",
+      "comment": "",
+      "command": "type",
+      "target": "id=basic_GPU",
+      "targets": [
+        ["id=basic_GPU", "id"],
+        ["css=#basic_GPU", "css:finder"],
+        ["xpath=//input[@id='basic_GPU']", "xpath:attributes"],
+        ["xpath=//form[@id='basic']/div[7]/div[2]/div/div/input", "xpath:idRelative"],
+        ["xpath=//div[7]/div[2]/div/div/input", "xpath:position"]
+      ],
+      "value": "nvidia"
+    }, {
+      "id": "ef3de7c6-4d47-4ff6-aad9-37ff56b9a1bf",
+      "comment": "",
+      "command": "type",
+      "target": "id=basic_RAM",
+      "targets": [
+        ["id=basic_RAM", "id"],
+        ["css=#basic_RAM", "css:finder"],
+        ["xpath=//input[@id='basic_RAM']", "xpath:attributes"],
+        ["xpath=//form[@id='basic']/div[8]/div[2]/div/div/input", "xpath:idRelative"],
+        ["xpath=//div[8]/div[2]/div/div/input", "xpath:position"]
+      ],
+      "value": "test"
+    }, {
+      "id": "bc198487-1275-4062-9cfe-1cc433380354",
+      "comment": "",
+      "command": "type",
+      "target": "id=basic_internalMemory",
+      "targets": [
+        ["id=basic_internalMemory", "id"],
+        ["css=#basic_internalMemory", "css:finder"],
+        ["xpath=//input[@id='basic_internalMemory']", "xpath:attributes"],
+        ["xpath=//form[@id='basic']/div[9]/div[2]/div/div/input", "xpath:idRelative"],
+        ["xpath=//div[9]/div[2]/div/div/input", "xpath:position"]
+      ],
+      "value": "asd"
+    }, {
+      "id": "96d7fe0a-0194-4abe-ad0b-9b5983bac411",
+      "comment": "",
+      "command": "type",
+      "target": "id=basic_displayInches",
+      "targets": [
+        ["id=basic_displayInches", "id"],
+        ["css=#basic_displayInches", "css:finder"],
+        ["xpath=//input[@id='basic_displayInches']", "xpath:attributes"],
+        ["xpath=//form[@id='basic']/div[10]/div[2]/div/div/input", "xpath:idRelative"],
+        ["xpath=//div[10]/div[2]/div/div/input", "xpath:position"]
+      ],
+      "value": "asd"
+    }, {
+      "id": "40a5988e-f160-451e-b9fd-54d384c0985a",
+      "comment": "",
+      "command": "type",
+      "target": "id=basic_battery",
+      "targets": [
+        ["id=basic_battery", "id"],
+        ["css=#basic_battery", "css:finder"],
+        ["xpath=//input[@id='basic_battery']", "xpath:attributes"],
+        ["xpath=//form[@id='basic']/div[11]/div[2]/div/div/input", "xpath:idRelative"],
+        ["xpath=//div[11]/div[2]/div/div/input", "xpath:position"]
+      ],
+      "value": "asd"
+    }, {
+      "id": "e5686a7e-78ee-49b1-9a15-287dc1c88894",
+      "comment": "",
+      "command": "type",
+      "target": "id=basic_price",
+      "targets": [
+        ["id=basic_price", "id"],
+        ["css=#basic_price", "css:finder"],
+        ["xpath=//input[@id='basic_price']", "xpath:attributes"],
+        ["xpath=//form[@id='basic']/div[12]/div[2]/div/div/input", "xpath:idRelative"],
+        ["xpath=//div[12]/div[2]/div/div/input", "xpath:position"]
+      ],
+      "value": "asd"
+    }, {
+      "id": "b422eba9-2d5c-4ab1-8744-3ef2ebf37204",
+      "comment": "",
+      "command": "click",
+      "target": "css=.ant-btn > span",
+      "targets": [
+        ["css=.ant-btn > span", "css:finder"],
+        ["xpath=//form[@id='basic']/div[13]/div/div/div/button/span", "xpath:idRelative"],
+        ["xpath=//button/span", "xpath:position"],
+        ["xpath=//span[contains(.,'Submit')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "ea7175d9-059c-4a5b-838d-07cd863fb6da",
+      "comment": "",
+      "command": "assertText",
+      "target": "css=span:nth-child(2)",
+      "targets": [],
+      "value": "Error, something went wrong!"
+    }]
+  }, {
+    "id": "e4613c9c-9d9c-4399-8e92-7f9aeef3d5cd",
+    "name": "Aggiunta spec - formato internalMemory",
+    "commands": [{
+      "id": "32ee35e8-b804-4dd2-97ff-e06e9f733318",
+      "comment": "",
+      "command": "open",
+      "target": "/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "6ba0d315-8177-4799-95dd-ff8f5453fc6a",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "974x1040",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "f34849c6-b22d-481a-b51f-b1e9583e06ea",
+      "comment": "",
+      "command": "click",
+      "target": "css=.anticon-home > svg",
+      "targets": [
+        ["css=.anticon-home > svg", "css:finder"]
+      ],
+      "value": ""
+    }, {
+      "id": "de7fb6b4-a8de-4685-be06-cf4053b77e6d",
+      "comment": "",
+      "command": "click",
+      "target": "css=.ant-btn:nth-child(3) > span",
+      "targets": [
+        ["css=.ant-btn:nth-child(3) > span", "css:finder"],
+        ["xpath=//div[@id='root']/div/section/main/div/button/span", "xpath:idRelative"],
+        ["xpath=//main/div/button/span", "xpath:position"],
+        ["xpath=//span[contains(.,'Aggiungi scheda tecnica')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "d7c07990-f67f-4308-b8fe-cf92c764ea92",
+      "comment": "",
+      "command": "type",
+      "target": "id=basic_deviceName",
+      "targets": [
+        ["id=basic_deviceName", "id"],
+        ["css=#basic_deviceName", "css:finder"],
+        ["xpath=//input[@id='basic_deviceName']", "xpath:attributes"],
+        ["xpath=//form[@id='basic']/div/div[2]/div/div/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "ifon"
+    }, {
+      "id": "a9f78464-9a47-4965-94c8-1ad1ba8bb4af",
+      "comment": "",
+      "command": "type",
+      "target": "id=basic_releaseDate",
+      "targets": [
+        ["id=basic_releaseDate", "id"],
+        ["css=#basic_releaseDate", "css:finder"],
+        ["xpath=//input[@id='basic_releaseDate']", "xpath:attributes"],
+        ["xpath=//form[@id='basic']/div[2]/div[2]/div/div/input", "xpath:idRelative"],
+        ["xpath=//div[2]/div[2]/div/div/input", "xpath:position"]
+      ],
+      "value": "2020/12"
+    }, {
+      "id": "4e82c300-baf3-4a70-8385-f978900680c1",
+      "comment": "",
+      "command": "type",
+      "target": "id=basic_image",
+      "targets": [
+        ["id=basic_image", "id"],
+        ["css=#basic_image", "css:finder"],
+        ["xpath=//input[@id='basic_image']", "xpath:attributes"],
+        ["xpath=//form[@id='basic']/div[3]/div[2]/div/div/input", "xpath:idRelative"],
+        ["xpath=//div[3]/div[2]/div/div/input", "xpath:position"]
+      ],
+      "value": "https://hd2.tudocdn.net/42722_4?w=100&h=200"
+    }, {
+      "id": "19cca89f-7974-421a-a8c7-71ab53d4c29e",
+      "comment": "",
+      "command": "type",
+      "target": "id=basic_OS",
+      "targets": [
+        ["id=basic_OS", "id"],
+        ["css=#basic_OS", "css:finder"],
+        ["xpath=//input[@id='basic_OS']", "xpath:attributes"],
+        ["xpath=//form[@id='basic']/div[4]/div[2]/div/div/input", "xpath:idRelative"],
+        ["xpath=//div[4]/div[2]/div/div/input", "xpath:position"]
+      ],
+      "value": "Android"
+    }, {
+      "id": "55eb1e70-c767-4b24-bedb-cffd8ee535b7",
+      "comment": "",
+      "command": "type",
+      "target": "id=basic_CPU",
+      "targets": [
+        ["id=basic_CPU", "id"],
+        ["css=#basic_CPU", "css:finder"],
+        ["xpath=//input[@id='basic_CPU']", "xpath:attributes"],
+        ["xpath=//form[@id='basic']/div[5]/div[2]/div/div/input", "xpath:idRelative"],
+        ["xpath=//div[5]/div[2]/div/div/input", "xpath:position"]
+      ],
+      "value": "2.4ghz"
+    }, {
+      "id": "49312acf-e45e-48ca-9f13-1647aec64dd3",
+      "comment": "",
+      "command": "type",
+      "target": "id=basic_chipset",
+      "targets": [
+        ["id=basic_chipset", "id"],
+        ["css=#basic_chipset", "css:finder"],
+        ["xpath=//input[@id='basic_chipset']", "xpath:attributes"],
+        ["xpath=//form[@id='basic']/div[6]/div[2]/div/div/input", "xpath:idRelative"],
+        ["xpath=//div[6]/div[2]/div/div/input", "xpath:position"]
+      ],
+      "value": "amd"
+    }, {
+      "id": "af6223f9-2e73-4ef2-8902-ee19dd73a2b7",
+      "comment": "",
+      "command": "type",
+      "target": "id=basic_GPU",
+      "targets": [
+        ["id=basic_GPU", "id"],
+        ["css=#basic_GPU", "css:finder"],
+        ["xpath=//input[@id='basic_GPU']", "xpath:attributes"],
+        ["xpath=//form[@id='basic']/div[7]/div[2]/div/div/input", "xpath:idRelative"],
+        ["xpath=//div[7]/div[2]/div/div/input", "xpath:position"]
+      ],
+      "value": "nvidia"
+    }, {
+      "id": "2f60a35c-bd11-44b0-8f70-eb34a0f9dad7",
+      "comment": "",
+      "command": "type",
+      "target": "id=basic_RAM",
+      "targets": [
+        ["id=basic_RAM", "id"],
+        ["css=#basic_RAM", "css:finder"],
+        ["xpath=//input[@id='basic_RAM']", "xpath:attributes"],
+        ["xpath=//form[@id='basic']/div[8]/div[2]/div/div/input", "xpath:idRelative"],
+        ["xpath=//div[8]/div[2]/div/div/input", "xpath:position"]
+      ],
+      "value": "6 GB"
+    }, {
+      "id": "d4924f03-0e15-4ec5-81df-de6bf6ee7ea3",
+      "comment": "",
+      "command": "type",
+      "target": "id=basic_internalMemory",
+      "targets": [
+        ["id=basic_internalMemory", "id"],
+        ["css=#basic_internalMemory", "css:finder"],
+        ["xpath=//input[@id='basic_internalMemory']", "xpath:attributes"],
+        ["xpath=//form[@id='basic']/div[9]/div[2]/div/div/input", "xpath:idRelative"],
+        ["xpath=//div[9]/div[2]/div/div/input", "xpath:position"]
+      ],
+      "value": "test"
+    }, {
+      "id": "dc9fbd1f-fdd5-474c-869b-e05be1a8ae04",
+      "comment": "",
+      "command": "type",
+      "target": "id=basic_displayInches",
+      "targets": [
+        ["id=basic_displayInches", "id"],
+        ["css=#basic_displayInches", "css:finder"],
+        ["xpath=//input[@id='basic_displayInches']", "xpath:attributes"],
+        ["xpath=//form[@id='basic']/div[10]/div[2]/div/div/input", "xpath:idRelative"],
+        ["xpath=//div[10]/div[2]/div/div/input", "xpath:position"]
+      ],
+      "value": "asd"
+    }, {
+      "id": "aa6b3369-2bb0-4394-8845-aeff90732919",
+      "comment": "",
+      "command": "type",
+      "target": "id=basic_battery",
+      "targets": [
+        ["id=basic_battery", "id"],
+        ["css=#basic_battery", "css:finder"],
+        ["xpath=//input[@id='basic_battery']", "xpath:attributes"],
+        ["xpath=//form[@id='basic']/div[11]/div[2]/div/div/input", "xpath:idRelative"],
+        ["xpath=//div[11]/div[2]/div/div/input", "xpath:position"]
+      ],
+      "value": "asd"
+    }, {
+      "id": "4e1a8d02-2858-4e48-8e7a-8487d7b2f4b1",
+      "comment": "",
+      "command": "type",
+      "target": "id=basic_price",
+      "targets": [
+        ["id=basic_price", "id"],
+        ["css=#basic_price", "css:finder"],
+        ["xpath=//input[@id='basic_price']", "xpath:attributes"],
+        ["xpath=//form[@id='basic']/div[12]/div[2]/div/div/input", "xpath:idRelative"],
+        ["xpath=//div[12]/div[2]/div/div/input", "xpath:position"]
+      ],
+      "value": "asd"
+    }, {
+      "id": "9eb6f888-f2c9-4c65-a969-ebba5355c1f6",
+      "comment": "",
+      "command": "click",
+      "target": "css=.ant-btn > span",
+      "targets": [
+        ["css=.ant-btn > span", "css:finder"],
+        ["xpath=//form[@id='basic']/div[13]/div/div/div/button/span", "xpath:idRelative"],
+        ["xpath=//button/span", "xpath:position"],
+        ["xpath=//span[contains(.,'Submit')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "3fe82de4-54c7-47ba-8dae-a37cb4f0ae06",
+      "comment": "",
+      "command": "assertText",
+      "target": "css=span:nth-child(2)",
+      "targets": [],
+      "value": "Error, something went wrong!"
+    }]
+  }, {
+    "id": "c90f9fdc-40d8-4fb9-a0d1-d69388dbb437",
+    "name": "Aggiunta spec - formato displayInches",
+    "commands": [{
+      "id": "2ef4c906-85df-4398-9bfc-83d3f2bcad9a",
+      "comment": "",
+      "command": "open",
+      "target": "/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "43bba939-23be-4cf2-b51f-3fa16c3a289a",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "974x1040",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "42bb0b83-ad5e-424a-9459-0bb7dc73a50d",
+      "comment": "",
+      "command": "click",
+      "target": "css=.anticon-home > svg",
+      "targets": [
+        ["css=.anticon-home > svg", "css:finder"]
+      ],
+      "value": ""
+    }, {
+      "id": "8ca492ba-2549-46f1-a959-3141ff4bd849",
+      "comment": "",
+      "command": "click",
+      "target": "css=.ant-btn:nth-child(3) > span",
+      "targets": [
+        ["css=.ant-btn:nth-child(3) > span", "css:finder"],
+        ["xpath=//div[@id='root']/div/section/main/div/button/span", "xpath:idRelative"],
+        ["xpath=//main/div/button/span", "xpath:position"],
+        ["xpath=//span[contains(.,'Aggiungi scheda tecnica')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "82896997-c968-4452-8089-84d900b909c7",
+      "comment": "",
+      "command": "type",
+      "target": "id=basic_deviceName",
+      "targets": [
+        ["id=basic_deviceName", "id"],
+        ["css=#basic_deviceName", "css:finder"],
+        ["xpath=//input[@id='basic_deviceName']", "xpath:attributes"],
+        ["xpath=//form[@id='basic']/div/div[2]/div/div/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "ifon"
+    }, {
+      "id": "5bc5091b-ed68-4329-b2be-304edd44fb68",
+      "comment": "",
+      "command": "type",
+      "target": "id=basic_releaseDate",
+      "targets": [
+        ["id=basic_releaseDate", "id"],
+        ["css=#basic_releaseDate", "css:finder"],
+        ["xpath=//input[@id='basic_releaseDate']", "xpath:attributes"],
+        ["xpath=//form[@id='basic']/div[2]/div[2]/div/div/input", "xpath:idRelative"],
+        ["xpath=//div[2]/div[2]/div/div/input", "xpath:position"]
+      ],
+      "value": "2020/12"
+    }, {
+      "id": "17e5660f-72b1-4b7e-87a6-56d4e9546733",
+      "comment": "",
+      "command": "type",
+      "target": "id=basic_image",
+      "targets": [
+        ["id=basic_image", "id"],
+        ["css=#basic_image", "css:finder"],
+        ["xpath=//input[@id='basic_image']", "xpath:attributes"],
+        ["xpath=//form[@id='basic']/div[3]/div[2]/div/div/input", "xpath:idRelative"],
+        ["xpath=//div[3]/div[2]/div/div/input", "xpath:position"]
+      ],
+      "value": "https://hd2.tudocdn.net/42722_4?w=100&h=200"
+    }, {
+      "id": "44c72473-2e0f-4802-a092-45a36eb8eb99",
+      "comment": "",
+      "command": "type",
+      "target": "id=basic_OS",
+      "targets": [
+        ["id=basic_OS", "id"],
+        ["css=#basic_OS", "css:finder"],
+        ["xpath=//input[@id='basic_OS']", "xpath:attributes"],
+        ["xpath=//form[@id='basic']/div[4]/div[2]/div/div/input", "xpath:idRelative"],
+        ["xpath=//div[4]/div[2]/div/div/input", "xpath:position"]
+      ],
+      "value": "Android"
+    }, {
+      "id": "f2076193-e060-4591-af9f-58fdc2a8be84",
+      "comment": "",
+      "command": "type",
+      "target": "id=basic_CPU",
+      "targets": [
+        ["id=basic_CPU", "id"],
+        ["css=#basic_CPU", "css:finder"],
+        ["xpath=//input[@id='basic_CPU']", "xpath:attributes"],
+        ["xpath=//form[@id='basic']/div[5]/div[2]/div/div/input", "xpath:idRelative"],
+        ["xpath=//div[5]/div[2]/div/div/input", "xpath:position"]
+      ],
+      "value": "2.4ghz"
+    }, {
+      "id": "73e015a6-5d40-49bc-9402-96739fb2a317",
+      "comment": "",
+      "command": "type",
+      "target": "id=basic_chipset",
+      "targets": [
+        ["id=basic_chipset", "id"],
+        ["css=#basic_chipset", "css:finder"],
+        ["xpath=//input[@id='basic_chipset']", "xpath:attributes"],
+        ["xpath=//form[@id='basic']/div[6]/div[2]/div/div/input", "xpath:idRelative"],
+        ["xpath=//div[6]/div[2]/div/div/input", "xpath:position"]
+      ],
+      "value": "amd"
+    }, {
+      "id": "08b549e1-39e5-4a6a-86c2-b18f490fbb0b",
+      "comment": "",
+      "command": "type",
+      "target": "id=basic_GPU",
+      "targets": [
+        ["id=basic_GPU", "id"],
+        ["css=#basic_GPU", "css:finder"],
+        ["xpath=//input[@id='basic_GPU']", "xpath:attributes"],
+        ["xpath=//form[@id='basic']/div[7]/div[2]/div/div/input", "xpath:idRelative"],
+        ["xpath=//div[7]/div[2]/div/div/input", "xpath:position"]
+      ],
+      "value": "nvidia"
+    }, {
+      "id": "a3bd15f4-356e-407a-a450-f80c560cec92",
+      "comment": "",
+      "command": "type",
+      "target": "id=basic_RAM",
+      "targets": [
+        ["id=basic_RAM", "id"],
+        ["css=#basic_RAM", "css:finder"],
+        ["xpath=//input[@id='basic_RAM']", "xpath:attributes"],
+        ["xpath=//form[@id='basic']/div[8]/div[2]/div/div/input", "xpath:idRelative"],
+        ["xpath=//div[8]/div[2]/div/div/input", "xpath:position"]
+      ],
+      "value": "6 GB"
+    }, {
+      "id": "79279529-4348-4451-893a-55e51e47947c",
+      "comment": "",
+      "command": "type",
+      "target": "id=basic_internalMemory",
+      "targets": [
+        ["id=basic_internalMemory", "id"],
+        ["css=#basic_internalMemory", "css:finder"],
+        ["xpath=//input[@id='basic_internalMemory']", "xpath:attributes"],
+        ["xpath=//form[@id='basic']/div[9]/div[2]/div/div/input", "xpath:idRelative"],
+        ["xpath=//div[9]/div[2]/div/div/input", "xpath:position"]
+      ],
+      "value": "512 GB"
+    }, {
+      "id": "8c0286f6-73a2-441c-942c-a077637032eb",
+      "comment": "",
+      "command": "type",
+      "target": "id=basic_displayInches",
+      "targets": [
+        ["id=basic_displayInches", "id"],
+        ["css=#basic_displayInches", "css:finder"],
+        ["xpath=//input[@id='basic_displayInches']", "xpath:attributes"],
+        ["xpath=//form[@id='basic']/div[10]/div[2]/div/div/input", "xpath:idRelative"],
+        ["xpath=//div[10]/div[2]/div/div/input", "xpath:position"]
+      ],
+      "value": "test"
+    }, {
+      "id": "00e01b10-636c-4257-8fe9-348fc7fc3936",
+      "comment": "",
+      "command": "type",
+      "target": "id=basic_battery",
+      "targets": [
+        ["id=basic_battery", "id"],
+        ["css=#basic_battery", "css:finder"],
+        ["xpath=//input[@id='basic_battery']", "xpath:attributes"],
+        ["xpath=//form[@id='basic']/div[11]/div[2]/div/div/input", "xpath:idRelative"],
+        ["xpath=//div[11]/div[2]/div/div/input", "xpath:position"]
+      ],
+      "value": "asd"
+    }, {
+      "id": "888f7086-27ae-43d4-a286-f56fe0c778f7",
+      "comment": "",
+      "command": "type",
+      "target": "id=basic_price",
+      "targets": [
+        ["id=basic_price", "id"],
+        ["css=#basic_price", "css:finder"],
+        ["xpath=//input[@id='basic_price']", "xpath:attributes"],
+        ["xpath=//form[@id='basic']/div[12]/div[2]/div/div/input", "xpath:idRelative"],
+        ["xpath=//div[12]/div[2]/div/div/input", "xpath:position"]
+      ],
+      "value": "asd"
+    }, {
+      "id": "06c2bad5-4a0d-4570-b8b6-8622f2fee1f2",
+      "comment": "",
+      "command": "click",
+      "target": "css=.ant-btn > span",
+      "targets": [
+        ["css=.ant-btn > span", "css:finder"],
+        ["xpath=//form[@id='basic']/div[13]/div/div/div/button/span", "xpath:idRelative"],
+        ["xpath=//button/span", "xpath:position"],
+        ["xpath=//span[contains(.,'Submit')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "1fabe8a7-3c76-4d97-b7cc-eb2ef5f5febb",
+      "comment": "",
+      "command": "assertText",
+      "target": "css=span:nth-child(2)",
+      "targets": [],
+      "value": "Error, something went wrong!"
+    }]
+  }, {
+    "id": "a6c7f8f0-ff26-46e0-a952-53f51f0951c8",
+    "name": "Aggiunta spec - formato battery",
+    "commands": [{
+      "id": "7fdab1f1-ff43-46f9-8df0-4317c882b733",
+      "comment": "",
+      "command": "open",
+      "target": "/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "0e04132a-3684-47e2-9229-492343fae6b3",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "974x1040",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "5cfb4f3b-73ba-4fdf-8d3c-1e529bbcc6d3",
+      "comment": "",
+      "command": "click",
+      "target": "css=.anticon-home > svg",
+      "targets": [
+        ["css=.anticon-home > svg", "css:finder"]
+      ],
+      "value": ""
+    }, {
+      "id": "fcc06ac9-f56e-4ec1-b401-7bac4a423947",
+      "comment": "",
+      "command": "click",
+      "target": "css=.ant-btn:nth-child(3) > span",
+      "targets": [
+        ["css=.ant-btn:nth-child(3) > span", "css:finder"],
+        ["xpath=//div[@id='root']/div/section/main/div/button/span", "xpath:idRelative"],
+        ["xpath=//main/div/button/span", "xpath:position"],
+        ["xpath=//span[contains(.,'Aggiungi scheda tecnica')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "83b4b45e-6d10-43bd-b7f0-99026cf8ad02",
+      "comment": "",
+      "command": "type",
+      "target": "id=basic_deviceName",
+      "targets": [
+        ["id=basic_deviceName", "id"],
+        ["css=#basic_deviceName", "css:finder"],
+        ["xpath=//input[@id='basic_deviceName']", "xpath:attributes"],
+        ["xpath=//form[@id='basic']/div/div[2]/div/div/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "ifon"
+    }, {
+      "id": "3228f3d4-bfe5-4d4f-8bb7-37b6fe18b6e5",
+      "comment": "",
+      "command": "type",
+      "target": "id=basic_releaseDate",
+      "targets": [
+        ["id=basic_releaseDate", "id"],
+        ["css=#basic_releaseDate", "css:finder"],
+        ["xpath=//input[@id='basic_releaseDate']", "xpath:attributes"],
+        ["xpath=//form[@id='basic']/div[2]/div[2]/div/div/input", "xpath:idRelative"],
+        ["xpath=//div[2]/div[2]/div/div/input", "xpath:position"]
+      ],
+      "value": "2020/12"
+    }, {
+      "id": "91e46de9-d0be-4b05-9498-16b6ea2974c5",
+      "comment": "",
+      "command": "type",
+      "target": "id=basic_image",
+      "targets": [
+        ["id=basic_image", "id"],
+        ["css=#basic_image", "css:finder"],
+        ["xpath=//input[@id='basic_image']", "xpath:attributes"],
+        ["xpath=//form[@id='basic']/div[3]/div[2]/div/div/input", "xpath:idRelative"],
+        ["xpath=//div[3]/div[2]/div/div/input", "xpath:position"]
+      ],
+      "value": "https://hd2.tudocdn.net/42722_4?w=100&h=200"
+    }, {
+      "id": "8c51aad7-3287-4d81-a7ed-5e0f2eb9c735",
+      "comment": "",
+      "command": "type",
+      "target": "id=basic_OS",
+      "targets": [
+        ["id=basic_OS", "id"],
+        ["css=#basic_OS", "css:finder"],
+        ["xpath=//input[@id='basic_OS']", "xpath:attributes"],
+        ["xpath=//form[@id='basic']/div[4]/div[2]/div/div/input", "xpath:idRelative"],
+        ["xpath=//div[4]/div[2]/div/div/input", "xpath:position"]
+      ],
+      "value": "Android"
+    }, {
+      "id": "6032ca89-6825-4484-ad0d-98ed6a5702fa",
+      "comment": "",
+      "command": "type",
+      "target": "id=basic_CPU",
+      "targets": [
+        ["id=basic_CPU", "id"],
+        ["css=#basic_CPU", "css:finder"],
+        ["xpath=//input[@id='basic_CPU']", "xpath:attributes"],
+        ["xpath=//form[@id='basic']/div[5]/div[2]/div/div/input", "xpath:idRelative"],
+        ["xpath=//div[5]/div[2]/div/div/input", "xpath:position"]
+      ],
+      "value": "2.4ghz"
+    }, {
+      "id": "98b5ed4e-9973-4c2b-b050-1be128a64c26",
+      "comment": "",
+      "command": "type",
+      "target": "id=basic_chipset",
+      "targets": [
+        ["id=basic_chipset", "id"],
+        ["css=#basic_chipset", "css:finder"],
+        ["xpath=//input[@id='basic_chipset']", "xpath:attributes"],
+        ["xpath=//form[@id='basic']/div[6]/div[2]/div/div/input", "xpath:idRelative"],
+        ["xpath=//div[6]/div[2]/div/div/input", "xpath:position"]
+      ],
+      "value": "amd"
+    }, {
+      "id": "a081345c-504a-4113-8870-28d2a525b230",
+      "comment": "",
+      "command": "type",
+      "target": "id=basic_GPU",
+      "targets": [
+        ["id=basic_GPU", "id"],
+        ["css=#basic_GPU", "css:finder"],
+        ["xpath=//input[@id='basic_GPU']", "xpath:attributes"],
+        ["xpath=//form[@id='basic']/div[7]/div[2]/div/div/input", "xpath:idRelative"],
+        ["xpath=//div[7]/div[2]/div/div/input", "xpath:position"]
+      ],
+      "value": "nvidia"
+    }, {
+      "id": "230765b2-f48b-4e0a-8da9-0572baea1ff5",
+      "comment": "",
+      "command": "type",
+      "target": "id=basic_RAM",
+      "targets": [
+        ["id=basic_RAM", "id"],
+        ["css=#basic_RAM", "css:finder"],
+        ["xpath=//input[@id='basic_RAM']", "xpath:attributes"],
+        ["xpath=//form[@id='basic']/div[8]/div[2]/div/div/input", "xpath:idRelative"],
+        ["xpath=//div[8]/div[2]/div/div/input", "xpath:position"]
+      ],
+      "value": "6 GB"
+    }, {
+      "id": "ede954b4-325f-4920-a876-3015192ef258",
+      "comment": "",
+      "command": "type",
+      "target": "id=basic_internalMemory",
+      "targets": [
+        ["id=basic_internalMemory", "id"],
+        ["css=#basic_internalMemory", "css:finder"],
+        ["xpath=//input[@id='basic_internalMemory']", "xpath:attributes"],
+        ["xpath=//form[@id='basic']/div[9]/div[2]/div/div/input", "xpath:idRelative"],
+        ["xpath=//div[9]/div[2]/div/div/input", "xpath:position"]
+      ],
+      "value": "512 GB"
+    }, {
+      "id": "e70574a8-5d08-4d7e-8945-7c3228b04cf2",
+      "comment": "",
+      "command": "type",
+      "target": "id=basic_displayInches",
+      "targets": [
+        ["id=basic_displayInches", "id"],
+        ["css=#basic_displayInches", "css:finder"],
+        ["xpath=//input[@id='basic_displayInches']", "xpath:attributes"],
+        ["xpath=//form[@id='basic']/div[10]/div[2]/div/div/input", "xpath:idRelative"],
+        ["xpath=//div[10]/div[2]/div/div/input", "xpath:position"]
+      ],
+      "value": "6.5"
+    }, {
+      "id": "b6758c66-2b34-46da-b873-43f41679c44b",
+      "comment": "",
+      "command": "type",
+      "target": "id=basic_battery",
+      "targets": [
+        ["id=basic_battery", "id"],
+        ["css=#basic_battery", "css:finder"],
+        ["xpath=//input[@id='basic_battery']", "xpath:attributes"],
+        ["xpath=//form[@id='basic']/div[11]/div[2]/div/div/input", "xpath:idRelative"],
+        ["xpath=//div[11]/div[2]/div/div/input", "xpath:position"]
+      ],
+      "value": "test"
+    }, {
+      "id": "2e133f0d-d028-459f-aec4-18b586e42117",
+      "comment": "",
+      "command": "type",
+      "target": "id=basic_price",
+      "targets": [
+        ["id=basic_price", "id"],
+        ["css=#basic_price", "css:finder"],
+        ["xpath=//input[@id='basic_price']", "xpath:attributes"],
+        ["xpath=//form[@id='basic']/div[12]/div[2]/div/div/input", "xpath:idRelative"],
+        ["xpath=//div[12]/div[2]/div/div/input", "xpath:position"]
+      ],
+      "value": "asd"
+    }, {
+      "id": "42661335-f207-4e82-a41e-1a00e203a6a9",
+      "comment": "",
+      "command": "click",
+      "target": "css=.ant-btn > span",
+      "targets": [
+        ["css=.ant-btn > span", "css:finder"],
+        ["xpath=//form[@id='basic']/div[13]/div/div/div/button/span", "xpath:idRelative"],
+        ["xpath=//button/span", "xpath:position"],
+        ["xpath=//span[contains(.,'Submit')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "b29e224a-f063-44bd-a6ad-3a3d244b8ccc",
+      "comment": "",
+      "command": "assertText",
+      "target": "css=span:nth-child(2)",
+      "targets": [],
+      "value": "Error, something went wrong!"
+    }]
+  }, {
+    "id": "9f090975-4800-4a11-a7af-ead5c706432f",
+    "name": "Aggiunta spec - tutto corretto",
+    "commands": [{
+      "id": "dbdc6ece-f282-4be2-9457-3ec45397e4bb",
+      "comment": "",
+      "command": "open",
+      "target": "/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "f5e51607-a15c-4c97-ba35-9eee7c116223",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "974x1040",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "7b48c75e-4ad3-4563-a586-57f3e9ca7110",
+      "comment": "",
+      "command": "click",
+      "target": "css=.anticon-home > svg",
+      "targets": [
+        ["css=.anticon-home > svg", "css:finder"]
+      ],
+      "value": ""
+    }, {
+      "id": "2098d70f-e881-492a-8208-0337ac130154",
+      "comment": "",
+      "command": "click",
+      "target": "css=.ant-btn:nth-child(3) > span",
+      "targets": [
+        ["css=.ant-btn:nth-child(3) > span", "css:finder"],
+        ["xpath=//div[@id='root']/div/section/main/div/button/span", "xpath:idRelative"],
+        ["xpath=//main/div/button/span", "xpath:position"],
+        ["xpath=//span[contains(.,'Aggiungi scheda tecnica')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "3537f86c-49bd-4475-b0f4-809f5ca52737",
+      "comment": "",
+      "command": "type",
+      "target": "id=basic_deviceName",
+      "targets": [
+        ["id=basic_deviceName", "id"],
+        ["css=#basic_deviceName", "css:finder"],
+        ["xpath=//input[@id='basic_deviceName']", "xpath:attributes"],
+        ["xpath=//form[@id='basic']/div/div[2]/div/div/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "ifon"
+    }, {
+      "id": "58596520-66d3-4283-b240-248c8160f891",
+      "comment": "",
+      "command": "type",
+      "target": "id=basic_releaseDate",
+      "targets": [
+        ["id=basic_releaseDate", "id"],
+        ["css=#basic_releaseDate", "css:finder"],
+        ["xpath=//input[@id='basic_releaseDate']", "xpath:attributes"],
+        ["xpath=//form[@id='basic']/div[2]/div[2]/div/div/input", "xpath:idRelative"],
+        ["xpath=//div[2]/div[2]/div/div/input", "xpath:position"]
+      ],
+      "value": "2020/12"
+    }, {
+      "id": "0709700b-a8f9-46d9-9cdd-95a46cc97aad",
+      "comment": "",
+      "command": "type",
+      "target": "id=basic_image",
+      "targets": [
+        ["id=basic_image", "id"],
+        ["css=#basic_image", "css:finder"],
+        ["xpath=//input[@id='basic_image']", "xpath:attributes"],
+        ["xpath=//form[@id='basic']/div[3]/div[2]/div/div/input", "xpath:idRelative"],
+        ["xpath=//div[3]/div[2]/div/div/input", "xpath:position"]
+      ],
+      "value": "https://hd2.tudocdn.net/42722_4?w=100&h=200"
+    }, {
+      "id": "d71af90d-0a5a-4574-ae6a-b62391436027",
+      "comment": "",
+      "command": "type",
+      "target": "id=basic_OS",
+      "targets": [
+        ["id=basic_OS", "id"],
+        ["css=#basic_OS", "css:finder"],
+        ["xpath=//input[@id='basic_OS']", "xpath:attributes"],
+        ["xpath=//form[@id='basic']/div[4]/div[2]/div/div/input", "xpath:idRelative"],
+        ["xpath=//div[4]/div[2]/div/div/input", "xpath:position"]
+      ],
+      "value": "Android"
+    }, {
+      "id": "caa799cf-7f9d-4532-b8c7-c8099dca1f54",
+      "comment": "",
+      "command": "type",
+      "target": "id=basic_CPU",
+      "targets": [
+        ["id=basic_CPU", "id"],
+        ["css=#basic_CPU", "css:finder"],
+        ["xpath=//input[@id='basic_CPU']", "xpath:attributes"],
+        ["xpath=//form[@id='basic']/div[5]/div[2]/div/div/input", "xpath:idRelative"],
+        ["xpath=//div[5]/div[2]/div/div/input", "xpath:position"]
+      ],
+      "value": "2.4ghz"
+    }, {
+      "id": "0eb46309-22b8-4923-9ac8-e7852f1b7337",
+      "comment": "",
+      "command": "type",
+      "target": "id=basic_chipset",
+      "targets": [
+        ["id=basic_chipset", "id"],
+        ["css=#basic_chipset", "css:finder"],
+        ["xpath=//input[@id='basic_chipset']", "xpath:attributes"],
+        ["xpath=//form[@id='basic']/div[6]/div[2]/div/div/input", "xpath:idRelative"],
+        ["xpath=//div[6]/div[2]/div/div/input", "xpath:position"]
+      ],
+      "value": "amd"
+    }, {
+      "id": "eea14ba7-c768-4f61-b311-ca3ac1a411ef",
+      "comment": "",
+      "command": "type",
+      "target": "id=basic_GPU",
+      "targets": [
+        ["id=basic_GPU", "id"],
+        ["css=#basic_GPU", "css:finder"],
+        ["xpath=//input[@id='basic_GPU']", "xpath:attributes"],
+        ["xpath=//form[@id='basic']/div[7]/div[2]/div/div/input", "xpath:idRelative"],
+        ["xpath=//div[7]/div[2]/div/div/input", "xpath:position"]
+      ],
+      "value": "nvidia"
+    }, {
+      "id": "2ce79e84-7fb2-4cb7-8960-56068f27255e",
+      "comment": "",
+      "command": "type",
+      "target": "id=basic_RAM",
+      "targets": [
+        ["id=basic_RAM", "id"],
+        ["css=#basic_RAM", "css:finder"],
+        ["xpath=//input[@id='basic_RAM']", "xpath:attributes"],
+        ["xpath=//form[@id='basic']/div[8]/div[2]/div/div/input", "xpath:idRelative"],
+        ["xpath=//div[8]/div[2]/div/div/input", "xpath:position"]
+      ],
+      "value": "6 GB"
+    }, {
+      "id": "66bd9cf3-ac63-4389-ab27-2bf83ecee666",
+      "comment": "",
+      "command": "type",
+      "target": "id=basic_internalMemory",
+      "targets": [
+        ["id=basic_internalMemory", "id"],
+        ["css=#basic_internalMemory", "css:finder"],
+        ["xpath=//input[@id='basic_internalMemory']", "xpath:attributes"],
+        ["xpath=//form[@id='basic']/div[9]/div[2]/div/div/input", "xpath:idRelative"],
+        ["xpath=//div[9]/div[2]/div/div/input", "xpath:position"]
+      ],
+      "value": "512 GB"
+    }, {
+      "id": "f1b3778b-c837-4e5e-9e7c-acecf2257c39",
+      "comment": "",
+      "command": "type",
+      "target": "id=basic_displayInches",
+      "targets": [
+        ["id=basic_displayInches", "id"],
+        ["css=#basic_displayInches", "css:finder"],
+        ["xpath=//input[@id='basic_displayInches']", "xpath:attributes"],
+        ["xpath=//form[@id='basic']/div[10]/div[2]/div/div/input", "xpath:idRelative"],
+        ["xpath=//div[10]/div[2]/div/div/input", "xpath:position"]
+      ],
+      "value": "6.5"
+    }, {
+      "id": "1bf3aabc-a927-4a83-ad8c-9eb9ff7f6ecb",
+      "comment": "",
+      "command": "type",
+      "target": "id=basic_battery",
+      "targets": [
+        ["id=basic_battery", "id"],
+        ["css=#basic_battery", "css:finder"],
+        ["xpath=//input[@id='basic_battery']", "xpath:attributes"],
+        ["xpath=//form[@id='basic']/div[11]/div[2]/div/div/input", "xpath:idRelative"],
+        ["xpath=//div[11]/div[2]/div/div/input", "xpath:position"]
+      ],
+      "value": "5000"
+    }, {
+      "id": "f17e3725-b785-4dc5-a585-16dee84d9f88",
+      "comment": "",
+      "command": "type",
+      "target": "id=basic_price",
+      "targets": [
+        ["id=basic_price", "id"],
+        ["css=#basic_price", "css:finder"],
+        ["xpath=//input[@id='basic_price']", "xpath:attributes"],
+        ["xpath=//form[@id='basic']/div[12]/div[2]/div/div/input", "xpath:idRelative"],
+        ["xpath=//div[12]/div[2]/div/div/input", "xpath:position"]
+      ],
+      "value": "450"
+    }, {
+      "id": "a7dd0618-5b28-40fc-910f-68436d7a90c1",
+      "comment": "",
+      "command": "click",
+      "target": "css=.ant-btn > span",
+      "targets": [
+        ["css=.ant-btn > span", "css:finder"],
+        ["xpath=//form[@id='basic']/div[13]/div/div/div/button/span", "xpath:idRelative"],
+        ["xpath=//button/span", "xpath:position"],
+        ["xpath=//span[contains(.,'Submit')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "3146e590-081c-4959-bf67-2b2451e469bb",
+      "comment": "",
+      "command": "assertText",
+      "target": "css=.ant-message-custom-content > span:nth-child(2)",
+      "targets": [],
+      "value": "Nuova scheda tecnica creata"
+    }]
+  }, {
+    "id": "ab723ef7-b1c3-43bf-aebc-e59c444dd725",
+    "name": "Aggiunta spec - formato price",
+    "commands": [{
+      "id": "eb20d435-1c60-44c7-ace6-56ad57ad7dca",
+      "comment": "",
+      "command": "open",
+      "target": "/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "a6e0604f-7d75-421a-9188-7576a0ba15ef",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "974x1040",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "de4ec4ef-6951-4154-8cf8-3fc2c3ec35b1",
+      "comment": "",
+      "command": "click",
+      "target": "css=.anticon-home > svg",
+      "targets": [
+        ["css=.anticon-home > svg", "css:finder"]
+      ],
+      "value": ""
+    }, {
+      "id": "4d3b3a93-08ee-406a-814d-a2218b5b272f",
+      "comment": "",
+      "command": "click",
+      "target": "css=.ant-btn:nth-child(3) > span",
+      "targets": [
+        ["css=.ant-btn:nth-child(3) > span", "css:finder"],
+        ["xpath=//div[@id='root']/div/section/main/div/button/span", "xpath:idRelative"],
+        ["xpath=//main/div/button/span", "xpath:position"],
+        ["xpath=//span[contains(.,'Aggiungi scheda tecnica')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "603b9500-98e3-4676-b7e6-e4ecd15d2627",
+      "comment": "",
+      "command": "type",
+      "target": "id=basic_deviceName",
+      "targets": [
+        ["id=basic_deviceName", "id"],
+        ["css=#basic_deviceName", "css:finder"],
+        ["xpath=//input[@id='basic_deviceName']", "xpath:attributes"],
+        ["xpath=//form[@id='basic']/div/div[2]/div/div/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "ifon"
+    }, {
+      "id": "5de5d466-3380-4823-a755-4be60f8fb621",
+      "comment": "",
+      "command": "type",
+      "target": "id=basic_releaseDate",
+      "targets": [
+        ["id=basic_releaseDate", "id"],
+        ["css=#basic_releaseDate", "css:finder"],
+        ["xpath=//input[@id='basic_releaseDate']", "xpath:attributes"],
+        ["xpath=//form[@id='basic']/div[2]/div[2]/div/div/input", "xpath:idRelative"],
+        ["xpath=//div[2]/div[2]/div/div/input", "xpath:position"]
+      ],
+      "value": "2020/12"
+    }, {
+      "id": "49481c4c-0a7d-4a99-8d80-5e763a6fed05",
+      "comment": "",
+      "command": "type",
+      "target": "id=basic_image",
+      "targets": [
+        ["id=basic_image", "id"],
+        ["css=#basic_image", "css:finder"],
+        ["xpath=//input[@id='basic_image']", "xpath:attributes"],
+        ["xpath=//form[@id='basic']/div[3]/div[2]/div/div/input", "xpath:idRelative"],
+        ["xpath=//div[3]/div[2]/div/div/input", "xpath:position"]
+      ],
+      "value": "https://hd2.tudocdn.net/42722_4?w=100&h=200"
+    }, {
+      "id": "f127d89f-06af-4329-8cd6-b39c4ed9dba4",
+      "comment": "",
+      "command": "type",
+      "target": "id=basic_OS",
+      "targets": [
+        ["id=basic_OS", "id"],
+        ["css=#basic_OS", "css:finder"],
+        ["xpath=//input[@id='basic_OS']", "xpath:attributes"],
+        ["xpath=//form[@id='basic']/div[4]/div[2]/div/div/input", "xpath:idRelative"],
+        ["xpath=//div[4]/div[2]/div/div/input", "xpath:position"]
+      ],
+      "value": "Android"
+    }, {
+      "id": "309c2f91-4618-4bf3-b14b-2270ecb8b37e",
+      "comment": "",
+      "command": "type",
+      "target": "id=basic_CPU",
+      "targets": [
+        ["id=basic_CPU", "id"],
+        ["css=#basic_CPU", "css:finder"],
+        ["xpath=//input[@id='basic_CPU']", "xpath:attributes"],
+        ["xpath=//form[@id='basic']/div[5]/div[2]/div/div/input", "xpath:idRelative"],
+        ["xpath=//div[5]/div[2]/div/div/input", "xpath:position"]
+      ],
+      "value": "2.4ghz"
+    }, {
+      "id": "3642ba98-4afd-443e-bdc3-d05d88f6c5f3",
+      "comment": "",
+      "command": "type",
+      "target": "id=basic_chipset",
+      "targets": [
+        ["id=basic_chipset", "id"],
+        ["css=#basic_chipset", "css:finder"],
+        ["xpath=//input[@id='basic_chipset']", "xpath:attributes"],
+        ["xpath=//form[@id='basic']/div[6]/div[2]/div/div/input", "xpath:idRelative"],
+        ["xpath=//div[6]/div[2]/div/div/input", "xpath:position"]
+      ],
+      "value": "amd"
+    }, {
+      "id": "cf297d4b-f9b3-4ca4-8a23-c96a39b6d1bb",
+      "comment": "",
+      "command": "type",
+      "target": "id=basic_GPU",
+      "targets": [
+        ["id=basic_GPU", "id"],
+        ["css=#basic_GPU", "css:finder"],
+        ["xpath=//input[@id='basic_GPU']", "xpath:attributes"],
+        ["xpath=//form[@id='basic']/div[7]/div[2]/div/div/input", "xpath:idRelative"],
+        ["xpath=//div[7]/div[2]/div/div/input", "xpath:position"]
+      ],
+      "value": "nvidia"
+    }, {
+      "id": "bd300885-0606-40d7-83eb-05ac5f427655",
+      "comment": "",
+      "command": "type",
+      "target": "id=basic_RAM",
+      "targets": [
+        ["id=basic_RAM", "id"],
+        ["css=#basic_RAM", "css:finder"],
+        ["xpath=//input[@id='basic_RAM']", "xpath:attributes"],
+        ["xpath=//form[@id='basic']/div[8]/div[2]/div/div/input", "xpath:idRelative"],
+        ["xpath=//div[8]/div[2]/div/div/input", "xpath:position"]
+      ],
+      "value": "6 GB"
+    }, {
+      "id": "ec7454b9-bd18-4dd4-9bcb-66f1ae41c401",
+      "comment": "",
+      "command": "type",
+      "target": "id=basic_internalMemory",
+      "targets": [
+        ["id=basic_internalMemory", "id"],
+        ["css=#basic_internalMemory", "css:finder"],
+        ["xpath=//input[@id='basic_internalMemory']", "xpath:attributes"],
+        ["xpath=//form[@id='basic']/div[9]/div[2]/div/div/input", "xpath:idRelative"],
+        ["xpath=//div[9]/div[2]/div/div/input", "xpath:position"]
+      ],
+      "value": "512 GB"
+    }, {
+      "id": "72d7088f-29c3-4b40-ab4b-e9c957c1c716",
+      "comment": "",
+      "command": "type",
+      "target": "id=basic_displayInches",
+      "targets": [
+        ["id=basic_displayInches", "id"],
+        ["css=#basic_displayInches", "css:finder"],
+        ["xpath=//input[@id='basic_displayInches']", "xpath:attributes"],
+        ["xpath=//form[@id='basic']/div[10]/div[2]/div/div/input", "xpath:idRelative"],
+        ["xpath=//div[10]/div[2]/div/div/input", "xpath:position"]
+      ],
+      "value": "6.5"
+    }, {
+      "id": "ee36afd6-c6df-4caa-b57a-e1b358bda33d",
+      "comment": "",
+      "command": "type",
+      "target": "id=basic_battery",
+      "targets": [
+        ["id=basic_battery", "id"],
+        ["css=#basic_battery", "css:finder"],
+        ["xpath=//input[@id='basic_battery']", "xpath:attributes"],
+        ["xpath=//form[@id='basic']/div[11]/div[2]/div/div/input", "xpath:idRelative"],
+        ["xpath=//div[11]/div[2]/div/div/input", "xpath:position"]
+      ],
+      "value": "5000"
+    }, {
+      "id": "9d39ffeb-a6d1-46ae-adc5-1bc461b7134e",
+      "comment": "",
+      "command": "type",
+      "target": "id=basic_price",
+      "targets": [
+        ["id=basic_price", "id"],
+        ["css=#basic_price", "css:finder"],
+        ["xpath=//input[@id='basic_price']", "xpath:attributes"],
+        ["xpath=//form[@id='basic']/div[12]/div[2]/div/div/input", "xpath:idRelative"],
+        ["xpath=//div[12]/div[2]/div/div/input", "xpath:position"]
+      ],
+      "value": "-100"
+    }, {
+      "id": "eef49884-6eb7-49bb-bad9-a6acdf75a8c0",
+      "comment": "",
+      "command": "click",
+      "target": "css=.ant-btn > span",
+      "targets": [
+        ["css=.ant-btn > span", "css:finder"],
+        ["xpath=//form[@id='basic']/div[13]/div/div/div/button/span", "xpath:idRelative"],
+        ["xpath=//button/span", "xpath:position"],
+        ["xpath=//span[contains(.,'Submit')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "d76a175e-b35b-4d43-8c35-1780f8cee363",
+      "comment": "",
+      "command": "assertText",
+      "target": "css=span:nth-child(2)",
+      "targets": [],
+      "value": "Error, wrong params!"
+    }]
+  }, {
+    "id": "7deef1bf-31f7-43fc-be8d-ca2366c78d2d",
+    "name": "Aggiunta score - valore performance errato",
+    "commands": [{
+      "id": "5d5c5898-de70-43de-ab6b-09d432ecc6e2",
+      "comment": "",
+      "command": "open",
+      "target": "/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "d6beddeb-e077-459e-93c3-c4f233a0409f",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "974x1040",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "ebe8027b-e320-48d9-8c36-1134f063d75a",
+      "comment": "",
+      "command": "click",
+      "target": "css=.anticon-home > svg",
+      "targets": [
+        ["css=.anticon-home > svg", "css:finder"]
+      ],
+      "value": ""
+    }, {
+      "id": "ce2c299d-6fad-4901-9f42-1b5bc175ce1d",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Lista schede tecniche",
+      "targets": [
+        ["linkText=Lista schede tecniche", "linkText"],
+        ["css=div > div > a:nth-child(1)", "css:finder"],
+        ["xpath=//a[contains(text(),'Lista schede tecniche')]", "xpath:link"],
+        ["xpath=//div[@id='root']/div/section/header/div/div/div/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, '/admin/speclist')]", "xpath:href"],
+        ["xpath=//div/div/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Lista schede tecniche')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "fe06fb4a-c53e-4e52-92f1-694d5a8425b2",
+      "comment": "",
+      "command": "click",
+      "target": "css=.ant-table-row:nth-child(1) > .ant-table-cell:nth-child(1)",
+      "targets": [
+        ["css=.ant-table-row:nth-child(1) > .ant-table-cell:nth-child(1)", "css:finder"],
+        ["xpath=//div[@id='root']/div/section/main/div/div[2]/div/div/div/div/div/table/tbody/tr/td", "xpath:idRelative"],
+        ["xpath=//td", "xpath:position"],
+        ["xpath=//td[contains(.,'Huawei Mate 40 Pro')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "3fc80a55-9203-4b22-83ca-6b7a95425de7",
+      "comment": "",
+      "command": "click",
+      "target": "id=basic_performance",
+      "targets": [
+        ["id=basic_performance", "id"],
+        ["css=#basic_performance", "css:finder"],
+        ["xpath=//input[@id='basic_performance']", "xpath:attributes"],
+        ["xpath=//form[@id='basic']/div/div[2]/div/div/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "475e83dc-61db-4194-a440-ec58d6e2d1c6",
+      "comment": "",
+      "command": "type",
+      "target": "id=basic_performance",
+      "targets": [
+        ["id=basic_performance", "id"],
+        ["css=#basic_performance", "css:finder"],
+        ["xpath=//input[@id='basic_performance']", "xpath:attributes"],
+        ["xpath=//form[@id='basic']/div/div[2]/div/div/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "-1"
+    }, {
+      "id": "00b395b8-6327-4efa-b40d-14248730f358",
+      "comment": "",
+      "command": "type",
+      "target": "id=basic_camera",
+      "targets": [
+        ["id=basic_camera", "id"],
+        ["css=#basic_camera", "css:finder"],
+        ["xpath=//input[@id='basic_camera']", "xpath:attributes"],
+        ["xpath=//form[@id='basic']/div[2]/div[2]/div/div/input", "xpath:idRelative"],
+        ["xpath=//div[2]/div[2]/div/div/input", "xpath:position"]
+      ],
+      "value": "2"
+    }, {
+      "id": "034e1e20-7b9a-4223-970a-4eee5c1eec4c",
+      "comment": "",
+      "command": "type",
+      "target": "id=basic_display",
+      "targets": [
+        ["id=basic_display", "id"],
+        ["css=#basic_display", "css:finder"],
+        ["xpath=//input[@id='basic_display']", "xpath:attributes"],
+        ["xpath=//form[@id='basic']/div[3]/div[2]/div/div/input", "xpath:idRelative"],
+        ["xpath=//div[3]/div[2]/div/div/input", "xpath:position"]
+      ],
+      "value": "3"
+    }, {
+      "id": "61b385bd-eff1-4126-b326-22e85184189d",
+      "comment": "",
+      "command": "click",
+      "target": "css=.ant-btn > span",
+      "targets": [
+        ["css=.ant-btn > span", "css:finder"],
+        ["xpath=//form[@id='basic']/div[4]/div/div/div/button/span", "xpath:idRelative"],
+        ["xpath=//button/span", "xpath:position"],
+        ["xpath=//span[contains(.,'Submit')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "6bb5e80d-51cb-4598-b8d0-88a33cdc927e",
+      "comment": "",
+      "command": "assertText",
+      "target": "css=.ant-message-custom-content > span:nth-child(2)",
+      "targets": [],
+      "value": "Punteggi aggiornati correttamente"
+    }]
+  }, {
+    "id": "73ca1de9-1a44-4b8d-8c12-e691438b0ad3",
+    "name": "Aggiunta score - valore camera errato",
+    "commands": [{
+      "id": "08e049de-60a9-4b97-abb5-877b2b2fd95b",
+      "comment": "",
+      "command": "open",
+      "target": "/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "91f558c8-d7ce-4eca-8c72-d332eea09064",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "974x1040",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "4ab6d9f4-0ec9-404f-9ee2-5534712a8132",
+      "comment": "",
+      "command": "click",
+      "target": "css=.anticon-home > svg",
+      "targets": [
+        ["css=.anticon-home > svg", "css:finder"]
+      ],
+      "value": ""
+    }, {
+      "id": "791815a3-b278-4819-8a3e-8705edf575cd",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Lista schede tecniche",
+      "targets": [
+        ["linkText=Lista schede tecniche", "linkText"],
+        ["css=div > div > a:nth-child(1)", "css:finder"],
+        ["xpath=//a[contains(text(),'Lista schede tecniche')]", "xpath:link"],
+        ["xpath=//div[@id='root']/div/section/header/div/div/div/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, '/admin/speclist')]", "xpath:href"],
+        ["xpath=//div/div/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Lista schede tecniche')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "ab5a0604-1723-4db5-84c2-0cc9916a66a2",
+      "comment": "",
+      "command": "click",
+      "target": "css=.ant-table-row:nth-child(1) > .ant-table-cell:nth-child(1)",
+      "targets": [
+        ["css=.ant-table-row:nth-child(1) > .ant-table-cell:nth-child(1)", "css:finder"],
+        ["xpath=//div[@id='root']/div/section/main/div/div[2]/div/div/div/div/div/table/tbody/tr/td", "xpath:idRelative"],
+        ["xpath=//td", "xpath:position"],
+        ["xpath=//td[contains(.,'Huawei Mate 40 Pro')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "a3557725-a7b1-4c37-87ba-c9bc936f641c",
+      "comment": "",
+      "command": "click",
+      "target": "id=basic_performance",
+      "targets": [
+        ["id=basic_performance", "id"],
+        ["css=#basic_performance", "css:finder"],
+        ["xpath=//input[@id='basic_performance']", "xpath:attributes"],
+        ["xpath=//form[@id='basic']/div/div[2]/div/div/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "d1f1f83a-01a9-4e35-b459-f3ff0abad93d",
+      "comment": "",
+      "command": "type",
+      "target": "id=basic_performance",
+      "targets": [
+        ["id=basic_performance", "id"],
+        ["css=#basic_performance", "css:finder"],
+        ["xpath=//input[@id='basic_performance']", "xpath:attributes"],
+        ["xpath=//form[@id='basic']/div/div[2]/div/div/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "3"
+    }, {
+      "id": "eb2a0f7f-33a9-46f1-a88d-448e7a510a32",
+      "comment": "",
+      "command": "type",
+      "target": "id=basic_camera",
+      "targets": [
+        ["id=basic_camera", "id"],
+        ["css=#basic_camera", "css:finder"],
+        ["xpath=//input[@id='basic_camera']", "xpath:attributes"],
+        ["xpath=//form[@id='basic']/div[2]/div[2]/div/div/input", "xpath:idRelative"],
+        ["xpath=//div[2]/div[2]/div/div/input", "xpath:position"]
+      ],
+      "value": "-3"
+    }, {
+      "id": "49e19822-2172-455e-9678-365c9162c839",
+      "comment": "",
+      "command": "type",
+      "target": "id=basic_display",
+      "targets": [
+        ["id=basic_display", "id"],
+        ["css=#basic_display", "css:finder"],
+        ["xpath=//input[@id='basic_display']", "xpath:attributes"],
+        ["xpath=//form[@id='basic']/div[3]/div[2]/div/div/input", "xpath:idRelative"],
+        ["xpath=//div[3]/div[2]/div/div/input", "xpath:position"]
+      ],
+      "value": "3"
+    }, {
+      "id": "bc567d96-80fb-42d5-943f-09ef71bd76fc",
+      "comment": "",
+      "command": "click",
+      "target": "css=.ant-btn > span",
+      "targets": [
+        ["css=.ant-btn > span", "css:finder"],
+        ["xpath=//form[@id='basic']/div[4]/div/div/div/button/span", "xpath:idRelative"],
+        ["xpath=//button/span", "xpath:position"],
+        ["xpath=//span[contains(.,'Submit')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "b676deef-5cf3-4772-87e4-2a8340460429",
+      "comment": "",
+      "command": "assertText",
+      "target": "css=.ant-message-custom-content > span:nth-child(2)",
+      "targets": [],
+      "value": "Punteggi aggiornati correttamente"
+    }]
+  }, {
+    "id": "15cf67a5-4d46-4390-a98e-89fca694ab98",
+    "name": "Aggiunta score - valore display errato",
+    "commands": [{
+      "id": "723edc46-c877-477a-b189-17298d18eee6",
+      "comment": "",
+      "command": "open",
+      "target": "/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "b429975c-ab36-4bd4-93cd-adc78e4573c8",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "974x1040",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "67a0250c-e9ad-417a-9e1b-62b313357847",
+      "comment": "",
+      "command": "click",
+      "target": "css=.anticon-home > svg",
+      "targets": [
+        ["css=.anticon-home > svg", "css:finder"]
+      ],
+      "value": ""
+    }, {
+      "id": "8cfd98f4-3ca4-4d28-8a12-55d1e6529653",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Lista schede tecniche",
+      "targets": [
+        ["linkText=Lista schede tecniche", "linkText"],
+        ["css=div > div > a:nth-child(1)", "css:finder"],
+        ["xpath=//a[contains(text(),'Lista schede tecniche')]", "xpath:link"],
+        ["xpath=//div[@id='root']/div/section/header/div/div/div/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, '/admin/speclist')]", "xpath:href"],
+        ["xpath=//div/div/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Lista schede tecniche')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "df8b5376-be00-4f2d-9081-2389214c4ee3",
+      "comment": "",
+      "command": "click",
+      "target": "css=.ant-table-row:nth-child(1) > .ant-table-cell:nth-child(1)",
+      "targets": [
+        ["css=.ant-table-row:nth-child(1) > .ant-table-cell:nth-child(1)", "css:finder"],
+        ["xpath=//div[@id='root']/div/section/main/div/div[2]/div/div/div/div/div/table/tbody/tr/td", "xpath:idRelative"],
+        ["xpath=//td", "xpath:position"],
+        ["xpath=//td[contains(.,'Huawei Mate 40 Pro')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "627a91f7-8d68-45b7-95d2-9375399c4153",
+      "comment": "",
+      "command": "click",
+      "target": "id=basic_performance",
+      "targets": [
+        ["id=basic_performance", "id"],
+        ["css=#basic_performance", "css:finder"],
+        ["xpath=//input[@id='basic_performance']", "xpath:attributes"],
+        ["xpath=//form[@id='basic']/div/div[2]/div/div/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "856ff940-9b13-42e3-b4b4-1496e4be0405",
+      "comment": "",
+      "command": "type",
+      "target": "id=basic_performance",
+      "targets": [
+        ["id=basic_performance", "id"],
+        ["css=#basic_performance", "css:finder"],
+        ["xpath=//input[@id='basic_performance']", "xpath:attributes"],
+        ["xpath=//form[@id='basic']/div/div[2]/div/div/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "1"
+    }, {
+      "id": "dd8f0607-66ba-4830-8929-569e1b2fd635",
+      "comment": "",
+      "command": "type",
+      "target": "id=basic_camera",
+      "targets": [
+        ["id=basic_camera", "id"],
+        ["css=#basic_camera", "css:finder"],
+        ["xpath=//input[@id='basic_camera']", "xpath:attributes"],
+        ["xpath=//form[@id='basic']/div[2]/div[2]/div/div/input", "xpath:idRelative"],
+        ["xpath=//div[2]/div[2]/div/div/input", "xpath:position"]
+      ],
+      "value": "2"
+    }, {
+      "id": "9f173c89-20a6-4088-9ad4-cd1911be9749",
+      "comment": "",
+      "command": "type",
+      "target": "id=basic_display",
+      "targets": [
+        ["id=basic_display", "id"],
+        ["css=#basic_display", "css:finder"],
+        ["xpath=//input[@id='basic_display']", "xpath:attributes"],
+        ["xpath=//form[@id='basic']/div[3]/div[2]/div/div/input", "xpath:idRelative"],
+        ["xpath=//div[3]/div[2]/div/div/input", "xpath:position"]
+      ],
+      "value": "-1"
+    }, {
+      "id": "2d37a36a-c560-4629-a4f0-d1e3cad79069",
+      "comment": "",
+      "command": "click",
+      "target": "css=.ant-btn > span",
+      "targets": [
+        ["css=.ant-btn > span", "css:finder"],
+        ["xpath=//form[@id='basic']/div[4]/div/div/div/button/span", "xpath:idRelative"],
+        ["xpath=//button/span", "xpath:position"],
+        ["xpath=//span[contains(.,'Submit')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "8a45a9e0-2c9c-49b5-bde6-862c22064a4f",
+      "comment": "",
+      "command": "assertText",
+      "target": "css=.ant-message-custom-content > span:nth-child(2)",
+      "targets": [],
+      "value": "Punteggi aggiornati correttamente"
+    }]
+  }, {
+    "id": "84b65f74-bf68-449f-b3de-f63d1604b607",
+    "name": "Aggiunta score - valori corretti",
+    "commands": [{
+      "id": "f59a5286-6f8c-4a50-9ac9-b7152a7759cb",
+      "comment": "",
+      "command": "open",
+      "target": "/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "43186bf2-38b7-4ef6-a18f-b6076bd8c4cb",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "974x1040",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "689a4a55-2902-4539-9cbb-3f4cb13e3a2f",
+      "comment": "",
+      "command": "click",
+      "target": "css=.anticon-home > svg",
+      "targets": [
+        ["css=.anticon-home > svg", "css:finder"]
+      ],
+      "value": ""
+    }, {
+      "id": "2560c066-ca93-41ed-8424-7f190ab49868",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Lista schede tecniche",
+      "targets": [
+        ["linkText=Lista schede tecniche", "linkText"],
+        ["css=div > div > a:nth-child(1)", "css:finder"],
+        ["xpath=//a[contains(text(),'Lista schede tecniche')]", "xpath:link"],
+        ["xpath=//div[@id='root']/div/section/header/div/div/div/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, '/admin/speclist')]", "xpath:href"],
+        ["xpath=//div/div/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Lista schede tecniche')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "fa4dae13-7ffb-4083-9f10-1b49589ca6c8",
+      "comment": "",
+      "command": "click",
+      "target": "css=.ant-table-row:nth-child(1) > .ant-table-cell:nth-child(1)",
+      "targets": [
+        ["css=.ant-table-row:nth-child(1) > .ant-table-cell:nth-child(1)", "css:finder"],
+        ["xpath=//div[@id='root']/div/section/main/div/div[2]/div/div/div/div/div/table/tbody/tr/td", "xpath:idRelative"],
+        ["xpath=//td", "xpath:position"],
+        ["xpath=//td[contains(.,'Huawei Mate 40 Pro')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "004282eb-ef5e-4042-92e1-26efe82e1b71",
+      "comment": "",
+      "command": "click",
+      "target": "id=basic_performance",
+      "targets": [
+        ["id=basic_performance", "id"],
+        ["css=#basic_performance", "css:finder"],
+        ["xpath=//input[@id='basic_performance']", "xpath:attributes"],
+        ["xpath=//form[@id='basic']/div/div[2]/div/div/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "9bc4f844-4c97-4709-ac70-0209bec526e8",
+      "comment": "",
+      "command": "type",
+      "target": "id=basic_performance",
+      "targets": [
+        ["id=basic_performance", "id"],
+        ["css=#basic_performance", "css:finder"],
+        ["xpath=//input[@id='basic_performance']", "xpath:attributes"],
+        ["xpath=//form[@id='basic']/div/div[2]/div/div/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "3"
+    }, {
+      "id": "65e3a620-59ac-4294-9d1a-48c7c30aee46",
+      "comment": "",
+      "command": "type",
+      "target": "id=basic_camera",
+      "targets": [
+        ["id=basic_camera", "id"],
+        ["css=#basic_camera", "css:finder"],
+        ["xpath=//input[@id='basic_camera']", "xpath:attributes"],
+        ["xpath=//form[@id='basic']/div[2]/div[2]/div/div/input", "xpath:idRelative"],
+        ["xpath=//div[2]/div[2]/div/div/input", "xpath:position"]
+      ],
+      "value": "4.5"
+    }, {
+      "id": "fb4e25d6-12fe-4283-a96a-def82a774915",
+      "comment": "",
+      "command": "type",
+      "target": "id=basic_display",
+      "targets": [
+        ["id=basic_display", "id"],
+        ["css=#basic_display", "css:finder"],
+        ["xpath=//input[@id='basic_display']", "xpath:attributes"],
+        ["xpath=//form[@id='basic']/div[3]/div[2]/div/div/input", "xpath:idRelative"],
+        ["xpath=//div[3]/div[2]/div/div/input", "xpath:position"]
+      ],
+      "value": "3.5"
+    }, {
+      "id": "335caa86-5228-48c8-9700-dbb97ae59440",
+      "comment": "",
+      "command": "click",
+      "target": "css=.ant-btn > span",
+      "targets": [
+        ["css=.ant-btn > span", "css:finder"],
+        ["xpath=//form[@id='basic']/div[4]/div/div/div/button/span", "xpath:idRelative"],
+        ["xpath=//button/span", "xpath:position"],
+        ["xpath=//span[contains(.,'Submit')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "ce97e7f1-eb2f-4712-880c-7d6f15230ae5",
+      "comment": "",
+      "command": "assertText",
+      "target": "css=.ant-message-custom-content > span:nth-child(2)",
+      "targets": [],
+      "value": "Punteggi aggiornati correttamente"
+    }]
+  }, {
+    "id": "6162fa00-f0d4-4c63-a48f-fdf6cd4ef745",
+    "name": "Barra di ricerca - barra vuota",
+    "commands": [{
+      "id": "6490b969-85c2-43b8-ae3b-fb657999f76d",
+      "comment": "",
+      "command": "open",
+      "target": "/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "9329d1af-0209-4ff6-9e7c-bab5a10e358c",
+      "comment": "",
+      "command": "click",
+      "target": "css=.ant-input",
+      "targets": [
+        ["css=.ant-input", "css:finder"],
+        ["xpath=//input[@value='']", "xpath:attributes"],
+        ["xpath=//div[@id='root']/div/section/header/div/div/span/span/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "f1721b28-a5e5-4f5a-af4e-77fdadc48001",
+      "comment": "",
+      "command": "click",
+      "target": "css=.ant-input-search-button",
+      "targets": [
+        ["css=.ant-input-search-button", "css:finder"],
+        ["xpath=//button[@type='button']", "xpath:attributes"],
+        ["xpath=//div[@id='root']/div/section/header/div/div/span/span/span/button", "xpath:idRelative"],
+        ["xpath=//button", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "1bc117d6-9587-4897-8313-17d9f7e226a8",
+      "comment": "",
+      "command": "assertText",
+      "target": "css=.ant-empty-description",
+      "targets": [],
+      "value": "No Data"
+    }]
+  }, {
+    "id": "485ab8a6-0ee6-4c87-9f3c-4467ce3dec02",
+    "name": "Barra di ricerca - barra piena",
+    "commands": [{
+      "id": "b5a2da48-11e6-4a5e-ba57-06817c88e54f",
+      "comment": "",
+      "command": "open",
+      "target": "/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "769b465c-cc4c-4db9-a1e5-d6e2bae4e462",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "974x1047",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "9f0dfdcf-6e91-4709-affb-63f888b35fff",
+      "comment": "",
+      "command": "click",
+      "target": "css=.ant-input",
+      "targets": [
+        ["css=.ant-input", "css:finder"],
+        ["xpath=//input[@value='']", "xpath:attributes"],
+        ["xpath=//div[@id='root']/div/section/header/div/div/span/span/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "d1688ecb-8a4d-45d8-9ae5-8dff6472dc09",
+      "comment": "",
+      "command": "type",
+      "target": "css=.ant-input",
+      "targets": [
+        ["css=.ant-input", "css:finder"],
+        ["xpath=//input[@value='oneplus']", "xpath:attributes"],
+        ["xpath=//div[@id='root']/div/section/header/div/div/span/span/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "oneplus"
+    }, {
+      "id": "d7f0c67d-a7c1-456b-af48-84b3077fa02a",
+      "comment": "",
+      "command": "sendKeys",
+      "target": "css=.ant-input",
+      "targets": [
+        ["css=.ant-input", "css:finder"],
+        ["xpath=//input[@value='oneplus']", "xpath:attributes"],
+        ["xpath=//div[@id='root']/div/section/header/div/div/span/span/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "${KEY_ENTER}"
+    }, {
+      "id": "45ab4c1a-8047-4d49-a2ef-4bfd295282c8",
+      "comment": "",
+      "command": "assertElementPresent",
+      "target": "css=div:nth-child(1) > .ant-card img",
+      "targets": [],
+      "value": ""
+    }]
+  }, {
+    "id": "94de8f52-c76d-4df6-9241-2a7b1f37dae3",
+    "name": "Aggiunta recensione - testo vuoto",
+    "commands": [{
+      "id": "29074a2d-6308-4d6b-9820-d1666cac0647",
+      "comment": "",
+      "command": "open",
+      "target": "/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "22a839ed-d6a1-486f-ac64-6d47d1b0b655",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "974x1040",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "bcd1ca05-9a62-4cf9-a271-1d4e4ca4b26a",
+      "comment": "",
+      "command": "click",
+      "target": "css=h1",
+      "targets": [
+        ["css=h1", "css:finder"],
+        ["xpath=//div[@id='root']/div/section/header/div/a/h1", "xpath:idRelative"],
+        ["xpath=//h1", "xpath:position"],
+        ["xpath=//h1[contains(.,'SmartBlog')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "f6932ce9-3dda-4922-8328-ae46a9494336",
+      "comment": "",
+      "command": "click",
+      "target": "css=div:nth-child(1) > .ant-card img",
+      "targets": [
+        ["css=div:nth-child(1) > .ant-card img", "css:finder"],
+        ["xpath=//img[@alt='example']", "xpath:img"],
+        ["xpath=//div[@id='root']/div/section/main/div/div/div/div/div/img", "xpath:idRelative"],
+        ["xpath=//img", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "f5c27f29-0c41-4f7d-9ea1-07bab3efdb7e",
+      "comment": "",
+      "command": "click",
+      "target": "css=.ant-btn-primary:nth-child(2) > span",
+      "targets": [
+        ["css=.ant-btn-primary:nth-child(2) > span", "css:finder"],
+        ["xpath=//div[@id='root']/div/section/main/div/div[2]/div[3]/div/button/span", "xpath:idRelative"],
+        ["xpath=//div[3]/div/button/span", "xpath:position"],
+        ["xpath=//span[contains(.,'Aggiungi recensione')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "c63d1a92-4091-45cd-8bb3-cab9b23f1f9d",
+      "comment": "",
+      "command": "click",
+      "target": "css=div:nth-child(7) > .ant-btn > span",
+      "targets": [
+        ["css=div:nth-child(7) > .ant-btn > span", "css:finder"],
+        ["xpath=//div[6]/button/span", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "efae8ef0-0ca3-4435-9698-a5fb8b050488",
+      "comment": "",
+      "command": "assertText",
+      "target": "css=.ant-message-custom-content > span:nth-child(2)",
+      "targets": [],
+      "value": "Text cannot be null or empty"
+    }]
+  }, {
+    "id": "a5df1b0a-0383-4604-8159-ba404f1125ba",
+    "name": "Aggiunta recensione - campi corretti",
+    "commands": [{
+      "id": "94c6ff15-565b-4f75-b2a9-11aa21099387",
+      "comment": "",
+      "command": "open",
+      "target": "/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "86f91082-0658-4412-b5de-72ada985d690",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "974x1040",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "75762994-c005-4c97-bed6-3b1c30b5e188",
+      "comment": "",
+      "command": "click",
+      "target": "css=h1",
+      "targets": [
+        ["css=h1", "css:finder"],
+        ["xpath=//div[@id='root']/div/section/header/div/a/h1", "xpath:idRelative"],
+        ["xpath=//h1", "xpath:position"],
+        ["xpath=//h1[contains(.,'SmartBlog')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "f9b02788-bd2e-4db3-aba8-b4c4f820893d",
+      "comment": "",
+      "command": "click",
+      "target": "css=div:nth-child(1) > .ant-card img",
+      "targets": [
+        ["css=div:nth-child(1) > .ant-card img", "css:finder"],
+        ["xpath=//img[@alt='example']", "xpath:img"],
+        ["xpath=//div[@id='root']/div/section/main/div/div/div/div/div/img", "xpath:idRelative"],
+        ["xpath=//img", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "a8b272e8-98a5-4a06-8444-d41c37fce90a",
+      "comment": "",
+      "command": "click",
+      "target": "css=.ant-btn-primary:nth-child(2) > span",
+      "targets": [
+        ["css=.ant-btn-primary:nth-child(2) > span", "css:finder"],
+        ["xpath=//div[@id='root']/div/section/main/div/div[2]/div[3]/div/button/span", "xpath:idRelative"],
+        ["xpath=//div[3]/div/button/span", "xpath:position"],
+        ["xpath=//span[contains(.,'Aggiungi recensione')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "45b168ae-00c6-44db-a784-da77715d6099",
+      "comment": "",
+      "command": "mouseOver",
+      "target": "css=.ant-btn-primary:nth-child(2) > span",
+      "targets": [
+        ["css=.ant-btn-primary:nth-child(2) > span", "css:finder"],
+        ["xpath=//div[@id='root']/div/section/main/div/div[2]/div[3]/div/button/span", "xpath:idRelative"],
+        ["xpath=//div[3]/div/button/span", "xpath:position"],
+        ["xpath=//span[contains(.,'Aggiungi recensione')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "838b2430-76f6-42b2-a5af-0815f155c69a",
+      "comment": "",
+      "command": "mouseOut",
+      "target": "css=.ant-btn-primary:nth-child(2) > span",
+      "targets": [
+        ["css=.ant-btn-primary:nth-child(2) > span", "css:finder"],
+        ["xpath=//div[@id='root']/div/section/main/div/div[2]/div[3]/div/button/span", "xpath:idRelative"],
+        ["xpath=//div[3]/div/button/span", "xpath:position"],
+        ["xpath=//span[contains(.,'Aggiungi recensione')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "6d783acd-a3b5-4ed5-a151-f0e9bf5c5896",
+      "comment": "",
+      "command": "click",
+      "target": "css=.ant-input:nth-child(6)",
+      "targets": [
+        ["css=.ant-input:nth-child(6)", "css:finder"],
+        ["xpath=//textarea", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "12e59b44-85c0-4731-a777-a8453f2983e0",
+      "comment": "",
+      "command": "type",
+      "target": "css=.ant-input:nth-child(6)",
+      "targets": [
+        ["css=.ant-input:nth-child(6)", "css:finder"],
+        ["xpath=//textarea", "xpath:position"]
+      ],
+      "value": "Descrizione recensione valida"
+    }, {
+      "id": "91b6d898-b250-4591-8170-b8fb26d33e19",
+      "comment": "",
+      "command": "click",
+      "target": "css=div:nth-child(8) span",
+      "targets": [
+        ["css=div:nth-child(8) span", "css:finder"],
+        ["xpath=//div[6]/button/span", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "bbeb6d59-94d6-4789-8ce3-85d970f5999f",
+      "comment": "",
+      "command": "assertText",
+      "target": "css=.ant-message-custom-content > span:nth-child(2)",
+      "targets": [],
+      "value": "Recensione aggiunta... Verrà controllata a breve"
+    }]
+  }, {
+    "id": "f9596183-3734-430c-a60e-017a66f93fbd",
+    "name": "Valutazione recensione - approvazione",
+    "commands": [{
+      "id": "320e254d-0d58-400f-9bf0-0d17d944b185",
+      "comment": "",
+      "command": "open",
+      "target": "/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "82960151-1a5d-4a58-887b-d09d6eb18731",
+      "comment": "",
+      "command": "click",
+      "target": "css=.anticon-home > svg",
+      "targets": [
+        ["css=.anticon-home > svg", "css:finder"]
+      ],
+      "value": ""
+    }, {
+      "id": "51f4a486-4ae9-477e-8fe1-5fb670124f88",
+      "comment": "",
+      "command": "click",
+      "target": "css=.ant-table-row:nth-child(1) > .ant-table-cell",
+      "targets": [
+        ["css=.ant-table-row:nth-child(1) > .ant-table-cell", "css:finder"],
+        ["xpath=//div[@id='root']/div/section/main/div/div/div/div/div/div/div/table/tbody/tr/td", "xpath:idRelative"],
+        ["xpath=//td", "xpath:position"],
+        ["xpath=//td[contains(.,'Huawei Mate 40 Pro | alfonso2')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "ca0bc029-0802-4993-b256-f8bf4913410c",
+      "comment": "",
+      "command": "click",
+      "target": "css=.ant-btn-primary > span",
+      "targets": [
+        ["css=.ant-btn-primary > span", "css:finder"],
+        ["xpath=//button[2]/span", "xpath:position"],
+        ["xpath=//span[contains(.,'Approva')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "b90470f7-2a5c-4c65-8706-f42985d85be0",
+      "comment": "",
+      "command": "assertText",
+      "target": "css=span:nth-child(2)",
+      "targets": [],
+      "value": "Recensione correttamente aggiornata"
+    }]
+  }, {
+    "id": "57f24d22-cea4-4c28-bf5d-fc72d5cf15dd",
+    "name": "Valutazione recensione - respinta",
+    "commands": [{
+      "id": "5442aef4-c594-481b-a709-47a1b851b2d9",
+      "comment": "",
+      "command": "open",
+      "target": "/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "c3e5a8d4-e784-4afc-88cd-60f2a3ddc82b",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "974x1040",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "ccf7ce45-808a-441d-9638-c5634a5c0a2a",
+      "comment": "",
+      "command": "click",
+      "target": "css=.anticon-home > svg",
+      "targets": [
+        ["css=.anticon-home > svg", "css:finder"]
+      ],
+      "value": ""
+    }, {
+      "id": "1d702dcc-d867-43e5-b439-cfb5a4eefb27",
+      "comment": "",
+      "command": "click",
+      "target": "css=.ant-table-row:nth-child(1) > .ant-table-cell",
+      "targets": [
+        ["css=.ant-table-row:nth-child(1) > .ant-table-cell", "css:finder"],
+        ["xpath=//div[@id='root']/div/section/main/div/div/div/div/div/div/div/table/tbody/tr/td", "xpath:idRelative"],
+        ["xpath=//td", "xpath:position"],
+        ["xpath=//td[contains(.,'Huawei Mate 40 Pro | alfonso2')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "6c028ff5-ad27-4665-8276-7949e64d5680",
+      "comment": "",
+      "command": "click",
+      "target": "css=.ant-btn:nth-child(1)",
+      "targets": [
+        ["css=.ant-btn:nth-child(1)", "css:finder"],
+        ["xpath=(//button[@type='button'])[4]", "xpath:attributes"],
+        ["xpath=//div[3]/button", "xpath:position"],
+        ["xpath=//button[contains(.,'Rifiuta')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "02ea2125-8956-4842-8a0b-fdc23da8b3c4",
+      "comment": "",
+      "command": "assertText",
+      "target": "css=span:nth-child(2)",
+      "targets": [],
+      "value": "Recensione correttamente aggiornata"
+    }]
+  }, {
+    "id": "3db835bc-a675-4d71-a06d-bf28b9f9b7c6",
+    "name": "Cancella scheda tecnica",
+    "commands": [{
+      "id": "45d2b938-8168-4543-917f-3f8be1103990",
+      "comment": "",
+      "command": "open",
+      "target": "/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "acecf5b5-815d-46ff-bf1b-226348233630",
+      "comment": "",
+      "command": "click",
+      "target": "css=.anticon-home path",
+      "targets": [
+        ["css=.anticon-home path", "css:finder"]
+      ],
+      "value": ""
+    }, {
+      "id": "84ae1aba-b98f-4073-b9cd-188083d2ba3b",
+      "comment": "",
+      "command": "mouseOver",
+      "target": "css=.anticon-home path",
+      "targets": [
+        ["css=.anticon-home path", "css:finder"]
+      ],
+      "value": ""
+    }, {
+      "id": "d0e4e080-6b00-4a5d-a33b-b78f34d9b58c",
+      "comment": "",
+      "command": "mouseOut",
+      "target": "css=.anticon-home path",
+      "targets": [
+        ["css=.anticon-home path", "css:finder"]
+      ],
+      "value": ""
+    }, {
+      "id": "55d5106d-4d28-436f-9291-9a522f6544fc",
+      "comment": "",
+      "command": "answerOnNextPrompt",
+      "target": "ok",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "cee232b1-30ad-4c11-af85-1dcdc8a1e10d",
+      "comment": "",
+      "command": "click",
+      "target": "css=.ant-table-row:nth-child(1) span",
+      "targets": [
+        ["css=.ant-table-row:nth-child(1) span", "css:finder"],
+        ["xpath=//div[@id='root']/div/section/main/div/div[2]/div/div/div/div/div/table/tbody/tr/td[3]/div/div/button/span", "xpath:idRelative"],
+        ["xpath=//div/button/span", "xpath:position"],
+        ["xpath=//span[contains(.,'Cancella')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "987d6f6c-440c-4659-88f3-2ea810aaf7cc",
+      "comment": "",
+      "command": "assertPrompt",
+      "target": "Scrivi ok per confermare la cancellazione",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "cd144259-13f7-4caf-bfb1-59ba91766bef",
+      "comment": "",
+      "command": "webdriverAnswerOnVisiblePrompt",
+      "target": "ok",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "515d4d9a-a20c-410e-8380-c0c3a8635429",
+      "comment": "",
+      "command": "assertText",
+      "target": "css=.ant-message-custom-content > span:nth-child(2)",
+      "targets": [],
+      "value": "Scheda tecnica calcellata"
+    }]
+  }],
+  "suites": [{
+    "id": "241d6aab-3a03-4e2a-8806-690b51fbd91b",
+    "name": "Default Suite",
+    "persistSession": false,
+    "parallel": false,
+    "timeout": 300,
+    "tests": []
+  }, {
+    "id": "9b0b2677-b8e9-4f34-9950-e90c15809278",
+    "name": "Registrazione",
+    "persistSession": false,
+    "parallel": false,
+    "timeout": 300,
+    "tests": ["d569ec48-a1ff-47c8-b607-9bce44fdaabf", "6c4df6e9-d3dd-4db2-bd60-4e2d4e9eb01f", "6c2c2a7b-e93a-4060-87db-3cc55eb7f2e3", "d5540c73-22d0-4fcd-94b2-741f216f5a69", "f148d8d5-f548-406d-b0a9-928262f30170", "5ba308e8-923d-4c57-ad72-d80668b10ac9", "f9b1b78f-6960-4ba8-94c7-bf61b1921c89"]
+  }, {
+    "id": "17437269-51b2-42ed-8c8e-44cb78de39fc",
+    "name": "Login",
+    "persistSession": false,
+    "parallel": false,
+    "timeout": 300,
+    "tests": ["d984e650-ae56-4d13-8d2f-bbdb433c97f8", "42792237-33ba-47ef-a5e2-c26bc4db1e1b", "f2d9078c-b84a-4166-9048-4c6c2636b587"]
+  }, {
+    "id": "5be7b206-122d-434f-a1ab-b51678479862",
+    "name": "Aggiunta spec",
+    "persistSession": false,
+    "parallel": false,
+    "timeout": 300,
+    "tests": ["a6c7f8f0-ff26-46e0-a952-53f51f0951c8", "b9fc1418-5855-4069-a310-3c1506be7632", "c73c1bc8-1b09-4989-9f83-5fa4e3f47f89", "e4613c9c-9d9c-4399-8e92-7f9aeef3d5cd", "3c038182-bcd2-4fa5-bbd4-06708562261d", "c90f9fdc-40d8-4fb9-a0d1-d69388dbb437", "ab723ef7-b1c3-43bf-aebc-e59c444dd725", "f97ca3c8-b2e2-4341-8b55-fe92f07440a8", "934cbeda-b3d8-4f9b-90ee-f45e0b9f8e74", "9f090975-4800-4a11-a7af-ead5c706432f"]
+  }, {
+    "id": "c14993b1-7cb1-4a9c-81b7-5fa349a822a8",
+    "name": "Aggiunta score",
+    "persistSession": false,
+    "parallel": false,
+    "timeout": 300,
+    "tests": ["73ca1de9-1a44-4b8d-8c12-e691438b0ad3", "15cf67a5-4d46-4390-a98e-89fca694ab98", "7deef1bf-31f7-43fc-be8d-ca2366c78d2d", "84b65f74-bf68-449f-b3de-f63d1604b607"]
+  }, {
+    "id": "0bbfe473-26ba-4353-87c2-2fd3b65852d9",
+    "name": "Barra di ricerca",
+    "persistSession": false,
+    "parallel": false,
+    "timeout": 300,
+    "tests": ["485ab8a6-0ee6-4c87-9f3c-4467ce3dec02", "6162fa00-f0d4-4c63-a48f-fdf6cd4ef745"]
+  }, {
+    "id": "36b2af0a-5909-478a-b980-f859a045d4ed",
+    "name": "Aggiunta recensione",
+    "persistSession": false,
+    "parallel": false,
+    "timeout": 300,
+    "tests": ["a5df1b0a-0383-4604-8159-ba404f1125ba", "94de8f52-c76d-4df6-9241-2a7b1f37dae3"]
+  }, {
+    "id": "4f549b14-fcc5-4193-baa7-25866ce307dc",
+    "name": "Misc",
+    "persistSession": false,
+    "parallel": false,
+    "timeout": 300,
+    "tests": ["f9596183-3734-430c-a60e-017a66f93fbd", "57f24d22-cea4-4c28-bf5d-fc72d5cf15dd", "3db835bc-a675-4d71-a06d-bf28b9f9b7c6"]
+  }],
+  "urls": ["http://localhost:3000/"],
+  "plugins": []
+}

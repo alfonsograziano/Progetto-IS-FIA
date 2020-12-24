@@ -59,7 +59,7 @@ function Spec(props) {
                     console.log(res)
                 })
                 .catch(err => {
-                    message.error('Impossibile aggiungere la recensione');
+                    message.error(err.response.data.message)
                     console.log(err)
                 })
         }
@@ -184,7 +184,7 @@ function Spec(props) {
                 <Col xs={{ span: 11, offset: 1 }} lg={{ span: 6, offset: 2 }}>
                     <div style={{ alignItems: "center", width: "100%", display: "flex", flexDirection: "column" }}>
                         <Title>{spec.name}</Title>
-                        <Card title="Punteggi">
+                        <Card title={"Punteggi offerti da " + spec.reviewer.username}>
                             <SpecTable
                                 data={points}
                             />

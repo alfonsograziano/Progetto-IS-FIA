@@ -120,6 +120,7 @@ public class UserDao {
             rs.next();
             manager = new Manager(user.getUsername(), user.getPassword(), user.getEmail(), user.getReviews(), rs.getString("phoneNumber"));
 
+
         } catch (SQLException sql){
             throw sql;
 

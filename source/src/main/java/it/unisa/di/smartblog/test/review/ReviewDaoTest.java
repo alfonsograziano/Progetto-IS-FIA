@@ -81,6 +81,7 @@ public class ReviewDaoTest extends TestCase {
             r2.setId(5);
             r2.setState("approved");
 
+            System.out.println("NELLA FUNZIONE CHE FALLISCE");
             oracle.add(r1);
             oracle.add(r2);
 
@@ -148,11 +149,11 @@ public class ReviewDaoTest extends TestCase {
             assertTrue(r.contains(oracle.get(0)));
             assertTrue(r.contains(oracle.get(1)));
 
-            System.out.println("testGetBySpecId() passed!");
+            System.out.println("testGetByUser() passed!");
 
         }catch (SQLException e){
 
-            fail("testGetBySpecId() not passed!");
+            fail("testGetByUser() not passed!");
 
         }
 
@@ -210,32 +211,161 @@ public class ReviewDaoTest extends TestCase {
         s.setId(2045);
         User u = new User();
         u.setId(3);
-        Review r = new Review(4, 4, 3, 3, 3, "Review di prova", s, u);
-        r.setState("pending");
+        Review reviewToInsert = new Review(4, 4, 3, 3, 3, "Review di prova", s, u);
+        reviewToInsert.setState("pending");
         try{
-            rd.saveReview(r);
-            System.out.println("FUNZIONEEE");
-            System.out.println("GET BY SPEC ID " + rd.getByUser(3));
-            if(!rd.getBySpecId(3).contains(r)){
-                fail("testSaveReview() not passed!");
-            } else {
-                System.out.println("testSaveReview() passed!");
+            rd.saveReview(reviewToInsert);
+
+            List<Review> reviews = rd.getByUser(3);
+            Review max = reviews.get(0);
+            for(Review rev : reviews){
+                if(rev.getId() > max.getId()){
+                    max = rev;
+                }
             }
+
+            assertEquals(max.getTotalScore(), reviewToInsert.getTotalScore());
+            assertEquals(max.getDisplay(), reviewToInsert.getDisplay());
+            assertEquals(max.getPerformance(), reviewToInsert.getPerformance());
+            assertEquals(max.getBattery(), reviewToInsert.getBattery());
+            assertEquals(max.getCamera(), reviewToInsert.getCamera());
+            assertEquals(max.getState(), reviewToInsert.getState());
+            assertEquals(max.getText(), reviewToInsert.getText());
+            System.out.println("testSaveReview() passed!");
+            rd.deleteReview(max.getId());
+
         }catch (ReviewMismatchException e){
-            e.printStackTrace();
+            fail("testSaveReview() not passed!");
         }catch (SQLException e){
-            e.printStackTrace();
+            fail("testSaveReview() not passed!");
+        }
+
+    }
+
+    public void testSaveReviewException() throws SQLException{
+
+        try{
+
+            rd.saveReview(null);
+            fail("testSaveReviewException() not passed!");
+
+        } catch (ReviewMismatchException e){
+            System.out.println("testSaveReviewException() passed!");
         }
 
     }
 
 
+    public void testDeleteReview() throws ReviewMismatchException{
+
+        try {
+
+            Review review = new Review();
+            review.setTotalScore(5);
+            review.setBattery(5);
+            review.setCamera(5);
+            review.setDisplay(5);
+            review.setText("Da eliminare");
+            review.setPerformance(5);
+
+            Spec s = new Spec();
+            s.setId(2045);
+            User u = new User();
+            u.setId(3);
+
+            review.setUser(u);
+            review.setSpec(s);
+
+            rd.saveReview(review);
+
+            List<Review> reviews = rd.getByUser(3);
+            Review max = reviews.get(0);
+            for (Review rev : reviews) {
+                if (rev.getId() > max.getId()) {
+                    max = rev;
+                }
+            }
+            System.out.println("Massimo: " + max);
+            rd.deleteReview(max.getId());
+            rd.getById(max.getId());
+            fail("testDeleteReview() not passed!");
+
+        } catch (SQLException e){
+            System.out.println("testDeleteReview() passed!");
+        }
+
+    }
+
+    public void testApproveReview() throws ReviewMismatchException{
+
+        try{
+
+            Review review = new Review();   //Creo una Review di prova
+            review.setTotalScore(5);
+            review.setBattery(5);
+            review.setCamera(5);
+            review.setDisplay(5);
+            review.setText("Da approvare");
+            review.setPerformance(5);
+
+            Spec s = new Spec();
+            s.setId(2045);
+            User u = new User();
+            u.setId(3);
+
+            review.setUser(u);
+            review.setSpec(s);
+
+            rd.saveReview(review);  //Inserisco una Review di prova nel db
+            List<Review> pendingReviews = rd.getPending();
+            Review max = pendingReviews.get(0);
+
+            //Cerco la review appena inserita per ottenere l'id
+            for (Review rev : pendingReviews) {
+                if (rev.getId() > max.getId()) {
+                    max = rev;
+                }
+            }
+            System.out.println("PENDINGGG: " + pendingReviews);
+            rd.approveReview(max.getId(), true);
+            assertEquals(rd.getById(max.getId()).getState(), "approved");
+            System.out.println("testApproveReview() (review approved) passed!");
+            rd.deleteReview(max.getId());   //Pulisco il db
+
+            //TESTO IL RIFIUTO DELLA REVIEW
+            rd.saveReview(review);
+            pendingReviews = rd.getPending();
+            max = pendingReviews.get(0);
+            for (Review rev : pendingReviews) {
+                if (rev.getId() > max.getId()) {
+                    max = rev;
+                }
+            }
+            rd.approveReview(max.getId(), false);
+            assertEquals(rd.getById(max.getId()).getState(), "rejected");
+            System.out.println("testApproveReview() (review rejected) passed!");
+            rd.deleteReview(max.getId());   //Pulisco il db
+
+            //Cerco la review appena inserita per ottenere l'id
+
+            System.out.println("Done!");
+
+        } catch (SQLException e){
+
+            fail("testApproveReview() not passed!");
+
+        }
+
+    }
 
     public static Test suite(){
 
         return new TestSuite(ReviewDaoTest.class);
 
     }
+
+
+
 
     public void tearDown(){
 

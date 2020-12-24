@@ -26,49 +26,57 @@ public class ReviewDao {
     }
 
     public synchronized Review getById(int id) throws SQLException {
+
         Connection conn = null;
         PreparedStatement ps = null;
         String query = "SELECT * FROM review INNER JOIN USER ON review.userId=user.id INNER JOIN spec ON review.specId=spec.id WHERE review.id=?;";
         Review review = new Review();
 
-        conn = ds.getConnection();
-        ps = conn.prepareStatement(query);
-        ps.setInt(1, id);
-        ResultSet rs = ps.executeQuery();
-
-        rs.next();
-        review.setId(rs.getInt(1));
-        review.setTotalScore(rs.getInt("totalScore"));
-        review.setPerformance(rs.getInt("performance"));
-        review.setDisplay(rs.getInt("display"));
-        review.setBattery(rs.getInt("battery"));
-        review.setCamera(rs.getInt("camera"));
-        review.setText(rs.getString("text"));
-        review.setState(rs.getString("state"));
-
-        User user = new User();
-        user.setId(rs.getInt("userId"));
-        user.setEmail(rs.getString("email"));
-        user.setUsername(rs.getString("username"));
-        review.setUser(user);
-
-        Spec spec = new Spec();
-        spec.setId(rs.getInt("specId"));
-        spec.setName(rs.getString("name"));
-        review.setSpec(spec);
-
         try {
-            conn.close();
+
+            conn = ds.getConnection();
+            ps = conn.prepareStatement(query);
+            ps.setInt(1, id);
+            ResultSet rs = ps.executeQuery();
+
+            rs.next();
+            review.setId(rs.getInt(1));
+            review.setTotalScore(rs.getInt("totalScore"));
+            review.setPerformance(rs.getInt("performance"));
+            review.setDisplay(rs.getInt("display"));
+            review.setBattery(rs.getInt("battery"));
+            review.setCamera(rs.getInt("camera"));
+            review.setText(rs.getString("text"));
+            review.setState(rs.getString("state"));
+
+            User user = new User();
+            user.setId(rs.getInt("userId"));
+            user.setEmail(rs.getString("email"));
+            user.setUsername(rs.getString("username"));
+            review.setUser(user);
+
+            Spec spec = new Spec();
+            spec.setId(rs.getInt("specId"));
+            spec.setName(rs.getString("name"));
+            review.setSpec(spec);
 
         } catch(Exception e) {
-            e.printStackTrace();
-        }
+            throw e;
+        } finally {
 
-        try {
-            ps.close();
+            try {
+                conn.close();
 
-        } catch(Exception e) {
-            e.printStackTrace();
+            } catch(Exception e) {
+                e.printStackTrace();
+            }
+
+            try {
+                ps.close();
+
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         }
 
         return review;

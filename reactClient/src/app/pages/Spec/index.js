@@ -78,7 +78,7 @@ function Spec(props) {
                 setSpec(res)
             })
             .catch(err => {
-                history.push("/home")
+                history.push("/404")
                 console.log(err)
             })
     }, [])

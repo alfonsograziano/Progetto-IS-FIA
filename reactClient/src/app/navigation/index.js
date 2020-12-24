@@ -17,6 +17,7 @@ import SpecList from "../pages/admin/SpecList";
 import Reviews from "../pages/admin/Reviews";
 import AddSpec from "../pages/admin/AddSpec";
 import SetScores from "../pages/admin/SetScores";
+import NotFound from "../pages/NotFound";
 
 import { AuthContext } from "../../App";
 
@@ -49,7 +50,7 @@ function MainNavigation(props) {
     return (
         <Router>
 
-            <Layout style={{ height: "100%", backgroundColor:"transparent" }}>
+            <Layout style={{ height: "100%", backgroundColor: "transparent" }}>
                 <Navbar />
                 <Content style={{ padding: '0 50px', height: "100%", marginTop: "20px", backgroundColor: "transparent" }}>
 
@@ -70,6 +71,8 @@ function MainNavigation(props) {
 
                         <Route exact path="/admin/reviews" component={() => isReviewer ? <Reviews /> : <Login />} />
                         <Route exact path="/admin/setscores" component={() => isReviewer ? <SetScores /> : <Login />} />
+
+                        <Route component={() => <NotFound />} />
 
                     </Switch>
 

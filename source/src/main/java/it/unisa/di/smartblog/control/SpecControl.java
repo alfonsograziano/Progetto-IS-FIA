@@ -35,6 +35,7 @@ public class SpecControl extends HttpServlet {
 
             request.setAttribute("response",res);
         } catch (SQLException throwables) {
+            throwables.printStackTrace();
             response.setStatus(HttpServletResponse.SC_NOT_FOUND);
             request.setAttribute("response", new Error("Spec not found..."));
         }

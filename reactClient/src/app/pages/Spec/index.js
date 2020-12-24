@@ -184,7 +184,7 @@ function Spec(props) {
                 <Col xs={{ span: 11, offset: 1 }} lg={{ span: 6, offset: 2 }}>
                     <div style={{ alignItems: "center", width: "100%", display: "flex", flexDirection: "column" }}>
                         <Title>{spec.name}</Title>
-                        <Card title="Punteggi">
+                        <Card title={"Punteggi offerti da " + spec.reviewer.username}>
                             <SpecTable
                                 data={points}
                             />

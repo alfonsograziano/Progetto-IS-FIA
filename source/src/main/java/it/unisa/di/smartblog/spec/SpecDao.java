@@ -1,5 +1,7 @@
 package  it.unisa.di.smartblog.spec;
 
+import it.unisa.di.smartblog.user.Reviewer;
+
 import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
@@ -137,7 +139,7 @@ public class SpecDao {
     public synchronized Spec getById(int id) throws SQLException{
         Connection conn = null;
         PreparedStatement ps = null;
-        String query = "SELECT * FROM spec WHERE spec.id = ?";
+        String query = "SELECT * FROM spec INNER JOIN user ON spec.reviewerId=user.id WHERE spec.id = ?";
         Spec result = new Spec();
         try{
             conn = ds.getConnection();
@@ -162,6 +164,13 @@ public class SpecDao {
             result.setBattery(rs.getInt("battery"));
             result.setDate(rs.getString("date"));
             result.setPrice(rs.getDouble("price"));
+
+            Reviewer r = new Reviewer();
+            r.setId(rs.getInt("reviewerId"));
+            r.setUsername(rs.getString("username"));
+
+            result.setReviewer(r);
+
 
         } catch (SQLException sql){
             throw sql;

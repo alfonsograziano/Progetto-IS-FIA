@@ -206,17 +206,6 @@ public class ReviewDaoTest extends TestCase {
 
     public void testSaveReview(){
 
-       /*
-        ps.setInt(1, review.getTotalScore());
-        ps.setInt(2, review.getPerformance());
-        ps.setInt(3, review.getDisplay());
-        ps.setInt(4, review.getBattery());
-        ps.setInt(5, review.getCamera());
-        ps.setString(6, review.getText());
-        ps.setInt(7, review.getUser().getId());
-        ps.setInt(8, review.getSpec().getId());
-        * */
-
         Spec s = new Spec();
         s.setId(2045);
         User u = new User();
@@ -226,9 +215,8 @@ public class ReviewDaoTest extends TestCase {
         try{
             rd.saveReview(r);
             System.out.println("FUNZIONEEE");
-            System.out.println("GET BY SPEC ID " + rd.getBySpecId(2045));
-            System.out.println(r);
-            if(!rd.getBySpecId(2045).contains(r)){
+            System.out.println("GET BY SPEC ID " + rd.getByUser(3));
+            if(!rd.getBySpecId(3).contains(r)){
                 fail("testSaveReview() not passed!");
             } else {
                 System.out.println("testSaveReview() passed!");
@@ -240,6 +228,8 @@ public class ReviewDaoTest extends TestCase {
         }
 
     }
+
+
 
     public static Test suite(){
 

@@ -59,7 +59,7 @@ function Spec(props) {
                     console.log(res)
                 })
                 .catch(err => {
-                    message.error('Impossibile aggiungere la recensione');
+                    message.error(err.response.data.message)
                     console.log(err)
                 })
         }

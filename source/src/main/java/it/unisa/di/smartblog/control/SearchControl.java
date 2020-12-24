@@ -1,5 +1,6 @@
 package it.unisa.di.smartblog.control;
 
+import it.unisa.di.smartblog.filter.Error;
 import it.unisa.di.smartblog.spec.EmptyFieldException;
 import it.unisa.di.smartblog.spec.SpecsManager;
 import it.unisa.di.smartblog.user.UserManager;
@@ -26,8 +27,12 @@ public class SearchControl extends HttpServlet {
             request.setAttribute("response", sm.searchByName(search));
         } catch (EmptyFieldException e) {
             e.printStackTrace();
+            response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
+            request.setAttribute("response", new Error(e.getMessage()));
         } catch (SQLException throwables) {
             throwables.printStackTrace();
+            response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
+            request.setAttribute("response", new Error(throwables.getMessage()));
         }
     }
 

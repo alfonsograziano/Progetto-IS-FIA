@@ -25,27 +25,27 @@ function ReviewForm({
         <div>
             <Row style={{ justifyContent: "space-between" }}>
                 <Title level={5} style={{ margin: "0px" }}>Valutazione complessiva: </Title>
-                <Rate onChange={(v) => setReview({ ...review, totalScore: v })} value={review.totalScore} />
+                <Rate onChange={(v) => setReview({ ...review, totalScore: v })} value={review.totalScore} allowClear={false} />
             </Row>
 
             <Row style={{ justifyContent: "space-between" }}>
                 <Title level={5} style={{ margin: "0px" }}>Fotocamera</Title>
-                <Rate onChange={(v) => setReview({ ...review, camera: v })} value={review.camera} />
+                <Rate onChange={(v) => setReview({ ...review, camera: v })} value={review.camera} allowClear={false} />
             </Row>
 
             <Row style={{ justifyContent: "space-between" }}>
                 <Title level={5} style={{ margin: "0px" }}>Display </Title>
-                <Rate onChange={(v) => setReview({ ...review, display: v })} value={review.display} />
+                <Rate onChange={(v) => setReview({ ...review, display: v })} value={review.display} allowClear={false} />
             </Row>
 
             <Row style={{ justifyContent: "space-between" }}>
                 <Title level={5} style={{ margin: "0px" }}>Prestazioni</Title>
-                <Rate onChange={(v) => setReview({ ...review, performance: v })} value={review.performance} />
+                <Rate onChange={(v) => setReview({ ...review, performance: v })} value={review.performance} allowClear={false} />
             </Row>
 
             <Row style={{ justifyContent: "space-between" }}>
                 <Title level={5} style={{ margin: "0px" }}>Batteria</Title>
-                <Rate onChange={(v) => setReview({ ...review, battery: v })} value={review.battery} />
+                <Rate onChange={(v) => setReview({ ...review, battery: v })} value={review.battery} allowClear={false} />
             </Row>
 
             <TextArea

@@ -47,7 +47,10 @@ public class SpecsManager {
 		if(price<0) throw new SpecMismatchException("Price cannot be negative");
 		
 		Pattern pattern = Pattern.compile("[0-9]{4}/[0-9]([0-2]?)");
+<<<<<<< HEAD
 		//incident = errore crezione scheda tecnica con data 2020/1
+=======
+>>>>>>> 39a51823b9ad47a168e307fe7e704d010c7f8989
 		Matcher matcher = pattern.matcher(releaseDate);
 		if(!matcher.find()) throw new SpecMismatchException("Invalid releaseDate format");
 

@@ -7,6 +7,7 @@ import { Link } from "react-router-dom";
 import { Typography } from 'antd';
 import { search } from "../../services/spec.service"
 import { Pagination, message } from 'antd';
+import { useHistory } from "react-router-dom";
 
 const { Title } = Typography;
 function useQuery() {
@@ -20,6 +21,7 @@ function SearchResults(props) {
     const [data, setData] = useState([])
     const pageSize = 50
     const [currentPage, setCurrentPage] = useState(1)
+    const history = useHistory();
 
     useEffect(() => {
         search(searchQuery)
@@ -28,6 +30,7 @@ function SearchResults(props) {
                 setData(res)
             })
             .catch(err => {
+                history.push("/404")
                 console.log(err)
                 message.error('Impossibile completare la ricerca');
             })

@@ -25,7 +25,7 @@ public class DoraControl extends HttpServlet {
             double performance = Double.parseDouble(request.getParameter("performance"))*2;
             double camera = Double.parseDouble(request.getParameter("camera"))*2;
             double display = Double.parseDouble(request.getParameter("display"))*2;
-            int maxBudget = Integer.parseInt(request.getParameter("maxBudget"))*2;
+            int maxBudget = Integer.parseInt(request.getParameter("maxBudget"));
 
             System.out.println("Battery => "+battery);
 

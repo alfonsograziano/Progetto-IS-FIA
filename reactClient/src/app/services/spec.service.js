@@ -1,5 +1,5 @@
 import Axios from "axios"
-import { GET_SPEC_BY_ID, ALL_SPECS, SEARCH_SPECS, DELETE_SPEC, ADD_SPEC } from "./api"
+import { GET_SPEC_BY_ID, ALL_SPECS, SEARCH_SPECS, DELETE_SPEC, ADD_SPEC, SET_SCORES } from "./api"
 const qs = require('querystring')
 
 const config = (token = "") =>
@@ -34,4 +34,9 @@ const deleteSpec = (specId, token) => {
         .then(res => res.data)
 }
 
-export { getSpecById, getAll, search, deleteSpec, createNewSpec }
+const setScores = (scores, token) => {
+    return Axios.post(SET_SCORES, qs.stringify(scores), config(token))
+        .then(res => res.data)
+}
+
+export { getSpecById, getAll, search, deleteSpec, createNewSpec, setScores }

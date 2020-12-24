@@ -80,45 +80,51 @@ public class ReviewDao {
         String query = "SELECT * FROM review INNER JOIN user ON review.userId=user.id INNER JOIN spec ON review.specId=spec.id WHERE spec.id=? AND review.state='approved'";
         ArrayList<Review> reviews = new ArrayList<>();
 
-        conn = ds.getConnection();
-        ps = conn.prepareStatement(query);
-        ps.setInt(1, id);
-        ResultSet rs = ps.executeQuery();
-
-        while(rs.next()) {
-            Review review = new Review();
-            review.setId(rs.getInt(1));
-            review.setTotalScore(rs.getInt("totalScore"));
-            review.setPerformance(rs.getInt("performance"));
-            review.setDisplay(rs.getInt("display"));
-            review.setBattery(rs.getInt("battery"));
-            review.setCamera(rs.getInt("camera"));
-            review.setText(rs.getString("text"));
-            review.setState(rs.getString("state"));
-
-            User user = new User();
-            user.setId(rs.getInt("userId"));
-            user.setEmail(rs.getString("email"));
-            user.setUsername(rs.getString("username"));
-            user.setActive(true);
-            review.setUser(user);
-
-            reviews.add(review);
-        }
-
         try {
-            conn.close();
+            conn = ds.getConnection();
+            ps = conn.prepareStatement(query);
+            ps.setInt(1, id);
+            ResultSet rs = ps.executeQuery();
 
-        } catch(Exception e) {
-            e.printStackTrace();
+            while(rs.next()) {
+                Review review = new Review();
+                review.setId(rs.getInt(1));
+                review.setTotalScore(rs.getInt("totalScore"));
+                review.setPerformance(rs.getInt("performance"));
+                review.setDisplay(rs.getInt("display"));
+                review.setBattery(rs.getInt("battery"));
+                review.setCamera(rs.getInt("camera"));
+                review.setText(rs.getString("text"));
+                review.setState(rs.getString("state"));
+
+                User user = new User();
+                user.setId(rs.getInt("userId"));
+                user.setEmail(rs.getString("email"));
+                user.setUsername(rs.getString("username"));
+                user.setActive(true);
+                review.setUser(user);
+
+                reviews.add(review);
+            }
+        } catch (SQLException sql){
+            throw sql;
+
+        } finally {
+            try {
+                conn.close();
+
+            } catch(Exception e) {
+                e.printStackTrace();
+            }
+
+            try {
+                ps.close();
+
+            } catch(Exception e) {
+                e.printStackTrace();
+            }
         }
 
-        try {
-            ps.close();
-
-        } catch(Exception e) {
-            e.printStackTrace();
-        }
 
         return reviews;
     }
@@ -129,42 +135,47 @@ public class ReviewDao {
         String query = "SELECT * FROM review INNER JOIN user ON review.userId=user.id INNER JOIN spec ON review.specId=spec.id WHERE user.id=?";
         ArrayList<Review> reviews = new ArrayList<>();
 
-        conn = ds.getConnection();
-        ps = conn.prepareStatement(query);
-        ps.setInt(1, id);
-        ResultSet rs = ps.executeQuery();
-
-        while(rs.next()) {
-            Review review = new Review();
-            review.setId(rs.getInt(1));
-            review.setTotalScore(rs.getInt("totalScore"));
-            review.setPerformance(rs.getInt("performance"));
-            review.setDisplay(rs.getInt("display"));
-            review.setBattery(rs.getInt("battery"));
-            review.setCamera(rs.getInt("camera"));
-            review.setText(rs.getString("text"));
-            review.setState(rs.getString("state"));
-
-            Spec spec = new Spec();
-            spec.setId(rs.getInt("specId"));
-            spec.setName(rs.getString("name"));
-            review.setSpec(spec);
-
-            reviews.add(review);
-        }
-
         try {
-            conn.close();
+            conn = ds.getConnection();
+            ps = conn.prepareStatement(query);
+            ps.setInt(1, id);
+            ResultSet rs = ps.executeQuery();
 
-        } catch(Exception e) {
-            e.printStackTrace();
-        }
+            while(rs.next()) {
+                Review review = new Review();
+                review.setId(rs.getInt(1));
+                review.setTotalScore(rs.getInt("totalScore"));
+                review.setPerformance(rs.getInt("performance"));
+                review.setDisplay(rs.getInt("display"));
+                review.setBattery(rs.getInt("battery"));
+                review.setCamera(rs.getInt("camera"));
+                review.setText(rs.getString("text"));
+                review.setState(rs.getString("state"));
 
-        try {
-            ps.close();
+                Spec spec = new Spec();
+                spec.setId(rs.getInt("specId"));
+                spec.setName(rs.getString("name"));
+                review.setSpec(spec);
 
-        } catch(Exception e) {
-            e.printStackTrace();
+                reviews.add(review);
+            }
+        } catch (SQLException sql){
+            throw sql;
+
+        } finally {
+            try {
+                conn.close();
+
+            } catch(Exception e) {
+                e.printStackTrace();
+            }
+
+            try {
+                ps.close();
+
+            } catch(Exception e) {
+                e.printStackTrace();
+            }
         }
 
         return reviews;
@@ -176,48 +187,53 @@ public class ReviewDao {
         String query = "SELECT * FROM review INNER JOIN user ON review.userId=user.id INNER JOIN spec ON review.specId=spec.id WHERE review.state='pending'";
         ArrayList<Review> reviews = new ArrayList<>();
 
-        conn = ds.getConnection();
-        ps = conn.prepareStatement(query);
-        ResultSet rs = ps.executeQuery();
-
-        while(rs.next()) {
-            Review review = new Review();
-            review.setId(rs.getInt(1));
-            review.setTotalScore(rs.getInt("totalScore"));
-            review.setPerformance(rs.getInt("performance"));
-            review.setDisplay(rs.getInt("display"));
-            review.setBattery(rs.getInt("battery"));
-            review.setCamera(rs.getInt("camera"));
-            review.setText(rs.getString("text"));
-            review.setState(rs.getString("state"));
-
-            User user = new User();
-            user.setId(rs.getInt("userId"));
-            user.setActive(true);
-            user.setEmail(rs.getString("email"));
-            user.setUsername(rs.getString("username"));
-            review.setUser(user);
-
-            Spec spec = new Spec();
-            spec.setId(rs.getInt("specId"));
-            spec.setName(rs.getString("name"));
-            review.setSpec(spec);
-
-            reviews.add(review);
-        }
-
         try {
-            conn.close();
+            conn = ds.getConnection();
+            ps = conn.prepareStatement(query);
+            ResultSet rs = ps.executeQuery();
 
-        } catch(Exception e) {
-            e.printStackTrace();
-        }
+            while(rs.next()) {
+                Review review = new Review();
+                review.setId(rs.getInt(1));
+                review.setTotalScore(rs.getInt("totalScore"));
+                review.setPerformance(rs.getInt("performance"));
+                review.setDisplay(rs.getInt("display"));
+                review.setBattery(rs.getInt("battery"));
+                review.setCamera(rs.getInt("camera"));
+                review.setText(rs.getString("text"));
+                review.setState(rs.getString("state"));
 
-        try {
-            ps.close();
+                User user = new User();
+                user.setId(rs.getInt("userId"));
+                user.setActive(true);
+                user.setEmail(rs.getString("email"));
+                user.setUsername(rs.getString("username"));
+                review.setUser(user);
 
-        } catch(Exception e) {
-            e.printStackTrace();
+                Spec spec = new Spec();
+                spec.setId(rs.getInt("specId"));
+                spec.setName(rs.getString("name"));
+                review.setSpec(spec);
+
+                reviews.add(review);
+            }
+        } catch (SQLException sql){
+            throw sql;
+
+        } finally {
+            try {
+                conn.close();
+
+            } catch(Exception e) {
+                e.printStackTrace();
+            }
+
+            try {
+                ps.close();
+
+            } catch(Exception e) {
+                e.printStackTrace();
+            }
         }
 
         return reviews;
@@ -230,30 +246,35 @@ public class ReviewDao {
         PreparedStatement ps = null;
         String query = "INSERT INTO review (totalScore, performance, display, battery, camera, text, state, userId, specId) VALUES (?, ?, ?, ?, ?, ?, 'pending', ?, ?)";
 
-        conn = ds.getConnection();
-        ps = conn.prepareStatement(query);
-        ps.setInt(1, review.getTotalScore());
-        ps.setInt(2, review.getPerformance());
-        ps.setInt(3, review.getDisplay());
-        ps.setInt(4, review.getBattery());
-        ps.setInt(5, review.getCamera());
-        ps.setString(6, review.getText());
-        ps.setInt(7, review.getUser().getId());
-        ps.setInt(8, review.getSpec().getId());
-        ps.executeUpdate();
-
         try {
-            conn.close();
+            conn = ds.getConnection();
+            ps = conn.prepareStatement(query);
+            ps.setInt(1, review.getTotalScore());
+            ps.setInt(2, review.getPerformance());
+            ps.setInt(3, review.getDisplay());
+            ps.setInt(4, review.getBattery());
+            ps.setInt(5, review.getCamera());
+            ps.setString(6, review.getText());
+            ps.setInt(7, review.getUser().getId());
+            ps.setInt(8, review.getSpec().getId());
+            ps.executeUpdate();
+        } catch (SQLException sql){
+            throw sql;
 
-        } catch(Exception e) {
-            e.printStackTrace();
-        }
+        } finally {
+            try {
+                conn.close();
 
-        try {
-            ps.close();
+            } catch(Exception e) {
+                e.printStackTrace();
+            }
 
-        } catch(Exception e) {
-            e.printStackTrace();
+            try {
+                ps.close();
+
+            } catch(Exception e) {
+                e.printStackTrace();
+            }
         }
 
         return true;
@@ -264,23 +285,28 @@ public class ReviewDao {
         PreparedStatement ps = null;
         String query = "DELETE FROM review WHERE review.id = ?";
 
-        conn = ds.getConnection();
-        ps = conn.prepareStatement(query);
-        ps.setInt(1, id);
-        ps.executeUpdate();
-
         try {
-            conn.close();
+            conn = ds.getConnection();
+            ps = conn.prepareStatement(query);
+            ps.setInt(1, id);
+            ps.executeUpdate();
+        } catch (SQLException sql){
+            throw sql;
 
-        } catch(Exception e) {
-            e.printStackTrace();
-        }
+        } finally {
+            try {
+                conn.close();
 
-        try {
-            ps.close();
+            } catch(Exception e) {
+                e.printStackTrace();
+            }
 
-        } catch(Exception e) {
-            e.printStackTrace();
+            try {
+                ps.close();
+
+            } catch(Exception e) {
+                e.printStackTrace();
+            }
         }
 
         return true;
@@ -291,25 +317,30 @@ public class ReviewDao {
         PreparedStatement ps = null;
         String query = "UPDATE review SET state = ? WHERE review.id = ?";
 
-        conn = ds.getConnection();
-        ps = conn.prepareStatement(query);
-        if(approved) ps.setString(1, "approved");
-        else ps.setString(1, "rejected");
-        ps.setInt(2, id);
-        ps.executeUpdate();
-
         try {
-            conn.close();
+            conn = ds.getConnection();
+            ps = conn.prepareStatement(query);
+            if(approved) ps.setString(1, "approved");
+            else ps.setString(1, "rejected");
+            ps.setInt(2, id);
+            ps.executeUpdate();
+        } catch (SQLException sql){
+            throw sql;
 
-        } catch(Exception e) {
-            e.printStackTrace();
-        }
+        } finally {
+            try {
+                conn.close();
 
-        try {
-            ps.close();
+            } catch(Exception e) {
+                e.printStackTrace();
+            }
 
-        } catch(Exception e) {
-            e.printStackTrace();
+            try {
+                ps.close();
+
+            } catch(Exception e) {
+                e.printStackTrace();
+            }
         }
 
         return true;

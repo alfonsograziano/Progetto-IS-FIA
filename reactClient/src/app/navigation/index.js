@@ -16,6 +16,9 @@ import Navbar from "../components/Navbar";
 import SpecList from "../pages/admin/SpecList";
 import Reviews from "../pages/admin/Reviews";
 import AddSpec from "../pages/admin/AddSpec";
+import SetScores from "../pages/admin/SetScores";
+import NotFound from "../pages/NotFound";
+
 import { AuthContext } from "../../App";
 
 const { Content } = Layout;
@@ -40,33 +43,36 @@ function MainNavigation(props) {
         }
     }, [state])
 
+    useEffect(() => {
+        console.log("Admin: ", isAdmin, " | Reviewer: ", isReviewer)
+    }, [isReviewer, isAdmin])
+
     return (
         <Router>
 
-            <Layout style={{ height: "100%" }}>
+            <Layout style={{ height: "100%", backgroundColor: "transparent" }}>
                 <Navbar />
                 <Content style={{ padding: '0 50px', height: "100%", marginTop: "20px", backgroundColor: "transparent" }}>
 
                     <Switch>
 
 
-                        <Route path="/login" component={Login} />
-                        <Route path="/signup" component={Signup} />
-                        <Route path="/details" component={Spec} />
-                        <Route path="/profile" component={Profile} />
-                        <Route path="/dora" component={DoraIA} />
-                        <Route path="/search" component={SearchResults} />
-                        <Route path="/home" component={Home} />
-                        {
-                            isAdmin &&
-                            <React.Fragment>
-                                <Route path="/admin/speclist" component={SpecList} />
-                                <Route path="/admin/createspec" component={AddSpec} />
-                            </React.Fragment>
-                        }
-                        {
-                            isReviewer && <Route path="/admin/reviews" component={Reviews} />
-                        }
+                        <Route exact path="/login" component={Login} />
+                        <Route exact path="/signup" component={Signup} />
+                        <Route exact path="/details" component={Spec} />
+                        <Route exact path="/profile" component={Profile} />
+                        <Route exact path="/dora" component={DoraIA} />
+                        <Route exact path="/search" component={SearchResults} />
+                        <Route exact path="/home" component={Home} />
+
+                        <Route exact path="/admin/speclist" component={() => (isAdmin || isReviewer) ? <SpecList /> : <Login />} />
+
+                        <Route exact path="/admin/createspec" component={() => isAdmin ? <AddSpec /> : <Login />} />
+
+                        <Route exact path="/admin/reviews" component={() => isReviewer ? <Reviews /> : <Login />} />
+                        <Route exact path="/admin/setscores" component={() => isReviewer ? <SetScores /> : <Login />} />
+
+                        <Route component={() => <NotFound />} />
 
                     </Switch>
 

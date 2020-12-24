@@ -23,36 +23,38 @@ public class RestrictedToUser implements Filter {
     public void destroy() {
     }
 
-    /*
-    @WebFilter(
-    urlPatterns = "/admin/*",
-    filterName = "AdminFilter",
-    description = "Filter all admin URLs")
-     */
-
     public void doFilter(ServletRequest req, ServletResponse resp, FilterChain chain) throws ServletException, IOException {
         HttpServletRequest httpRequest = (HttpServletRequest) req;
         String auth = httpRequest.getHeader("Authorization");
         if(auth != null){
-            String token = auth.split("Bearer ")[1];
-            System.out.println("token => "+ auth);
+            String token = null;
+            try{
+                token = auth.split("Bearer ")[1];
+            }catch(Exception e){
+                errorResponse(resp);
+            }
             String email = null;
             try{
                 email = jwt.decode(token);
                 httpRequest.setAttribute("email", email);
                 chain.doFilter(req, resp);
             }catch(Exception e){
-                System.out.println("Signature non valida...");
+                errorResponse(resp);
             }
-
         }else{
-            HttpServletResponse httpResponse = (HttpServletResponse) resp;
-            httpResponse.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
-            PrintWriter out = httpResponse.getWriter();
-            out.print("User unhautorized...");
-            out.flush();
+            errorResponse(resp);
         }
     }
+
+
+    public void errorResponse(ServletResponse resp) throws IOException {
+        HttpServletResponse httpResponse = (HttpServletResponse) resp;
+        httpResponse.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
+        PrintWriter out = httpResponse.getWriter();
+        out.print("User unhautorized...");
+        out.flush();
+    }
+
 
     public void init(FilterConfig config) throws ServletException {
         jwt = new JWTHandler();

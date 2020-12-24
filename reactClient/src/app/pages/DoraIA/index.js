@@ -36,6 +36,7 @@ function DoraIA(props) {
                         <DoraForm
                             onSearch={(values) => {
                                 if (state && state.token) {
+                                    console.log(values)
                                     setLoading(true)
                                     message.warning('Aspetta qualche secondo');
                                     searchWithDoraIa(values, state.token)

@@ -14,7 +14,7 @@ public class DoraManager {
 
         SpecsManager sp = new SpecsManager();
 
-        ArrayList<Spec>  specs = (ArrayList<Spec>) sp.searchAll();
+        ArrayList<Spec>  specs = (ArrayList<Spec>) sp.searchByPrice(maxBudget);
 
         int minBattery = sp.searchMinBattery();
         int maxBattery = sp.searchMaxBattery();

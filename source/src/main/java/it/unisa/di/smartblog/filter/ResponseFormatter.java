@@ -30,10 +30,11 @@ public class ResponseFormatter implements Filter {
     private void sendAsJson(
             ServletResponse response,
             Object obj) throws IOException {
+        System.out.println("Filtro eseguito...");
 
         response.setContentType("application/json");
-
         String res = _gson.toJson(obj);
+        System.out.println("Response"+res);
         PrintWriter out = response.getWriter();
 
         out.print(res);

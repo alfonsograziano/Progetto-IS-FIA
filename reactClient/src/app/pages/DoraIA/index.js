@@ -29,7 +29,7 @@ function DoraIA(props) {
                     <span>DoraIA</span>
                 </Breadcrumb.Item>
             </Breadcrumb>
-            <Row style={{ flexWrap: "wrap-reverse" }}>
+            <div style={{ marginTop: "20px", display: "flex", flexDirection: "column", alignItems: "center" }}>
                 <Spin spinning={loading} tip="Dora l'esploratrice sta cercando..."
                     size="large">
                     <Card title="DoraIA" style={{ margin: "20px", width: "300px" }} >
@@ -77,7 +77,8 @@ function DoraIA(props) {
                     </div>
                 }
 
-            </Row>
+            </div>
+
         </div>
     )
 }

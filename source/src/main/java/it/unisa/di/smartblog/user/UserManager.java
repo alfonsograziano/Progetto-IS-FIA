@@ -83,5 +83,11 @@ public class UserManager {
         }
     }
 
+    public boolean deleteUser(int id) throws SQLException{
+
+        return dao.deleteUserById(id);
+
+    }
+
     private static UserDao dao;
 }

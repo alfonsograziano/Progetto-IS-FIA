@@ -153,11 +153,11 @@ public class UserDaoTest extends TestCase {
             user.setPassword("!Antonio99");
             user.setId(3);
             ud.getManager(user);
-            fail("testGetManagerException() (user not reviewer) not passed!");
+            fail("testGetManagerException() (user not manager) not passed!");
 
         } catch(SQLException e){
 
-            System.out.println("testGetManagerException() (user not reviewer) not passed!");
+            System.out.println("testGetManagerException() (user not manager) not passed!");
 
         }
 
@@ -225,7 +225,7 @@ public class UserDaoTest extends TestCase {
 
     }
 
-    public void testDeleteUserById() throws CredentialsException{
+        public void testDeleteUserById() throws CredentialsException{
 
         try {
 

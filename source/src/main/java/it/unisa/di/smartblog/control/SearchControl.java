@@ -20,10 +20,12 @@ public class SearchControl extends HttpServlet {
         sm = new SpecsManager();
     }
 
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         String search = request.getParameter("s");
+        System.out.println(search);
         try {
+            System.out.println(sm.searchByName(search));
             request.setAttribute("response", sm.searchByName(search));
         } catch (EmptyFieldException e) {
             e.printStackTrace();

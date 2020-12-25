@@ -104,7 +104,7 @@ function SpecList(props) {
     const setScores = id => history.push("/admin/setscores?id=" + id)
 
     return (
-        <div>
+        <div style={{ marginTop: "20px", display: "flex", flexDirection: "column", alignItems: "center" }}>
             <div style={{ margin: "20px" }}>
                 <SearchBarForm
                     onSearch={data => {

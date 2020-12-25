@@ -57,13 +57,13 @@ function Spec(props) {
                 .then(res => {
                     message.success('Recensione aggiunta... Verrà controllata a breve');
                     console.log(res)
+                    setIsModalVisible(false);
                 })
                 .catch(err => {
                     message.error(err.response.data.message)
                     console.log(err)
                 })
         }
-        setIsModalVisible(false);
     };
 
     const handleCancel = () => {
@@ -154,9 +154,6 @@ function Spec(props) {
             <Breadcrumb>
                 <Breadcrumb.Item href="/home">
                     <HomeOutlined />
-                </Breadcrumb.Item>
-                <Breadcrumb.Item href="">
-                    <span>Schede tecniche</span>
                 </Breadcrumb.Item>
                 <Breadcrumb.Item>{spec.name}</Breadcrumb.Item>
             </Breadcrumb>

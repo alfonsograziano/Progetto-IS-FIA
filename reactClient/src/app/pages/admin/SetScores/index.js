@@ -5,6 +5,7 @@ import { getSpecById, setScores } from "../../../services/spec.service"
 import { useHistory } from "react-router-dom";
 import SetScoresForm from "../../../components/SetScoresForm";
 import { message } from 'antd';
+import SpecList from "../SpecList";
 
 
 function useQuery() {
@@ -36,19 +37,24 @@ function SetScores(props) {
         <div style={{ marginTop: "20px", display: "flex", flexDirection: "column", alignItems: "center" }}>
             <h2>{spec.name}</h2>
             <div>
-                <SetScoresForm
-                    onFinish={data => {
-                        console.log(data)
-                        setScores({ ...data, specId }, state.token)
-                            .then(res => {
-                                message.success("Punteggi aggiornati correttamente")
-                                history.push("/admin/speclist")
-                            })
-                            .catch(err => {
-                                message.error("Error..")
-                            })
-                    }}
-                />
+                {
+                    spec && spec.id &&
+                    <SetScoresForm
+                        initialValues={spec}
+                        onFinish={data => {
+                            console.log(data)
+                            setScores({ ...data, specId }, state.token)
+                                .then(res => {
+                                    message.success("Punteggi aggiornati correttamente")
+                                    history.push("/admin/speclist")
+                                })
+                                .catch(err => {
+                                    message.error("Error..")
+                                })
+                        }}
+                    />
+                }
+
             </div>
         </div>
     )

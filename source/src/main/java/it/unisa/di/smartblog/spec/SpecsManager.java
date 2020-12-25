@@ -45,6 +45,7 @@ public class SpecsManager {
 		if(deviceName.length()>100 || OS.length()>100 || CPU.length()>100 || chipset.length()>100 || GPU.length()>100 || RAM.length()>100 || internalMemory.length()>100 || displayInches.length()>100) throw new SpecMismatchException("Field maximum size exceeded");
 
 		if(price<0) throw new SpecMismatchException("Price cannot be negative");
+		if(battery < 0) throw new SpecMismatchException("Battery cannot be negative");
 		
 		Pattern pattern = Pattern.compile("[0-9]{4}/[0-9]([0-2]?)");
 
@@ -60,7 +61,7 @@ public class SpecsManager {
 		matcher = pattern.matcher(image);
 		if(!matcher.find()) throw new SpecMismatchException("Invalid image url format");
 		
-		String[] checkRAM = RAM.split(" ");			
+		String[] checkRAM = RAM.split(" ");
 		try {
 			if(Integer.parseInt(checkRAM[0])<=0) throw new SpecMismatchException("RAM cannot be negative");
 			if(!checkRAM[1].equals("MB") && !checkRAM[1].equals("GB"))throw new SpecMismatchException("Invalid RAM field, has to be MB or GB");

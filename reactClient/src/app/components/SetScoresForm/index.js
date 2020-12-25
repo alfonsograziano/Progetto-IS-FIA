@@ -10,6 +10,7 @@ const tailLayout = {
 };
 
 function SetScoresForm({
+    initialValues = {},
     onFinish = () => { },
     onFinishFailed = () => { }
 }) {
@@ -17,7 +18,7 @@ function SetScoresForm({
         <Form
             {...layout}
             name="basic"
-            initialValues={{}}
+            initialValues={initialValues}
             onFinish={onFinish}
             onFinishFailed={onFinishFailed}
         >

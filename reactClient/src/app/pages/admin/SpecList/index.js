@@ -55,12 +55,12 @@ function SpecList(props) {
         console.log(spec.id)
         deleteSpec(spec.id, state.token)
             .then(res => {
-                message.success('Scheda tecnica calcellata');
+                message.success("Data sheet deleted");
                 loadSpecs()
                 console.log(res)
             })
             .catch(err => {
-                message.error('Impossibile cancellare la scheda tecnica');
+                message.error(err.response.data.message)
                 console.log(err)
             })
     }
@@ -72,12 +72,12 @@ function SpecList(props) {
 
     const [columns, setColumns] = useState([
         {
-            title: 'Nome dispositivo',
+            title: 'Device name',
             dataIndex: 'name',
             key: 'name',
         },
         {
-            title: 'Data di uscita',
+            title: 'Exit date',
             dataIndex: 'date',
             key: 'date',
         }
@@ -86,15 +86,15 @@ function SpecList(props) {
     useEffect(() => {
         if (isAdmin) {
             setColumns([...columns, {
-                title: 'Azioni',
+                title: 'Actions',
                 key: 'action',
                 render: (text, record) => (
                     <Space size="middle">
                         <Button type="link" onClick={() => {
-                            var ok = prompt("Scrivi ok per confermare la cancellazione", "annulla");
+                            var ok = prompt("Type ok to confirm the cancellation", "cancel");
                             if (ok === "ok")
                                 deleteSelectedSpec(record)
-                        }}>Cancella</Button>
+                        }}>Delete</Button>
                     </Space>
                 ),
             },])
@@ -130,7 +130,7 @@ function SpecList(props) {
                 isAdmin &&
                 <Button type="primary" style={{ marginTop: "20px" }} onClick={() => {
                     history.push("/admin/createSpec")
-                }}> Aggiungi scheda tecnica</Button>
+                }}> Add data sheet</Button>
             }
 
 

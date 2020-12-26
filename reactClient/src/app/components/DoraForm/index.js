@@ -18,7 +18,7 @@ function DoraForm({
     return (
         <div>
             <div >
-                <p style={{ marginBottom: "0px" }}>Batteria</p>
+                <p style={{ marginBottom: "0px" }}>Batteriy</p>
                 <Slider 
                     min={0} max={5} step={0.5}
                     onChange={(v) => { setValues({ ...values, battery: v }) }} value={values.battery} />
@@ -43,7 +43,7 @@ function DoraForm({
             </div>
 
             <div style={{ marginTop: "20px" }}>
-                <p style={{ marginBottom: "0px" }}>Prezzo massimo</p>
+                <p style={{ marginBottom: "0px" }}>Max price</p>
                 <Select style={{ width: 120 }}
                     onChange={(v) => { setValues({ ...values, maxBudget: v }) }} value={values.maxBudget}
                 >
@@ -62,7 +62,7 @@ function DoraForm({
             </div>
             <Button type="primary" block onClick={() => { onSearch(values) }}
             style={{marginTop:"30px"}}>
-                Cerca!
+                Search!
             </Button>
         </div>
     )

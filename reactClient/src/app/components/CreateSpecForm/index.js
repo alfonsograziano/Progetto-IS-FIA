@@ -45,7 +45,7 @@ function CreateSpecForm({
             </Form.Item>
 
             <Form.Item
-                label="OS"
+                label="SO"
                 name="OS"
                 rules={[{ required: true }]}
             >
@@ -87,7 +87,7 @@ function CreateSpecForm({
 
 
             <Form.Item
-                label="Memoria interna"
+                label="Internal Memory"
                 name="internalMemory"
                 rules={[{ required: true }]}
             >
@@ -105,7 +105,7 @@ function CreateSpecForm({
             </Form.Item>
 
             <Form.Item
-                label="Batteria"
+                label="Battery"
                 name="battery"
                 rules={[{ required: true }]}
             >
@@ -114,7 +114,7 @@ function CreateSpecForm({
 
 
             <Form.Item
-                label="Prezzo"
+                label="Price"
                 name="price"
                 rules={[{ required: true }]}
             >

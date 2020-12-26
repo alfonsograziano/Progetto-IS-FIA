@@ -24,12 +24,12 @@ function ReviewForm({
     return (
         <div>
             <Row style={{ justifyContent: "space-between" }}>
-                <Title level={5} style={{ margin: "0px" }}>Valutazione complessiva: </Title>
+                <Title level={5} style={{ margin: "0px" }}>Overall rating</Title>
                 <Rate onChange={(v) => setReview({ ...review, totalScore: v })} value={review.totalScore} allowClear={false} />
             </Row>
 
             <Row style={{ justifyContent: "space-between" }}>
-                <Title level={5} style={{ margin: "0px" }}>Fotocamera</Title>
+                <Title level={5} style={{ margin: "0px" }}>Camera</Title>
                 <Rate onChange={(v) => setReview({ ...review, camera: v })} value={review.camera} allowClear={false} />
             </Row>
 
@@ -39,12 +39,12 @@ function ReviewForm({
             </Row>
 
             <Row style={{ justifyContent: "space-between" }}>
-                <Title level={5} style={{ margin: "0px" }}>Prestazioni</Title>
+                <Title level={5} style={{ margin: "0px" }}>Performance</Title>
                 <Rate onChange={(v) => setReview({ ...review, performance: v })} value={review.performance} allowClear={false} />
             </Row>
 
             <Row style={{ justifyContent: "space-between" }}>
-                <Title level={5} style={{ margin: "0px" }}>Batteria</Title>
+                <Title level={5} style={{ margin: "0px" }}>Battery</Title>
                 <Rate onChange={(v) => setReview({ ...review, battery: v })} value={review.battery} allowClear={false} />
             </Row>
 
@@ -60,7 +60,7 @@ function ReviewForm({
                     onClick={() => {
                         onSave(review)
                     }}>
-                    Aggiungi
+                    Add
             </Button>
             </div>
 

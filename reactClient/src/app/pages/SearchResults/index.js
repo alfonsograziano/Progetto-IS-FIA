@@ -15,6 +15,14 @@ function useQuery() {
     return new URLSearchParams(useLocation().search);
 }
 
+
+const formatSpecDescription = item => {
+    let string = ""
+    if (item.so) string += "OS: " + item.so
+    if (item.memory) string += "  Memory: " + item.memory
+    if (item.ram) string += "  RAM: " + item.ram
+    return string
+}
 function SearchResults(props) {
     let query = useQuery();
     const searchQuery = query.get("s")
@@ -33,7 +41,7 @@ function SearchResults(props) {
             .catch(err => {
                 history.push("/404")
                 console.log(err)
-                message.error('Impossibile completare la ricerca');
+                message.error('Unable to complete the search');
             })
     }, [])
 
@@ -41,7 +49,7 @@ function SearchResults(props) {
 
     return (
         <div style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
-            <Title>Risultati di ricerca</Title>
+            <Title>Search Results</Title>
             <div style={{ display: "flex", flexDirection: "row", alignItems: "center", flexWrap: "wrap" }}>
                 {
                     data && data.length > 0 ? data.slice(pageSize * (currentPage - 1), pageSize * (currentPage)).map((item, index) =>
@@ -49,7 +57,7 @@ function SearchResults(props) {
                             key={index}
                             imageUrl={item.image}
                             title={item.name + " - " + item.price}
-                            description={"SO: " + item.so + "  Memoria: " + item.memory + "  RAM: " + item.ram}
+                            description={formatSpecDescription(item)}
                             id={item.id}
                         />
                     )
@@ -67,9 +75,9 @@ function SearchResults(props) {
 
 
 
-            <Title level={2} style={{ margin: "0x", marginTop: "20px" }}>Cerchi uno smartphone?</Title>
+            <Title level={2} style={{ margin: "0x", marginTop: "20px" }}>Are you looking for a smartphone?</Title>
             <Link to="/dora" >
-                <Button type="primary" shape="round" icon={<DownloadOutlined />} >Scopri DoraIA</Button>
+                <Button type="primary" shape="round" icon={<DownloadOutlined />} >Discover DoraIA</Button>
             </Link>
 
 

@@ -13,24 +13,26 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet(name = "ServletTestServlet", value="/api/test/servlettest")
-public class ServletTestServlet extends HttpServlet {
+@WebServlet("/test/control")
+public class ControlTestServlet extends HttpServlet{
 
-
-    private static final long serialVersionUID = 1L;
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        StaticContainers.request = request;
-        StaticContainers. response = response;
-
+        System.out.println("Prima della chiamata di suite");
         TestRunner.run(suite());
+
     }
+
+
 
     public static Test suite(){
         System.out.println("Nella chiamata di suite");
         TestSuite suite = new TestSuite();
-        suite.addTest(ServletTest.suite());
+        suite.addTest(SearchControlTest.suite());
         return suite;
 
     }
+
+    static ReviewDao rd;
+
 }

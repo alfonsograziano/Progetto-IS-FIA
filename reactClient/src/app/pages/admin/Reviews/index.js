@@ -27,7 +27,7 @@ function Reviews(props) {
             })
             .catch(err => {
                 console.log(err)
-                message.error('Non posso trovare le recensioni in pending');
+                message.error(err.response.data.message)
             })
     }
 
@@ -50,18 +50,18 @@ function Reviews(props) {
         changeReviewStatus({ id: review.id, approved: newState }, state.token)
             .then(res => {
                 console.log(res)
-                message.success('Recensione correttamente aggiornata');
+                message.success('Correctly updated review');
                 loadPendingReviews()
             })
             .catch(err => {
                 console.log(err)
-                message.error('Impossibile completare la richiesta');
+                message.error(err.response.data.message)
             })
     }
 
     const columns = [
         {
-            title: 'Recensioni da valutare',
+            title: 'Reviews to be evaluated',
             dataIndex: 'title',
             key: 'title',
         }
@@ -80,13 +80,13 @@ function Reviews(props) {
                     };
                 }}
             />
-            <Modal title="Dettagli recensione" visible={isModalVisible} onCancel={handleCancel}
+            <Modal title="Review details" visible={isModalVisible} onCancel={handleCancel}
                 footer={[
                     <Button onClick={() => { rejectReview(reviewDetail) }}>
-                        Rifiuta
+                        Reject
                     </Button>,
                     <Button type="primary" onClick={() => { approveReview(reviewDetail) }}>
-                        Approva
+                        Approve
                     </Button>,
                 ]}>
                 {

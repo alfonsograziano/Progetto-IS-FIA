@@ -10,10 +10,10 @@ function NotFound(props) {
             <Result
                 status="404"
                 title="404"
-                subTitle="La pagina che hai cercato non esiste"
+                subTitle="The page you searched for does not exist"
                 extra={<Button type="primary" onClick={() => {
                     history.push("/home")
-                }}>Torna alla homepage</Button>}
+                }}>Back to home Page</Button>}
             />,
         </div>
     )

@@ -11,6 +11,15 @@ import { AuthContext } from "../../../App";
 import { message } from 'antd';
 import { Spin } from 'antd';
 
+const formatSpecDescription = item => {
+    let string = ""
+    if (item.so) string += "OS: " + item.so
+    if (item.memory) string += "  Memory: " + item.memory
+    if (item.ram) string += "  RAM: " + item.ram
+    return string
+}
+
+
 function DoraIA(props) {
 
     const [results, setResults] = useState([])
@@ -48,10 +57,10 @@ function DoraIA(props) {
                                         .catch(err => {
                                             console.log(err)
                                             setLoading(false)
-                                            message.error('Impossibile caricare i dati da DoraIA');
+                                            message.error('Unable to load data from DoraIA');
                                         })
                                 } else {
-                                    message.error('Devi registrarti per poter usare DoraIA');
+                                    message.error("You must register in order to use DoraIA");
                                 }
 
                             }} />
@@ -61,16 +70,17 @@ function DoraIA(props) {
                 {
                     results.length > 0 &&
                     <div>
-                        <h3>Risultati di ricerca...</h3>
+                        <h3>Search Results</h3>
                         <Row style={{ flexWrap: "wrap" }}>
                             {
                                 results.map((item, index) =>
                                     <SpecCard
                                         key={index}
                                         imageUrl={item.image}
-                                        title={item.name + " - " + item.price}
-                                        description={"SO: " + item.so + "  Memoria: " + item.memory + "  RAM: " + item.ram}
+                                        title={item.name + " - " + item.price+"€"}
+                                        description={formatSpecDescription(item)}
                                         id={item.id}
+                                        openInNewTab={true}
                                     />
                                 )
                             }</Row>

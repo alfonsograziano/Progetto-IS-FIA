@@ -81,9 +81,6 @@ public class UserManagerTest extends TestCase {
 
         }
 
-        /*
-        TODO: fixare la regex
-
         try {
 
             um.createUser("pippo", "p1pp099@gmail", "P1pp0000!", "P1pp0000!");
@@ -94,7 +91,7 @@ public class UserManagerTest extends TestCase {
             System.out.println("testCreateUserException() (wrong email format) passed!");
 
         }
-        */
+
         try {
 
             um.createUser("lol", "p1pp099@gmail.com", "P1pp0000!", "P1pp0000!");

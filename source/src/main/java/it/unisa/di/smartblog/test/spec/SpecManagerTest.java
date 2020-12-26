@@ -734,8 +734,7 @@ public class SpecManagerTest extends TestCase {
             if(spec.getId() > max.getId()) max = spec;
         }
 
-        if(sm.setScores(r.getId(), max.getId(), 6, 3, 3)){
-
+        if(sm.setScores(r.getId(), max.getId(), -1, 3, 3)){
             sm.deleteSpec(max.getId());
             fail("testSetScoresException() not passed!");
 
@@ -754,6 +753,7 @@ public class SpecManagerTest extends TestCase {
             fail("testSetScoresException() not passed!");
 
         }
+
 
         sm.deleteSpec(max.getId());
         System.out.println("testSetScoresException() passed!");

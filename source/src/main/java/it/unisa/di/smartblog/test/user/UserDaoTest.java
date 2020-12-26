@@ -1,36 +1,39 @@
 package it.unisa.di.smartblog.test.user;
 
-import it.unisa.di.smartblog.review.ReviewDao;
-import it.unisa.di.smartblog.test.review.ReviewDaoTest;
+
+import it.unisa.di.smartblog.review.Review;
+import it.unisa.di.smartblog.test.TestWriter;
 import it.unisa.di.smartblog.user.*;
 import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
 
-import javax.naming.Context;
-import javax.naming.InitialContext;
-import javax.naming.NamingException;
-import javax.sql.DataSource;
+import java.awt.print.PrinterJob;
+import java.io.PrintWriter;
 import java.sql.SQLException;
 
 public class UserDaoTest extends TestCase {
 
+
     protected void setUp() throws Exception{
-
         ud = new UserDao();
-
     }
 
+
     public void testGetByEmail(){
+        User oracle = null, user = null;
+        boolean flag = false;
 
         try{
-
-            User user = ud.getByEmail("antonio@sisonoio.com");
-            User oracle = new User("antonio", "!Antonio99", "antonio@sisonoio.com");
+            oracle = new User("antonio", "!Antonio99", "antonio@sisonoio.com");
             oracle.setId(3);
             oracle.setActive(true);
+
+            user = ud.getByEmail("antonio@sisonoio.com");
+
             assertEquals(user, oracle);
-            System.out.println("testGetByEmail() passed!");
+
+            flag=true;
 
         } catch (CredentialsException e){
 
@@ -40,6 +43,9 @@ public class UserDaoTest extends TestCase {
 
             fail("testGetByEmail() not passed!");
 
+        } finally {
+            TestWriter.printTest(pw, oracle, user);
+            if(flag) pw.println("\tResult: "+Thread.currentThread().getStackTrace()[1].getMethodName()+" passed!");
         }
 
     }
@@ -49,60 +55,66 @@ public class UserDaoTest extends TestCase {
         try{
 
             User user = ud.getByEmail(null);
-            fail("testGetByEmail() (null email) not passed!");
+            fail("testGetByEmailException() (null email) not passed!");
 
         } catch (CredentialsException e){
-
-            System.out.println("testGetByEmailException() (null email) passed!");
 
         }
 
         try{
 
             User user = ud.getByEmail("");
-            fail("testGetByEmail() (empty email) not passed!");
+            fail("testGetByEmailException() (empty email) not passed!");
 
         } catch (CredentialsException e){
-
-            System.out.println("testGetByEmailException() (empty email) passed!");
 
         }
 
         try{
 
             User user = ud.getByEmail("abcd.");
-            fail("testGetByEmail() (invalid email) not passed!");
+            fail("testGetByEmailException() (invalid email) not passed!");
 
         } catch (SQLException e){
 
-            System.out.println("testGetByEmail() (invalid email) passed!");
-
         }
+
+
+        pw.println("\tResult: "+Thread.currentThread().getStackTrace()[1].getMethodName()+" passed!");
 
     }
 
     public void testSaveUser() throws SQLException{
+        User u = null, insertedUser = null;
+        boolean flag = false;
 
         try {
 
-            User u = new User("pippo", "P1pp0000!", "p1pp099@gmail.com");
+            u = new User("pippo", "P1pp0000!", "p1pp099@gmail.com");
             ud.saveUser(u);
-            User insertedUser = ud.getByEmail("p1pp099@gmail.com");
+            insertedUser = ud.getByEmail("p1pp099@gmail.com");
             assertEquals(u.getUsername(), insertedUser.getUsername());
             assertEquals(u.getEmail(), insertedUser.getEmail());
             assertEquals(u.getPassword(), insertedUser.getPassword());
             System.out.println("testSaveUser() passed!");
             ud.deleteUserById(insertedUser.getId());
 
+            flag=true;
+
         } catch (CredentialsException e){
 
             fail("testSaveUser() not passed!");
 
+        } finally {
+            TestWriter.printTest(pw, u, insertedUser);
+            if(flag) pw.println("\tResult: "+ Thread.currentThread().getStackTrace()[1].getMethodName() +" passed!");
         }
 
     }
 
     public void testGetManager(){
+        Manager oracle = null, manager = null;
+        boolean flag=false;
 
         try{
 
@@ -112,8 +124,8 @@ public class UserDaoTest extends TestCase {
             user.setPassword("!Manager10");
             user.setId(6);
 
-            Manager manager = ud.getManager(user);
-            Manager oracle = new Manager();
+            manager = ud.getManager(user);
+            oracle = new Manager();
             oracle.setEmail("manager@manager.com");
             oracle.setUsername("manager");
             oracle.setPassword("!Manager10");
@@ -122,12 +134,16 @@ public class UserDaoTest extends TestCase {
             assertEquals(manager.getPassword(), oracle.getPassword());
             assertEquals(manager.getUsername(), oracle.getUsername());
             assertEquals(manager.getPhoneNumber(), oracle.getPhoneNumber());
-            System.out.println("testGetManager() passed!");
+
+            flag = true;
 
         } catch (Exception e){
 
-            System.out.println("testGetManager() not passed!");
+            fail("testGetManager() not passed!");
 
+        } finally {
+            TestWriter.printTest(pw, oracle, manager);
+            if(flag) pw.println("\tResult: "+Thread.currentThread().getStackTrace()[1].getMethodName()+" passed!");
         }
 
     }
@@ -135,13 +151,10 @@ public class UserDaoTest extends TestCase {
     public void testGetManagerException() throws SQLException, CredentialsException{
 
         try{
-
             ud.getManager(null);
             fail("testGetManagerException() (null user) not passed!");
 
         }catch (CredentialsException e){
-
-            System.out.println("testGetManagerException() (null user) passed!");
 
         }
 
@@ -157,13 +170,14 @@ public class UserDaoTest extends TestCase {
 
         } catch(SQLException e){
 
-            System.out.println("testGetManagerException() (user not manager) not passed!");
-
         }
 
+        pw.println("\tResult: "+Thread.currentThread().getStackTrace()[1].getMethodName()+" passed!");
     }
 
     public void testGetReviewer(){
+        Reviewer oracle=null, reviewer=null;
+        boolean flag=false;
 
         try{
 
@@ -173,8 +187,8 @@ public class UserDaoTest extends TestCase {
             user.setPassword("!Reviewer10");
             user.setId(5);
 
-            Reviewer reviewer = ud.getReviewer(user);
-            Reviewer oracle = new Reviewer();
+            reviewer = ud.getReviewer(user);
+            oracle = new Reviewer();
             oracle.setEmail("reviewer@reviewer.com");
             oracle.setUsername("reviewer");
             oracle.setPassword("!Reviewer10");
@@ -184,12 +198,16 @@ public class UserDaoTest extends TestCase {
             assertEquals(reviewer.getPassword(), oracle.getPassword());
             assertEquals(reviewer.getUsername(), oracle.getUsername());
             assertEquals(reviewer.getPhoneNumber(), oracle.getPhoneNumber());
-            System.out.println("testGetReviewer() passed!");
+
+            flag=true;
 
         } catch (Exception e){
 
-            System.out.println("testGetReviewer() not passed!");
+            fail("testGetReviewer() not passed!");
 
+        } finally {
+            TestWriter.printTest(pw, oracle, reviewer);
+            if(flag) pw.println("\tResult: "+Thread.currentThread().getStackTrace()[1].getMethodName()+" passed!");
         }
 
     }
@@ -202,8 +220,6 @@ public class UserDaoTest extends TestCase {
             fail("testGetReviewerException() (null user) not passed!");
 
         }catch (CredentialsException e){
-
-            System.out.println("testGetReviewerException() (null user) passed!");
 
         }
 
@@ -219,13 +235,12 @@ public class UserDaoTest extends TestCase {
 
         } catch(SQLException e){
 
-            System.out.println("testGetReviewerException() (user not reviewer) not passed!");
-
         }
 
+        pw.println("\tResult: "+Thread.currentThread().getStackTrace()[1].getMethodName()+" passed!");
     }
 
-        public void testDeleteUserById() throws CredentialsException{
+    public void testDeleteUserById() throws CredentialsException{
 
         try {
 
@@ -238,20 +253,18 @@ public class UserDaoTest extends TestCase {
 
         }catch (SQLException e){
 
-            System.out.println("testDeleteUserById() passed!");
+            pw.println("\tResult: "+Thread.currentThread().getStackTrace()[1].getMethodName()+" passed!");
 
         }
 
     }
 
-    public static Test suite(){
-
+    public static Test suite(PrintWriter writer){
+        pw = writer;
         return new TestSuite(UserDaoTest.class);
 
     }
 
-
+    private static PrintWriter pw;
     private static UserDao ud;
-    private static DataSource ds;
-
 }

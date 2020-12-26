@@ -57,7 +57,7 @@ public class UserManager {
 
         if(email.length()>50 || email.length()<8) throw new CredentialsException("Email maximum size exceeded");
 
-        Pattern mail_pattern = Pattern.compile("^\\w+([.-]?\\w+)@\\w+([.-]?\\w+)(.\\w{2,3})+$");
+        Pattern mail_pattern = Pattern.compile("^\\w+([.-]?\\w+)@\\w+([.-]?\\w+)(\\.\\w{2,3})+$");
         Matcher mail_matcher = mail_pattern.matcher(email);
         if(!mail_matcher.find()) throw new CredentialsException("Invalid email format");
 

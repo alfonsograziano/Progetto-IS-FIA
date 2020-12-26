@@ -9,7 +9,8 @@ function SpecCard({
     imageUrl,
     description,
     id,
-    onClick
+    onClick,
+    openInNewTab = false
 }) {
 
     const history = useHistory();
@@ -21,7 +22,11 @@ function SpecCard({
                 if (onClick) {
                     onClick()
                 } else if (id) {
-                    history.push("/details?id=" + id);
+                    if (openInNewTab) {
+                        window.open( "/details?id=" + id)
+                    } else {
+                        history.push("/details?id=" + id);
+                    }
                 }
             }}
         >

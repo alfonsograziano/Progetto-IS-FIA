@@ -1,6 +1,7 @@
 package it.unisa.di.smartblog.control;
 
 import it.unisa.di.smartblog.filter.Error;
+import it.unisa.di.smartblog.filter.Message;
 import it.unisa.di.smartblog.review.ReviewManager;
 import it.unisa.di.smartblog.spec.SpecsManager;
 import it.unisa.di.smartblog.user.CredentialsException;
@@ -32,6 +33,8 @@ public class SetScoresControl extends HttpServlet {
         try {
             User r1 = um.getUserInfoByEmail(email);
             sm.setScores(r1.getId(), specId,performance, display, camera);
+            request.setAttribute("response", new Message("Scores updated!"));
+
         } catch (SQLException throwables) {
             response.setStatus(HttpServletResponse.SC_CONFLICT);
             request.setAttribute("response", new Error("Error..."));

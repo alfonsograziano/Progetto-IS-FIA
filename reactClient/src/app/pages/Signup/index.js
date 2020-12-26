@@ -14,7 +14,7 @@ function Signup(props) {
                         console.log(data)
                         signUp(data)
                             .then(res => {
-                                message.success('Registrazione completata con successo');
+                                message.success('Registration completed successfully');
                                 console.log(res)
                             })
                             .catch(err => {
@@ -25,7 +25,7 @@ function Signup(props) {
                     onFinishFailed={() => { }}
                 />
             </Card>
-            <p>Hai un account? <Link to="/login">Accedi</Link></p>
+            <p>Do you have an account? <Link to="/login">Log in</Link></p>
 
 
         </div>

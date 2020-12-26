@@ -32,8 +32,13 @@ public class SetScoresControl extends HttpServlet {
         String email = request.getAttribute("email").toString();
         try {
             User r1 = um.getUserInfoByEmail(email);
-            sm.setScores(r1.getId(), specId,performance, display, camera);
-            request.setAttribute("response", new Message("Scores updated!"));
+            boolean done = sm.setScores(r1.getId(), specId,performance, display, camera);
+            if(done){
+                request.setAttribute("response", new Message("Scores updated!"));
+            }else{
+                response.setStatus(HttpServletResponse.SC_CONFLICT);
+                request.setAttribute("response", new Error("Error, invalid score range"));
+            }
 
         } catch (SQLException throwables) {
             response.setStatus(HttpServletResponse.SC_CONFLICT);

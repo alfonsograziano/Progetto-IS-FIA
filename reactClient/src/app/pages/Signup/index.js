@@ -4,8 +4,11 @@ import { Card } from 'antd';
 import { Link } from "react-router-dom";
 import { signUp } from "../../services/user.service"
 import { message } from 'antd';
+import { useHistory } from "react-router-dom";
 
 function Signup(props) {
+    const history = useHistory();
+
     return (
         <div style={{ display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", height: "100%" }}>
             <Card title="SignUp" bordered={false} style={{ width: 300 }}>
@@ -16,6 +19,8 @@ function Signup(props) {
                             .then(res => {
                                 message.success('Registration completed successfully');
                                 console.log(res)
+                                history.push("/home") 
+
                             })
                             .catch(err => {
                                 console.log(err)

@@ -28,7 +28,7 @@ public class ControlTestServlet extends HttpServlet{
     public static Test suite(){
         System.out.println("Nella chiamata di suite");
         TestSuite suite = new TestSuite();
-        suite.addTest(ReviewDaoTest.suite());
+        suite.addTest(SearchControlTest.suite());
         return suite;
 
     }

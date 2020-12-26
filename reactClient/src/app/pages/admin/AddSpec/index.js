@@ -17,7 +17,7 @@ function AddSpec(props) {
                         createNewSpec(v, state.token)
                             .then(res => {
                                 console.log(res)
-                                message.success('Nuova scheda tecnica creata');
+                                message.success('New data sheet created');
                                 history.push("/admin/speclist")
 
                             })

@@ -30,6 +30,14 @@ function useQuery() {
     return new URLSearchParams(useLocation().search);
 }
 
+const formatSpecDescription = item => {
+    let string = ""
+    if (item.so) string += "OS: " + item.so
+    if (item.memory) string += "  Memory: " + item.memory
+    if (item.ram) string += "  RAM: " + item.ram
+    return string
+}
+
 function Spec(props) {
 
     let query = useQuery();
@@ -50,12 +58,12 @@ function Spec(props) {
 
     const saveReview = data => {
         if (!state.token) {
-            message.error('Devi loggarti per aggiungere una recensione');
+            message.error('You need to log in to add a review');
             history.push("/login")
         } else {
             addReview({ ...data, specId }, state.token)
                 .then(res => {
-                    message.success('Recensione aggiunta... Verrà controllata a breve');
+                    message.success('Review added ... Will be checked shortly');
                     console.log(res)
                     setIsModalVisible(false);
                 })
@@ -163,8 +171,8 @@ function Spec(props) {
                     <div style={{ alignItems: "center", width: "100%", display: "flex", flexDirection: "column" }}>
                         <SpecCard
                             imageUrl={spec.image}
-                            title={spec.name + " - " + spec.price}
-                            description={"SO: " + spec.so + "  Memoria: " + spec.memory + "  RAM: " + spec.ram}
+                            title={spec.name + " - " + spec.price + "€"}
+                            description={formatSpecDescription(spec)}
                         />
 
                         <Button shape="round" style={{ backgroundColor: "#ff9900" }} icon={<AmazonOutlined />}
@@ -173,7 +181,7 @@ function Spec(props) {
                                 window.location.href = amzUrl + spec.name
                             }}
                         >
-                            Acquista su amazon
+                            Buy on Amazon
                         </Button>
                     </div>
 
@@ -183,14 +191,14 @@ function Spec(props) {
                         <Title>{spec.name}</Title>
                         {
                             spec && spec.reviewer &&
-                            <Card title={"Punteggi offerti da " + spec.reviewer.username}>
+                            <Card title={"Scores offered by " + spec.reviewer.username}>
                                 <SpecTable
                                     data={points}
                                 />
                             </Card>
                         }
 
-                        <Card title="Scheda tecnica" style={{ marginTop: "20px" }}>
+                        <Card title="Data sheet" style={{ marginTop: "20px" }}>
                             <SpecTable
                                 data={specTable}
                             />
@@ -215,17 +223,12 @@ function Spec(props) {
                                 :
                                 <Empty />
                         }
-
-
-                        {/* <Button type="primary" style={{ marginBottom: "20px" }}>Visualizza tutte le recensioni</Button> */}
-                        <Button type="primary" onClick={() => showModal()}>Aggiungi recensione</Button>
+                        <Button type="primary" onClick={() => showModal()}>Add review</Button>
                     </div>
-
-
                 </Col>
             </Row>
 
-            <Modal title="Aggiungi nuova recensione" visible={isModalVisible} footer={[]} onCancel={handleCancel}>
+            <Modal title="Add new review" visible={isModalVisible} footer={[]} onCancel={handleCancel}>
                 <ReviewForm onSave={saveReview} />
             </Modal>
 

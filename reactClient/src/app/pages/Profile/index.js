@@ -48,7 +48,7 @@ function Profile(props) {
                             <Paragraph><b>{(state && state.user && state.user.username) || "Test"}</b></Paragraph>
                         </div>
 
-                        <Title level={2}>Le mie recensioni</Title>
+                        <Title level={2}>My reviews</Title>
 
                         <div style={{ display: "flex", flexDirection: "row", alignItems: "center", flexWrap: "wrap" }}>
                             {
@@ -74,7 +74,7 @@ function Profile(props) {
                     <div style={{ marginTop: "20px", display: "flex", flexDirection: "column", alignItems: "center" }}>
                         <Button type="primary" style={{ marginTop: "30px" }} onClick={() => {
                             history.push("/login")
-                        }}>Devi essere loggato per visualizzare questa pagina</Button>
+                        }}>You must be logged in to view this page</Button>
 
                     </div>
             }

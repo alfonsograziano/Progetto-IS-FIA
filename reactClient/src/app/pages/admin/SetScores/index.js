@@ -5,8 +5,6 @@ import { getSpecById, setScores } from "../../../services/spec.service"
 import { useHistory } from "react-router-dom";
 import SetScoresForm from "../../../components/SetScoresForm";
 import { message } from 'antd';
-import SpecList from "../SpecList";
-
 
 function useQuery() {
     return new URLSearchParams(useLocation().search);
@@ -45,11 +43,12 @@ function SetScores(props) {
                             console.log(data)
                             setScores({ ...data, specId }, state.token)
                                 .then(res => {
-                                    message.success("Punteggi aggiornati correttamente")
+                                    message.success("Scores updated successfully")
                                     history.push("/admin/speclist")
                                 })
                                 .catch(err => {
-                                    message.error("Error..")
+                                    console.log(err)
+                                    message.error(err.response.data.message)
                                 })
                         }}
                     />

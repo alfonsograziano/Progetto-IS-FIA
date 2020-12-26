@@ -37,12 +37,12 @@ function AdminNavbar(props) {
 
                 <div style={{ marginLeft: "20px" }}>
                     <Link to="/admin/speclist" style={{ marginRight: "20px" }}>
-                        Lista schede tecniche
+                        Technical data sheets list
                     </Link>
 
                     {isReviewer &&
                         <Link to="/admin/reviews" style={{ marginRight: "20px" }}>
-                            Recensioni
+                            Reviews
                         </Link>
                     }
                     <Link to="/home" >

@@ -1,12 +1,14 @@
 package it.unisa.di.smartblog.test.user;
 
 import it.unisa.di.smartblog.spec.SpecsManager;
+import it.unisa.di.smartblog.test.TestWriter;
 import it.unisa.di.smartblog.test.spec.SpecManagerTest;
 import it.unisa.di.smartblog.user.*;
 import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
 
+import java.io.PrintWriter;
 import java.sql.SQLException;
 
 public class UserManagerTest extends TestCase {
@@ -17,35 +19,38 @@ public class UserManagerTest extends TestCase {
 
     }
 
-    public static Test suite(){
-
+    public static Test suite(PrintWriter writer){
+        pw = writer;
         return new TestSuite(UserManagerTest.class);
 
     }
 
     public void testCreateUser() throws SQLException {
-
+        boolean flag=false;
+        User insertedUser = null;
         User u = new User("pippo", "P1pp0000!", "p1pp099@gmail.com");
         try {
 
             um.createUser("pippo", "p1pp099@gmail.com", "P1pp0000!", "P1pp0000!");
-            User insertedUser = um.getUserInfoByEmail("p1pp099@gmail.com");
+            insertedUser = um.getUserInfoByEmail("p1pp099@gmail.com");
             assertEquals(u.getUsername(), insertedUser.getUsername());
             assertEquals(u.getEmail(), insertedUser.getEmail());
             assertEquals(u.getPassword(), insertedUser.getPassword());
-            System.out.println("testCreateUser() passed!");
+            flag=true;
             um.deleteUser(insertedUser.getId());
 
         } catch (CredentialsException e){
 
             fail("testCreateUser() not passed!");
 
+        } finally {
+            TestWriter.printTest(pw, u, insertedUser);
+            if(flag) pw.println("\tResult: "+Thread.currentThread().getStackTrace()[1].getMethodName()+" passed!");
         }
 
     }
 
     public void testCreateUserException() throws SQLException{
-
         User u = new User("pippo", "P1pp0000!","antonio@sisonoio.com");
 
         try {
@@ -55,8 +60,6 @@ public class UserManagerTest extends TestCase {
 
         } catch (CredentialsException e){
 
-            System.out.println("testCreateUserException() (email already used) passed!");
-
         }
 
         try {
@@ -65,9 +68,6 @@ public class UserManagerTest extends TestCase {
             fail("testCreateUserException() (password doesn't match repeatPassword) not passed!");
 
         } catch (CredentialsException e){
-
-            System.out.println("testCreateUserException() (password doesn't match repeatPassword) passed!");
-
         }
 
         try {
@@ -77,8 +77,6 @@ public class UserManagerTest extends TestCase {
 
         } catch (CredentialsException e){
 
-            System.out.println("testCreateUserException() (wrong password format) passed!");
-
         }
 
         try {
@@ -87,9 +85,6 @@ public class UserManagerTest extends TestCase {
             fail("testCreateUserException() (wrong email format) not passed!");
 
         } catch (CredentialsException e){
-
-            System.out.println("testCreateUserException() (wrong email format) passed!");
-
         }
 
         try {
@@ -98,9 +93,6 @@ public class UserManagerTest extends TestCase {
             fail("testCreateUserException() (wrong username format) not passed!");
 
         } catch (CredentialsException e){
-
-            System.out.println("testCreateUserException() (wrong username format) passed!");
-
         }
 
         try {
@@ -109,8 +101,6 @@ public class UserManagerTest extends TestCase {
             fail("testCreateUserException() (empty username) not passed!");
 
         } catch (CredentialsException e){
-
-            System.out.println("testCreateUserException() (empty username) passed!");
 
         }
 
@@ -121,8 +111,6 @@ public class UserManagerTest extends TestCase {
 
         } catch (CredentialsException e){
 
-            System.out.println("testCreateUserException() (empty email) passed!");
-
         }
 
         try {
@@ -131,8 +119,6 @@ public class UserManagerTest extends TestCase {
             fail("testCreateUserException() (empty password) not passed!");
 
         } catch (CredentialsException e){
-
-            System.out.println("testCreateUserException() (empty password) passed!");
 
         }
 
@@ -143,8 +129,6 @@ public class UserManagerTest extends TestCase {
 
         } catch (CredentialsException e){
 
-            System.out.println("testCreateUserException() (empty repeatPassword) passed!");
-
         }
 
         try {
@@ -153,8 +137,6 @@ public class UserManagerTest extends TestCase {
             fail("testCreateUserException() (empty username) not passed!");
 
         } catch (CredentialsException e){
-
-            System.out.println("testCreateUserException() (empty username) passed!");
 
         }
 
@@ -165,8 +147,6 @@ public class UserManagerTest extends TestCase {
 
         } catch (CredentialsException e){
 
-            System.out.println("testCreateUserException() (wrong username format) passed!");
-
         }
 
         try {
@@ -175,8 +155,6 @@ public class UserManagerTest extends TestCase {
             fail("testCreateUserException() (wrong username format) not passed!");
 
         } catch (CredentialsException e){
-
-            System.out.println("testCreateUserException() (wrong username format) passed!");
 
         }
 
@@ -187,22 +165,22 @@ public class UserManagerTest extends TestCase {
 
         } catch (CredentialsException e){
 
-            System.out.println("testCreateUserException() (wrong username format) passed!");
-
         }
 
+        pw.println("\tResult: "+Thread.currentThread().getStackTrace()[1].getMethodName()+" passed!");
     }
 
     public void testAuth(){
-
+        boolean flag=false;
+        User oracle=null, user=null;
         try{
 
-            User user = um.auth("antonio@sisonoio.com", "!Antonio99");
-            User oracle = new User("antonio", "!Antonio99", "antonio@sisonoio.com");
+            user = um.auth("antonio@sisonoio.com", "!Antonio99");
+            oracle = new User("antonio", "!Antonio99", "antonio@sisonoio.com");
             oracle.setId(3);
             oracle.setActive(true);
             assertEquals(user, oracle);
-            System.out.println("testAuth() passed!");
+            flag=true;
 
         } catch (CredentialsException e){
 
@@ -212,6 +190,9 @@ public class UserManagerTest extends TestCase {
 
             fail("testAuth() not passed!");
 
+        } finally {
+            TestWriter.printTest(pw, oracle, user);
+            if(flag) pw.println("\tResult: "+Thread.currentThread().getStackTrace()[1].getMethodName()+" passed!");
         }
 
     }
@@ -227,7 +208,6 @@ public class UserManagerTest extends TestCase {
 
         } catch (CredentialsException e){
 
-            System.out.println("testAuthException() (null email) passed!");
 
         }
 
@@ -238,8 +218,6 @@ public class UserManagerTest extends TestCase {
 
         } catch (CredentialsException e){
 
-            System.out.println("testAuthException() (null password) passed!");
-
         }
 
         try{
@@ -248,8 +226,6 @@ public class UserManagerTest extends TestCase {
             fail("testAuthException() (empty email) not passed!");
 
         } catch (CredentialsException e){
-
-            System.out.println("testAuthException() (empty email) passed!");
 
         }
 
@@ -260,8 +236,6 @@ public class UserManagerTest extends TestCase {
 
         } catch (CredentialsException e){
 
-            System.out.println("testAuthException() (empty password) passed!");
-
         }
 
         try{
@@ -270,8 +244,6 @@ public class UserManagerTest extends TestCase {
             fail("testAuthException() (wrong password) not passed!");
 
         } catch (CredentialsException e){
-
-            System.out.println("testAuthException() (wrong password) passed!");
 
         }
 
@@ -282,13 +254,14 @@ public class UserManagerTest extends TestCase {
 
         } catch (SQLException e){
 
-            System.out.println("testAuthException() (user not found) passed!");
-
         }
 
+        pw.println("\tResult: "+Thread.currentThread().getStackTrace()[1].getMethodName()+" passed!");
     }
 
     public void testIsManager() throws CredentialsException{
+        boolean flag=false;
+        Manager oracle=null, manager=null;
 
         try{
 
@@ -298,8 +271,8 @@ public class UserManagerTest extends TestCase {
             user.setPassword("!Manager10");
             user.setId(6);
 
-            Manager manager = um.isManager(user);
-            Manager oracle = new Manager();
+            manager = um.isManager(user);
+            oracle = new Manager();
             oracle.setEmail("manager@manager.com");
             oracle.setUsername("manager");
             oracle.setPassword("!Manager10");
@@ -308,12 +281,15 @@ public class UserManagerTest extends TestCase {
             assertEquals(manager.getPassword(), oracle.getPassword());
             assertEquals(manager.getUsername(), oracle.getUsername());
             assertEquals(manager.getPhoneNumber(), oracle.getPhoneNumber());
-            System.out.println("testIsManager() passed!");
+            flag=true;
 
         } catch (Exception e){
 
-            System.out.println("testIsManager() not passed!");
+            fail("testIsManager() not passed!");
 
+        } finally {
+            TestWriter.printTest(pw, oracle, manager);
+            if(flag) pw.println("\tResult: "+Thread.currentThread().getStackTrace()[1].getMethodName()+" passed!");
         }
 
     }
@@ -327,7 +303,6 @@ public class UserManagerTest extends TestCase {
 
         } catch (CredentialsException e) {
 
-            System.out.println("testIsManagerException() (null user) passed!");
 
         }
 
@@ -341,15 +316,15 @@ public class UserManagerTest extends TestCase {
 
             fail("testGetManagerException() (user not manager) not passed!");
 
-        } else {
-
-            System.out.println("testGetManagerException() (user not manager) passed!");
-
         }
+
+        pw.println("\tResult: "+Thread.currentThread().getStackTrace()[1].getMethodName()+" passed!");
 
     }
 
     public void testIsReviewer(){
+        boolean flag=false;
+        Reviewer reviewer = null, oracle = null;
 
         try{
 
@@ -359,8 +334,8 @@ public class UserManagerTest extends TestCase {
             user.setPassword("!Reviewer10");
             user.setId(5);
 
-            Reviewer reviewer = um.isReviewer(user);
-            Reviewer oracle = new Reviewer();
+            reviewer = um.isReviewer(user);
+            oracle = new Reviewer();
             oracle.setEmail("reviewer@reviewer.com");
             oracle.setUsername("reviewer");
             oracle.setPassword("!Reviewer10");
@@ -370,12 +345,15 @@ public class UserManagerTest extends TestCase {
             assertEquals(reviewer.getPassword(), oracle.getPassword());
             assertEquals(reviewer.getUsername(), oracle.getUsername());
             assertEquals(reviewer.getPhoneNumber(), oracle.getPhoneNumber());
-            System.out.println("testIsReviewer() passed!");
+            flag=true;
 
         } catch (Exception e){
 
-            System.out.println("testIsReviewer() not passed!");
+            fail("testIsReviewer() not passed!");
 
+        } finally {
+            TestWriter.printTest(pw, oracle, reviewer);
+            if(flag) pw.println("\tResult: "+Thread.currentThread().getStackTrace()[1].getMethodName()+" passed!");
         }
     }
 
@@ -388,7 +366,6 @@ public class UserManagerTest extends TestCase {
 
         } catch (CredentialsException e) {
 
-            System.out.println("testIsReviewerException() (null user) passed!");
 
         }
 
@@ -402,24 +379,23 @@ public class UserManagerTest extends TestCase {
 
             fail("testIsReviewerException() (user not reviewer) not passed!");
 
-        } else {
-
-            System.out.println("testIsReviewerException() (user not reviewer) passed!");
-
         }
 
+        pw.println("\tResult: "+Thread.currentThread().getStackTrace()[1].getMethodName()+" passed!");
     }
 
     public void testGetUserInfoByEmail(){
+        boolean flag=false;
+        User oracle=null, user=null;
 
         try{
 
-            User user = um.getUserInfoByEmail("antonio@sisonoio.com");
-            User oracle = new User("antonio", "!Antonio99", "antonio@sisonoio.com");
+            user = um.getUserInfoByEmail("antonio@sisonoio.com");
+            oracle = new User("antonio", "!Antonio99", "antonio@sisonoio.com");
             oracle.setId(3);
             oracle.setActive(true);
             assertEquals(user, oracle);
-            System.out.println("testGetByEmail() passed!");
+            flag=true;
 
         } catch (CredentialsException e){
 
@@ -429,6 +405,9 @@ public class UserManagerTest extends TestCase {
 
             fail("testGetByEmail() not passed!");
 
+        } finally {
+            TestWriter.printTest(pw, oracle, user);
+            if(flag) pw.println("\tResult: "+Thread.currentThread().getStackTrace()[1].getMethodName()+" passed!");
         }
 
     }
@@ -442,8 +421,6 @@ public class UserManagerTest extends TestCase {
 
         } catch (CredentialsException e){
 
-            System.out.println("testGetUserInfoByEmailException() (null email) passed!");
-
         }
 
         try{
@@ -453,9 +430,9 @@ public class UserManagerTest extends TestCase {
 
         } catch (CredentialsException e){
 
-            System.out.println("testGetUserInfoByEmailException() (empty email) passed!");
-
         }
+
+        pw.println("\tResult: "+Thread.currentThread().getStackTrace()[1].getMethodName()+" passed!");
 
     }
 
@@ -471,12 +448,12 @@ public class UserManagerTest extends TestCase {
 
         }catch (SQLException e){
 
-            System.out.println("testDeleteUser() passed!");
+            pw.println("\tResult: "+Thread.currentThread().getStackTrace()[1].getMethodName()+" passed!");
 
         }
 
     }
 
     private UserManager um;
-
+    private static PrintWriter pw;
 }

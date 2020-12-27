@@ -5,11 +5,13 @@ import it.unisa.di.smartblog.review.ReviewDao;
 import it.unisa.di.smartblog.review.ReviewManager;
 import it.unisa.di.smartblog.review.ReviewMismatchException;
 import it.unisa.di.smartblog.spec.Spec;
+import it.unisa.di.smartblog.test.TestWriter;
 import it.unisa.di.smartblog.user.User;
 import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
 
+import java.io.PrintWriter;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
@@ -24,17 +26,21 @@ public class ReviewManagerTest extends TestCase {
 
     public void testCreateReview() throws SQLException{
 
+        boolean flag=false;
+        Review reviewToInsert=null, max =null;
+
         try {
 
             Spec s = new Spec();
             s.setId(2045);
             User u = new User();
             u.setId(3);
-            Review reviewToInsert = new Review(5, 5, 5, 5, 5, "Review di prova", s, u);
+            reviewToInsert = new Review(5, 5, 5, 5, 5, "Review di prova", s, u);
             reviewToInsert.setState("pending");
             rm.createReview(5, 5, 5, 5, 5, "Review di prova", s, u);
             List<Review> reviewList = rm.searchReviewsByUser(3);
-            Review max = reviewList.get(0);
+            max = reviewList.get(0);
+
             for(Review rev : reviewList){
                 if(rev.getId() > max.getId()){
                     max = rev;
@@ -47,13 +53,16 @@ public class ReviewManagerTest extends TestCase {
             assertEquals(max.getCamera(), reviewToInsert.getCamera());
             assertEquals(max.getState(), reviewToInsert.getState());
             assertEquals(max.getText(), reviewToInsert.getText());
-            System.out.println("testCreateReview() passed!");
+            flag=true;
             rm.deleteReview(max.getId());
 
         }catch (ReviewMismatchException e){
 
             fail("testCreateReview() not passed!");
 
+        } finally {
+            TestWriter.printTest(pw, reviewToInsert, max);
+            if(flag) pw.println("\tResult: "+Thread.currentThread().getStackTrace()[1].getMethodName()+" passed!");
         }
     }
 
@@ -69,8 +78,6 @@ public class ReviewManagerTest extends TestCase {
 
         } catch (ReviewMismatchException e){
 
-            System.out.println("testCreateReviewException() (null spec) passed!");
-
         }
 
         try{
@@ -82,8 +89,6 @@ public class ReviewManagerTest extends TestCase {
             fail("testCreateReviewException() (null user) not passed!");
 
         } catch (ReviewMismatchException e){
-
-            System.out.println("testCreateReviewException() (null user) passed!");
 
         }
 
@@ -98,8 +103,6 @@ public class ReviewManagerTest extends TestCase {
 
         } catch (ReviewMismatchException e){
 
-            System.out.println("testCreateReviewException() (invalid totalScore) passed!");
-
         }
 
         try{
@@ -112,8 +115,6 @@ public class ReviewManagerTest extends TestCase {
             fail("testCreateReviewException() (invalid performance) not passed!");
 
         } catch (ReviewMismatchException e){
-
-            System.out.println("testCreateReviewException() (invalid performance) passed!");
 
         }
 
@@ -128,8 +129,6 @@ public class ReviewManagerTest extends TestCase {
 
         } catch (ReviewMismatchException e){
 
-            System.out.println("testCreateReviewException() (invalid display) passed!");
-
         }
 
         try{
@@ -142,8 +141,6 @@ public class ReviewManagerTest extends TestCase {
             fail("testCreateReviewException() (invalid camera) not passed!");
 
         } catch (ReviewMismatchException e){
-
-            System.out.println("testCreateReviewException() (invalid camera) passed!");
 
         }
 
@@ -158,8 +155,6 @@ public class ReviewManagerTest extends TestCase {
 
         } catch (ReviewMismatchException e){
 
-            System.out.println("testCreateReviewException() (invalid battery) passed!");
-
         }
 
         try{
@@ -173,8 +168,6 @@ public class ReviewManagerTest extends TestCase {
 
         } catch (ReviewMismatchException e){
 
-            System.out.println("testCreateReviewException() (empty text) passed!");
-
         }
 
         try{
@@ -187,8 +180,6 @@ public class ReviewManagerTest extends TestCase {
             fail("testCreateReviewException() (null text) not passed!");
 
         } catch (ReviewMismatchException e){
-
-            System.out.println("testCreateReviewException() (null text) passed!");
 
         }
 
@@ -205,18 +196,19 @@ public class ReviewManagerTest extends TestCase {
 
         } catch (ReviewMismatchException e){
 
-            System.out.println("testCreateReviewException() (text length exceeded) passed!");
-
         }
 
+        pw.println("\tResult: "+Thread.currentThread().getStackTrace()[1].getMethodName()+" passed!");
     }
 
     public void testSearchReviewsByUser(){
+        boolean flag=false;
+        List<Review> oracle=null, r=null;
 
         try {
 
-            List<Review> r = rm.searchReviewsByUser(3);
-            List<Review> oracle = new ArrayList<>();
+            r = rm.searchReviewsByUser(3);
+            oracle = new ArrayList<>();
 
             Spec s1 = new Spec();
             s1.setId(2044);
@@ -237,15 +229,19 @@ public class ReviewManagerTest extends TestCase {
             oracle.add(r2);
             oracle.add(r1);
 
+            assertEquals(r.size(), 2);
             assertTrue(r.contains(oracle.get(0)));
             assertTrue(r.contains(oracle.get(1)));
 
-            System.out.println("testSearchReviewsByUser() passed!");
+            flag=true;
 
         }catch (SQLException e){
 
             fail("testSearchReviewsByUser() not passed!");
 
+        } finally {
+            TestWriter.printTest(pw, oracle, r);
+            if(flag) pw.println("\tResult: "+Thread.currentThread().getStackTrace()[1].getMethodName()+" passed!");
         }
 
     }
@@ -257,16 +253,18 @@ public class ReviewManagerTest extends TestCase {
         if(oracle.size() != 0){
             fail("testSearchReviewsByUserException() not passed!");
         }
-        System.out.println("testSearchReviewsByUserException() passed!");
+        pw.println("\tResult: "+Thread.currentThread().getStackTrace()[1].getMethodName()+" passed!");
 
     }
 
     public void testSearchReviewsBySpec() throws SQLException{
+        boolean flag=false;
+        List<Review> r=null, oracle=null;
 
         try {
 
-            List<Review> r = rm.searchReviewsBySpec(2041);
-            List<Review> oracle = new ArrayList<>();
+            r = rm.searchReviewsBySpec(2041);
+            oracle = new ArrayList<>();
             User u1 = new User("antonio", null, "antonio@sisonoio.com");
             u1.setId(3);
             User u2 = new User("mario", null, "mario@rossi.com");
@@ -278,22 +276,22 @@ public class ReviewManagerTest extends TestCase {
             r2.setId(5);
             r2.setState("approved");
 
-            System.out.println("NELLA FUNZIONE CHE FALLISCE");
             oracle.add(r1);
             oracle.add(r2);
 
-            System.out.println(r);
-            System.out.println("\n\n\n\n\n" + oracle);
-
+            assertEquals(r.size(), 2);
             assertTrue(r.contains(oracle.get(0)));
             assertTrue(r.contains(oracle.get(1)));
 
-            System.out.println("testSearchReviewsBySpec() passed!");
+            flag=true;
 
         }catch (SQLException e){
 
             fail("testSearchReviewsBySpec() not passed!");
 
+        } finally {
+            TestWriter.printTest(pw, oracle, r);
+            if(flag) pw.println("\tResult: "+Thread.currentThread().getStackTrace()[1].getMethodName()+" passed!");
         }
 
     }
@@ -315,25 +313,44 @@ public class ReviewManagerTest extends TestCase {
         r.setId(3);
         r.setState("pending");
 
-        System.out.println(r);
-        System.out.println(reviews);
-
+        assertEquals(reviews.size(), 1);
         if(!reviews.contains(r)){
 
             fail("testGetPending() not passed!");
 
         }
 
-
-        System.out.println("testGetPending() passed!");
+        TestWriter.printTest(pw, r, reviews.get(reviews.indexOf(r)));
+        pw.println("\tResult: "+Thread.currentThread().getStackTrace()[1].getMethodName()+" passed!");
 
     }
 
     public void testSearchReviewInfo() throws SQLException{
+        boolean flag=false;
+        Review r = null, oracle=null;
+
+        oracle = new Review();
+        oracle.setId(3);
+        oracle.setBattery(4);
+        oracle.setCamera(4);
+        oracle.setPerformance(5);
+        oracle.setDisplay(4);
+        oracle.setTotalScore(5);
+        oracle.setText("Ero scettico ma le prestazione di questo Huawei mi hanno fatto ricredere!");
+        oracle.setState("pending");
+        User user = new User();
+        user.setId(3);
+        user.setEmail("antonio@sisonoio.com");
+        user.setUsername("antonio");
+        oracle.setUser(user);
+        Spec spec = new Spec();
+        spec.setId(2044);
+        spec.setName("Huawei Mate 40 Pro");
+        oracle.setSpec(spec);
 
         try {
 
-            Review r = rm.searchReviewInfo(3);
+            r = rm.searchReviewInfo(3);
             assertEquals(r.getId(), 3);
             assertEquals(r.getBattery(), 4);
             assertEquals(r.getCamera(), 4);
@@ -347,22 +364,28 @@ public class ReviewManagerTest extends TestCase {
             assertEquals(r.getUser().getUsername(), "antonio");
             assertEquals(r.getSpec().getId(), 2044);
             assertEquals(r.getSpec().getName(), "Huawei Mate 40 Pro");
-            System.out.println("testSearchReviewInfo() passed!");
+            flag=true;
 
         }catch (SQLException e){
 
             fail("testSearchReviewInfo() not passed!");
 
+        } finally {
+            TestWriter.printTest(pw, oracle, r);
+            if(flag) pw.println("\tResult: "+Thread.currentThread().getStackTrace()[1].getMethodName()+" passed!");
         }
+
 
 
     }
 
     public void testApprovation(){
+        Review review=null, max=null;
+        boolean flag=false;
 
         try{
 
-            Review review = new Review();   //Creo una Review di prova
+            review = new Review();   //Creo una Review di prova
             review.setTotalScore(5);
             review.setBattery(5);
             review.setCamera(5);
@@ -380,7 +403,7 @@ public class ReviewManagerTest extends TestCase {
 
             rm.createReview(review.getTotalScore(), review.getPerformance(), review.getDisplay(), review.getCamera(), review.getBattery(), review.getText(), s, u);  //Inserisco la Review di prova nel db
             List<Review> pendingReviews = rm.searchPendingReviews();
-            Review max = pendingReviews.get(0);
+            max = pendingReviews.get(0);
 
             //Cerco la review appena inserita per ottenere l'id
             for (Review rev : pendingReviews) {
@@ -388,10 +411,10 @@ public class ReviewManagerTest extends TestCase {
                     max = rev;
                 }
             }
-            System.out.println("PENDINGGG: " + pendingReviews);
+            System.out.println("PENDING: " + pendingReviews);
             rm.approvation(max.getId(), true);
             assertEquals(rm.searchReviewInfo(max.getId()).getState(), "approved");
-            System.out.println("testApprovation() (review approved) passed!");
+            pw.println("testApprovation() (review approved) passed!");
             rm.deleteReview(max.getId());   //Pulisco il db
 
             //TESTO IL RIFIUTO DELLA REVIEW
@@ -424,8 +447,10 @@ public class ReviewManagerTest extends TestCase {
             System.out.println("PENDINGGG: " + pendingReviews);
             rm.approvation(max.getId(), false);
             assertEquals(rm.searchReviewInfo(max.getId()).getState(), "rejected");
-            System.out.println("testApprovation() (review approved) passed!");
+            pw.println("testApprovation() (review approved) passed!");
             rm.deleteReview(max.getId());   //Pulisco il db
+
+            flag=true;
 
         } catch (SQLException e){
 
@@ -435,17 +460,20 @@ public class ReviewManagerTest extends TestCase {
 
             fail("testApproveReview() not passed");
 
+        } finally {
+            TestWriter.printTest(pw, review, max);
+            if(flag) pw.println("\tResult: "+Thread.currentThread().getStackTrace()[1].getMethodName()+" passed!");
         }
 
     }
 
 
-    public static Test suite(){
-
+    public static Test suite(PrintWriter writer){
+        pw = writer;
         return new TestSuite(ReviewManagerTest.class);
 
     }
 
     private static ReviewManager rm;
-
+    private static PrintWriter pw;
 }

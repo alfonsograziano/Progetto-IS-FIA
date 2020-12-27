@@ -1,4 +1,4 @@
-package it.unisa.di.smartblog.test.user;
+package it.unisa.di.smartblog.test;
 
 import org.junit.runner.Description;
 import org.junit.runner.Result;
@@ -7,15 +7,14 @@ import org.junit.runner.notification.RunListener;
 
 import java.io.PrintWriter;
 
-public class UserDaoTestListener extends RunListener {
-    public UserDaoTestListener(PrintWriter pw){
+public class TestListener extends RunListener {
+    public TestListener(PrintWriter pw){
         this.pw = pw;
     }
 
     public void testRunStarted(Description description) throws java.lang.Exception
     {
-        pw.println("UserDaoTest");
-        pw.println("Number of tests to execute : " + description.testCount() + "\n");
+        pw.println(description.getDisplayName().replace("example","class")+"\n");
     }
 
     /**
@@ -40,7 +39,6 @@ public class UserDaoTestListener extends RunListener {
      * */
     public void testFinished(Description description) throws java.lang.Exception
     {
-       //pw.println("Finished execution of test case : "+ description.toString());
         pw.println();
     }
 

@@ -1,10 +1,14 @@
 package it.unisa.di.smartblog.test.spec;
 
 import it.unisa.di.smartblog.spec.SpecDao;
+import it.unisa.di.smartblog.test.TestListener;
 import junit.framework.Test;
 import junit.framework.TestSuite;
 import junit.textui.TestRunner;
+import org.junit.runner.JUnitCore;
+
 import java.io.IOException;
+import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -24,7 +28,11 @@ public class SpecDaoTestServlet extends HttpServlet{
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        TestRunner.run(suite());
+        PrintWriter pw = response.getWriter();
+
+        JUnitCore runner = new JUnitCore();
+        runner.addListener(new TestListener(pw));
+        runner.run(suite(pw));
     }
 
 
@@ -32,9 +40,9 @@ public class SpecDaoTestServlet extends HttpServlet{
         doGet(request, response);
     }
 
-    public static Test suite(){
+    public static Test suite(PrintWriter pw){
         TestSuite suite = new TestSuite();
-        suite.addTest(SpecDaoTest.suite());
+        suite.addTest(SpecDaoTest.suite(pw));
         return suite;
     }
 

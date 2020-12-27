@@ -48,7 +48,7 @@ function Login(props) {
                     onFinishFailed={() => { }}
                 />
             </Card>
-            <p>Do not have an account?<Link to="/signup">Sign in</Link></p>
+            <p>Do not have an account?<Link to="/signup">Sign up</Link></p>
 
         </div>
     )

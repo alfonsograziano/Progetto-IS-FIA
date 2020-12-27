@@ -1,14 +1,11 @@
 package it.unisa.di.smartblog.test.user;
 
-
 import it.unisa.di.smartblog.review.Review;
 import it.unisa.di.smartblog.test.TestWriter;
 import it.unisa.di.smartblog.user.*;
 import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
-
-import java.awt.print.PrinterJob;
 import java.io.PrintWriter;
 import java.sql.SQLException;
 
@@ -96,7 +93,6 @@ public class UserDaoTest extends TestCase {
             assertEquals(u.getUsername(), insertedUser.getUsername());
             assertEquals(u.getEmail(), insertedUser.getEmail());
             assertEquals(u.getPassword(), insertedUser.getPassword());
-            System.out.println("testSaveUser() passed!");
             ud.deleteUserById(insertedUser.getId());
 
             flag=true;

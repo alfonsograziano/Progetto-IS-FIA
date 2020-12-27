@@ -1,12 +1,15 @@
 package it.unisa.di.smartblog.test.review;
 
 import it.unisa.di.smartblog.review.ReviewDao;
+import it.unisa.di.smartblog.test.TestListener;
 import it.unisa.di.smartblog.user.UserManager;
 import junit.framework.Test;
 import junit.framework.TestSuite;
 import junit.textui.TestRunner;
+import org.junit.runner.JUnitCore;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -28,9 +31,11 @@ public class ReviewDaoTestServlet extends HttpServlet{
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        PrintWriter pw = response.getWriter();
 
-        System.out.println("Prima della chiamata di suite");
-        TestRunner.run(suite());
+        JUnitCore runner = new JUnitCore();
+        runner.addListener(new TestListener(pw));
+        runner.run(suite(pw));
 
     }
 
@@ -39,10 +44,9 @@ public class ReviewDaoTestServlet extends HttpServlet{
         doGet(request, response);
     }
 
-    public static Test suite(){
-        System.out.println("Nella chiamata di suite");
+    public static Test suite(PrintWriter pw){
         TestSuite suite = new TestSuite();
-        suite.addTest(ReviewDaoTest.suite());
+        suite.addTest(ReviewDaoTest.suite(pw));
         return suite;
 
     }

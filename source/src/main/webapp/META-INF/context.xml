@@ -6,11 +6,6 @@
           driverClassName="com.mysql.cj.jdbc.Driver"
           type="javax.sql.DataSource"
           username="root"
-<<<<<<< HEAD
           password=""
           url="jdbc:mysql://localhost:3306/smartblog_testing?useUnicode=true&amp;useJDBCCompliantTimezoneShift=true&amp;useLegacyDatetimeCode=false&amp;serverTimezone=UTC"/>
-=======
-          password="antonio"
-          url="jdbc:mysql://localhost:3306/smartblog?useUnicode=true&amp;useJDBCCompliantTimezoneShift=true&amp;useLegacyDatetimeCode=false&amp;serverTimezone=UTC"/>
->>>>>>> 6c6fd97312db8d2bcbc8857ed8b73516278e2178
 </Context>

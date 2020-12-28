@@ -1,6 +1,8 @@
 package it.unisa.di.smartblog.test.control;
 
 
+import com.google.gson.Gson;
+import com.google.gson.JsonArray;
 import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
@@ -20,15 +22,17 @@ public class ReviewControlTest extends TestCase {
 
 
     protected void setUp() throws Exception{
-        pw.println("Sono in reviewcontrol");
-
+        pw.println("Class: "+this.getClass().getName());
     }
 
 
     public void testGetPendingInfo() throws  Exception{
         try{
             String s = getPendingReviews("eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJyZXZpZXdlckByZXZpZXdlci5jb20ifQ.vESbU9Ms_nBa92wnFlLlINkD9ZvA4Y7b-mJsYfIGFyU");
+            JsonArray convertedObject = new Gson().fromJson(s, JsonArray.class);
+            assertTrue(convertedObject.size()>0);
             pw.println("\tResult: "+Thread.currentThread().getStackTrace()[1].getMethodName()+" passed! ");
+
         }catch(Exception e){
             fail("ProfileControlTest.testError not passed");
         }

@@ -28,6 +28,8 @@ public class SignInControl extends HttpServlet {
         String email = request.getParameter("email");
         String password = request.getParameter("password");
 
+        System.out.println(email+" "+password);
+
         try {
             User user = um.auth(email,password);
             JWTHandler jwt = new JWTHandler();

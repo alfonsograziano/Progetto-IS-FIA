@@ -12,6 +12,7 @@ import junit.framework.TestSuite;
 import javax.net.ssl.HttpsURLConnection;
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
+import java.io.PrintWriter;
 import java.net.*;
 import java.util.HashMap;
 import java.util.Map;
@@ -39,14 +40,14 @@ public class SearchControlTest extends TestCase {
 
         JsonArray convertedObject = new Gson().fromJson(output, JsonArray.class);
         assertEquals(19,convertedObject.size());
+        pw.println("\tResult: "+Thread.currentThread().getStackTrace()[1].getMethodName()+" passed! ");
 
     }
 
-    public static Test suite(){
-
+    public static Test suite(PrintWriter writer){
+        pw = writer;
         return new TestSuite(SearchControlTest.class);
-
     }
-
+    private static PrintWriter pw;
 
 }

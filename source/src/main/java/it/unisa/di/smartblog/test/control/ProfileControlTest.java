@@ -1,12 +1,11 @@
 package it.unisa.di.smartblog.test.control;
 
-import com.google.gson.Gson;
-import com.google.gson.JsonArray;
+
 import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
-
 import java.io.DataInputStream;
+import java.io.PrintWriter;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
@@ -15,6 +14,8 @@ public class ProfileControlTest extends TestCase {
     String base = "http://localhost:8080/smartblog_war_exploded/api";
 
     protected void setUp() throws Exception{
+
+        pw.println("Sono in profilecontrol");
     }
 
     public void testError() throws  Exception{
@@ -22,13 +23,15 @@ public class ProfileControlTest extends TestCase {
             String s = getProfileInfo(null);
             fail("ProfileControlTest.testError not passed");
         }catch(Exception e){
-            e.printStackTrace();
+            pw.println("\tResult: "+Thread.currentThread().getStackTrace()[1].getMethodName()+" passed!");
+
         }
     }
 
     public void testUser() throws  Exception{
         try{
             String s = getProfileInfo("eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhbnRvbmlvQHNpc29ub2lvLmNvbSJ9.uMLvvfhOfb4nxBZTBDY__QXX4uRNmlN3_m4ljR-rcWY");
+            pw.println("\tResult: "+Thread.currentThread().getStackTrace()[1].getMethodName()+" passed!");
         }catch(Exception e){
             fail("ProfileControlTest.testError not passed");
         }
@@ -37,6 +40,7 @@ public class ProfileControlTest extends TestCase {
     public void testManager() throws  Exception{
         try{
             String s = getProfileInfo("eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJtYW5hZ2VyQG1hbmFnZXIuY29tIn0.BZOq3dhJcWPoL2lfcO1RT_kRTqDNYugerBOYMH014x8");
+            pw.println("\tResult: "+Thread.currentThread().getStackTrace()[1].getMethodName()+" passed!");
         }catch(Exception e){
             fail("ProfileControlTest.testError not passed");
         }
@@ -45,6 +49,7 @@ public class ProfileControlTest extends TestCase {
     public void testReviewer() throws  Exception{
         try{
             String s = getProfileInfo("eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJyZXZpZXdlckByZXZpZXdlci5jb20ifQ.vESbU9Ms_nBa92wnFlLlINkD9ZvA4Y7b-mJsYfIGFyU");
+            pw.println("\tResult: "+Thread.currentThread().getStackTrace()[1].getMethodName()+" passed!");
         }catch(Exception e){
             fail("ProfileControlTest.testError not passed");
         }
@@ -69,11 +74,9 @@ public class ProfileControlTest extends TestCase {
 
 
 
-    public static Test suite(){
-
+    public static Test suite(PrintWriter writer){
+        pw = writer;
         return new TestSuite(ProfileControlTest.class);
-
     }
-
-
+    private static PrintWriter pw;
 }

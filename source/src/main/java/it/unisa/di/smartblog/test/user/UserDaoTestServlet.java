@@ -1,5 +1,6 @@
 package it.unisa.di.smartblog.test.user;
 import it.unisa.di.smartblog.review.ReviewDao;
+import it.unisa.di.smartblog.test.TestListener;
 import junit.framework.Test;
 import junit.framework.TestSuite;
 import org.junit.runner.JUnitCore;
@@ -28,7 +29,7 @@ public class UserDaoTestServlet extends HttpServlet{
         PrintWriter pw = response.getWriter();
 
         JUnitCore runner = new JUnitCore();
-        runner.addListener(new UserDaoTestListener(pw));
+        runner.addListener(new TestListener(pw));
         runner.run(suite(pw));
 
     }

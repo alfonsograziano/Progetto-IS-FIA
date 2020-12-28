@@ -2,11 +2,13 @@ package it.unisa.di.smartblog.test.spec;
 
 import it.unisa.di.smartblog.review.ReviewDao;
 import it.unisa.di.smartblog.spec.*;
+import it.unisa.di.smartblog.test.TestWriter;
 import it.unisa.di.smartblog.user.Reviewer;
 import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
 
+import java.io.PrintWriter;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
@@ -112,22 +114,22 @@ public class SpecManagerTest extends TestCase {
         oracle5.setPrice(1238);
 
         List<Spec> specs = sm.searchAll();
-        System.out.println(specs.get(1));
-        System.out.println(oracle1);
         assertTrue(specs.contains(oracle1));
         assertTrue(specs.contains(oracle2));
         assertTrue(specs.contains(oracle3));
         assertTrue(specs.contains(oracle4));
         assertTrue(specs.contains(oracle5));
-        System.out.println("testSearchAll() passed!");
+        pw.println("\tResult: "+Thread.currentThread().getStackTrace()[1].getMethodName()+" passed!");
 
     }
 
     public void testSearchByName(){
+        boolean flag=false;
+        List<Spec> specs = null, oracle =null;
 
         try {
-            List<Spec> specs = sm.searchByName("Redmi Note 9 4G");
-            List<Spec> oracle = new ArrayList<>();
+            specs = sm.searchByName("Redmi Note 9 4G");
+            oracle = new ArrayList<>();
 
             Spec s = new Spec();
             s.setId(2041);
@@ -150,7 +152,7 @@ public class SpecManagerTest extends TestCase {
             oracle.add(s);
 
             assertTrue(specs.contains(oracle.get(0)));
-            System.out.println("testSearchByName() passed!");
+            flag=true;
 
         } catch (EmptyFieldException e){
             fail("testSearchByName() not passed!");
@@ -158,6 +160,9 @@ public class SpecManagerTest extends TestCase {
         } catch (SQLException e){
 
             fail("testSearchByName() not passed!");
+        } finally {
+            TestWriter.printTest(pw, oracle.get(0), specs.get(specs.indexOf(oracle.get(0))));
+            if(flag) pw.println("\tResult: "+Thread.currentThread().getStackTrace()[1].getMethodName()+" passed!");
         }
 
     }
@@ -169,7 +174,6 @@ public class SpecManagerTest extends TestCase {
             fail("testGetByNameException() [null name] not passed!");
 
         } catch (EmptyFieldException e){
-            System.out.println("testGetByNameException() [null name] passed!");
 
         }
 
@@ -178,10 +182,10 @@ public class SpecManagerTest extends TestCase {
             fail("testGetByNameException() [empty name] not passed!");
 
         } catch (EmptyFieldException e){
-            System.out.println("testGetByNameException() [empty name] passed!");
 
         }
 
+        pw.println("\tResult: "+Thread.currentThread().getStackTrace()[1].getMethodName()+" passed!");
     }
 
     public void testCreateSpec() throws SQLException, EmptyFieldException{
@@ -199,11 +203,14 @@ public class SpecManagerTest extends TestCase {
         s.setBattery(6000);
         s.setDate("2020/4");
         s.setPrice(206);
+        boolean flag=false;
+        Spec max = null;
+
         try {
 
             sm.createSpec(s.getName(), s.getDate(), s.getImage(), s.getSo(), s.getCpu(), s.getChipset(), s.getGpu(), s.getRam(), s.getMemory(), s.getScreenSize(), s.getBattery(), s.getPrice());
             List<Spec> specs = sm.searchByName("Spec di prova");
-            Spec max = specs.get(0);
+            max = specs.get(0);
 
             for(Spec spec : specs){
                 if(spec.getId() > max.getId()) max = spec;
@@ -219,7 +226,7 @@ public class SpecManagerTest extends TestCase {
             assertEquals(s.getBattery(), max.getBattery());
             assertEquals(s.getDate(), max.getDate());
             assertEquals(s.getPrice(), max.getPrice());
-            System.out.println("testCreateSpec() passed!");
+            flag=true;
             sm.deleteSpec(max.getId());
 
 
@@ -227,6 +234,9 @@ public class SpecManagerTest extends TestCase {
 
             fail("testCreateSpec() not passed!");
 
+        } finally {
+            TestWriter.printTest(pw, s, max);
+            if(flag) pw.println("\tResult: "+Thread.currentThread().getStackTrace()[1].getMethodName()+" passed!");
         }
 
     }
@@ -254,8 +264,6 @@ public class SpecManagerTest extends TestCase {
 
         }catch (SpecMismatchException e){
 
-            System.out.println("testCreateSpecException() (null deviceName) passed!");
-
         }
 
         try {
@@ -264,8 +272,6 @@ public class SpecManagerTest extends TestCase {
             fail("testCreateSpecException() (empty deviceName) not passed!");
 
         }catch (SpecMismatchException e){
-
-            System.out.println("testCreateSpecException() (empty deviceName) passed!");
 
         }
 
@@ -276,7 +282,6 @@ public class SpecManagerTest extends TestCase {
 
         }catch (SpecMismatchException e){
 
-            System.out.println("testCreateSpecException() (null releaseDate) passed!");
 
         }
 
@@ -287,8 +292,6 @@ public class SpecManagerTest extends TestCase {
 
         }catch (SpecMismatchException e){
 
-            System.out.println("testCreateSpecException() (empty releaseDate) passed!");
-
         }
 
         try {
@@ -297,8 +300,6 @@ public class SpecManagerTest extends TestCase {
             fail("testCreateSpecException() (null image) not passed!");
 
         }catch (SpecMismatchException e){
-
-            System.out.println("testCreateSpecException() (null image) passed!");
 
         }
 
@@ -309,8 +310,6 @@ public class SpecManagerTest extends TestCase {
 
         }catch (SpecMismatchException e){
 
-            System.out.println("testCreateSpecException() (empty image) passed!");
-
         }
 
         try {
@@ -319,8 +318,6 @@ public class SpecManagerTest extends TestCase {
             fail("testCreateSpecException() (null OS) not passed!");
 
         }catch (SpecMismatchException e){
-
-            System.out.println("testCreateSpecException() (null OS) passed!");
 
         }
 
@@ -331,8 +328,6 @@ public class SpecManagerTest extends TestCase {
 
         }catch (SpecMismatchException e){
 
-            System.out.println("testCreateSpecException() (empty OS) passed!");
-
         }
 
         try {
@@ -341,8 +336,6 @@ public class SpecManagerTest extends TestCase {
             fail("testCreateSpecException() (null CPU) not passed!");
 
         }catch (SpecMismatchException e){
-
-            System.out.println("testCreateSpecException() (null CPU) passed!");
 
         }
 
@@ -353,8 +346,6 @@ public class SpecManagerTest extends TestCase {
 
         }catch (SpecMismatchException e){
 
-            System.out.println("testCreateSpecException() (empty CPU) passed!");
-
         }
 
         try {
@@ -363,8 +354,6 @@ public class SpecManagerTest extends TestCase {
             fail("testCreateSpecException() (null chipset) not passed!");
 
         }catch (SpecMismatchException e){
-
-            System.out.println("testCreateSpecException() (null chipset) passed!");
 
         }
 
@@ -375,8 +364,6 @@ public class SpecManagerTest extends TestCase {
 
         }catch (SpecMismatchException e){
 
-            System.out.println("testCreateSpecException() (empty chipset) passed!");
-
         }
 
         try {
@@ -385,8 +372,6 @@ public class SpecManagerTest extends TestCase {
             fail("testCreateSpecException() (null GPU) not passed!");
 
         }catch (SpecMismatchException e){
-
-            System.out.println("testCreateSpecException() (null GPU) passed!");
 
         }
 
@@ -397,8 +382,6 @@ public class SpecManagerTest extends TestCase {
 
         }catch (SpecMismatchException e){
 
-            System.out.println("testCreateSpecException() (empty GPU) passed!");
-
         }
 
         try {
@@ -407,8 +390,6 @@ public class SpecManagerTest extends TestCase {
             fail("testCreateSpecException() (null RAM) not passed!");
 
         }catch (SpecMismatchException e){
-
-            System.out.println("testCreateSpecException() (null RAM) passed!");
 
         }
 
@@ -419,8 +400,6 @@ public class SpecManagerTest extends TestCase {
 
         }catch (SpecMismatchException e){
 
-            System.out.println("testCreateSpecException() (empty RAM) passed!");
-
         }
 
         try {
@@ -429,8 +408,6 @@ public class SpecManagerTest extends TestCase {
             fail("testCreateSpecException() (null memory) not passed!");
 
         }catch (SpecMismatchException e){
-
-            System.out.println("testCreateSpecException() (null memory) passed!");
 
         }
 
@@ -441,8 +418,6 @@ public class SpecManagerTest extends TestCase {
 
         }catch (SpecMismatchException e){
 
-            System.out.println("testCreateSpecException() (empty memory) passed!");
-
         }
 
         try {
@@ -451,8 +426,6 @@ public class SpecManagerTest extends TestCase {
             fail("testCreateSpecException() (null screenSize) not passed!");
 
         }catch (SpecMismatchException e){
-
-            System.out.println("testCreateSpecException() (null screenSize) passed!");
 
         }
 
@@ -463,8 +436,6 @@ public class SpecManagerTest extends TestCase {
 
         }catch (SpecMismatchException e){
 
-            System.out.println("testCreateSpecException() (emptyScreenSize) passed!");
-
         }
 
         try {
@@ -473,8 +444,6 @@ public class SpecManagerTest extends TestCase {
             fail("testCreateSpecException() (negative battery) not passed!");
 
         }catch (SpecMismatchException e){
-
-            System.out.println("testCreateSpecException() (negative battery) passed!");
 
         }
 
@@ -485,8 +454,6 @@ public class SpecManagerTest extends TestCase {
 
         }catch (SpecMismatchException e){
 
-            System.out.println("testCreateSpecException() (negative price) passed!");
-
         }
 
         try {
@@ -495,8 +462,6 @@ public class SpecManagerTest extends TestCase {
             fail("testCreateSpecException() (invalid releaseDate format) not passed!");
 
         }catch (SpecMismatchException e){
-
-            System.out.println("testCreateSpecException() (invalid releaseDate format) passed!");
 
         }
 
@@ -507,8 +472,6 @@ public class SpecManagerTest extends TestCase {
 
         }catch (SpecMismatchException e){
 
-            System.out.println("testCreateSpecException() (invalid date) passed!");
-
         }
 
         try {
@@ -517,8 +480,6 @@ public class SpecManagerTest extends TestCase {
             fail("testCreateSpecException() (invalid image format) not passed!");
 
         }catch (SpecMismatchException e){
-
-            System.out.println("testCreateSpecException() (invalid image format) passed!");
 
         }
 
@@ -529,8 +490,6 @@ public class SpecManagerTest extends TestCase {
 
         }catch (SpecMismatchException e){
 
-            System.out.println("testCreateSpecException() (invalid image format) passed!");
-
         }
 
         try {
@@ -539,8 +498,6 @@ public class SpecManagerTest extends TestCase {
             fail("testCreateSpecException() (invalid image format) not passed!");
 
         }catch (SpecMismatchException e){
-
-            System.out.println("testCreateSpecException() (invalid image format) passed!");
 
         }
 
@@ -551,10 +508,9 @@ public class SpecManagerTest extends TestCase {
 
         }catch (SpecMismatchException e){
 
-            System.out.println("testCreateSpecException() (invalid image format) passed!");
-
         }
 
+        pw.println("\tResult: "+Thread.currentThread().getStackTrace()[1].getMethodName()+" passed!");
     }
 
     public void testDeleteSpec() throws EmptyFieldException, SpecMismatchException {
@@ -572,12 +528,13 @@ public class SpecManagerTest extends TestCase {
         s.setBattery(6000);
         s.setDate("2020/4");
         s.setPrice(206);
+        Spec max = null;
 
         try{
             sm.createSpec(s.getName(), s.getDate(), s.getImage(), s.getSo(), s.getCpu(), s.getChipset(), s.getGpu(), s.getRam(), s.getMemory(), s.getScreenSize(), s.getBattery(), s.getPrice());
 
             List<Spec> specs = sm.searchByName("Test");
-            Spec max = specs.get(0);
+            max = specs.get(0);
 
             for(Spec spec : specs){
                 if(spec.getId() > max.getId()) max = spec;
@@ -588,18 +545,22 @@ public class SpecManagerTest extends TestCase {
             fail("testDeleteSpec() not passed!");
 
         } catch(SQLException e){
-            System.out.println("testDeleteSpec() passed!");
+
+        } finally {
+            TestWriter.printTest(pw, s, max);
         }
 
-
+        pw.println("\tResult: "+Thread.currentThread().getStackTrace()[1].getMethodName()+" passed!");
     }
 
     public void testSearchById(){
+        boolean flag=false;
+        Spec spec = null, s=null;
 
         try{
-            Spec spec = sm.searchById(2041);
+            spec = sm.searchById(2041);
 
-            Spec s = new Spec();
+            s = new Spec();
             s.setId(2041);
             s.setName("Redmi Note 9 4G");
             s.setSo("Android 10 MIUI 12");
@@ -640,10 +601,13 @@ public class SpecManagerTest extends TestCase {
             assertEquals(s.getReviewer().getId(), spec.getReviewer().getId());
             assertEquals(s.getReviewer().getUsername(), spec.getReviewer().getUsername());
 
-            System.out.println("testSearchById() passed!");
+            flag=true;
 
         } catch (SQLException e){
             fail("testSearchById() not passed!");
+        } finally {
+            TestWriter.printTest(pw, s, spec);
+            if(flag) pw.println("\tResult: "+Thread.currentThread().getStackTrace()[1].getMethodName()+" passed!");
         }
 
     }
@@ -689,7 +653,9 @@ public class SpecManagerTest extends TestCase {
             assertEquals(s.getDisplay(), spec.getDisplay());
             assertEquals(s.getCamera(), spec.getCamera());
             assertEquals(s.getReviewer().getId(), spec.getReviewer().getId());
-            System.out.println("setScores() passed!");
+            TestWriter.printTest(pw, s, spec);
+            pw.println("\tResult: "+Thread.currentThread().getStackTrace()[1].getMethodName()+" passed!");
+
             sm.deleteSpec(spec.getId());
 
         } else {
@@ -756,7 +722,7 @@ public class SpecManagerTest extends TestCase {
 
 
         sm.deleteSpec(max.getId());
-        System.out.println("testSetScoresException() passed!");
+        pw.println("\tResult: "+Thread.currentThread().getStackTrace()[1].getMethodName()+" passed!");
 
 
     }
@@ -765,6 +731,7 @@ public class SpecManagerTest extends TestCase {
 
         int minBattery = sm.searchMinBattery();
         assertEquals(minBattery, 4300);
+        pw.println("\tResult: "+Thread.currentThread().getStackTrace()[1].getMethodName()+" passed!");
 
     }
 
@@ -772,6 +739,7 @@ public class SpecManagerTest extends TestCase {
 
         int maxBattery = sm.searchMaxBattery();
         assertEquals(maxBattery, 6000);
+        pw.println("\tResult: "+Thread.currentThread().getStackTrace()[1].getMethodName()+" passed!");
 
     }
 
@@ -817,13 +785,14 @@ public class SpecManagerTest extends TestCase {
             oracle2.setPrice(149);
             assertTrue(filteredResult.contains(oracle1));
             assertTrue(filteredResult.contains(oracle2));
-            System.out.println("testSearchByPrice() passed!");
 
         }catch (PriceException e){
 
             fail("testSearchByPrice() not passed!");
 
         }
+
+        pw.println("\tResult: "+Thread.currentThread().getStackTrace()[1].getMethodName()+" passed!");
     }
 
     public void testSearchByPriceException() throws SQLException{
@@ -835,17 +804,18 @@ public class SpecManagerTest extends TestCase {
 
         }catch (PriceException e){
 
-            System.out.println("testSearchByPriceException() passed!");
+            pw.println("\tResult: "+Thread.currentThread().getStackTrace()[1].getMethodName()+" passed!");
 
         }
     }
 
-    public static Test suite(){
-
+    public static Test suite(PrintWriter writer){
+        pw = writer;
         return new TestSuite(SpecManagerTest.class);
 
     }
 
     private SpecsManager sm;
+    private static PrintWriter pw;
 
 }

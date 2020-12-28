@@ -26,6 +26,7 @@ public class RestrictedToUser implements Filter {
     public void doFilter(ServletRequest req, ServletResponse resp, FilterChain chain) throws ServletException, IOException {
         HttpServletRequest httpRequest = (HttpServletRequest) req;
         String auth = httpRequest.getHeader("Authorization");
+        System.out.println(auth);
         if(auth != null){
             String token = null;
             try{
@@ -35,6 +36,7 @@ public class RestrictedToUser implements Filter {
             }
             String email = null;
             try{
+                System.out.println("Ci arrivo...");
                 email = jwt.decode(token);
                 httpRequest.setAttribute("email", email);
                 chain.doFilter(req, resp);
@@ -48,6 +50,7 @@ public class RestrictedToUser implements Filter {
 
 
     public void errorResponse(ServletResponse resp) throws IOException {
+        System.out.println("Utente non autorizzato...");
         HttpServletResponse httpResponse = (HttpServletResponse) resp;
         httpResponse.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
         PrintWriter out = httpResponse.getWriter();

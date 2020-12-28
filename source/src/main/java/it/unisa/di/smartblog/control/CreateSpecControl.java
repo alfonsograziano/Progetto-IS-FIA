@@ -42,10 +42,10 @@ public class CreateSpecControl extends HttpServlet {
             response.setStatus(HttpServletResponse.SC_NOT_FOUND);
             request.setAttribute("response", new Error("Error, wrong params!"));
         }  catch (Exception e) {
-        e.printStackTrace();
-        response.setStatus(HttpServletResponse.SC_NOT_FOUND);
-        request.setAttribute("response", new Error("Error, something went wrong!"));
-    }
+            e.printStackTrace();
+            response.setStatus(HttpServletResponse.SC_NOT_FOUND);
+            request.setAttribute("response", new Error("Error, something went wrong!"));
+        }
     }
 
     private static SpecsManager sm;

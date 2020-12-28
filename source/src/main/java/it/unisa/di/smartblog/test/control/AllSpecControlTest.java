@@ -4,20 +4,16 @@ import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
-import it.unisa.di.smartblog.review.ReviewDao;
 import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
 
-import javax.net.ssl.HttpsURLConnection;
 import java.io.DataInputStream;
-import java.io.DataOutputStream;
 import java.io.PrintWriter;
-import java.net.*;
-import java.util.HashMap;
-import java.util.Map;
+import java.net.HttpURLConnection;
+import java.net.URL;
 
-public class SearchControlTest extends TestCase {
+public class AllSpecControlTest extends TestCase {
 
     String base = "http://localhost:8080/smartblog_war_exploded/api/";
 
@@ -25,8 +21,8 @@ public class SearchControlTest extends TestCase {
         pw.println("Class: "+this.getClass().getName());
     }
 
-    public void testSearch() throws Exception {
-        URL url = new URL(base+"/search?s=oneplus");
+    public void testGetAllSpec() throws Exception {
+        URL url = new URL(base+"/spec/all");
         HttpURLConnection con = (HttpURLConnection) url.openConnection();
         con.setRequestMethod("GET");
 
@@ -40,15 +36,21 @@ public class SearchControlTest extends TestCase {
         input.close();
 
         JsonArray convertedObject = new Gson().fromJson(output, JsonArray.class);
-        assertEquals(2,convertedObject.size());
-        pw.println("\tResult: "+Thread.currentThread().getStackTrace()[1].getMethodName()+" passed! ");
+        if(convertedObject.size() > 0){
+            JsonObject spec = (JsonObject) convertedObject.get(0);
+            assertTrue(spec.has("id") && spec.has("name"));
+            pw.println("\tResult: "+Thread.currentThread().getStackTrace()[1].getMethodName()+" passed! ");
+        }else{
+            fail("testGetAllSpec() not passed");
+        }
 
     }
-
     public static Test suite(PrintWriter writer){
         pw = writer;
-        return new TestSuite(SearchControlTest.class);
+        return new TestSuite(AllSpecControlTest.class);
     }
     private static PrintWriter pw;
+
+
 
 }

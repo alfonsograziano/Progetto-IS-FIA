@@ -21,6 +21,7 @@ public class SignInControlTest extends TestCase {
     String base = "http://localhost:8080/smartblog_war_exploded/api";
 
     protected void setUp() throws Exception{
+        pw.println("Class: "+this.getClass().getName());
     }
 
     public void testDone() throws  Exception{

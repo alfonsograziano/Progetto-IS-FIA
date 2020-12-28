@@ -2,6 +2,8 @@ package it.unisa.di.smartblog.test.control;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
+import it.unisa.di.smartblog.user.User;
+import it.unisa.di.smartblog.user.UserManager;
 import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
@@ -21,17 +23,21 @@ public class SignUpControlTest extends TestCase {
     String base = "http://localhost:8080/smartblog_war_exploded/api";
 
     protected void setUp() throws Exception{
+        pw.println("Class: "+this.getClass().getName());
     }
 
     public void testDone() throws  Exception{
         try{
             String s = signUp("testUser","test@test.com","!Antonio99","!Antonio99");
-            System.out.println(s);
+
             JsonObject obj = new Gson().fromJson(s, JsonObject.class);
             assertTrue(obj.has("message"));
             pw.println("\tResult: "+Thread.currentThread().getStackTrace()[1].getMethodName()+" passed!");
+
+            UserManager um = new UserManager();
+            User u1 = um.getUserInfoByEmail("test@test.com");
+            um.deleteUser(u1.getId());
         }catch(Exception e){
-            e.printStackTrace();
             fail("testDone() not passed");
         }
     }

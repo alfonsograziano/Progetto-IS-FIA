@@ -3,6 +3,11 @@ package it.unisa.di.smartblog.test.control;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
+import it.unisa.di.smartblog.review.Review;
+import it.unisa.di.smartblog.review.ReviewManager;
+import it.unisa.di.smartblog.spec.Spec;
+import it.unisa.di.smartblog.spec.SpecsManager;
+import it.unisa.di.smartblog.user.User;
 import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
@@ -14,6 +19,7 @@ import java.net.URL;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.StringJoiner;
 
@@ -40,10 +46,28 @@ public class ReviewInspectionControlTest extends TestCase {
         String token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJyZXZpZXdlckByZXZpZXdlci5jb20ifQ.vESbU9Ms_nBa92wnFlLlINkD9ZvA4Y7b-mJsYfIGFyU";
 
         try {
-            String s = validateReivew(token, "3", true);
+            ReviewManager rm = new ReviewManager();
+            SpecsManager sm  = new SpecsManager();
+            User user = new User();
+            user.setId(3);
+
+            List<Spec> specs = sm.searchAll();
+            Spec spec = specs.get(0);
+            for(Spec r:specs) if(r.getId() > spec.getId()) spec=r;
+
+            rm.createReview(3,4,3,4,4,"Test review",spec, user);
+
+            List<Review> reviews = rm.searchPendingReviews();
+            Review selected = reviews.get(0);
+            for(Review r:reviews) if(r.getId() > selected.getId()) selected=r;
+
+            //Questo metodo è il test vero e proprio
+            String s = validateReivew(token, String.valueOf(selected.getId()), true);
             JsonObject json = new Gson().fromJson(s, JsonObject.class);
             assertTrue(json.has("message"));
             pw.println("\tResult: "+Thread.currentThread().getStackTrace()[1].getMethodName()+" passed! ");
+
+            rm.deleteReview(selected.getId());
         } catch (Exception e) {
             fail("testReviewer() not passed");
         }
@@ -95,7 +119,9 @@ public class ReviewInspectionControlTest extends TestCase {
     }
 
 
+    private void cleanup(int id){
 
+    }
 
 
 

@@ -4,6 +4,8 @@ package it.unisa.di.smartblog.test.control;
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
+import it.unisa.di.smartblog.review.Review;
+import it.unisa.di.smartblog.review.ReviewManager;
 import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
@@ -14,9 +16,7 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.StringJoiner;
+import java.util.*;
 
 public class AddReviewControlTest extends TestCase {
     String base = "http://localhost:8080/smartblog_war_exploded/api";
@@ -68,6 +68,8 @@ public class AddReviewControlTest extends TestCase {
             JsonObject json = new Gson().fromJson(output, JsonObject.class);
             assertTrue(json.has("message"));
             pw.println("\tResult: "+Thread.currentThread().getStackTrace()[1].getMethodName()+" passed! ");
+
+            cleanup();
 
         }catch(Exception e){
             e.printStackTrace();
@@ -122,6 +124,14 @@ public class AddReviewControlTest extends TestCase {
     }
 
 
+    public void cleanup() throws  Exception{
+        ReviewManager rm = new ReviewManager();
+        List<Review> reviews = rm.searchPendingReviews();
+        Review selected = reviews.get(0);
+        for(Review r:reviews) if(r.getId() > selected.getId()) selected=r;
+
+        rm.deleteReview(selected.getId());
+    }
 
 
 

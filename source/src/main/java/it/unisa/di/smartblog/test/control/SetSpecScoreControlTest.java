@@ -3,6 +3,9 @@ package it.unisa.di.smartblog.test.control;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
+import it.unisa.di.smartblog.review.ReviewManager;
+import it.unisa.di.smartblog.spec.Spec;
+import it.unisa.di.smartblog.spec.SpecsManager;
 import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
@@ -14,6 +17,7 @@ import java.net.URL;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.StringJoiner;
 
@@ -38,12 +42,22 @@ public class SetSpecScoreControlTest extends TestCase {
 
     public void testReviewer(){
         String token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJyZXZpZXdlckByZXZpZXdlci5jb20ifQ.vESbU9Ms_nBa92wnFlLlINkD9ZvA4Y7b-mJsYfIGFyU";
+        SpecsManager sm = new SpecsManager();
 
         try {
-            String s = setSpecScores(token, "2041");
-            JsonObject json = new Gson().fromJson(s, JsonObject.class);
+
+            List<Spec> specs = sm.searchAll();
+            Spec s = specs.get(0);
+            for(Spec r:specs) if(r.getId() > s.getId()) s=r;
+
+
+            String output = setSpecScores(token, String.valueOf(s.getId()));
+            JsonObject json = new Gson().fromJson(output, JsonObject.class);
             assertTrue(json.has("message"));
             pw.println("\tResult: "+Thread.currentThread().getStackTrace()[1].getMethodName()+" passed! ");
+
+            sm.setScores(5, s.getId(), s.getPerformance(), s.getDisplay(),s.getCamera());
+
         } catch (Exception e) {
             fail("testReviewer() not passed");
         }

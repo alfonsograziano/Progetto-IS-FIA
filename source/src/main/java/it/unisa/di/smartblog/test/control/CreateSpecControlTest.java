@@ -3,6 +3,9 @@ package it.unisa.di.smartblog.test.control;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
+import it.unisa.di.smartblog.review.Review;
+import it.unisa.di.smartblog.spec.Spec;
+import it.unisa.di.smartblog.spec.SpecsManager;
 import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
@@ -14,6 +17,7 @@ import java.net.URL;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.StringJoiner;
 
@@ -59,6 +63,8 @@ public class CreateSpecControlTest extends TestCase {
             JsonObject json = new Gson().fromJson(output, JsonObject.class);
             assertTrue(json.has("message"));
             pw.println("\tResult: "+Thread.currentThread().getStackTrace()[1].getMethodName()+" passed! ");
+
+            cleanup();
         } catch (Exception e) {
             e.printStackTrace();
             fail("testManager() not passed");
@@ -124,6 +130,15 @@ public class CreateSpecControlTest extends TestCase {
        return output;
     }
 
+
+    private void cleanup() throws Exception{
+        SpecsManager sm = new SpecsManager();
+        List<Spec> specs = sm.searchAll();
+        Spec selected = specs.get(0);
+        for(Spec r:specs) if(r.getId() > selected.getId()) selected=r;
+
+        sm.deleteSpec(selected.getId());
+    }
 
 
 

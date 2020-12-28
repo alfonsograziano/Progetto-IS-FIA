@@ -22,10 +22,11 @@ public class SearchControlTest extends TestCase {
     String base = "http://localhost:8080/smartblog_war_exploded/api/";
 
     protected void setUp() throws Exception{
+        pw.println("Class: "+this.getClass().getName());
     }
 
     public void testSearch() throws Exception {
-        URL url = new URL(base+"/search?s=iphone");
+        URL url = new URL(base+"/search?s=oneplus");
         HttpURLConnection con = (HttpURLConnection) url.openConnection();
         con.setRequestMethod("GET");
 
@@ -39,7 +40,7 @@ public class SearchControlTest extends TestCase {
         input.close();
 
         JsonArray convertedObject = new Gson().fromJson(output, JsonArray.class);
-        assertEquals(19,convertedObject.size());
+        assertEquals(2,convertedObject.size());
         pw.println("\tResult: "+Thread.currentThread().getStackTrace()[1].getMethodName()+" passed! ");
 
     }

@@ -3,6 +3,8 @@ package it.unisa.di.smartblog.test.control;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
+import it.unisa.di.smartblog.spec.Spec;
+import it.unisa.di.smartblog.spec.SpecsManager;
 import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
@@ -14,6 +16,7 @@ import java.net.URL;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.StringJoiner;
 
@@ -41,12 +44,23 @@ public class DeleteSpecControlTest extends TestCase {
 
     public void testManager(){
         String token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJtYW5hZ2VyQG1hbmFnZXIuY29tIn0.BZOq3dhJcWPoL2lfcO1RT_kRTqDNYugerBOYMH014x8";
+        SpecsManager sm = new SpecsManager();
 
         try {
-            String output = deleteSpec(token, 2045);
+            //Creo una nuova scheda tecnica e poi la cancello
+            sm.createSpec("OnePlus Nord N100","2020/4","https://hd2.tudocdn.net/941166?w=139&h=304",
+                    "Android 10 OxygenOS 10.5", "4x 1.8 GHz Kryo 240 + 4x 1.6 GHz Kryo 240",
+                    "Snapdragon 460 Qualcomm SM4250","Adreno 610","4 GB","64 GB","6.52",5000,167);
+
+            List<Spec> specs = sm.searchAll();
+            Spec selected = specs.get(0);
+            for(Spec r:specs) if(r.getId() > selected.getId()) selected=r;
+
+            String output = deleteSpec(token, selected.getId());
             JsonObject json = new Gson().fromJson(output, JsonObject.class);
             assertTrue(json.has("message"));
             pw.println("\tResult: "+Thread.currentThread().getStackTrace()[1].getMethodName()+" passed! ");
+
         } catch (Exception e) {
             e.printStackTrace();
             fail("testManager() not passed");

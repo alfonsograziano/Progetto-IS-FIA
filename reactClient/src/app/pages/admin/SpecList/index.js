@@ -77,7 +77,7 @@ function SpecList(props) {
             key: 'name',
         },
         {
-            title: 'Exit date',
+            title: 'Release date',
             dataIndex: 'date',
             key: 'date',
         }
@@ -91,7 +91,7 @@ function SpecList(props) {
                 render: (text, record) => (
                     <Space size="middle">
                         <Button type="link" onClick={() => {
-                            var ok = prompt("Type ok to confirm the cancellation", "cancel");
+                            var ok = prompt("Type ok to confirm the deletion", "cancel");
                             if (ok === "ok")
                                 deleteSelectedSpec(record)
                         }}>Delete</Button>

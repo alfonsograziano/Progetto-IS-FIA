@@ -63,18 +63,6 @@ public class SetSpecScoreControlTest extends TestCase {
         }
     }
 
-    public void testReviewerError(){
-        String token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJyZXZpZXdlckByZXZpZXdlci5jb20ifQ.vESbU9Ms_nBa92wnFlLlINkD9ZvA4Y7b-mJsYfIGFyU";
-
-        try {
-            String s = setSpecScores(token, "1");
-            System.out.println("Reponse: "+s);
-            fail("testReviewerError() not passed");
-        } catch (Exception e) {
-            pw.println("\tResult: "+Thread.currentThread().getStackTrace()[1].getMethodName()+" passed! ");
-        }
-    }
-
     public void testError(){
         try {
             String s = setSpecScores(null, "2041");

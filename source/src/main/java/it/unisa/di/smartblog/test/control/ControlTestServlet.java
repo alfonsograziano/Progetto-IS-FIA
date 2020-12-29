@@ -38,6 +38,9 @@ public class ControlTestServlet extends HttpServlet{
         System.out.println("Nella chiamata di suite");
         TestSuite suite = new TestSuite();
         /*
+
+
+         */
         suite.addTest(AddReviewControlTest.suite(pw));
         suite.addTest(CreateSpecControlTest.suite(pw));
         suite.addTest(ReviewInspectionControlTest.suite(pw));
@@ -49,12 +52,8 @@ public class ControlTestServlet extends HttpServlet{
         suite.addTest(AllSpecControlTest.suite(pw));
         suite.addTest(SearchControlTest.suite(pw));
 
-         */
-
         suite.addTest(DeleteSpecControlTest.suite(pw));
         suite.addTest(SetSpecScoreControlTest.suite(pw));
-
-
 
         return suite;
 

@@ -84,7 +84,7 @@ function CreateSpecForm({
                 name="internalMemory"
                 rules={[{ required: true }]}
             >
-                <Input />
+                <Input placeholder="in MB or GB"/>
             </Form.Item>
 
             <Form.Item
@@ -92,7 +92,7 @@ function CreateSpecForm({
                 name="battery"
                 rules={[{ required: true }]}
             >
-                <Input />
+                <Input placeholder="Insert number only"/>
             </Form.Item>
 
             <Form.Item
@@ -108,7 +108,7 @@ function CreateSpecForm({
                 name="price"
                 rules={[{ required: true }]}
             >
-                <Input />
+                <Input placeholder="Insert number only"/>
             </Form.Item>
 
             <Form.Item

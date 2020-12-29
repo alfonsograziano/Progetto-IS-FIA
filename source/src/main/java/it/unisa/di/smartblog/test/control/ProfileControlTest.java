@@ -40,7 +40,7 @@ public class ProfileControlTest extends TestCase {
                     && obj.has("reviews"));
             pw.println("\tResult: "+Thread.currentThread().getStackTrace()[1].getMethodName()+" passed!");
         }catch(Exception e){
-            fail("ProfileControlTest.testError not passed");
+            fail("ProfileControlTest.testUser not passed");
         }
     }
 
@@ -54,7 +54,7 @@ public class ProfileControlTest extends TestCase {
                     && obj.has("reviews"));
             pw.println("\tResult: "+Thread.currentThread().getStackTrace()[1].getMethodName()+" passed!");
         }catch(Exception e){
-            fail("ProfileControlTest.testError not passed");
+            fail("ProfileControlTest.testManager not passed");
         }
     }
 
@@ -68,7 +68,7 @@ public class ProfileControlTest extends TestCase {
                     && obj.has("reviews"));
             pw.println("\tResult: "+Thread.currentThread().getStackTrace()[1].getMethodName()+" passed!");
         }catch(Exception e){
-            fail("ProfileControlTest.testError not passed");
+            fail("ProfileControlTest.testReviewer not passed");
         }
     }
 

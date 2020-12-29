@@ -67,35 +67,12 @@ public class DeleteSpecControlTest extends TestCase {
         }
     }
 
-    public void testReviewerError(){
-        String token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJyZXZpZXdlckByZXZpZXdlci5jb20ifQ.vESbU9Ms_nBa92wnFlLlINkD9ZvA4Y7b-mJsYfIGFyU";
-
-        try {
-            String s = deleteSpec(token, 2045);
-            System.out.println(s);
-            fail("testReviewerError() not passed");
-        } catch (Exception e) {
-            pw.println("\tResult: "+Thread.currentThread().getStackTrace()[1].getMethodName()+" passed! ");
-        }
-    }
 
     public void testCredentialError(){
 
         try {
-            String s = deleteSpec(null, 2045);
-            fail("testReviewerError() not passed");
-        } catch (Exception e) {
-            pw.println("\tResult: "+Thread.currentThread().getStackTrace()[1].getMethodName()+" passed! ");
-        }
-    }
-
-
-    public void testSpecNotFoundError(){
-        String token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJtYW5hZ2VyQG1hbmFnZXIuY29tIn0.BZOq3dhJcWPoL2lfcO1RT_kRTqDNYugerBOYMH014x8";
-
-        try {
-            String s = deleteSpec(token, 1);
-            fail("testReviewerError() not passed");
+            String s = deleteSpec(null, 2041);
+            fail("testCredentialError() not passed");
         } catch (Exception e) {
             pw.println("\tResult: "+Thread.currentThread().getStackTrace()[1].getMethodName()+" passed! ");
         }

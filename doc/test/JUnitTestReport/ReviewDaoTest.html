@@ -1,0 +1,280 @@
+<html><head><style class="darkreader darkreader--fallback" media="screen"></style><style class="darkreader darkreader--text" media="screen"></style><style class="darkreader darkreader--invert" media="screen">.jfk-bubble.gtx-bubble, .captcheck_answer_label > input + img, embed[type="application/pdf"] {
+    filter: invert(100%) hue-rotate(180deg) contrast(90%) !important;
+}</style><style class="darkreader darkreader--inline" media="screen">[data-darkreader-inline-bgcolor] {
+  background-color: var(--darkreader-inline-bgcolor) !important;
+}
+[data-darkreader-inline-bgimage] {
+  background-image: var(--darkreader-inline-bgimage) !important;
+}
+[data-darkreader-inline-border] {
+  border-color: var(--darkreader-inline-border) !important;
+}
+[data-darkreader-inline-border-bottom] {
+  border-bottom-color: var(--darkreader-inline-border-bottom) !important;
+}
+[data-darkreader-inline-border-left] {
+  border-left-color: var(--darkreader-inline-border-left) !important;
+}
+[data-darkreader-inline-border-right] {
+  border-right-color: var(--darkreader-inline-border-right) !important;
+}
+[data-darkreader-inline-border-top] {
+  border-top-color: var(--darkreader-inline-border-top) !important;
+}
+[data-darkreader-inline-boxshadow] {
+  box-shadow: var(--darkreader-inline-boxshadow) !important;
+}
+[data-darkreader-inline-color] {
+  color: var(--darkreader-inline-color) !important;
+}
+[data-darkreader-inline-fill] {
+  fill: var(--darkreader-inline-fill) !important;
+}
+[data-darkreader-inline-stroke] {
+  stroke: var(--darkreader-inline-stroke) !important;
+}
+[data-darkreader-inline-outline] {
+  outline-color: var(--darkreader-inline-outline) !important;
+}
+[data-darkreader-inline-stopcolor] {
+  stop-color: var(--darkreader-inline-stopcolor) !important;
+}</style><style class="darkreader darkreader--variables" media="screen">:root {
+   --darkreader-neutral-background: #131516;
+   --darkreader-neutral-text: #d8d4cf;
+   --darkreader-selection-background: #004daa;
+   --darkreader-selection-text: #e8e6e3;
+}</style><script class="darkreader darkreader--proxy">(function injectProxy() {
+        document.dispatchEvent(
+            new CustomEvent("__darkreader__inlineScriptsAllowed")
+        );
+        const addRuleDescriptor = Object.getOwnPropertyDescriptor(
+            CSSStyleSheet.prototype,
+            "addRule"
+        );
+        const insertRuleDescriptor = Object.getOwnPropertyDescriptor(
+            CSSStyleSheet.prototype,
+            "insertRule"
+        );
+        const deleteRuleDescriptor = Object.getOwnPropertyDescriptor(
+            CSSStyleSheet.prototype,
+            "deleteRule"
+        );
+        const removeRuleDescriptor = Object.getOwnPropertyDescriptor(
+            CSSStyleSheet.prototype,
+            "removeRule"
+        );
+        const cleanUp = () => {
+            Object.defineProperty(
+                CSSStyleSheet.prototype,
+                "addRule",
+                addRuleDescriptor
+            );
+            Object.defineProperty(
+                CSSStyleSheet.prototype,
+                "insertRule",
+                insertRuleDescriptor
+            );
+            Object.defineProperty(
+                CSSStyleSheet.prototype,
+                "deleteRule",
+                deleteRuleDescriptor
+            );
+            Object.defineProperty(
+                CSSStyleSheet.prototype,
+                "removeRule",
+                removeRuleDescriptor
+            );
+            document.removeEventListener("__darkreader__cleanUp", cleanUp);
+            document.removeEventListener(
+                "__darkreader__addUndefinedResolver",
+                (e) => addUndefinedResolver(e)
+            );
+        };
+        const addUndefinedResolver = (e) => {
+            customElements.whenDefined(e.detail.tag).then(() => {
+                document.dispatchEvent(
+                    new CustomEvent("__darkreader__isDefined", {
+                        detail: {tag: e.detail.tag}
+                    })
+                );
+            });
+        };
+        document.addEventListener("__darkreader__cleanUp", cleanUp);
+        document.addEventListener("__darkreader__addUndefinedResolver", (e) =>
+            addUndefinedResolver(e)
+        );
+        const updateSheetEvent = new Event("__darkreader__updateSheet");
+        function proxyAddRule(selector, style, index) {
+            addRuleDescriptor.value.call(this, selector, style, index);
+            if (
+                this.ownerNode &&
+                !this.ownerNode.classList.contains("darkreader")
+            ) {
+                this.ownerNode.dispatchEvent(updateSheetEvent);
+            }
+            return -1;
+        }
+        function proxyInsertRule(rule, index) {
+            const returnValue = insertRuleDescriptor.value.call(
+                this,
+                rule,
+                index
+            );
+            if (
+                this.ownerNode &&
+                !this.ownerNode.classList.contains("darkreader")
+            ) {
+                this.ownerNode.dispatchEvent(updateSheetEvent);
+            }
+            return returnValue;
+        }
+        function proxyDeleteRule(index) {
+            deleteRuleDescriptor.value.call(this, index);
+            if (
+                this.ownerNode &&
+                !this.ownerNode.classList.contains("darkreader")
+            ) {
+                this.ownerNode.dispatchEvent(updateSheetEvent);
+            }
+        }
+        function proxyRemoveRule(index) {
+            removeRuleDescriptor.value.call(this, index);
+            if (
+                this.ownerNode &&
+                !this.ownerNode.classList.contains("darkreader")
+            ) {
+                this.ownerNode.dispatchEvent(updateSheetEvent);
+            }
+        }
+        Object.defineProperty(
+            CSSStyleSheet.prototype,
+            "addRule",
+            Object.assign({}, addRuleDescriptor, {value: proxyAddRule})
+        );
+        Object.defineProperty(
+            CSSStyleSheet.prototype,
+            "insertRule",
+            Object.assign({}, insertRuleDescriptor, {value: proxyInsertRule})
+        );
+        Object.defineProperty(
+            CSSStyleSheet.prototype,
+            "deleteRule",
+            Object.assign({}, deleteRuleDescriptor, {value: proxyDeleteRule})
+        );
+        Object.defineProperty(
+            CSSStyleSheet.prototype,
+            "removeRule",
+            Object.assign({}, removeRuleDescriptor, {value: proxyRemoveRule})
+        );
+    })()</script><style class="darkreader darkreader--user-agent" media="screen">html {
+    background-color: #181a1b !important;
+}
+html, body, input, textarea, select, button {
+    background-color: #181a1b;
+}
+html, body, input, textarea, select, button {
+    border-color: #736b5e;
+    color: #e8e6e3;
+}
+a {
+    color: #3391ff;
+}
+table {
+    border-color: #545b5e;
+}
+::placeholder {
+    color: #b2aba1;
+}
+input:-webkit-autofill,
+textarea:-webkit-autofill,
+select:-webkit-autofill {
+    background-color: #555b00 !important;
+    color: #e8e6e3 !important;
+}
+::-webkit-scrollbar {
+    background-color: #202324;
+    color: #aba499;
+}
+::-webkit-scrollbar-thumb {
+    background-color: #454a4d;
+}
+::-webkit-scrollbar-thumb:hover {
+    background-color: #575e62;
+}
+::-webkit-scrollbar-thumb:active {
+    background-color: #484e51;
+}
+::-webkit-scrollbar-corner {
+    background-color: #181a1b;
+}
+* {
+    scrollbar-color: #202324 #454a4d;
+}
+::selection {
+    background-color: #004daa !important;
+    color: #e8e6e3 !important;
+}
+::-moz-selection {
+    background-color: #004daa !important;
+    color: #e8e6e3 !important;
+}</style><meta name="darkreader" content="f9e71529cc592b335cf49b9cea4d9714"><style class="darkreader darkreader--override" media="screen">.vimvixen-hint {
+    background-color: #7b5300 !important;
+    border-color: #d8b013 !important;
+    color: #f3e8c8 !important;
+}
+::placeholder {
+    opacity: 0.5 !important;
+}</style><script src="chrome-extension://mooikfkahbdckldjjndioackbalphokd/assets/prompt.js"></script></head><body><pre style="word-wrap: break-word; white-space: pre-wrap;">TestSuite with 11 tests [class: it.unisa.di.smartblog.test.review.ReviewDaoTest]
+
+Starting execution of test case : testGetByUserException
+	Result: testGetByUserException passed!
+
+Starting execution of test case : testGetBySpecId
+	Expected: [Review{id=4, state='approved', totalScore=2, battery=4, performance=3, display=2, camera=1, text='Vintage', spec=null, user=User{id=3, active=true, username='antonio', password='null', email='antonio@sisonoio.com', reviews=[]}}, Review{id=5, state='approved', totalScore=4, battery=3, performance=5, display=5, camera=2, text='Un best buy', spec=null, user=User{id=4, active=true, username='mario', password='null', email='mario@rossi.com', reviews=[]}}]
+	Obtained: [Review{id=4, state='approved', totalScore=2, battery=4, performance=3, display=2, camera=1, text='Vintage', spec=null, user=User{id=3, active=true, username='antonio', password='null', email='antonio@sisonoio.com', reviews=[]}}, Review{id=5, state='approved', totalScore=4, battery=3, performance=5, display=5, camera=2, text='Un best buy', spec=null, user=User{id=4, active=true, username='mario', password='null', email='mario@rossi.com', reviews=[]}}]
+	Result: testGetBySpecId passed!
+
+Starting execution of test case : testApproveReview
+	testApproveReview() (review approved) passed!
+	testApproveReview() (review rejected) passed!
+	Expected: Review{id=0, state='null', totalScore=5, battery=5, performance=5, display=5, camera=5, text='Da approvare', spec=Spec{fit=0.0, id=2045, name='null', date='null', image='null', so='null', cpu='null', chipset='null', gpu='null', ram='null', memory='null', screenSize='null', battery=0, display=0.0, camera=0.0, performance=0.0, price=0.0, reviewer=null, reviews=null, normalizedBattery=0.0}, user=User{id=3, active=false, username='null', password='null', email='null', reviews=[]}}
+	Obtained: Review{id=356, state='pending', totalScore=5, battery=5, performance=5, display=5, camera=5, text='Da approvare', spec=Spec{fit=0.0, id=2045, name='vivo Y11s', date='null', image='null', so='null', cpu='null', chipset='null', gpu='null', ram='null', memory='null', screenSize='null', battery=0, display=0.0, camera=0.0, performance=0.0, price=0.0, reviewer=null, reviews=null, normalizedBattery=0.0}, user=User{id=3, active=true, username='antonio', password='null', email='antonio@sisonoio.com', reviews=[]}}
+	Result: testApproveReview passed!
+
+Starting execution of test case : testSaveReviewException
+	Result: testSaveReviewException passed!
+
+Starting execution of test case : testGetById
+	Expected: Review{id=3, state='pending', totalScore=5, battery=4, performance=5, display=4, camera=4, text='Ero scettico ma le prestazione di questo Huawei mi hanno fatto ricredere!', spec=Spec{fit=0.0, id=2044, name='Huawei Mate 40 Pro', date='null', image='null', so='null', cpu='null', chipset='null', gpu='null', ram='null', memory='null', screenSize='null', battery=0, display=0.0, camera=0.0, performance=0.0, price=0.0, reviewer=null, reviews=null, normalizedBattery=0.0}, user=User{id=3, active=false, username='antonio', password='null', email='antonio@sisonoio.com', reviews=[]}}
+	Obtained: Review{id=3, state='pending', totalScore=5, battery=4, performance=5, display=4, camera=4, text='Ero scettico ma le prestazione di questo Huawei mi hanno fatto ricredere!', spec=Spec{fit=0.0, id=2044, name='Huawei Mate 40 Pro', date='null', image='null', so='null', cpu='null', chipset='null', gpu='null', ram='null', memory='null', screenSize='null', battery=0, display=0.0, camera=0.0, performance=0.0, price=0.0, reviewer=null, reviews=null, normalizedBattery=0.0}, user=User{id=3, active=false, username='antonio', password='null', email='antonio@sisonoio.com', reviews=[]}}
+	Result: testGetById passed!
+
+Starting execution of test case : testGetPending
+	Expected: Review{id=3, state='pending', totalScore=5, battery=4, performance=5, display=4, camera=4, text='Ero scettico ma le prestazione di questo Huawei mi hanno fatto ricredere!', spec=Spec{fit=0.0, id=2044, name='Huawei Mate 40 Pro', date='null', image='null', so='null', cpu='null', chipset='null', gpu='null', ram='null', memory='null', screenSize='null', battery=0, display=0.0, camera=0.0, performance=0.0, price=0.0, reviewer=null, reviews=null, normalizedBattery=0.0}, user=User{id=3, active=true, username='antonio', password='null', email='antonio@sisonoio.com', reviews=[]}}
+	Obtained: Review{id=3, state='pending', totalScore=5, battery=4, performance=5, display=4, camera=4, text='Ero scettico ma le prestazione di questo Huawei mi hanno fatto ricredere!', spec=Spec{fit=0.0, id=2044, name='Huawei Mate 40 Pro', date='null', image='null', so='null', cpu='null', chipset='null', gpu='null', ram='null', memory='null', screenSize='null', battery=0, display=0.0, camera=0.0, performance=0.0, price=0.0, reviewer=null, reviews=null, normalizedBattery=0.0}, user=User{id=3, active=true, username='antonio', password='null', email='antonio@sisonoio.com', reviews=[]}}
+	Result: testGetPending passed!
+
+Starting execution of test case : testDeleteReview
+	Expected: Review{id=0, state='null', totalScore=5, battery=5, performance=5, display=5, camera=5, text='Da eliminare', spec=Spec{fit=0.0, id=2045, name='null', date='null', image='null', so='null', cpu='null', chipset='null', gpu='null', ram='null', memory='null', screenSize='null', battery=0, display=0.0, camera=0.0, performance=0.0, price=0.0, reviewer=null, reviews=null, normalizedBattery=0.0}, user=User{id=3, active=false, username='null', password='null', email='null', reviews=[]}}
+	Obtained: Review{id=357, state='pending', totalScore=5, battery=5, performance=5, display=5, camera=5, text='Da eliminare', spec=Spec{fit=0.0, id=2045, name='vivo Y11s', date='null', image='null', so='null', cpu='null', chipset='null', gpu='null', ram='null', memory='null', screenSize='null', battery=0, display=0.0, camera=0.0, performance=0.0, price=0.0, reviewer=null, reviews=null, normalizedBattery=0.0}, user=null}
+	Result: testDeleteReview passed!
+
+Starting execution of test case : testSaveReview
+	Expected: Review{id=0, state='pending', totalScore=4, battery=4, performance=3, display=3, camera=3, text='Review di prova', spec=Spec{fit=0.0, id=2045, name='null', date='null', image='null', so='null', cpu='null', chipset='null', gpu='null', ram='null', memory='null', screenSize='null', battery=0, display=0.0, camera=0.0, performance=0.0, price=0.0, reviewer=null, reviews=null, normalizedBattery=0.0}, user=User{id=3, active=false, username='null', password='null', email='null', reviews=[]}}
+	Obtained: Review{id=358, state='pending', totalScore=4, battery=4, performance=3, display=3, camera=3, text='Review di prova', spec=Spec{fit=0.0, id=2045, name='vivo Y11s', date='null', image='null', so='null', cpu='null', chipset='null', gpu='null', ram='null', memory='null', screenSize='null', battery=0, display=0.0, camera=0.0, performance=0.0, price=0.0, reviewer=null, reviews=null, normalizedBattery=0.0}, user=null}
+	Result: testSaveReview passed!
+
+Starting execution of test case : testGetByIdException
+	Result: testGetByIdException passed!
+
+Starting execution of test case : testGetBySpecIdException
+	Result: testGetBySpecIdException passed!
+
+Starting execution of test case : testGetByUser
+	Expected: [Review{id=3, state='pending', totalScore=5, battery=4, performance=5, display=4, camera=4, text='Ero scettico ma le prestazione di questo Huawei mi hanno fatto ricredere!', spec=Spec{fit=0.0, id=2044, name='Huawei Mate 40 Pro', date='null', image='null', so='null', cpu='null', chipset='null', gpu='null', ram='null', memory='null', screenSize='null', battery=0, display=0.0, camera=0.0, performance=0.0, price=0.0, reviewer=null, reviews=null, normalizedBattery=0.0}, user=null}, Review{id=4, state='approved', totalScore=2, battery=4, performance=3, display=2, camera=1, text='Vintage', spec=Spec{fit=0.0, id=2041, name='Redmi Note 9 4G', date='null', image='null', so='null', cpu='null', chipset='null', gpu='null', ram='null', memory='null', screenSize='null', battery=0, display=0.0, camera=0.0, performance=0.0, price=0.0, reviewer=null, reviews=null, normalizedBattery=0.0}, user=null}]
+	Obtained: [Review{id=3, state='pending', totalScore=5, battery=4, performance=5, display=4, camera=4, text='Ero scettico ma le prestazione di questo Huawei mi hanno fatto ricredere!', spec=Spec{fit=0.0, id=2044, name='Huawei Mate 40 Pro', date='null', image='null', so='null', cpu='null', chipset='null', gpu='null', ram='null', memory='null', screenSize='null', battery=0, display=0.0, camera=0.0, performance=0.0, price=0.0, reviewer=null, reviews=null, normalizedBattery=0.0}, user=null}, Review{id=4, state='approved', totalScore=2, battery=4, performance=3, display=2, camera=1, text='Vintage', spec=Spec{fit=0.0, id=2041, name='Redmi Note 9 4G', date='null', image='null', so='null', cpu='null', chipset='null', gpu='null', ram='null', memory='null', screenSize='null', battery=0, display=0.0, camera=0.0, performance=0.0, price=0.0, reviewer=null, reviews=null, normalizedBattery=0.0}, user=null}]
+	Result: testGetByUser passed!
+
+Number of tests executed: 11
+Number of failures: 0
+</pre></body></html>

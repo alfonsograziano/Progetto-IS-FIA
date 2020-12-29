@@ -1,6 +1,17 @@
 package it.unisa.di.smartblog.filter;
 
 import com.google.gson.Gson;
+import it.unisa.di.smartblog.test.control.ReviewControlTest;
+import it.unisa.di.smartblog.test.review.ReviewDaoTestServlet;
+import it.unisa.di.smartblog.test.review.ReviewManagerTestServlet;
+import it.unisa.di.smartblog.test.spec.SpecDaoTestServlet;
+import it.unisa.di.smartblog.test.spec.SpecManagerTest;
+import it.unisa.di.smartblog.test.spec.SpecManagerTestServlet;
+import it.unisa.di.smartblog.test.user.UserDaoTestServlet;
+import it.unisa.di.smartblog.test.user.UserManagerTestServlet;
+import it.unisa.di.smartblog.user.UserManager;
+import org.junit.experimental.categories.Categories;
+
 import javax.servlet.*;
 import javax.servlet.annotation.WebFilter;
 import java.io.IOException;

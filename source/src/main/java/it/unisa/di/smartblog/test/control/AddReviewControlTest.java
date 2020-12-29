@@ -73,7 +73,7 @@ public class AddReviewControlTest extends TestCase {
 
         }catch(Exception e){
             e.printStackTrace();
-            fail("ProfileControlTest.testError not passed");
+            fail("AddReviewControlTest.testError not passed");
         }
     }
 
@@ -117,7 +117,7 @@ public class AddReviewControlTest extends TestCase {
 
             JsonObject json = new Gson().fromJson(output, JsonObject.class);
             assertTrue(json.has("message"));
-            fail("ProfileControlTest.testError not passed");
+            fail("AddReviewControlTest.testError not passed");
         }catch(Exception e){
             pw.println("\tResult: "+Thread.currentThread().getStackTrace()[1].getMethodName()+" passed! ");
         }

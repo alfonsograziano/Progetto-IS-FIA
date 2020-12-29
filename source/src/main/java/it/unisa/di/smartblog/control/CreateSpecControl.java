@@ -21,6 +21,20 @@ public class CreateSpecControl extends HttpServlet {
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
+        int battery = -1;
+        double price = -1;
+        try{
+            battery = Integer.parseInt(request.getParameter("battery"));
+        }catch (NumberFormatException e){
+
+        }
+
+        try{
+            price = Integer.parseInt(request.getParameter("price"));
+        }catch (NumberFormatException e){
+
+        }
+
         try {
             sm.createSpec(
                     request.getParameter("deviceName"),
@@ -33,18 +47,18 @@ public class CreateSpecControl extends HttpServlet {
                     request.getParameter("RAM"),
                     request.getParameter("internalMemory"),
                     request.getParameter("displayInches"),
-                    Integer.parseInt(request.getParameter("battery")),
-                    Double.parseDouble(request.getParameter("price"))
+                    battery,
+                    price
             );
             request.setAttribute("response", new Message("Done!"));
         } catch (SpecMismatchException e) {
             e.printStackTrace();
             response.setStatus(HttpServletResponse.SC_NOT_FOUND);
-            request.setAttribute("response", new Error("Error, wrong params!"));
+            request.setAttribute("response", new Error(e.getMessage()));
         }  catch (Exception e) {
             e.printStackTrace();
             response.setStatus(HttpServletResponse.SC_NOT_FOUND);
-            request.setAttribute("response", new Error("Error, something went wrong!"));
+            request.setAttribute("response", new Error("Wrong params"));
         }
     }
 

@@ -36,13 +36,6 @@ function CreateSpecForm({
             >
                 <Input />
             </Form.Item>
-            <Form.Item
-                label="Image url"
-                name="image"
-                rules={[{ required: true }]}
-            >
-                <Input />
-            </Form.Item>
 
             <Form.Item
                 label="SO"
@@ -82,23 +75,13 @@ function CreateSpecForm({
                 name="RAM"
                 rules={[{ required: true }]}
             >
-                <Input />
+                <Input placeholder="in MB or GB"/>
             </Form.Item>
 
 
             <Form.Item
                 label="Internal Memory"
                 name="internalMemory"
-                rules={[{ required: true }]}
-            >
-                <Input />
-            </Form.Item>
-
-
-
-            <Form.Item
-                label="Display"
-                name="displayInches"
                 rules={[{ required: true }]}
             >
                 <Input />
@@ -112,6 +95,13 @@ function CreateSpecForm({
                 <Input />
             </Form.Item>
 
+            <Form.Item
+                label="Display"
+                name="displayInches"
+                rules={[{ required: true }]}
+            >
+                <Input />
+            </Form.Item>
 
             <Form.Item
                 label="Price"
@@ -121,7 +111,13 @@ function CreateSpecForm({
                 <Input />
             </Form.Item>
 
-
+            <Form.Item
+                label="Image url"
+                name="image"
+                rules={[{ required: true }]}
+            >
+                <Input />
+            </Form.Item>
 
             <Form.Item {...tailLayout}>
                 <Button type="primary" htmlType="submit">

@@ -34,7 +34,7 @@ public class ReviewControlTest extends TestCase {
             pw.println("\tResult: "+Thread.currentThread().getStackTrace()[1].getMethodName()+" passed! ");
 
         }catch(Exception e){
-            fail("ProfileControlTest.testError not passed");
+            fail("ReviewControl.testGetPendingInfo not passed");
         }
     }
 

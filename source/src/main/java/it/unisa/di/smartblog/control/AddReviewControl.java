@@ -29,7 +29,6 @@ public class AddReviewControl extends HttpServlet {
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
         int totalScore = Integer.parseInt(request.getParameter("totalScore"));
         int performance = Integer.parseInt(request.getParameter("performance"));
         int display = Integer.parseInt(request.getParameter("display"));
@@ -47,9 +46,11 @@ public class AddReviewControl extends HttpServlet {
             response.setStatus(HttpServletResponse.SC_CONFLICT);
             request.setAttribute("response", new Error(e.getMessage()));
         }  catch (SQLException throwables) {
+            throwables.printStackTrace();
             response.setStatus(HttpServletResponse.SC_NOT_FOUND);
             request.setAttribute("response", new Error("Cannot add review, please check params"));
         } catch (CredentialsException e) {
+            e.printStackTrace();
             response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
             request.setAttribute("response", new Error(e.getMessage()));
         }

@@ -1,5 +1,9 @@
 Manifest-Version: 1.0
 Created-By: IntelliJ IDEA
+<<<<<<< HEAD
 Built-By: LENOVO
+=======
+Built-By: alfon
+>>>>>>> cd36c7b2889819a84388ca61f6321dc50469a9bd
 Build-Jdk: version 15
 

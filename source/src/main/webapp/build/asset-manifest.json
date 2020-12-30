@@ -1,0 +1,25 @@
+{
+  "files": {
+    "main.css": "/smartblog_war_exploded/build/static/css/main.32d48e20.chunk.css",
+    "main.js": "/smartblog_war_exploded/build/static/js/main.cec9279b.chunk.js",
+    "main.js.map": "/smartblog_war_exploded/build/static/js/main.cec9279b.chunk.js.map",
+    "runtime-main.js": "/smartblog_war_exploded/build/static/js/runtime-main.da5f4603.js",
+    "runtime-main.js.map": "/smartblog_war_exploded/build/static/js/runtime-main.da5f4603.js.map",
+    "static/css/2.4d98ed14.chunk.css": "/smartblog_war_exploded/build/static/css/2.4d98ed14.chunk.css",
+    "static/js/2.c7f23080.chunk.js": "/smartblog_war_exploded/build/static/js/2.c7f23080.chunk.js",
+    "static/js/2.c7f23080.chunk.js.map": "/smartblog_war_exploded/build/static/js/2.c7f23080.chunk.js.map",
+    "static/js/3.47805d46.chunk.js": "/smartblog_war_exploded/build/static/js/3.47805d46.chunk.js",
+    "static/js/3.47805d46.chunk.js.map": "/smartblog_war_exploded/build/static/js/3.47805d46.chunk.js.map",
+    "index.html": "/smartblog_war_exploded/build/index.html",
+    "static/css/2.4d98ed14.chunk.css.map": "/smartblog_war_exploded/build/static/css/2.4d98ed14.chunk.css.map",
+    "static/css/main.32d48e20.chunk.css.map": "/smartblog_war_exploded/build/static/css/main.32d48e20.chunk.css.map",
+    "static/js/2.c7f23080.chunk.js.LICENSE.txt": "/smartblog_war_exploded/build/static/js/2.c7f23080.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.da5f4603.js",
+    "static/css/2.4d98ed14.chunk.css",
+    "static/js/2.c7f23080.chunk.js",
+    "static/css/main.32d48e20.chunk.css",
+    "static/js/main.cec9279b.chunk.js"
+  ]
+}

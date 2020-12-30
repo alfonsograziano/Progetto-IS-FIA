@@ -14,6 +14,7 @@ import org.junit.experimental.categories.Categories;
 
 import javax.servlet.*;
 import javax.servlet.annotation.WebFilter;
+import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
 import java.io.PrintWriter;
 
@@ -29,8 +30,13 @@ public class ResponseFormatter implements Filter {
        //Codice prima dell'esecuzione della servlet
         chain.doFilter(req, resp);
         //Codice dopo l'esecuzione della servlet
+        HttpServletRequest request = (HttpServletRequest)req;
+        StringBuffer requestURL = request.getRequestURL();
 
-        sendAsJson(resp, req.getAttribute("response"));
+        if(requestURL.toString().contains("/api")){
+            sendAsJson(resp, req.getAttribute("response"));
+        }
+
     }
 
     public void init(FilterConfig config) throws ServletException {
@@ -46,10 +52,13 @@ public class ResponseFormatter implements Filter {
         response.setContentType("application/json");
         String res = _gson.toJson(obj);
         //System.out.println("Response"+res);
+
         PrintWriter out = response.getWriter();
 
         out.print(res);
         out.flush();
+
+
     }
 
 }

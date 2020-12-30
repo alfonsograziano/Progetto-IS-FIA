@@ -48,7 +48,7 @@ function MainNavigation(props) {
     }, [isReviewer, isAdmin])
 
     return (
-        <Router basename={'/smartblog_war_exploded/build'}>
+        <Router>
 
             <Layout style={{ height: "100%", backgroundColor: "transparent" }}>
                 <Navbar />

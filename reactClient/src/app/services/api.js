@@ -1,4 +1,4 @@
-const ROOT_URL = "http://localhost:8080/smartblog_war_exploded/api"
+const ROOT_URL = "/api"
 
 export const DORAIA = `${ROOT_URL}/dora`;
 

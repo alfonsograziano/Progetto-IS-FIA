@@ -1,5 +1,9 @@
 Manifest-Version: 1.0
+<<<<<<< HEAD
 Created-By: IntelliJ IDEA
 Built-By: alfon
 Build-Jdk: version 15
+=======
+Class-Path: 
+>>>>>>> 05e9f379841bf75f3d3bc47f55d08e7180da39e2
 

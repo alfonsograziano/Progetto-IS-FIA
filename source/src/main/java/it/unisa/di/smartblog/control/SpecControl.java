@@ -28,11 +28,11 @@ public class SpecControl extends HttpServlet {
 
         int id = Integer.parseInt(request.getParameter("id"));
         try {
-            System.out.println("Nella servlet");
+            //System.out.println("Nella servlet");
             Spec res =  sm.searchById(id);
             List<Review> reviews = rm.searchReviewsBySpec(res.getId());
             res.setReviews(reviews);
-            System.out.println(reviews);
+            //System.out.println(reviews);
 
             request.setAttribute("response",res);
         } catch (SQLException throwables) {

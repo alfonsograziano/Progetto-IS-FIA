@@ -23,12 +23,12 @@ public class SignInControl extends HttpServlet {
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        System.out.println("doPost SignInControl");
+        //System.out.println("doPost SignInControl");
 
         String email = request.getParameter("email");
         String password = request.getParameter("password");
 
-        System.out.println(email+" "+password);
+        //System.out.println(email+" "+password);
 
         try {
             User user = um.auth(email,password);

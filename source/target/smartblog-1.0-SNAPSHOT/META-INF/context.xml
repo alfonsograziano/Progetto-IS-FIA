@@ -8,5 +8,4 @@
           username="root"
           password="passwordpotente"
           url="jdbc:mysql://localhost:3306/smartblog?useUnicode=true&amp;useJDBCCompliantTimezoneShift=true&amp;useLegacyDatetimeCode=false&amp;serverTimezone=UTC"/>
->>>>>>> c035896b72bf9803734869a4dc4e96885f66a7d6
 </Context>

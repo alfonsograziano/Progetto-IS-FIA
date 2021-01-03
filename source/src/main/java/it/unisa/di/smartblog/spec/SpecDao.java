@@ -137,13 +137,13 @@ public class SpecDao {
     }
 
     public synchronized Spec getById(int id) throws SQLException{
-        System.out.println("He");
+
         Connection conn = null;
         PreparedStatement ps = null;
         String query = "SELECT * FROM spec WHERE spec.id = ?";
         Spec result = new Spec();
         try{
-            System.out.println("Fuori");
+            //System.out.println("Fuori");
             conn = ds.getConnection();
             ps = conn.prepareStatement(query);
             ps.setInt(1, id);
@@ -167,10 +167,10 @@ public class SpecDao {
             result.setDate(rs.getString("date"));
             result.setPrice(rs.getDouble("price"));
 
-            System.out.println("Out");
+            //System.out.println("Out");
             if(rs.getInt("reviewerId") != 0){
 
-                System.out.println("Here");
+                //System.out.println("Here");
                 String getReviewer = "SELECT * FROM spec INNER JOIN user ON spec.reviewerId=user.id WHERE spec.id = ?";
                 ps = conn.prepareStatement(getReviewer);
                 ps.setInt(1, id);

@@ -10,7 +10,7 @@ import { Row, Col, Modal, Typography, Button, Card, Breadcrumb } from 'antd';
 import { faMemory } from '@fortawesome/free-solid-svg-icons'
 import { faSdCard } from '@fortawesome/free-solid-svg-icons'
 import { faCamera } from '@fortawesome/free-solid-svg-icons'
-
+import {faBatteryFull} from '@fortawesome/free-solid-svg-icons'
 import { faMobileAlt } from '@fortawesome/free-solid-svg-icons'
 import { faGamepad } from '@fortawesome/free-solid-svg-icons'
 import { faMicrochip } from '@fortawesome/free-solid-svg-icons'
@@ -129,6 +129,12 @@ function Spec(props) {
                     key: "screenSize",
                     value: spec.screenSize,
                     icon: faMobileAlt
+                },
+                {
+                    key: "battery",
+                    value: String(spec.battery),
+                    icon: faBatteryFull
+                    
                 }
             ]
             const tempPoints = [

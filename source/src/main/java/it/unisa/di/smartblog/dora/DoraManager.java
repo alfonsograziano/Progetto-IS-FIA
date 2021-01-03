@@ -31,6 +31,11 @@ public class DoraManager {
             }
         }
 
+        for(Object o : winner.getGene()){
+
+            System.out.println("Name: " + ((Spec) o).getName() + ", Date: " + ((Spec) o).getDate() + ", Battery: " + ((Spec) o).getBattery() + ", Display: " + ((Spec) o).getDisplay() + ", Camera: " + ((Spec) o).getCamera() + ", Performance: " + ((Spec) o).getPerformance());
+        }
+
         return winner.getGene();
     }
 

@@ -19,7 +19,7 @@ public class DoraControl extends HttpServlet {
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        System.out.println("Battery => "+request.getParameter("battery"));
+        //System.out.println("Battery => "+request.getParameter("battery"));
         try {
             double battery = Double.parseDouble(request.getParameter("battery"))*2;
             double performance = Double.parseDouble(request.getParameter("performance"))*2;
@@ -27,7 +27,7 @@ public class DoraControl extends HttpServlet {
             double display = Double.parseDouble(request.getParameter("display"))*2;
             int maxBudget = Integer.parseInt(request.getParameter("maxBudget"));
 
-            System.out.println("Battery => "+battery);
+            //System.out.println("Battery => "+battery);
 
             request.setAttribute("response",dm.findSpectByParams(battery,performance,camera,display,maxBudget));
         } catch (Exception e) {

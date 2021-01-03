@@ -23,7 +23,7 @@ public class RestrictedToReviewer implements Filter {
     }
 
     public void doFilter(ServletRequest req, ServletResponse resp, FilterChain chain) throws ServletException, IOException {
-        System.out.println("Entro nel filter...");
+        //System.out.println("Entro nel filter...");
         HttpServletRequest httpRequest = (HttpServletRequest) req;
         String auth = httpRequest.getHeader("Authorization");
         if(auth != null){
@@ -54,7 +54,7 @@ public class RestrictedToReviewer implements Filter {
     }
 
     public void errorResponse(ServletResponse resp) throws IOException {
-        System.out.println("Entro nell'error...");
+        //System.out.println("Entro nell'error...");
         HttpServletResponse httpResponse = (HttpServletResponse) resp;
         httpResponse.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
         PrintWriter out = httpResponse.getWriter();

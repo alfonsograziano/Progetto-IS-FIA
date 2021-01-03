@@ -18,7 +18,7 @@ function DoraForm({
     return (
         <div>
             <div >
-                <p style={{ marginBottom: "0px" }}>Batteriy</p>
+                <p style={{ marginBottom: "0px" }}>Battery</p>
                 <Slider 
                     min={0} max={5} step={0.5}
                     onChange={(v) => { setValues({ ...values, battery: v }) }} value={values.battery} />

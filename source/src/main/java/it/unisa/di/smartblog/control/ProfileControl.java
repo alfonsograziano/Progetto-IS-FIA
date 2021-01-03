@@ -31,7 +31,7 @@ public class ProfileControl extends HttpServlet {
         try {
             user = um.getUserInfoByEmail(email);
             List<Review> reviews = rm.searchReviewsByUser(user.getId());
-            System.out.println(reviews);
+            //System.out.println(reviews);
             for(Review r: reviews) user.addReview(r);
 
             Manager m1 = um.isManager(user);

@@ -10,7 +10,7 @@ import Row from "../../components/Row";
 import { AuthContext } from "../../../App";
 import { message } from 'antd';
 import { Spin } from 'antd';
-
+import dora from "./dora_esploratrice.png"
 const formatSpecDescription = item => {
     let string = ""
     if (item.so) string += "OS: " + item.so
@@ -39,6 +39,9 @@ function DoraIA(props) {
                 </Breadcrumb.Item>
             </Breadcrumb>
             <div style={{ marginTop: "20px", display: "flex", flexDirection: "column", alignItems: "center" }}>
+                {
+                    loading && <img src={dora} className="doraIA"/>
+                }
                 <Spin spinning={loading} tip="Dora l'esploratrice sta cercando..."
                     size="large">
                     <Card title="DoraIA" style={{ margin: "20px", width: "300px" }} >
